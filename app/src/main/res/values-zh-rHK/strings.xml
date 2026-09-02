@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">為受影響的 WeChat 版本提供實驗性本機兼容觸發. 此服務不會讀取或儲存無障礙事件和節點.</string>
+    <string name="accessibility_service_name">AutoJs6 WeChat 無障礙兼容服務</string>
+    <string name="button_open_accessibility_settings">開啟無障礙設定</string>
+    <string name="button_open_wechat">開啟 WeChat</string>
+    <string name="button_refresh">重新整理狀態</string>
+    <string name="limitations_body">兼容效果取決於 WeChat 版本和裝置, 並可能在更新後失效. 此服務不能建立頁面原本未公開的語義節點. 小程式, XWeb, Canvas 和自訂繪製介面的控制項仍可能無法使用.</string>
+    <string name="limitations_title">限制</string>
+    <string name="mechanism_body">受影響的 WeChat 版本可能根據已啟用服務的實作類別名稱決定是否公開正常節點. 此插件包含實驗性兼容類別名稱 com.google.android.accessibility.selecttospeak.SelectToSpeakService. 它不是 Google 隨選朗讀服務, 亦不隸屬於 Google. AutoJs6 仍透過自己的無障礙服務讀取和操作節點.</string>
+    <string name="mechanism_title">兼容機制</string>
+    <string name="plugin_description">可選的實驗性伴生插件, 可能協助 AutoJs6 取得 WeChat 無障礙節點. 它只在本機執行, 忽略所有事件, 不保證小程式節點可用</string>
+    <string name="privacy_body">服務回呼不執行任何操作. 插件不讀取事件來源, 事件文字, 根節點, 螢幕截圖或使用者內容, 不儲存或分享資料, 亦不連線至網絡. 服務僅設定給 com.tencent.mm.</string>
+    <string name="privacy_title">私隱</string>
+    <string name="screen_intro">一個可選的實驗性伴生插件, 用於協助 AutoJs6 取得受影響 WeChat 版本的無障礙節點.</string>
+    <string name="service_status_disabled">未啟用</string>
+    <string name="service_status_enabled">已啟用</string>
+    <string name="service_status_format">兼容服務狀態: %1$s</string>
+    <string name="settings_unavailable">無法開啟系統無障礙設定.</string>
+    <string name="version_format">版本: %1$s</string>
+    <string name="wechat_unavailable">未安裝 WeChat 或無法開啟 WeChat.</string>
+</resources>

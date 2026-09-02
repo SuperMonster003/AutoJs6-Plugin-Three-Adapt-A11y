@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">Déclencheur local et expérimental de compatibilité pour les versions affectées de WeChat. Le service ne lit ni ne stocke les événements ou les noeuds d\'accessibilité.</string>
+    <string name="accessibility_service_name">Compatibilité d\'accessibilité AutoJs6 pour WeChat</string>
+    <string name="button_open_accessibility_settings">Ouvrir les paramètres d\'accessibilité</string>
+    <string name="button_open_wechat">Ouvrir WeChat</string>
+    <string name="button_refresh">Actualiser le statut</string>
+    <string name="limitations_body">La compatibilité dépend de la version de WeChat et de l\'appareil, et peut cesser de fonctionner après une mise à jour. Ce service ne peut pas créer les noeuds sémantiques que la page ne publie pas. Les contrôles des Mini Programs, de XWeb, de Canvas et des interfaces dessinées sur mesure peuvent rester indisponibles.</string>
+    <string name="limitations_title">Limites</string>
+    <string name="mechanism_body">Les versions affectées de WeChat peuvent décider de publier les noeuds normaux selon le nom de classe d\'implémentation d\'un service activé. Ce plugin contient le nom de classe de compatibilité expérimental com.google.android.accessibility.selecttospeak.SelectToSpeakService. Il ne correspond pas à Google Select to Speak et ne dépend pas de Google. AutoJs6 continue à lire et à manipuler les noeuds avec son propre service d\'accessibilité.</string>
+    <string name="mechanism_title">Mécanisme de compatibilité</string>
+    <string name="plugin_description">Compagnon expérimental et facultatif qui peut aider AutoJs6 à obtenir les noeuds d\'accessibilité de WeChat. Il fonctionne localement, ignore chaque événement et ne garantit pas les noeuds des Mini Programs</string>
+    <string name="privacy_body">Le rappel du service est sans effet. Le plugin ne lit pas les sources ou les textes des événements, les noeuds racines, les captures d\'écran ou le contenu utilisateur. Il ne stocke ni ne partage de données et ne se connecte pas au réseau. Le service est configuré uniquement pour com.tencent.mm.</string>
+    <string name="privacy_title">Confidentialité</string>
+    <string name="screen_intro">Un compagnon expérimental et facultatif qui aide AutoJs6 à obtenir les noeuds d\'accessibilité des versions affectées de WeChat.</string>
+    <string name="service_status_disabled">Désactivé</string>
+    <string name="service_status_enabled">Activé</string>
+    <string name="service_status_format">Statut du service de compatibilité: %1$s</string>
+    <string name="settings_unavailable">Impossible d\'ouvrir les paramètres d\'accessibilité du système.</string>
+    <string name="version_format">Version: %1$s</string>
+    <string name="wechat_unavailable">WeChat n\'est pas installé ou ne peut pas être ouvert.</string>
+</resources>

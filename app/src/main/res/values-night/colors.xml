@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="theme_accent">#2DAB97</color>
+    <color name="theme_background">#10141B</color>
+    <color name="theme_navigation_bar">#10141B</color>
+    <color name="theme_status_bar">#10141B</color>
+</resources>

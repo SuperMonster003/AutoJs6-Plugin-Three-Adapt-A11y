@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">Экспериментальный локальный триггер совместимости для затронутых версий WeChat. Служба не читает и не сохраняет события или узлы специальных возможностей.</string>
+    <string name="accessibility_service_name">Служба совместимости AutoJs6 для WeChat</string>
+    <string name="button_open_accessibility_settings">Открыть настройки специальных возможностей</string>
+    <string name="button_open_wechat">Открыть WeChat</string>
+    <string name="button_refresh">Обновить состояние</string>
+    <string name="limitations_body">Совместимость зависит от версии WeChat и устройства и может перестать работать после обновления. Служба не может создать семантические узлы, которые страница не предоставляет. Элементы Mini Programs, XWeb, Canvas и интерфейсов с собственной отрисовкой могут остаться недоступными.</string>
+    <string name="limitations_title">Ограничения</string>
+    <string name="mechanism_body">Затронутые версии WeChat могут решать, предоставлять ли обычные узлы, на основе имени класса реализации включенной службы. Плагин содержит экспериментальное имя класса совместимости com.google.android.accessibility.selecttospeak.SelectToSpeakService. Это не Google Select to Speak, и плагин не связан с Google. AutoJs6 по-прежнему читает узлы и работает с ними через собственную службу специальных возможностей.</string>
+    <string name="mechanism_title">Механизм совместимости</string>
+    <string name="plugin_description">Необязательный экспериментальный компонент, который может помочь AutoJs6 получить узлы специальных возможностей WeChat. Он работает локально, игнорирует все события и не гарантирует доступность узлов Mini Programs</string>
+    <string name="privacy_body">Обратный вызов службы не выполняет никаких действий. Плагин не читает источники или текст событий, корневые узлы, снимки экрана или пользовательские данные. Он не сохраняет и не передает данные и не использует сеть. Служба настроена только для com.tencent.mm.</string>
+    <string name="privacy_title">Конфиденциальность</string>
+    <string name="screen_intro">Необязательный экспериментальный компонент, который помогает AutoJs6 получать узлы специальных возможностей из затронутых версий WeChat.</string>
+    <string name="service_status_disabled">Выключена</string>
+    <string name="service_status_enabled">Включена</string>
+    <string name="service_status_format">Состояние службы совместимости: %1$s</string>
+    <string name="settings_unavailable">Не удалось открыть системные настройки специальных возможностей.</string>
+    <string name="version_format">Версия: %1$s</string>
+    <string name="wechat_unavailable">WeChat не установлен или не может быть открыт.</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">Activador local y experimental de compatibilidad para versiones afectadas de WeChat. El servicio no lee ni guarda eventos o nodos de accesibilidad.</string>
+    <string name="accessibility_service_name">Compatibilidad de accesibilidad de AutoJs6 para WeChat</string>
+    <string name="button_open_accessibility_settings">Abrir ajustes de accesibilidad</string>
+    <string name="button_open_wechat">Abrir WeChat</string>
+    <string name="button_refresh">Actualizar estado</string>
+    <string name="limitations_body">La compatibilidad depende de la versión de WeChat y del dispositivo, y puede dejar de funcionar tras una actualización. Este servicio no puede crear nodos semánticos que una página no exponga. Es posible que los controles de Mini Programs, XWeb, Canvas y las interfaces dibujadas de forma personalizada sigan sin estar disponibles.</string>
+    <string name="limitations_title">Limitaciones</string>
+    <string name="mechanism_body">Las versiones afectadas de WeChat pueden decidir si exponen nodos normales según el nombre de la clase de implementación de un servicio habilitado. Este complemento contiene el nombre de clase de compatibilidad experimental com.google.android.accessibility.selecttospeak.SelectToSpeakService. No es Google Select to Speak ni está afiliado con Google. AutoJs6 sigue leyendo y operando los nodos mediante su propio servicio de accesibilidad.</string>
+    <string name="mechanism_title">Mecanismo de compatibilidad</string>
+    <string name="plugin_description">Complemento experimental y opcional que puede ayudar a AutoJs6 a obtener nodos de accesibilidad de WeChat. Funciona localmente, ignora todos los eventos y no garantiza los nodos de Mini Programs</string>
+    <string name="privacy_body">La llamada del servicio no realiza ninguna operación. El complemento no lee fuentes o textos de eventos, nodos raíz, capturas de pantalla ni contenido del usuario. No guarda ni comparte datos y no accede a la red. El servicio solo está configurado para com.tencent.mm.</string>
+    <string name="privacy_title">Privacidad</string>
+    <string name="screen_intro">Un complemento experimental y opcional que ayuda a AutoJs6 a obtener nodos de accesibilidad de versiones afectadas de WeChat.</string>
+    <string name="service_status_disabled">Deshabilitado</string>
+    <string name="service_status_enabled">Habilitado</string>
+    <string name="service_status_format">Estado del servicio de compatibilidad: %1$s</string>
+    <string name="settings_unavailable">No se pueden abrir los ajustes de accesibilidad del sistema.</string>
+    <string name="version_format">Versión: %1$s</string>
+    <string name="wechat_unavailable">WeChat no está instalado o no se puede abrir.</string>
+</resources>
