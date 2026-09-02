@@ -1,0 +1,100 @@
+{
+  "$name": "English",
+  "synopsis": "A privacy-minimal accessibility compatibility trigger for affected WeChat versions",
+  "language_notice": "Page language: English",
+  "h3_languages": "Languages",
+  "h3_status": "Project Status",
+  "p_status": "Accessibility Compat is a standalone experimental companion APK. It attempts to make affected WeChat versions expose their control tree to the AutoJs6 accessibility service again. It is not a general automation engine and never replaces AutoJs6 as the reader or operator of controls.",
+  "p_experimental": "Compatibility depends on the WeChat version and remote configuration. The project cannot promise success on every version, page, account, or device. Complete A-B-A validation before relying on it in a script.",
+  "h3_architecture": "No-op Companion Architecture",
+  "p_architecture": "The project isolates the WeChat compatibility experiment in a separate APK and leaves the name and general behavior of the AutoJs6 core service unchanged:",
+  "architecture_points": [
+    "The AutoJs6 accessibility service remains the only component that reads, queries, and acts on nodes.",
+    "The companion registers a service implementation class name supported by public experiments, while its application ID, icon, labels, description, and signature truthfully identify Accessibility Compat.",
+    "The compatibility service callbacks are no-op. They never read `event.source`, `event.text`, `rootInActiveWindow`, screenshots, or page content.",
+    "This release is not a node proxy or Binder bridge. It only attempts to trigger WeChat's global node exposure behavior."
+  ],
+  "h3_install": "Installation and Use",
+  "install_steps": [
+    "Confirm that the device runs {{ minimum_android }} or later and that the AutoJs6 internal build is at least {{ required_host_build }}.",
+    "Install the APK only from this project's [Releases]({{ repo_url }}/releases) or a trusted AutoJs6 plugin entry.",
+    "Open Accessibility Compat, verify its real name and purpose, then follow the prompt to Android accessibility settings.",
+    "Manually enable the accessibility service listed under Accessibility Compat. Android's risk warning is expected. Do not bypass consent with ADB.",
+    "Keep the AutoJs6 accessibility service enabled as well, reopen the target WeChat page, and inspect nodes from the AutoJs6 layout inspector or a script."
+  ],
+  "p_disable": "Installing the APK alone has no effect. Disable the compatibility service in Android settings when it is not needed, or uninstall the app when finished.",
+  "h3_validation": "A-B-A Device Validation",
+  "p_validation": "Do not treat one successful dump as proof. Run an A-B-A comparison on the same static page before attributing a change to this service:",
+  "validation_points": [
+    "A: Keep AutoJs6 enabled and the compatibility service disabled, then collect at least 5 sanitized samples.",
+    "B: Enable only the compatibility service, return to the same page, and collect at least 5 more samples.",
+    "A2: Disable the compatibility service again and repeat collection. The change should reverse, ruling out loading and cache accidents.",
+    "Record node counts, non-empty text/desc/resource-id counts, clickable counts, and a structure hash. Never retain chat text, contact names, or screenshots."
+  ],
+  "text_validation_link": "Read the complete A-B-A validation protocol",
+  "h3_verified_device_result": "Verified Device Result",
+  "p_verified_device_result": "On 2026-09-02, a reversible A-B-A run completed on the authorized Sony XQ-AT72 with Android 12/API 31, WeChat 8.0.72 code 3085, and AutoJs6 6.8.0 code 5277. The same 6 pre-existing accessibility services remained unchanged. Each phase force-stopped and relaunched WeChat LauncherUI, waited more than 5 seconds, then took 7 samples through AutoJs6 itself:",
+  "verified_device_points": [
+    "A with compatibility off: nodes 1, text 0, desc 0, id 0, clickable 0, with the same structure hash in all 7 samples.",
+    "B with compatibility on and both target services bound: nodes 244, text 31, desc 13, id 157, clickable 38, with the same structure hash in all 7 samples.",
+    "A2 with compatibility off again: exactly returned to nodes 1 and 0 for every other metric, with the same structure hash in all 7 samples. System accessibility settings were restored exactly afterward."
+  ],
+  "p_verified_device_scope": "This verifies the compatibility trigger for that device, WeChat build, and LauncherUI page combination. It cannot be generalized to other versions, accounts, devices, Mini Programs, XWeb, or Canvas pages.",
+  "text_verified_device_report": "Read the complete sanitized QV710AF65F report",
+  "h3_limits": "Known Limitations",
+  "limit_points": [
+    "The compatibility target is only `{{ target_package }}`. This is not a general accessibility patch for other apps.",
+    "WeChat Mini Programs, XWeb, Canvas, and custom-drawn controls may have no native semantic nodes. The plugin cannot invent missing `text` or `content-desc`.",
+    "Even when a root returns, some pages may expose empty attributes, stale nodes, random trees, or bounds only.",
+    "A WeChat update or remote configuration change can invalidate the approach at any time. Downgrades, OCR, and coordinate fallbacks carry their own safety and stability costs.",
+    "The plugin only addresses observability. It does not bypass login, risk controls, captchas, permissions, account restrictions, or platform anti-abuse systems."
+  ],
+  "h3_privacy": "Privacy Boundary",
+  "privacy_points": [
+    "Compatibility callbacks do not read event sources, event text, the active-window root, or screen images.",
+    "The app does not upload, persist, or log WeChat page content and contains no networking or analytics feature.",
+    "The app requests no storage, overlay, camera, microphone, or media permission.",
+    "The plugin-info Binder reports only version, identity, and capability metadata. It never transfers a node tree.",
+    "Users explicitly enable and disable the service in Android settings. The project never changes that setting silently."
+  ],
+  "h3_ethics": "Ethics and Compliance",
+  "p_ethics": "Accessibility compatibility should only help users automate interfaces they are authorized to operate. The user remains responsible for script behavior and account consequences.",
+  "ethics_points": [
+    "Use it only on your own device, account, and workflows for which you have explicit authorization.",
+    "Do not use it for harassment, spam, non-consensual data collection, surveillance, or bypassing security controls.",
+    "Follow applicable law, WeChat rules, and organizational policy, with human confirmation and stop conditions for UI changes and mistakes.",
+    "Share only aggregate diagnostics and sanitized structures. Never publish chats, contacts, tokens, APKs, or raw dex files."
+  ],
+  "h3_compatibility": "Compatibility Information",
+  "p_compatibility": "The service component contains a compatibility class name used in public experiments. It is not Google Select to Speak, provides no text-to-speech feature, and does not imitate a Google app or signature. The real identity remains visible through this project's application ID, labels, icon, information page, and signature.",
+  "h3_faq": "FAQ",
+  "faq": [
+    {
+      "q": "Does this project impersonate a Google app?",
+      "a": "No. Only the accessibility service implementation class name is used for the compatibility experiment. The package, app and service labels, icon, documentation, and signature remain truthful, and the project explicitly says it is not Google Select to Speak."
+    },
+    {
+      "q": "Why did nothing change after installation?",
+      "a": "Android does not let an app enable its own accessibility service. The user must enable the compatibility service in system settings and also enable AutoJs6. If nothing changes, use the A-B-A protocol to determine whether the current WeChat version and page are supported."
+    },
+    {
+      "q": "Why are text nodes still missing in a Mini Program?",
+      "a": "A Mini Program or XWeb page may draw through Canvas or custom rendering without corresponding Android semantic nodes. The service can only try to restore a conditionally hidden tree. It cannot generate information that the page never exposes."
+    },
+    {
+      "q": "Does the plugin guarantee account safety?",
+      "a": "No. It does not bypass WeChat risk controls and cannot promise that any automation behavior is safe. Use low-risk, auditable scripts with human confirmation and follow platform rules yourself."
+    }
+  ],
+  "h3_research": "Research Basis",
+  "p_research": "The research note covers AutoJs6 #289, #382, #432, #463, #520, and #521, GKD `47267c7`, and sanitized static evidence from WeChat 8.0.72 on the test device. It separates public facts, reproducible experiments, and inference instead of presenting WeChat internals as a public guarantee.",
+  "text_research_link": "Read the WeChat accessibility compatibility research note",
+  "h3_release_history": "Release History",
+  "text_full_changelog": "Read the complete release history",
+  "h3_build": "Build and Documentation Checks",
+  "p_build": "Regular users should install a prebuilt APK from Releases. Developers can use the repository Gradle Wrapper to build and verify the project:",
+  "p_generate": "README and changelog files are generated from JSON copy sources. After changing `.readme/lang_*.json`, `.changelog/lang_*.json`, or a template, run:",
+  "h3_license": "License",
+  "p_license": "Project code is licensed under the [Mozilla Public License 2.0]({{ license_url }}). WeChat, Google, and Select to Speak names belong to their respective owners. This project is not affiliated with or endorsed by those companies.",
+  "h3_links": "Links"
+}

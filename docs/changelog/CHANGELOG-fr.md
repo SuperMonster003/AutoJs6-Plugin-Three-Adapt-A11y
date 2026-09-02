@@ -1,0 +1,25 @@
+<!-- This file is generated. Edit .changelog/lang_*.json and rerun .python/generate_markdown.py. -->
+
+# Historique des versions Accessibility Compat
+
+> Langue de cette page: français
+
+## v1.0.0 - 2026/09/02
+
+### Note
+
+- Cette méthode de compatibilité est expérimentale. Le résultat dépend de la version, de la page et de la configuration distante de WeChat, et aucune version ne peut garantir chaque appareil ou compte
+- Le service ne peut créer les noeuds sémantiques qu'un Mini Program WeChat, XWeb ou Canvas n'a jamais exposés, et il ne contourne pas la connexion, les contrôles de risque ou les systèmes anti-abus
+
+### Fonctionnalité
+
+- Fournir un APK compagnon d'accessibilité no-op autonome limité à `com.tencent.mm`, avec un ID, une icône, des libellés, une description et une signature véridiques et distincts
+- Enregistrer un nom de classe de service de compatibilité soutenu par des expériences publiques, tandis qu'AutoJs6 continue à lire et actionner les noeuds par son propre service et que les rappels du compagnon ne lisent aucun contenu utilisateur
+- Publier le mode de compatibilité, le paquet cible, le composant de service et le build hôte minimal via l'interface d'information AutoJs6, avec un écran contrôlé par l'utilisateur pour activer ou désactiver le service
+
+### Amélioration
+
+- Documenter [AutoJs6#289](https://github.com/SuperMonster003/AutoJs6/issues/289), [#382](https://github.com/SuperMonster003/AutoJs6/issues/382), [#432](https://github.com/SuperMonster003/AutoJs6/issues/432), [#463](https://github.com/SuperMonster003/AutoJs6/issues/463), [#520](https://github.com/SuperMonster003/AutoJs6/issues/520), [#521](https://github.com/SuperMonster003/AutoJs6/issues/521), GKD `47267c7` et les preuves statiques anonymisées de WeChat 8.0.72
+- Fournir un protocole A-B-A qui ne conserve ni texte privé des noeuds ni capture et utilise des statistiques répétées et la réversibilité pour distinguer l'effet de compatibilité du chargement et du cache
+- Ajouter les sources de README et changelog en 10 langues, un générateur Markdown reproductible, un contrôle de cohérence en lecture seule et des portes GitHub Actions
+- Documenter un essai A-B-A de 7 échantillons effectué par AutoJs6 sur QV710AF65F, où le nombre de noeuds est passé de façon stable de 1 à 244 puis revenu à 1 après la désactivation de la compatibilité, avec vérification de la restauration exacte des paramètres système d'accessibilité

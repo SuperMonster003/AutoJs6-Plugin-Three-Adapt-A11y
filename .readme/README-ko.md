@@ -1,0 +1,181 @@
+<!-- This file is generated. Edit .readme/lang_*.json and rerun .python/generate_markdown.py. -->
+<!--suppress HtmlDeprecatedAttribute, HttpUrlsUsage -->
+
+<div align="center">
+  <p>
+    <img src="https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/app/src/main/res/mipmap/ic_launcher.png?raw=true" alt="autojs6-plugin-accessibility-compat-icon" border="0" width="128" />
+  </p>
+  <h1>Accessibility Compat</h1>
+  <p>영향을 받는 WeChat 버전을 위한 개인정보 최소화 접근성 호환 트리거</p>
+  <p>
+    <a href="https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat?label=Release"/></a>
+    <a href="https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat?color=A24232&label=Issues"/></a>
+    <a href="https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat?color=534BAE&label=License"/></a>
+  </p>
+</div>
+
+> 이 페이지의 언어: 한국어
+
+### 언어 (Languages)
+
+[简体中文](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-zh-Hans.md) | [香港繁體](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-zh-Hant-HK.md) | [台灣繁體](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-zh-Hant-TW.md) | [English](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-en.md) | [Français](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-fr.md) | [Español](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-es.md) | [日本語](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-ja.md) | [한국어](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-ko.md) | [Русский](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-ru.md) | [العربية](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-ar.md)
+
+### 프로젝트 상태
+
+Accessibility Compat은 독립적인 실험용 동반 APK입니다. 영향을 받는 WeChat 버전이 컨트롤 트리를 AutoJs6 접근성 서비스에 다시 노출하도록 시도합니다. 범용 자동화 엔진이 아니며 컨트롤을 읽거나 조작하는 AutoJs6를 대체하지 않습니다.
+
+> 호환성은 WeChat 버전과 원격 설정에 따라 달라집니다. 모든 버전, 페이지, 계정 또는 기기에서 성공한다고 보장할 수 없습니다. 스크립트에 사용하기 전에 A-B-A 검증을 완료하십시오.
+
+### No-op 동반 구조
+
+WeChat 호환 실험을 별도 APK에 격리하고 AutoJs6 핵심 서비스의 이름과 일반 동작을 변경하지 않습니다:
+
+- 노드를 읽고, 검색하고, 조작하는 유일한 구성 요소는 계속 AutoJs6 접근성 서비스입니다.
+- 동반 앱은 공개 실험에서 확인된 서비스 구현 클래스 이름을 등록하지만 애플리케이션 ID, 아이콘, 라벨, 설명과 서명은 Accessibility Compat의 실제 신원을 표시합니다.
+- 호환 서비스 콜백은 no-op입니다. `event.source`, `event.text`, `rootInActiveWindow`, 스크린샷 또는 페이지 내용을 읽지 않습니다.
+- 이 릴리스는 노드 프록시나 Binder 브리지가 아닙니다. WeChat의 전역 노드 노출 동작을 트리거하는 것만 시도합니다.
+
+### 설치와 사용
+
+1. 기기가 Android 7.0 (API 24) 이상이고 AutoJs6 내부 빌드가 3923 이상인지 확인합니다.
+2. APK는 이 프로젝트의 [Releases](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/releases) 또는 신뢰할 수 있는 AutoJs6 플러그인 경로에서만 설치합니다.
+3. Accessibility Compat을 열고 실제 이름과 목적을 확인한 다음 Android 접근성 설정 안내를 따릅니다.
+4. Accessibility Compat 아래 표시되는 접근성 서비스를 사용자가 직접 활성화합니다. Android의 위험 경고는 정상입니다. ADB로 동의를 우회하지 마십시오.
+5. AutoJs6 접근성 서비스도 활성화한 상태로 대상 WeChat 페이지를 다시 열고 AutoJs6 레이아웃 검사기 또는 스크립트에서 노드를 확인합니다.
+
+APK 설치만으로는 효과가 없습니다. 필요하지 않을 때 Android 설정에서 호환 서비스를 끄고 사용이 끝나면 앱을 제거할 수 있습니다.
+
+### A-B-A 기기 검증
+
+한 번 성공한 dump를 증거로 보지 마십시오. 변화를 서비스 때문이라고 판단하기 전에 동일한 정적 페이지에서 A-B-A 비교를 실행합니다:
+
+- A: AutoJs6는 켜고 호환 서비스는 끈 상태에서 비식별 표본을 최소 5회 수집합니다.
+- B: 호환 서비스만 추가로 켜고 같은 페이지로 돌아가 최소 5회 더 수집합니다.
+- A2: 호환 서비스를 다시 끄고 수집을 반복합니다. 변화가 되돌아가야 로딩과 캐시 우연을 배제할 수 있습니다.
+- 노드 수, 비어 있지 않은 text/desc/resource-id 수, clickable 수와 구조 hash만 기록합니다. 채팅, 연락처 이름 또는 스크린샷은 보관하지 않습니다.
+
+[전체 A-B-A 검증 절차 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/aba-device-validation.md)
+
+### 실기기 검증 결과
+
+2026-09-02에 승인된 Sony XQ-AT72, Android 12/API 31, WeChat 8.0.72 code 3085, AutoJs6 6.8.0 code 5277 조합에서 가역적인 A-B-A 검증을 완료했습니다. 기존 접근성 서비스 6개는 변경하지 않았습니다. 각 단계마다 WeChat을 강제 종료하고 LauncherUI를 다시 실행한 뒤 5초 넘게 기다리고, AutoJs6 자체에서 7회 연속 표본을 수집했습니다:
+
+- A 호환 서비스 끔: nodes 1, text 0, desc 0, id 0, clickable 0, 7회 모두 동일한 구조 hash.
+- B 호환 서비스 켬 및 대상 서비스 2개가 모두 bound: nodes 244, text 31, desc 13, id 157, clickable 38, 7회 모두 동일한 구조 hash.
+- A2 다시 끔: nodes 1과 나머지 모든 지표 0으로 정확히 돌아왔고 7회 모두 동일한 구조 hash. 테스트 후 시스템 접근성 설정을 정확히 복원했습니다.
+
+이 결과는 해당 기기, WeChat 빌드, LauncherUI 페이지 조합에서만 호환 트리거를 검증합니다. 다른 버전, 계정, 기기, Mini Program, XWeb 또는 Canvas 페이지로 일반화할 수 없습니다.
+
+[QV710AF65F 전체 비식별 보고서 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/device-QV710AF65F.md)
+
+### 알려진 제한
+
+- 호환 대상은 `com.tencent.mm`뿐입니다. 다른 앱을 위한 범용 접근성 패치가 아닙니다.
+- WeChat Mini Program, XWeb, Canvas와 사용자 정의 그리기 컨트롤에는 네이티브 의미 노드가 없을 수 있습니다. 누락된 `text` 또는 `content-desc`를 만들 수 없습니다.
+- 루트가 돌아와도 일부 페이지는 빈 속성, 오래된 노드, 무작위 트리 또는 경계 정보만 노출할 수 있습니다.
+- WeChat 업데이트나 원격 설정 변경으로 언제든 무효가 될 수 있습니다. 다운그레이드, OCR과 좌표 대안도 보안 및 안정성 비용이 있습니다.
+- 플러그인은 관찰 가능성만 다룹니다. 로그인, 위험 제어, captcha, 권한, 계정 제한 또는 악용 방지 체계를 우회하지 않습니다.
+
+### 개인정보 경계
+
+- 호환 콜백은 이벤트 소스, 이벤트 텍스트, 활성 창 루트 또는 화면 이미지를 읽지 않습니다.
+- 앱은 WeChat 페이지 내용을 업로드, 저장 또는 로그로 남기지 않으며 네트워크나 분석 기능도 포함하지 않습니다.
+- 저장소, 오버레이, 카메라, 마이크 또는 미디어 권한을 요청하지 않습니다.
+- 플러그인 정보 Binder는 버전, 신원 및 기능 메타데이터만 보고하며 노드 트리를 전송하지 않습니다.
+- 사용자가 Android 설정에서 서비스를 명시적으로 켜고 끕니다. 프로젝트가 설정을 몰래 변경하지 않습니다.
+
+### 윤리와 규정 준수
+
+접근성 호환 기능은 사용자가 조작 권한을 가진 인터페이스의 자동화만 지원해야 합니다. 스크립트 동작과 계정 결과는 사용자 책임입니다.
+
+- 자신의 기기와 계정 또는 명시적으로 허가된 흐름에서만 사용합니다.
+- 괴롭힘, spam, 동의 없는 데이터 수집, 타인 감시 또는 보안 제어 우회에 사용하지 않습니다.
+- 관련 법률, WeChat 규칙과 조직 정책을 따르고 UI 변경이나 실수에 대해 사람의 확인과 중단 조건을 둡니다.
+- 진단 공유는 집계 통계와 비식별 구조만 포함해야 합니다. 채팅, 연락처, token, APK 또는 원본 dex를 공개하지 않습니다.
+
+### 호환 정보
+
+서비스 구성 요소에는 공개 실험에서 사용한 호환 클래스 이름이 들어 있습니다. Google Select to Speak가 아니며 읽어주기 기능을 제공하지 않고 Google 앱이나 서명을 사칭하지 않습니다. 실제 신원은 프로젝트의 ID, 라벨, 아이콘, 정보 페이지와 서명에 항상 표시됩니다.
+
+```text
+application id: io.github.supermonster003.autojs6.plugin.accessibilitycompat
+accessibility service: io.github.supermonster003.autojs6.plugin.accessibilitycompat/com.google.android.accessibility.selecttospeak.SelectToSpeakService
+target package: com.tencent.mm
+minimum Android: Android 7.0 (API 24)
+minimum AutoJs6 build: 3923
+```
+
+### 자주 묻는 질문
+
+#### 이 프로젝트가 Google 앱을 사칭합니까?
+
+아닙니다. 호환 실험에는 접근성 서비스 구현 클래스 이름만 사용합니다. 패키지, 앱과 서비스 라벨, 아이콘, 문서 및 서명은 사실대로 유지하며 Google Select to Speak가 아님을 명시합니다.
+
+#### 설치 후 아무 변화가 없는 이유는 무엇입니까?
+
+Android는 앱이 자체 접근성 서비스를 활성화하도록 허용하지 않습니다. 사용자가 설정에서 호환 서비스와 AutoJs6를 모두 켜야 합니다. 변화가 없으면 A-B-A 절차로 현재 WeChat 버전과 페이지를 확인하십시오.
+
+#### Mini Program에서 텍스트 노드가 여전히 없는 이유는 무엇입니까?
+
+Mini Program이나 XWeb은 Canvas 또는 사용자 정의 렌더링을 사용하여 Android 의미 노드가 없을 수 있습니다. 서비스는 조건부로 숨겨진 트리 복원만 시도할 수 있으며 원래 노출되지 않은 정보를 만들 수 없습니다.
+
+#### 플러그인이 계정 안전을 보장합니까?
+
+아닙니다. WeChat 위험 제어를 우회하지 않으며 어떤 자동화도 안전하다고 약속할 수 없습니다. 위험이 낮고 감사 가능하며 사람이 확인하는 스크립트를 사용하고 플랫폼 규칙을 따르십시오.
+
+### 연구 근거
+
+연구 문서는 AutoJs6 #289, #382, #432, #463, #520, #521, GKD `47267c7`과 테스트 기기의 WeChat 8.0.72에서 얻은 비식별 정적 증거를 다룹니다. 공개 사실, 재현 가능한 실험과 추론을 구분하며 WeChat 내부 동작을 공식 보장으로 표현하지 않습니다.
+
+[WeChat 접근성 호환 연구 문서 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/wechat-accessibility-compat.md)
+
+### 릴리스 기록
+
+#### v1.0.0 - 2026/09/02
+
+##### 힌트
+
+- 이 호환 방식은 실험적입니다. 결과는 WeChat 버전, 페이지와 원격 설정에 따라 달라지며 모든 기기나 계정에서 성공한다고 보장할 수 없습니다
+- WeChat Mini Program, XWeb 또는 Canvas가 원래 노출하지 않은 의미 노드를 만들 수 없으며 로그인, 위험 제어 또는 악용 방지 체계를 우회하지 않습니다
+
+##### 기능
+
+- `com.tencent.mm`만 대상으로 하는 독립 no-op 접근성 동반 APK를 제공하고 실제 애플리케이션 ID, 아이콘, 라벨, 설명과 서명을 명확히 표시
+- 공개 실험이 뒷받침하는 호환 서비스 구현 클래스 이름을 등록하면서 노드 읽기와 조작은 AutoJs6 자체 서비스가 계속 수행하고 동반 콜백은 사용자 내용을 읽지 않는 구조
+- AutoJs6 플러그인 정보 인터페이스로 호환 모드, 대상 패키지, 서비스 구성 요소와 최소 호스트 빌드를 보고하고 사용자가 서비스를 켜고 끄는 화면 제공
+
+##### 개선
+
+- [AutoJs6#289](https://github.com/SuperMonster003/AutoJs6/issues/289), [#382](https://github.com/SuperMonster003/AutoJs6/issues/382), [#432](https://github.com/SuperMonster003/AutoJs6/issues/432), [#463](https://github.com/SuperMonster003/AutoJs6/issues/463), [#520](https://github.com/SuperMonster003/AutoJs6/issues/520), [#521](https://github.com/SuperMonster003/AutoJs6/issues/521), GKD `47267c7`과 WeChat 8.0.72 비식별 정적 증거 문서화
+- 개인 노드 텍스트나 스크린샷을 저장하지 않고 반복 통계와 가역성으로 호환 효과를 로딩 및 캐시 우연과 구분하는 A-B-A 기기 절차 제공
+- 10개 언어 README와 changelog 문안, 재현 가능한 Markdown 생성기, 읽기 전용 일관성 검사와 GitHub Actions 게이트 추가
+- QV710AF65F에서 AutoJs6 자체로 수행한 7회 표본 A-B-A 실측을 기록했습니다. 노드 수가 1에서 244로 안정적으로 증가하고 호환 서비스를 끈 뒤 1로 돌아왔으며 시스템 접근성 설정의 정확한 복원도 확인했습니다
+
+[전체 릴리스 기록 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-ko.md)
+
+### 빌드와 문서 검사
+
+일반 사용자는 Releases의 미리 빌드된 APK를 설치해야 합니다. 개발자는 저장소 Gradle Wrapper로 프로젝트를 빌드하고 검증할 수 있습니다:
+
+```powershell
+.\gradlew.bat :app:testDebugUnitTest :app:assembleDebug :app:assembleDebugAndroidTest :app:lintDebug
+py .python\generate_markdown.py --check
+```
+
+README와 changelog는 JSON 문안에서 생성됩니다. `.readme/lang_*.json`, `.changelog/lang_*.json` 또는 템플릿을 변경한 후 실행합니다:
+
+```powershell
+py .python\generate_markdown.py
+py .python\generate_markdown.py --check
+```
+
+### 라이선스
+
+프로젝트 코드는 [Mozilla Public License 2.0](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/LICENSE)으로 제공됩니다. WeChat, Google 및 Select to Speak 이름은 각 소유자에게 속하며 이 프로젝트는 해당 회사와 제휴하거나 승인을 받지 않았습니다.
+
+### 링크
+
+- [AutoJs6](https://github.com/SuperMonster003/AutoJs6)
+- [WeChat 접근성 호환 연구 문서 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/wechat-accessibility-compat.md)
+- [전체 A-B-A 검증 절차 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/aba-device-validation.md)
+- [QV710AF65F 전체 비식별 보고서 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/device-QV710AF65F.md)

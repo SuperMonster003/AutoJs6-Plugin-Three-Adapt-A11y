@@ -1,0 +1,29 @@
+{
+  "h1_release_history": "سجل إصدارات Accessibility Compat",
+  "language_notice": "لغة هذه الصفحة: العربية",
+  "changelog_label_hint": "تلميح",
+  "changelog_label_feature": "ميزة",
+  "changelog_label_fix": "إصلاح",
+  "changelog_label_improvement": "تحسين",
+  "changelog_label_dependency": "تبعية",
+  "$data": {
+    "v1.0.0": {
+      "released_date": "2026/09/02",
+      "hint": [
+        "هذه طريقة توافق تجريبية. تعتمد النتيجة على إصدار WeChat والصفحة والإعداد البعيد, ولا يضمن أي إصدار النجاح مع كل جهاز أو حساب",
+        "لا تستطيع الخدمة إنشاء عقد دلالية لم تعرضها WeChat Mini Program أو XWeb أو Canvas أصلا, ولا تتجاوز تسجيل الدخول أو ضوابط المخاطر أو أنظمة مكافحة الإساءة"
+      ],
+      "feature": [
+        "توفير APK مرافق مستقل لإمكانية الوصول من نوع no-op ومقيد بـ `com.tencent.mm`, مع ID وأيقونة وتسميات ووصف وتوقيع حقيقية ومميزة",
+        "تسجيل اسم فئة تنفيذ لخدمة توافق تدعمه تجارب علنية, مع استمرار AutoJs6 في قراءة العقد وتشغيلها عبر خدمته وعدم قراءة استدعاءات المرافق لأي محتوى للمستخدم",
+        "الإبلاغ عن نمط التوافق والحزمة المستهدفة ومكون الخدمة والحد الأدنى لبناء المضيف عبر واجهة معلومات مكون AutoJs6, مع شاشة يتحكم بها المستخدم لتفعيل الخدمة وتعطيلها"
+      ],
+      "improvement": [
+        "توثيق [AutoJs6#289](https://github.com/SuperMonster003/AutoJs6/issues/289) و[#382](https://github.com/SuperMonster003/AutoJs6/issues/382) و[#432](https://github.com/SuperMonster003/AutoJs6/issues/432) و[#463](https://github.com/SuperMonster003/AutoJs6/issues/463) و[#520](https://github.com/SuperMonster003/AutoJs6/issues/520) و[#521](https://github.com/SuperMonster003/AutoJs6/issues/521) وGKD `47267c7` والأدلة الثابتة منزوعة الهوية من WeChat 8.0.72",
+        "توفير بروتوكول A-B-A لا يحفظ نصوص العقد الخاصة أو لقطات الشاشة ويستخدم إحصاءات متكررة وقابلية العكس لتمييز أثر التوافق من مصادفات التحميل والذاكرة المؤقتة",
+        "إضافة مصادر README وchangelog في 10 لغات ومولد Markdown قابل للتكرار وفحص اتساق للقراءة فقط وبوابات GitHub Actions",
+        "توثيق اختبار A-B-A من 7 عينات أجراه AutoJs6 نفسه على QV710AF65F, حيث ارتفع عدد العقد بثبات من 1 إلى 244 ثم عاد إلى 1 بعد إيقاف التوافق, مع التحقق من الاستعادة الدقيقة لإعدادات إمكانية الوصول للنظام"
+      ]
+    }
+  }
+}
