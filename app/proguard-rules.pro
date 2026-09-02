@@ -1,1 +1,2 @@
 -keep class org.autojs.plugin.** { *; }
+-keepnames class com.google.android.accessibility.selecttospeak.SelectToSpeakService

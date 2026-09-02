@@ -25,7 +25,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        resValue("string", "app_name", "Accessibility Compat")
+        resValue("string", "app_name", "AutoJs6 Accessibility Compat")
         resValue("string", "plugin_author", "SuperMonster003")
         resValue("string", "plugin_engine", "accessibility")
         resValue("string", "plugin_id", "accessibility-compat")
@@ -59,6 +59,7 @@ android {
         }
         release {
             isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             releaseSigning?.let { signingConfig = it }
         }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">Experimental local compatibility trigger for affected WeChat versions. The service does not read or store accessibility events or nodes.</string>
+    <string name="accessibility_service_name">AutoJs6 WeChat Accessibility Compat</string>
+    <string name="button_open_accessibility_settings">Open accessibility settings</string>
+    <string name="button_open_wechat">Open WeChat</string>
+    <string name="button_refresh">Refresh status</string>
+    <string name="limitations_body">Compatibility depends on the WeChat version and device, and may stop working after an update. This service cannot create semantic nodes that a page does not expose. Controls in Mini Programs, XWeb, Canvas, and custom-drawn interfaces may remain unavailable.</string>
+    <string name="limitations_title">Limitations</string>
+    <string name="mechanism_body">Affected WeChat versions may decide whether to expose normal nodes based on the implementation class name of an enabled service. This plugin contains the experimental compatibility class name com.google.android.accessibility.selecttospeak.SelectToSpeakService. It is not Google Select to Speak and is not affiliated with Google. AutoJs6 still reads and acts on nodes through its own accessibility service.</string>
+    <string name="mechanism_title">Compatibility mechanism</string>
+    <string name="plugin_description">Optional experimental companion that may help AutoJs6 retrieve WeChat accessibility nodes. It runs locally, ignores every event, and does not guarantee Mini Program nodes</string>
+    <string name="privacy_body">The service callback is a no-op. The plugin does not read event sources, event text, root nodes, screenshots, or user content. It does not store or share data and has no network access. The service is configured only for com.tencent.mm.</string>
+    <string name="privacy_title">Privacy</string>
+    <string name="screen_intro">An optional experimental companion that helps AutoJs6 retrieve accessibility nodes from affected WeChat versions.</string>
+    <string name="service_status_disabled">Disabled</string>
+    <string name="service_status_enabled">Enabled</string>
+    <string name="service_status_format">Compatibility service status: %1$s</string>
+    <string name="settings_unavailable">Unable to open system accessibility settings.</string>
+    <string name="version_format">Version: %1$s</string>
+    <string name="wechat_unavailable">WeChat is not installed or cannot be opened.</string>
+</resources>

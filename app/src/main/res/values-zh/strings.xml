@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">为受影响的微信版本提供实验性本地兼容触发. 服务不会读取或存储无障碍事件和节点.</string>
+    <string name="accessibility_service_name">AutoJs6 微信无障碍兼容服务</string>
+    <string name="button_open_accessibility_settings">打开无障碍设置</string>
+    <string name="button_open_wechat">打开微信</string>
+    <string name="button_refresh">刷新状态</string>
+    <string name="limitations_body">兼容效果取决于微信版本和设备, 可能随更新失效. 本服务不能补全页面原本未公开的语义节点. 小程序, XWeb, Canvas 和自绘界面的控件仍可能不可用.</string>
+    <string name="limitations_title">限制</string>
+    <string name="mechanism_body">受影响的微信版本可能根据已启用服务的实现类名决定是否公开正常节点. 本插件包含实验性兼容类名 com.google.android.accessibility.selecttospeak.SelectToSpeakService. 它不是 Google 随选朗读服务, 也不隶属于 Google. AutoJs6 仍通过自己的无障碍服务读取和操作节点.</string>
+    <string name="mechanism_title">兼容机制</string>
+    <string name="plugin_description">可选的实验性伴生插件, 可能帮助 AutoJs6 获取微信无障碍节点. 它只在本地运行, 忽略所有事件, 不保证小程序节点可用</string>
+    <string name="privacy_body">服务回调为空操作. 插件不读取事件来源, 事件文本, 根节点, 屏幕截图或用户内容, 不保存或共享数据, 也不联网. 服务仅配置给 com.tencent.mm.</string>
+    <string name="privacy_title">隐私</string>
+    <string name="screen_intro">一个可选的实验性伴生插件, 用于帮助 AutoJs6 获取受影响微信版本的无障碍节点.</string>
+    <string name="service_status_disabled">未启用</string>
+    <string name="service_status_enabled">已启用</string>
+    <string name="service_status_format">兼容服务状态: %1$s</string>
+    <string name="settings_unavailable">无法打开系统无障碍设置.</string>
+    <string name="version_format">版本: %1$s</string>
+    <string name="wechat_unavailable">未安装微信或无法打开微信.</string>
+</resources>

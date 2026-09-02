@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">影響を受ける WeChat バージョン向けの試験的なローカル互換トリガーです. このサービスはアクセシビリティイベントやノードを読み取らず, 保存もしません.</string>
+    <string name="accessibility_service_name">AutoJs6 WeChat アクセシビリティ互換サービス</string>
+    <string name="button_open_accessibility_settings">アクセシビリティ設定を開く</string>
+    <string name="button_open_wechat">WeChat を開く</string>
+    <string name="button_refresh">状態を更新</string>
+    <string name="limitations_body">互換性は WeChat のバージョンと端末に依存し, 更新後に動作しなくなる場合があります. このサービスはページが公開していないセマンティックノードを作成できません. Mini Programs, XWeb, Canvas, カスタム描画画面のコントロールは引き続き利用できない場合があります.</string>
+    <string name="limitations_title">制限</string>
+    <string name="mechanism_body">影響を受ける WeChat バージョンは, 有効なサービスの実装クラス名に基づいて通常のノードを公開するか判断する場合があります. このプラグインには試験的な互換クラス名 com.google.android.accessibility.selecttospeak.SelectToSpeakService が含まれます. Google Select to Speak ではなく, Google との提携もありません. AutoJs6 は引き続き独自のアクセシビリティサービスでノードを読み取り操作します.</string>
+    <string name="mechanism_title">互換メカニズム</string>
+    <string name="plugin_description">AutoJs6 による WeChat アクセシビリティノードの取得を補助する可能性がある, 任意の試験的コンパニオンです. ローカルで動作し, すべてのイベントを無視します. Mini Programs のノードは保証されません</string>
+    <string name="privacy_body">サービスのコールバックは何も実行しません. プラグインはイベントのソースやテキスト, ルートノード, スクリーンショット, ユーザーコンテンツを読み取りません. データを保存または共有せず, ネットワークにも接続しません. サービスは com.tencent.mm 専用に設定されています.</string>
+    <string name="privacy_title">プライバシー</string>
+    <string name="screen_intro">影響を受ける WeChat バージョンから AutoJs6 がアクセシビリティノードを取得するための, 任意の試験的コンパニオンです.</string>
+    <string name="service_status_disabled">無効</string>
+    <string name="service_status_enabled">有効</string>
+    <string name="service_status_format">互換サービスの状態: %1$s</string>
+    <string name="settings_unavailable">システムのアクセシビリティ設定を開けません.</string>
+    <string name="version_format">バージョン: %1$s</string>
+    <string name="wechat_unavailable">WeChat がインストールされていないか, 開けません.</string>
+</resources>
