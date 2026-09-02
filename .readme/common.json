@@ -1,0 +1,15 @@
+{
+  "repo_url": "https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat",
+  "repo_slug": "SuperMonster003/AutoJs6-Plugin-Accessibility-Compat",
+  "icon_alt": "autojs6-plugin-accessibility-compat-icon",
+  "license_url": "https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/LICENSE",
+  "autojs6_url": "https://github.com/SuperMonster003/AutoJs6",
+  "research_url": "https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/wechat-accessibility-compat.md",
+  "validation_url": "https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/aba-device-validation.md",
+  "device_report_url": "https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/device-QV710AF65F.md",
+  "application_id": "io.github.supermonster003.autojs6.plugin.accessibilitycompat",
+  "service_component": "io.github.supermonster003.autojs6.plugin.accessibilitycompat/com.google.android.accessibility.selecttospeak.SelectToSpeakService",
+  "target_package": "com.tencent.mm",
+  "required_host_build": "3923",
+  "minimum_android": "Android 7.0 (API 24)"
+}
