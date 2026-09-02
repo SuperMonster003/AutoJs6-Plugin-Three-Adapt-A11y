@@ -62,9 +62,9 @@ Accessibility Compat 是一个独立的实验性伴生 APK. 它尝试让受影�
 
 - A 兼容服务关闭: nodes 1, text 0, desc 0, id 0, clickable 0, 7 次结构 hash 一致.
 - B 兼容服务开启且两个目标服务均已 bound: nodes 244, text 31, desc 13, id 157, clickable 38, 7 次结构 hash 一致.
-- A2 再次关闭: 精确回到 nodes 1 且其余指标为 0, 7 次结构 hash 一致. 测试后系统无障碍设置已精确恢复.
+- A2 再次关闭: 精确回到 nodes 1 且其余指标为 0, 7 次结构 hash 一致. 后续又完成 10 轮首页与第一条会话聊天页切换, 共 140 个样本: 首页始终为 244 个节点, 聊天页始终为 111 或 113 个节点, 没有任何一次退回 1. 测试后系统无障碍设置已精确恢复.
 
-这证明兼容触发器在该设备, 微信版本和 LauncherUI 页面组合上有效. 结果不能外推到其他版本, 账号, 设备, 小程序, XWeb 或 Canvas 页面.
+这证明兼容触发器在该设备, 微信版本, LauncherUI 首页和本次第一条会话聊天页面组合上有效. 结果不能外推到其他版本, 账号, 设备, 其他聊天, 小程序, XWeb 或 Canvas 页面.
 
 [查看 QV710AF65F 完整脱敏报告](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/device-QV710AF65F.md)
 
@@ -113,7 +113,7 @@ minimum AutoJs6 build: 3923
 
 #### 为什么安装后没有任何变化?
 
-Android 不允许应用自行启用无障碍服务. 必须由用户在系统设置中启用兼容服务, 同时启用 AutoJs6 服务. 若仍无变化, 按 A-B-A 协议确认当前微信版本和页面是否受支持.
+安装 APK 不会自动启用服务. 必须在 Android 系统设置中同时启用 Accessibility Compat 与 AutoJs6, 并确认应用首页显示兼容服务已启用. 如果 `packageName("com.tencent.mm").find().length` 仍为 1, 先关闭并重新启用兼容服务, 等待至少 10 秒后完全退出并重新进入微信目标页面. 只有两个服务都已启用且实际 bound 后, 才按 A-B-A 协议判断当前微信版本和页面是否受支持.
 
 #### 为什么微信小程序仍然没有文字节点?
 
