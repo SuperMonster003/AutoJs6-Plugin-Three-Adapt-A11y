@@ -7,7 +7,7 @@ import org.junit.Test
 class PluginRuntimeInfoTest {
 
     @Test
-    fun runtimeFieldsDefaultToCurrentContractAndSingleTargetPackage() {
+    fun runtimeFieldsDefaultToCurrentContractAndSupportedPackages() {
         val fields = PluginRuntimeFields(
             name = "Accessibility Compat",
             description = "Compatibility trigger",
@@ -22,10 +22,10 @@ class PluginRuntimeInfoTest {
 
         assertEquals(AccessibilityCompatContract.REQUIRED_HOST_VERSION, fields.requiredHostVersion)
         assertEquals(AccessibilityCompatContract.CONTRACT_VERSION, fields.contractVersion)
-        assertEquals(listOf(AccessibilityCompatContract.TARGET_PACKAGE), fields.targetPackages)
+        assertEquals(AccessibilityCompatContract.SUPPORTED_PACKAGES, fields.targetPackages)
         assertEquals("accessibility-compat", fields.id)
         assertEquals("accessibility", fields.engine)
-        assertEquals("wechat", fields.variant)
+        assertEquals("service-identity", fields.variant)
     }
 
     @Test

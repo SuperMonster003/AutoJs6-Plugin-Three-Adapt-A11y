@@ -1,18 +1,18 @@
 {
   "$name": "English",
-  "synopsis": "A privacy-minimal accessibility compatibility trigger for affected WeChat versions",
+  "synopsis": "A privacy-minimal accessibility compatibility trigger for supported apps",
   "language_notice": "Page language: English",
   "h3_languages": "Languages",
   "h3_status": "Project Status",
-  "p_status": "Accessibility Compat is a standalone experimental companion APK. It attempts to make affected WeChat versions expose their control tree to the AutoJs6 accessibility service again. It is not a general automation engine and never replaces AutoJs6 as the reader or operator of controls.",
-  "p_experimental": "Compatibility depends on the WeChat version and remote configuration. The project cannot promise success on every version, page, account, or device. Complete A-B-A validation before relying on it in a script.",
+  "p_status": "Accessibility Compat is a standalone experimental companion APK. It attempts to help apps covered by published support profiles expose their control trees to the AutoJs6 accessibility service. It is not a general automation engine and never replaces AutoJs6 as the reader or operator of controls.",
+  "p_experimental": "Compatibility depends on each target app version, page, device, and remote configuration. The project cannot promise success in every environment. Complete A-B-A validation before relying on it in a script.",
   "h3_architecture": "No-op Companion Architecture",
-  "p_architecture": "The project isolates the WeChat compatibility experiment in a separate APK and leaves the name and general behavior of the AutoJs6 core service unchanged:",
+  "p_architecture": "The project isolates application compatibility profiles in a separate APK and leaves the name and general behavior of the AutoJs6 core service unchanged:",
   "architecture_points": [
     "The AutoJs6 accessibility service remains the only component that reads, queries, and acts on nodes.",
     "The companion registers a service implementation class name supported by public experiments, while its application ID, icon, labels, description, and signature truthfully identify Accessibility Compat.",
     "The compatibility service callbacks are no-op. They never read `event.source`, `event.text`, `rootInActiveWindow`, screenshots, or page content.",
-    "This release is not a node proxy or Binder bridge. It only attempts to trigger WeChat's global node exposure behavior."
+    "This release is not a node proxy or Binder bridge. It only attempts to trigger the conditional node-exposure behavior documented by its support profiles."
   ],
   "h3_install": "Installation and Use",
   "install_steps": [
@@ -20,7 +20,7 @@
     "Install the APK only from this project's [Releases]({{ repo_url }}/releases) or a trusted AutoJs6 plugin entry.",
     "Open Accessibility Compat, verify its real name and purpose, then follow the prompt to Android accessibility settings.",
     "Manually enable the accessibility service listed under Accessibility Compat. Android's risk warning is expected. Do not bypass consent with ADB.",
-    "Keep the AutoJs6 accessibility service enabled as well, reopen the target WeChat page, and inspect nodes from the AutoJs6 layout inspector or a script."
+    "Keep the AutoJs6 accessibility service enabled as well, reopen a target page listed in a support profile, and inspect nodes from the AutoJs6 layout inspector or a script."
   ],
   "p_disable": "Installing the APK alone has no effect. Disable the compatibility service in Android settings when it is not needed, or uninstall the app when finished.",
   "h3_validation": "A-B-A Device Validation",
@@ -43,16 +43,16 @@
   "text_verified_device_report": "Read the complete sanitized QV710AF65F report",
   "h3_limits": "Known Limitations",
   "limit_points": [
-    "The compatibility target is only `{{ target_package }}`. This is not a general accessibility patch for other apps.",
-    "WeChat Mini Programs, XWeb, Canvas, and custom-drawn controls may have no native semantic nodes. The plugin cannot invent missing `text` or `content-desc`.",
+    "Current support profiles contain only WeChat (`{{ supported_packages }}`). This is an explicit support set, not a claim of universal compatibility.",
+    "WebView, mini-app, Canvas, and custom-drawn controls may have no native semantic nodes. The plugin cannot invent missing `text` or `content-desc`.",
     "Even when a root returns, some pages may expose empty attributes, stale nodes, random trees, or bounds only.",
-    "A WeChat update or remote configuration change can invalidate the approach at any time. Downgrades, OCR, and coordinate fallbacks carry their own safety and stability costs.",
+    "A target app update or remote configuration change can invalidate a profile at any time. Downgrades, OCR, and coordinate fallbacks carry their own safety and stability costs.",
     "The plugin only addresses observability. It does not bypass login, risk controls, captchas, permissions, account restrictions, or platform anti-abuse systems."
   ],
   "h3_privacy": "Privacy Boundary",
   "privacy_points": [
     "Compatibility callbacks do not read event sources, event text, the active-window root, or screen images.",
-    "The app does not upload, persist, or log WeChat page content and contains no networking or analytics feature.",
+    "The app does not upload, persist, or log target-app page content and contains no networking or analytics feature.",
     "The app requests no storage, overlay, camera, microphone, or media permission.",
     "The plugin-info Binder reports only version, identity, and capability metadata. It never transfers a node tree.",
     "Users explicitly enable and disable the service in Android settings. The project never changes that setting silently."
@@ -62,7 +62,7 @@
   "ethics_points": [
     "Use it only on your own device, account, and workflows for which you have explicit authorization.",
     "Do not use it for harassment, spam, non-consensual data collection, surveillance, or bypassing security controls.",
-    "Follow applicable law, WeChat rules, and organizational policy, with human confirmation and stop conditions for UI changes and mistakes.",
+    "Follow applicable law, target-platform rules, and organizational policy, with human confirmation and stop conditions for UI changes and mistakes.",
     "Share only aggregate diagnostics and sanitized structures. Never publish chats, contacts, tokens, APKs, or raw dex files."
   ],
   "h3_compatibility": "Compatibility Information",
@@ -75,20 +75,20 @@
     },
     {
       "q": "Why did nothing change after installation?",
-      "a": "Android does not let an app enable its own accessibility service. The user must enable the compatibility service in system settings and also enable AutoJs6. If nothing changes, use the A-B-A protocol to determine whether the current WeChat version and page are supported."
+      "a": "Android does not let an app enable its own accessibility service. The user must enable the compatibility service in system settings and also enable AutoJs6. If nothing changes, use the A-B-A protocol to determine whether the current target-app version and page are supported."
     },
     {
-      "q": "Why are text nodes still missing in a Mini Program?",
-      "a": "A Mini Program or XWeb page may draw through Canvas or custom rendering without corresponding Android semantic nodes. The service can only try to restore a conditionally hidden tree. It cannot generate information that the page never exposes."
+      "q": "Why are text nodes still missing on a supported page?",
+      "a": "A WebView, mini-app, Canvas, or custom-rendered page may have no corresponding Android semantic nodes. The service can only try to restore a conditionally hidden tree. It cannot generate information that the page never exposes."
     },
     {
       "q": "Does the plugin guarantee account safety?",
-      "a": "No. It does not bypass WeChat risk controls and cannot promise that any automation behavior is safe. Use low-risk, auditable scripts with human confirmation and follow platform rules yourself."
+      "a": "No. It does not bypass target-platform risk controls and cannot promise that any automation behavior is safe. Use low-risk, auditable scripts with human confirmation and follow platform rules yourself."
     }
   ],
   "h3_research": "Research Basis",
   "p_research": "The research note covers AutoJs6 #289, #382, #432, #463, #520, and #521, GKD `47267c7`, and sanitized static evidence from WeChat 8.0.72 on the test device. It separates public facts, reproducible experiments, and inference instead of presenting WeChat internals as a public guarantee.",
-  "text_research_link": "Read the WeChat accessibility compatibility research note",
+  "text_research_link": "Read the accessibility service identity compatibility research note",
   "h3_release_history": "Release History",
   "text_full_changelog": "Read the complete release history",
   "h3_build": "Build and Documentation Checks",

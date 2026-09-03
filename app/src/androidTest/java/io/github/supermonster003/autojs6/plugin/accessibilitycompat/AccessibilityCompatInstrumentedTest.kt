@@ -10,6 +10,7 @@ import android.content.ServiceConnection
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.os.Build
 import android.os.IBinder
 import android.view.accessibility.AccessibilityEvent
@@ -26,6 +27,7 @@ import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.util.Locale
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
@@ -64,7 +66,7 @@ class AccessibilityCompatInstrumentedTest {
     }
 
     @Test
-    fun installedAccessibilityProfileRetrievesOnlyWechatWindowsWithMinimalFlags() {
+    fun installedAccessibilityProfileRetrievesOnlySupportedAppWindowsWithMinimalFlags() {
         val manager = requireNotNull(context.getSystemService(AccessibilityManager::class.java))
         val expectedId = AccessibilityCompatContract.expectedServiceId(context.packageName)
         val profile = manager.installedAccessibilityServiceList.single { it.id == expectedId }
@@ -73,7 +75,7 @@ class AccessibilityCompatInstrumentedTest {
             AccessibilityCompatContract.COMPATIBILITY_SERVICE_CLASS,
             profile.resolveInfo.serviceInfo.name,
         )
-        assertArrayEquals(arrayOf(AccessibilityCompatContract.TARGET_PACKAGE), profile.packageNames)
+        assertArrayEquals(AccessibilityCompatContract.SUPPORTED_PACKAGES.toTypedArray(), profile.packageNames)
         assertEquals(AccessibilityServiceInfo.FEEDBACK_GENERIC, profile.feedbackType)
         assertEquals(
             AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED or
@@ -109,6 +111,50 @@ class AccessibilityCompatInstrumentedTest {
             context.getString(R.string.accessibility_service_description),
             profile.loadDescription(context.packageManager),
         )
+    }
+
+    @Test
+    fun visibleIdentityRemainsAppAgnosticAcrossSupportedLocales() {
+        val identityStrings = intArrayOf(
+            R.string.app_name,
+            R.string.accessibility_service_name,
+            R.string.accessibility_service_description,
+            R.string.plugin_description,
+            R.string.screen_intro,
+            R.string.button_open_supported_app,
+            R.string.supported_app_unavailable,
+            R.string.supported_apps_title,
+            R.string.mechanism_body,
+            R.string.limitations_body,
+            R.string.privacy_body,
+        )
+        val forbiddenTargetTerms = listOf("wechat", "微信", "com.tencent.mm")
+        val languageTags = listOf(
+            "ar",
+            "en",
+            "es",
+            "fr",
+            "ja",
+            "ko",
+            "ru",
+            "zh-CN",
+            "zh-HK",
+            "zh-TW",
+        )
+
+        languageTags.forEach { languageTag ->
+            val configuration = Configuration(context.resources.configuration).apply {
+                setLocale(Locale.forLanguageTag(languageTag))
+            }
+            val localizedContext = context.createConfigurationContext(configuration)
+            identityStrings.forEach { resourceId ->
+                val value = localizedContext.getString(resourceId).lowercase(Locale.ROOT)
+                assertTrue(
+                    "Target-specific visible identity in $languageTag: $value",
+                    forbiddenTargetTerms.none(value::contains),
+                )
+            }
+        }
     }
 
     @Test
@@ -202,7 +248,7 @@ class AccessibilityCompatInstrumentedTest {
             capabilities.getString(AccessibilityCompatContract.CAPABILITY_SERVICE_COMPONENT),
         )
         assertEquals(
-            listOf(AccessibilityCompatContract.TARGET_PACKAGE),
+            AccessibilityCompatContract.SUPPORTED_PACKAGES,
             capabilities.getStringArrayList(AccessibilityCompatContract.CAPABILITY_TARGET_PACKAGES),
         )
     }

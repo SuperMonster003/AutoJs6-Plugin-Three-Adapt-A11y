@@ -57,10 +57,9 @@
         </service>
 
         <!--
-          The inspected WeChat 8.0.72 build contains this service class in its
-          configurable accessibility allow-list. This compatibility shim is intentionally
-          isolated from the truthful application ID, label, icon, and visible description.
-          See docs/research/wechat-accessibility-compat.md.
+          Published compatibility profiles may reference this implementation class name.
+          The shim remains isolated from the truthful application ID, label, icon, and
+          visible description. See docs/research/accessibility-service-identity-compat.md.
         -->
         <service
             android:name="com.google.android.accessibility.selecttospeak.SelectToSpeakService"

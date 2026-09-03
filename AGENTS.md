@@ -7,7 +7,7 @@ This repository contains the `Accessibility Compat` Android companion for AutoJs
 - Keep the application identity honest. The application ID is `io.github.supermonster003.autojs6.plugin.accessibilitycompat`; do not imitate another application's package, label, icon, or signature.
 - The allow-listed accessibility class name is an explicitly documented compatibility shim. Its visible service label and description must remain truthful.
 - The accessibility callback is privacy-minimal: do not read `event.source`, `event.text`, `rootInActiveWindow`, screenshots, or user content; do not add networking, analytics, storage, overlay, microphone, or camera permissions.
-- Keep the accessibility service scoped to `com.tencent.mm` unless a separately documented experiment proves a broader scope is necessary.
+- Keep the accessibility service scoped to the explicitly documented supported-package profiles. Add a package only after a separately documented experiment proves the same compatibility mechanism.
 - Keep user-visible strings synchronized across the default English resources and the supported `en`, `ar`, `es`, `fr`, `ja`, `ko`, `ru`, `zh`, `zh-rHK`, and `zh-rTW` resources. Use ASCII punctuation in resource strings.
 - Update all localized changelog JSON files for feature, fix, improvement, or dependency changes, then regenerate Markdown artifacts.
 - Before delivery, run the Markdown check, JVM tests, debug APK and androidTest assembly, lint, and relevant device tests. State anything not run.

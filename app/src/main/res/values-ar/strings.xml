@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="accessibility_service_description">مشغل توافق محلي تجريبي لإصدارات WeChat المتأثرة. لا تقرأ الخدمة أحداث إمكانية الوصول أو العقد ولا تخزنها.</string>
-    <string name="accessibility_service_name">خدمة توافق إمكانية الوصول من AutoJs6 مع WeChat</string>
+    <string name="accessibility_service_description">مشغل محلي تجريبي لتوافق إمكانية الوصول مع ملفات الدعم المنشورة. لا تقرأ الخدمة أحداث إمكانية الوصول أو العقد ولا تخزنها.</string>
+    <string name="accessibility_service_name">خدمة توافق إمكانية الوصول من AutoJs6</string>
     <string name="button_open_accessibility_settings">فتح إعدادات إمكانية الوصول</string>
-    <string name="button_open_wechat">فتح WeChat</string>
+    <string name="button_open_supported_app">فتح تطبيق مدعوم</string>
     <string name="button_refresh">تحديث الحالة</string>
-    <string name="limitations_body">يعتمد التوافق على إصدار WeChat والجهاز, وقد يتوقف بعد أي تحديث. لا تستطيع هذه الخدمة إنشاء عقد دلالية لا تعرضها الصفحة أصلا. قد تظل عناصر Mini Programs و XWeb و Canvas والواجهات المرسومة يدويا غير متاحة.</string>
+    <string name="limitations_body">يعتمد التوافق على إصدار التطبيق المستهدف وصفحته والجهاز, وقد يتوقف بعد أي تحديث. لا تستطيع هذه الخدمة إنشاء عقد دلالية لا تعرضها الصفحة أصلا. قد تظل عناصر WebView و Canvas والواجهات المرسومة يدويا غير متاحة.</string>
     <string name="limitations_title">القيود</string>
-    <string name="mechanism_body">قد تقرر إصدارات WeChat المتأثرة عرض العقد العادية بناء على اسم فئة التنفيذ لخدمة مفعلة. يحتوي هذا المكون الإضافي على اسم فئة التوافق التجريبي com.google.android.accessibility.selecttospeak.SelectToSpeakService. هذه ليست خدمة Google Select to Speak ولا يرتبط المكون الإضافي بشركة Google. يواصل AutoJs6 قراءة العقد والتعامل معها عبر خدمة إمكانية الوصول الخاصة به.</string>
+    <string name="mechanism_body">قد تقرر بعض التطبيقات المتأثرة عرض العقد العادية بناء على اسم فئة التنفيذ لخدمة مفعلة. يحتوي هذا المكون الإضافي على اسم فئة التوافق التجريبي المطلوب لملفات الدعم الحالية: com.google.android.accessibility.selecttospeak.SelectToSpeakService. هذه ليست خدمة Google Select to Speak ولا يرتبط المكون الإضافي بشركة Google. يواصل AutoJs6 قراءة العقد والتعامل معها عبر خدمة إمكانية الوصول الخاصة به.</string>
     <string name="mechanism_title">آلية التوافق</string>
-    <string name="plugin_description">مكون إضافي تجريبي اختياري قد يساعد AutoJs6 على استرداد عقد إمكانية الوصول في WeChat. يعمل محليا ويتجاهل كل الأحداث ولا يضمن عقد Mini Programs</string>
-    <string name="privacy_body">رد نداء الخدمة لا ينفذ أي عملية. لا يقرأ المكون الإضافي مصادر الأحداث أو نصوصها أو العقد الجذرية أو لقطات الشاشة أو محتوى المستخدم. لا يخزن البيانات ولا يشاركها ولا يتصل بالشبكة. تم إعداد الخدمة للحزمة com.tencent.mm فقط.</string>
+    <string name="plugin_description">مكون إضافي تجريبي اختياري قد يساعد AutoJs6 على استرداد عقد إمكانية الوصول من التطبيقات المدعومة. يعمل محليا ويتجاهل كل الأحداث ولا يضمن العقد في كل الصفحات</string>
+    <string name="privacy_body">رد نداء الخدمة لا ينفذ أي عملية. لا يقرأ المكون الإضافي مصادر الأحداث أو نصوصها أو العقد الجذرية أو لقطات الشاشة أو محتوى المستخدم. لا يخزن البيانات ولا يشاركها ولا يتصل بالشبكة. تستقبل الخدمة الأحداث فقط من الحزم المدرجة في قائمة الدعم المنشورة.</string>
     <string name="privacy_title">الخصوصية</string>
-    <string name="screen_intro">مكون إضافي تجريبي اختياري يساعد AutoJs6 على استرداد عقد إمكانية الوصول من إصدارات WeChat المتأثرة.</string>
+    <string name="screen_intro">مكون إضافي تجريبي اختياري قد يساعد AutoJs6 على استرداد عقد إمكانية الوصول من التطبيقات المدعومة.</string>
     <string name="service_status_disabled">غير مفعلة</string>
     <string name="service_status_enabled">مفعلة</string>
     <string name="service_status_format">حالة خدمة التوافق: %1$s</string>
     <string name="settings_unavailable">تعذر فتح إعدادات إمكانية الوصول في النظام.</string>
+    <string name="supported_app_unavailable">لا يوجد تطبيق مدعوم مثبت أو تعذر فتحه.</string>
+    <string name="supported_apps_title">التطبيقات المدعومة حاليا</string>
     <string name="version_format">الإصدار: %1$s</string>
-    <string name="wechat_unavailable">تطبيق WeChat غير مثبت أو لا يمكن فتحه.</string>
 </resources>

@@ -4,8 +4,8 @@ object AccessibilityCompatContract {
     const val APPLICATION_ID = "io.github.supermonster003.autojs6.plugin.accessibilitycompat"
     const val PLUGIN_ID = "accessibility-compat"
     const val PLUGIN_ENGINE = "accessibility"
-    const val PLUGIN_VARIANT = "wechat"
-    const val TARGET_PACKAGE = "com.tencent.mm"
+    const val PLUGIN_VARIANT = "service-identity"
+    val SUPPORTED_PACKAGES: List<String> = listOf("com.tencent.mm")
 
     const val PLUGIN_PERMISSION = "org.autojs.permission.PLUGIN"
     const val INFO_ACTION = "org.autojs.plugin.INFO"
@@ -14,7 +14,7 @@ object AccessibilityCompatContract {
     const val COMPATIBILITY_SERVICE_CLASS =
         "com.google.android.accessibility.selecttospeak.SelectToSpeakService"
 
-    const val CONTRACT_VERSION = 1
+    const val CONTRACT_VERSION = 2
     const val REQUIRED_HOST_VERSION = 3923
     const val CAPABILITY_CONTRACT_VERSION =
         "org.autojs.plugin.accessibility.compat.CONTRACT_VERSION"

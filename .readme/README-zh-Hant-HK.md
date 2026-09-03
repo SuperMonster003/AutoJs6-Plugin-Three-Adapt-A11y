@@ -6,7 +6,7 @@
     <img src="https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/app/src/main/res/mipmap/ic_launcher.png?raw=true" alt="autojs6-plugin-accessibility-compat-icon" border="0" width="128" />
   </p>
   <h1>Accessibility Compat</h1>
-  <p>為受影響的微信版本提供私隱最小化的無障礙兼容觸發器</p>
+  <p>面向受支援應用程式的私隱最小化無障礙兼容觸發器</p>
   <p>
     <a href="https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat?label=Release"/></a>
     <a href="https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat?color=A24232&label=Issues"/></a>
@@ -22,18 +22,18 @@
 
 ### 項目狀態
 
-Accessibility Compat 是一個獨立的實驗性伴生 APK. 它嘗試讓受影響的微信版本重新向 AutoJs6 無障礙服務提供控件樹. 它不是通用自動化引擎, 也不會代替 AutoJs6 讀取或操作控件.
+Accessibility Compat 是一個獨立的實驗性伴生 APK. 它嘗試協助已發佈支援配置涵蓋的應用程式向 AutoJs6 無障礙服務提供控件樹. 它不是通用自動化引擎, 也不會代替 AutoJs6 讀取或操作控件.
 
-> 兼容效果由微信版本及遠端配置決定. 本項目不保證每個版本, 頁面, 帳號或裝置都有效. 請先完成 A-B-A 驗收再用於任何腳本.
+> 兼容效果由各目標應用程式版本, 頁面, 裝置及遠端配置決定. 本項目不保證在所有環境中有效. 請先完成 A-B-A 驗收再用於任何腳本.
 
 ### No-op 伴生架構
 
-項目將微信兼容實驗隔離於獨立 APK, 保持 AutoJs6 核心服務名稱及通用行為不變:
+項目將應用程式兼容配置隔離於獨立 APK, 保持 AutoJs6 核心服務名稱及通用行為不變:
 
 - AutoJs6 自己的無障礙服務仍是唯一讀取, 查詢及操作節點的組件.
 - 伴生 APK 註冊一個已獲公開實證識別的服務實現類別名稱, 但應用程式 ID, 圖示, 標籤, 說明及簽名均如實標識為 Accessibility Compat.
 - 兼容服務的事件回調是 no-op. 它不讀取 `event.source`, `event.text`, `rootInActiveWindow`, 螢幕截圖或頁面內容.
-- 本版本不是節點代理或 Binder 橋接. 它只嘗試觸發微信的全域節點提供行為.
+- 本版本不是節點代理或 Binder 橋接. 它只嘗試觸發支援配置中記錄的條件性節點提供行為.
 
 ### 安裝及使用
 
@@ -41,7 +41,7 @@ Accessibility Compat 是一個獨立的實驗性伴生 APK. 它嘗試讓受影�
 2. 只從本項目 [Releases](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/releases) 或可信的 AutoJs6 插件入口安裝 APK.
 3. 開啟 Accessibility Compat, 核對真實應用程式名稱及用途, 再按指引進入 Android 無障礙設定.
 4. 由使用者手動啟用 Accessibility Compat 對應的無障礙服務. Android 顯示無障礙風險提示屬正常, 不要使用 ADB 繞過確認.
-5. 同時保持 AutoJs6 無障礙服務啟用, 重新進入目標微信頁面, 再從 AutoJs6 佈局分析器或腳本讀取節點.
+5. 同時保持 AutoJs6 無障礙服務啟用, 重新進入支援配置所列目標頁面, 再從 AutoJs6 佈局分析器或腳本讀取節點.
 
 只安裝 APK 不會生效. 不使用時請在系統無障礙設定關閉兼容服務, 如不再需要可直接解除安裝.
 
@@ -70,16 +70,16 @@ Accessibility Compat 是一個獨立的實驗性伴生 APK. 它嘗試讓受影�
 
 ### 已知限制
 
-- 兼容目標只限 `com.tencent.mm`. 它不應被視為其他應用程式的通用無障礙修補程式.
-- 微信小程序, XWeb, Canvas 及自繪控件可能根本沒有原生語義節點. 本插件無法憑空補出缺少的 `text` 或 `content-desc`.
+- 目前支援配置只包含微信 (`com.tencent.mm`). 這是明確的支援集合, 不代表宣稱通用於所有應用程式.
+- WebView, 小程序, Canvas 及自繪控件可能根本沒有原生語義節點. 本插件無法憑空補出缺少的 `text` 或 `content-desc`.
 - 即使根節點恢復, 部分頁面仍可能返回空屬性, 過時節點, 隨機樹或只有邊界資訊.
-- 微信升級或遠端配置變更可隨時令目前實現失效. 降級, OCR 或座標後備方案亦各有安全及穩定性代價.
+- 目標應用程式升級或遠端配置變更可隨時令對應支援配置失效. 降級, OCR 或座標後備方案亦各有安全及穩定性代價.
 - 本插件只處理可觀察性, 不會繞過登入, 風控, 驗證碼, 權限, 帳號限制或平台反濫用機制.
 
 ### 私隱邊界
 
 - 兼容回調不讀取事件來源, 事件文字, 活動視窗根節點或螢幕圖像.
-- 應用程式不會上載, 持久保存或記錄微信頁面內容, 亦不包含網絡或分析功能.
+- 應用程式不會上載, 持久保存或記錄目標應用程式頁面內容, 亦不包含網絡或分析功能.
 - 應用程式不申請儲存空間, 懸浮視窗, 相機, 麥克風或媒體權限.
 - 插件資訊 Binder 只報告版本, 身份及能力中繼資料, 不傳輸節點樹.
 - 無障礙服務由使用者在 Android 設定中明確啟用及關閉, 項目不會靜默變更系統設定.
@@ -90,7 +90,7 @@ Accessibility Compat 是一個獨立的實驗性伴生 APK. 它嘗試讓受影�
 
 - 只在自己的裝置, 帳號及獲明確授權的流程使用.
 - 不得用於騷擾, 群發垃圾訊息, 未經同意的資料收集, 監察他人或規避安全控制.
-- 遵守適用法律, 微信規則及機構政策, 並為介面變更及誤操作設定人工確認及停止條件.
+- 遵守適用法律, 目標平台規則及機構政策, 並為介面變更及誤操作設定人工確認及停止條件.
 - 分享診斷時只發佈彙總統計及脫敏結構, 不公開聊天內容, 聯絡人, token, APK 或原始 dex.
 
 ### 兼容資訊
@@ -100,7 +100,7 @@ Accessibility Compat 是一個獨立的實驗性伴生 APK. 它嘗試讓受影�
 ```text
 application id: io.github.supermonster003.autojs6.plugin.accessibilitycompat
 accessibility service: io.github.supermonster003.autojs6.plugin.accessibilitycompat/com.google.android.accessibility.selecttospeak.SelectToSpeakService
-target package: com.tencent.mm
+supported packages: com.tencent.mm
 minimum Android: Android 7.0 (API 24)
 minimum AutoJs6 build: 3923
 ```
@@ -113,43 +113,31 @@ minimum AutoJs6 build: 3923
 
 #### 為何安裝後沒有任何變化?
 
-Android 不允許應用程式自行啟用無障礙服務. 使用者必須在系統設定啟用兼容服務, 同時啟用 AutoJs6 服務. 如仍無變化, 按 A-B-A 協議確認目前微信版本及頁面是否支援.
+Android 不允許應用程式自行啟用無障礙服務. 使用者必須在系統設定啟用兼容服務, 同時啟用 AutoJs6 服務. 如仍無變化, 按 A-B-A 協議確認目前目標應用程式版本及頁面是否支援.
 
-#### 為何微信小程序仍然沒有文字節點?
+#### 為何受支援頁面仍然沒有文字節點?
 
-小程序或 XWeb 頁面可能透過 Canvas 或自繪方式顯示內容, 底層沒有對應 Android 語義節點. 兼容服務只能嘗試恢復被條件性隱藏的樹, 不能產生頁面原本沒有的資訊.
+WebView, 小程序, Canvas 或自繪頁面可能沒有對應 Android 語義節點. 兼容服務只能嘗試恢復被條件性隱藏的樹, 不能產生頁面原本沒有的資訊.
 
 #### 使用插件是否保證帳號安全?
 
-不保證. 插件不會繞過微信風控, 亦無法為任何自動化行為提供安全承諾. 請使用低風險, 可審計, 有人工確認的腳本, 並自行遵守平台規則.
+不保證. 插件不會繞過目標平台風控, 亦無法為任何自動化行為提供安全承諾. 請使用低風險, 可審計, 有人工確認的腳本, 並自行遵守平台規則.
 
 ### 研究依據
 
 研究文檔整理 AutoJs6 #289, #382, #432, #463, #520, #521, GKD `47267c7`, 以及測試裝置上微信 8.0.72 的脫敏靜態證據. 文檔區分公開事實, 可重現實驗及推斷, 不把微信內部實現描述為官方承諾.
 
-[查看微信無障礙兼容研究記錄](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/wechat-accessibility-compat.md)
+[查看無障礙服務身份兼容研究記錄](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/accessibility-service-identity-compat.md)
 
 ### 發行歷史
 
-#### v1.0.0 - 2026/09/02
-
-##### 提示
-
-- 這是實驗性兼容方案. 效果取決於微信版本, 頁面及遠端配置, 發行版本不保證在所有裝置或帳號生效
-- 兼容服務無法產生微信小程序, XWeb 或 Canvas 原本沒有的語義節點, 亦不會繞過登入, 風控或平台反濫用機制
-
-##### 新增
-
-- 提供獨立的 no-op 無障礙伴生 APK, 只面向 `com.tencent.mm`, 並保持應用程式 ID, 圖示, 標籤, 說明及簽名真實可辨
-- 註冊公開實驗支援的兼容服務實現類別名稱, 同時繼續由 AutoJs6 自己的無障礙服務讀取及操作節點, 伴生回調不讀取使用者內容
-- 透過 AutoJs6 插件資訊介面報告兼容模式, 目標套件, 服務組件及最低主程式版本, 並提供使用者主動啟用及關閉服務的介面
+#### v1.1.0 - 2026/09/03
 
 ##### 優化
 
-- 整理 [AutoJs6#289](https://github.com/SuperMonster003/AutoJs6/issues/289), [#382](https://github.com/SuperMonster003/AutoJs6/issues/382), [#432](https://github.com/SuperMonster003/AutoJs6/issues/432), [#463](https://github.com/SuperMonster003/AutoJs6/issues/463), [#520](https://github.com/SuperMonster003/AutoJs6/issues/520), [#521](https://github.com/SuperMonster003/AutoJs6/issues/521), GKD `47267c7` 及微信 8.0.72 脫敏靜態證據
-- 提供不記錄私人節點文字或螢幕截圖的 A-B-A 裝置驗收協議, 以重複統計及可逆結果區分兼容效果, 頁面載入及快取偶然性
-- 建立 10 種語言的 README 及 changelog 文案源, 可重現 Markdown 生成器, 唯讀一致性檢查及 GitHub Actions 門禁
-- 記錄 QV710AF65F 上由 AutoJs6 本身完成的 7 次取樣 A-B-A 實測, 節點數由 1 穩定增加至 244 並在關閉兼容服務後返回 1, 同時驗證系統無障礙設定精確恢復
+- 將應用程式, 無障礙服務, 插件中繼資料, 內嵌說明及 README 文案統一改為應用程式無關的支援配置表達, 同時保留微信 (`com.tencent.mm`) 作為目前唯一通過驗證的配置
+- 將特定目標插件變體改為 `service-identity`, 以集合形式發佈受支援套件名稱, 並透過通用介面操作列出或開啟已安裝的受支援應用程式
+- 通用化 A-B-A 協議, 研究入口及私隱安全度量工具, 包括為未來支援配置提供明確的 `targetPackage` 輸入
 
 [查看完整發行歷史](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-zh-Hant-HK.md)
 
@@ -176,6 +164,6 @@ py .python\generate_markdown.py --check
 ### 相關連結
 
 - [AutoJs6](https://github.com/SuperMonster003/AutoJs6)
-- [查看微信無障礙兼容研究記錄](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/wechat-accessibility-compat.md)
+- [查看無障礙服務身份兼容研究記錄](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/accessibility-service-identity-compat.md)
 - [查看完整 A-B-A 驗收協議](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/aba-device-validation.md)
 - [查看 QV710AF65F 完整脫敏報告](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/device-QV710AF65F.md)

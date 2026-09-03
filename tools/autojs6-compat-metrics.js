@@ -3,12 +3,12 @@
 /**
  * Privacy-safe AutoJs6 verifier for the Accessibility Compat companion.
  *
- * Run while a WeChat page is visible. The script reads nodes through AutoJs6's own
+ * Run while a supported target page is visible, or pass a targetPackage launch extra.
+ * The script reads nodes through AutoJs6's own
  * accessibility service, but persists only counts and a text-free structural hash.
  * It never writes node text, descriptions, IDs, bounds, or screenshots.
  */
 
-var TARGET_PACKAGE = "com.tencent.mm";
 var SAMPLE_COUNT = 7;
 var SAMPLE_DELAY_MILLIS = 450;
 var DEFAULT_OUTPUT = files.join(
@@ -27,6 +27,11 @@ function intentStringExtra(name, fallback) {
         // Interactive runs do not expose an Android launch intent.
     }
     return fallback;
+}
+
+var TARGET_PACKAGE = intentStringExtra("targetPackage", currentPackage());
+if (!TARGET_PACKAGE) {
+    throw new Error("A foreground or explicit target package is required");
 }
 
 function sha256(value) {

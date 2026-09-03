@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.ComponentName
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.content.res.Configuration
 import android.graphics.Color
@@ -92,9 +93,15 @@ class MainActivity : Activity() {
                         updateServiceStatus()
                     }, layoutParams(matchParent(), wrapContent(), bottom = 10))
 
-                    addView(secondaryButton(getString(R.string.button_open_wechat), palette) {
-                        openWeChat()
+                    addView(secondaryButton(getString(R.string.button_open_supported_app), palette) {
+                        openSupportedApp()
                     }, layoutParams(matchParent(), wrapContent(), bottom = 28))
+
+                    addSection(
+                        title = getString(R.string.supported_apps_title),
+                        body = supportedAppsSummary(),
+                        palette = palette,
+                    )
 
                     addSection(
                         title = getString(R.string.mechanism_title),
@@ -209,14 +216,33 @@ class MainActivity : Activity() {
         }
     }
 
-    private fun openWeChat() {
-        val launchIntent = packageManager.getLaunchIntentForPackage(
-            AccessibilityCompatContract.TARGET_PACKAGE,
-        )?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+    private fun openSupportedApp() {
+        val launchIntent = AccessibilityCompatContract.SUPPORTED_PACKAGES
+            .asSequence()
+            .mapNotNull(packageManager::getLaunchIntentForPackage)
+            .firstOrNull()
+            ?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         if (launchIntent == null || !startFirstAvailable(listOf(launchIntent))) {
-            Toast.makeText(this, R.string.wechat_unavailable, Toast.LENGTH_LONG).show()
+            Toast.makeText(this, R.string.supported_app_unavailable, Toast.LENGTH_LONG).show()
         }
     }
+
+    private fun supportedAppsSummary(): String =
+        AccessibilityCompatContract.SUPPORTED_PACKAGES.joinToString(separator = "\n") { targetPackage ->
+            val label = runCatching {
+                val applicationInfo = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    packageManager.getApplicationInfo(
+                        targetPackage,
+                        PackageManager.ApplicationInfoFlags.of(0),
+                    )
+                } else {
+                    @Suppress("DEPRECATION")
+                    packageManager.getApplicationInfo(targetPackage, 0)
+                }
+                packageManager.getApplicationLabel(applicationInfo).toString()
+            }.getOrNull()
+            if (label.isNullOrBlank()) targetPackage else "$label ($targetPackage)"
+        }
 
     private fun startFirstAvailable(intents: Iterable<Intent>): Boolean {
         for (intent in intents) {

@@ -20,7 +20,7 @@ internal data class PluginRuntimeFields(
     val versionDate: String,
     val requiredHostVersion: Int = AccessibilityCompatContract.REQUIRED_HOST_VERSION,
     val contractVersion: Int = AccessibilityCompatContract.CONTRACT_VERSION,
-    val targetPackages: List<String> = listOf(AccessibilityCompatContract.TARGET_PACKAGE),
+    val targetPackages: List<String> = AccessibilityCompatContract.SUPPORTED_PACKAGES,
 )
 
 internal fun Context.pluginInfo(name: String, description: String): PluginInfo {

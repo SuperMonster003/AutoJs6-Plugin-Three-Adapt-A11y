@@ -15,13 +15,13 @@ class AccessibilityCompatContractTest {
         )
         assertEquals("accessibility-compat", AccessibilityCompatContract.PLUGIN_ID)
         assertEquals("accessibility", AccessibilityCompatContract.PLUGIN_ENGINE)
-        assertEquals("wechat", AccessibilityCompatContract.PLUGIN_VARIANT)
-        assertEquals("com.tencent.mm", AccessibilityCompatContract.TARGET_PACKAGE)
+        assertEquals("service-identity", AccessibilityCompatContract.PLUGIN_VARIANT)
+        assertEquals(listOf("com.tencent.mm"), AccessibilityCompatContract.SUPPORTED_PACKAGES)
         assertEquals("org.autojs.permission.PLUGIN", AccessibilityCompatContract.PLUGIN_PERMISSION)
         assertEquals("org.autojs.plugin.INFO", AccessibilityCompatContract.INFO_ACTION)
         assertEquals(AccessibilityCompatContract.PLUGIN_ID, AccessibilityCompatContract.INFO_CATEGORY)
         assertEquals("org.autojs.plugin.action.WAKE", AccessibilityCompatContract.WAKE_ACTION)
-        assertEquals(1, AccessibilityCompatContract.CONTRACT_VERSION)
+        assertEquals(2, AccessibilityCompatContract.CONTRACT_VERSION)
         assertEquals(3923, AccessibilityCompatContract.REQUIRED_HOST_VERSION)
     }
 

@@ -7,6 +7,14 @@
   "changelog_label_improvement": "개선",
   "changelog_label_dependency": "의존성",
   "$data": {
+    "v1.1.0": {
+      "released_date": "2026/09/03",
+      "improvement": [
+        "앱, 접근성 서비스, 플러그인 메타데이터, 내장 안내 및 README 문구를 앱 독립적인 지원 프로필 표현으로 일반화하고 WeChat (`com.tencent.mm`)은 현재 유일한 검증 프로필로 유지",
+        "대상별 플러그인 변형을 `service-identity`로 교체하고 지원 패키지를 컬렉션으로 게시하며 일반 UI 동작으로 설치된 지원 앱을 나열하거나 실행",
+        "A-B-A 절차, 연구 진입점 및 개인정보 보호 측정 도구를 일반화하고 향후 프로필을 위한 명시적 `targetPackage` 입력 추가"
+      ]
+    },
     "v1.0.0": {
       "released_date": "2026/09/02",
       "hint": [
