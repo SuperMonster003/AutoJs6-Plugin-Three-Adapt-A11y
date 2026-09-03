@@ -138,6 +138,7 @@ WebView, 小程式, Canvas 或自繪頁面可能沒有對應 Android 語意節�
 - 將應用程式, 無障礙服務, 外掛中繼資料, 內嵌說明及 README 文案統一改為與應用程式無關的支援設定表達, 同時保留微信 (`com.tencent.mm`) 作為目前唯一通過驗證的設定
 - 將特定目標外掛變體改為 `service-identity`, 以集合形式發布支援套件名稱, 並透過通用介面操作列出或開啟已安裝的支援應用程式
 - 通用化 A-B-A 協定, 研究入口及隱私安全度量工具, 包括為未來支援設定提供明確的 `targetPackage` 輸入
+- 移除已過時的 Android Studio 與 IntelliJ IDEA 最低版本屬性, IDE 與工具鏈相容性現由中央機制選擇
 
 [查看完整發行歷史](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-zh-Hant-TW.md)
 
