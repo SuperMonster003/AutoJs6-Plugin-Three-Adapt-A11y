@@ -40,7 +40,7 @@ desktop.ini
 /release/
 /releases/
 /tools/*
-!/tools/autojs6-wechat-metrics.js
+!/tools/autojs6-compat-metrics.js
 !/tools/lua/
 /tools/lua/*
 !/tools/lua/verify-lua-static-roadmap.ps1

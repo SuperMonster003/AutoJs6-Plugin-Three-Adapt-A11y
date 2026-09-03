@@ -4,6 +4,14 @@
 
 > Langue de cette page: français
 
+## v1.1.0 - 2026/09/03
+
+### Amélioration
+
+- Généraliser les termes de l'application, du service d'accessibilité, des métadonnées du plugin, des instructions intégrées et du README autour de profils indépendants de l'application, tout en conservant WeChat (`com.tencent.mm`) comme seul profil actuellement vérifié
+- Remplacer la variante propre à la cible par `service-identity`, publier les paquets pris en charge sous forme de collection et répertorier ou ouvrir les applications compatibles installées avec des actions génériques
+- Généraliser le protocole A-B-A, le point d'entrée de recherche et l'outil de mesure respectueux de la confidentialité, avec une entrée `targetPackage` explicite pour les futurs profils
+
 ## v1.0.0 - 2026/09/02
 
 ### Note

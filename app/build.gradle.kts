@@ -29,7 +29,7 @@ android {
         resValue("string", "plugin_author", "SuperMonster003")
         resValue("string", "plugin_engine", "accessibility")
         resValue("string", "plugin_id", "accessibility-compat")
-        resValue("string", "plugin_variant", "wechat")
+        resValue("string", "plugin_variant", "service-identity")
         resValue("string", "plugin_version_date", utils.getDateString("MMM d, yyyy", "GMT+08:00"))
     }
 

@@ -6,7 +6,7 @@
     <img src="https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/app/src/main/res/mipmap/ic_launcher.png?raw=true" alt="autojs6-plugin-accessibility-compat-icon" border="0" width="128" />
   </p>
   <h1>Accessibility Compat</h1>
-  <p>영향을 받는 WeChat 버전을 위한 개인정보 최소화 접근성 호환 트리거</p>
+  <p>지원 앱을 위한 개인정보 최소화 접근성 호환 트리거</p>
   <p>
     <a href="https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat?label=Release"/></a>
     <a href="https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat?color=A24232&label=Issues"/></a>
@@ -22,18 +22,18 @@
 
 ### 프로젝트 상태
 
-Accessibility Compat은 독립적인 실험용 동반 APK입니다. 영향을 받는 WeChat 버전이 컨트롤 트리를 AutoJs6 접근성 서비스에 다시 노출하도록 시도합니다. 범용 자동화 엔진이 아니며 컨트롤을 읽거나 조작하는 AutoJs6를 대체하지 않습니다.
+Accessibility Compat은 독립적인 실험용 동반 APK입니다. 게시된 지원 프로필의 대상 앱이 컨트롤 트리를 AutoJs6 접근성 서비스에 노출하도록 지원합니다. 범용 자동화 엔진이 아니며 컨트롤을 읽거나 조작하는 AutoJs6를 대체하지 않습니다.
 
-> 호환성은 WeChat 버전과 원격 설정에 따라 달라집니다. 모든 버전, 페이지, 계정 또는 기기에서 성공한다고 보장할 수 없습니다. 스크립트에 사용하기 전에 A-B-A 검증을 완료하십시오.
+> 호환성은 각 대상 앱의 버전, 페이지, 기기 및 원격 설정에 따라 달라집니다. 모든 환경에서 성공한다고 보장할 수 없습니다. 스크립트에 사용하기 전에 A-B-A 검증을 완료하십시오.
 
 ### No-op 동반 구조
 
-WeChat 호환 실험을 별도 APK에 격리하고 AutoJs6 핵심 서비스의 이름과 일반 동작을 변경하지 않습니다:
+앱 호환 프로필을 별도 APK에 격리하고 AutoJs6 핵심 서비스의 이름과 일반 동작을 변경하지 않습니다:
 
 - 노드를 읽고, 검색하고, 조작하는 유일한 구성 요소는 계속 AutoJs6 접근성 서비스입니다.
 - 동반 앱은 공개 실험에서 확인된 서비스 구현 클래스 이름을 등록하지만 애플리케이션 ID, 아이콘, 라벨, 설명과 서명은 Accessibility Compat의 실제 신원을 표시합니다.
 - 호환 서비스 콜백은 no-op입니다. `event.source`, `event.text`, `rootInActiveWindow`, 스크린샷 또는 페이지 내용을 읽지 않습니다.
-- 이 릴리스는 노드 프록시나 Binder 브리지가 아닙니다. WeChat의 전역 노드 노출 동작을 트리거하는 것만 시도합니다.
+- 이 릴리스는 노드 프록시나 Binder 브리지가 아닙니다. 지원 프로필에 기록된 조건부 노드 노출 동작을 트리거하는 것만 시도합니다.
 
 ### 설치와 사용
 
@@ -41,7 +41,7 @@ WeChat 호환 실험을 별도 APK에 격리하고 AutoJs6 핵심 서비스의 �
 2. APK는 이 프로젝트의 [Releases](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/releases) 또는 신뢰할 수 있는 AutoJs6 플러그인 경로에서만 설치합니다.
 3. Accessibility Compat을 열고 실제 이름과 목적을 확인한 다음 Android 접근성 설정 안내를 따릅니다.
 4. Accessibility Compat 아래 표시되는 접근성 서비스를 사용자가 직접 활성화합니다. Android의 위험 경고는 정상입니다. ADB로 동의를 우회하지 마십시오.
-5. AutoJs6 접근성 서비스도 활성화한 상태로 대상 WeChat 페이지를 다시 열고 AutoJs6 레이아웃 검사기 또는 스크립트에서 노드를 확인합니다.
+5. AutoJs6 접근성 서비스도 활성화한 상태로 지원 프로필에 기록된 대상 페이지를 다시 열고 AutoJs6 레이아웃 검사기 또는 스크립트에서 노드를 확인합니다.
 
 APK 설치만으로는 효과가 없습니다. 필요하지 않을 때 Android 설정에서 호환 서비스를 끄고 사용이 끝나면 앱을 제거할 수 있습니다.
 
@@ -70,16 +70,16 @@ APK 설치만으로는 효과가 없습니다. 필요하지 않을 때 Android �
 
 ### 알려진 제한
 
-- 호환 대상은 `com.tencent.mm`뿐입니다. 다른 앱을 위한 범용 접근성 패치가 아닙니다.
-- WeChat Mini Program, XWeb, Canvas와 사용자 정의 그리기 컨트롤에는 네이티브 의미 노드가 없을 수 있습니다. 누락된 `text` 또는 `content-desc`를 만들 수 없습니다.
+- 현재 지원 프로필에는 WeChat (`com.tencent.mm`)만 포함됩니다. 이는 명시적인 지원 집합이며 범용 호환성을 의미하지 않습니다.
+- WebView, 미니 앱, Canvas와 사용자 정의 그리기 컨트롤에는 네이티브 의미 노드가 없을 수 있습니다. 누락된 `text` 또는 `content-desc`를 만들 수 없습니다.
 - 루트가 돌아와도 일부 페이지는 빈 속성, 오래된 노드, 무작위 트리 또는 경계 정보만 노출할 수 있습니다.
-- WeChat 업데이트나 원격 설정 변경으로 언제든 무효가 될 수 있습니다. 다운그레이드, OCR과 좌표 대안도 보안 및 안정성 비용이 있습니다.
+- 대상 앱 업데이트나 원격 설정 변경으로 프로필이 언제든 무효가 될 수 있습니다. 다운그레이드, OCR과 좌표 대안도 보안 및 안정성 비용이 있습니다.
 - 플러그인은 관찰 가능성만 다룹니다. 로그인, 위험 제어, captcha, 권한, 계정 제한 또는 악용 방지 체계를 우회하지 않습니다.
 
 ### 개인정보 경계
 
 - 호환 콜백은 이벤트 소스, 이벤트 텍스트, 활성 창 루트 또는 화면 이미지를 읽지 않습니다.
-- 앱은 WeChat 페이지 내용을 업로드, 저장 또는 로그로 남기지 않으며 네트워크나 분석 기능도 포함하지 않습니다.
+- 앱은 대상 앱 페이지 내용을 업로드, 저장 또는 로그로 남기지 않으며 네트워크나 분석 기능도 포함하지 않습니다.
 - 저장소, 오버레이, 카메라, 마이크 또는 미디어 권한을 요청하지 않습니다.
 - 플러그인 정보 Binder는 버전, 신원 및 기능 메타데이터만 보고하며 노드 트리를 전송하지 않습니다.
 - 사용자가 Android 설정에서 서비스를 명시적으로 켜고 끕니다. 프로젝트가 설정을 몰래 변경하지 않습니다.
@@ -90,7 +90,7 @@ APK 설치만으로는 효과가 없습니다. 필요하지 않을 때 Android �
 
 - 자신의 기기와 계정 또는 명시적으로 허가된 흐름에서만 사용합니다.
 - 괴롭힘, spam, 동의 없는 데이터 수집, 타인 감시 또는 보안 제어 우회에 사용하지 않습니다.
-- 관련 법률, WeChat 규칙과 조직 정책을 따르고 UI 변경이나 실수에 대해 사람의 확인과 중단 조건을 둡니다.
+- 관련 법률, 대상 플랫폼 규칙과 조직 정책을 따르고 UI 변경이나 실수에 대해 사람의 확인과 중단 조건을 둡니다.
 - 진단 공유는 집계 통계와 비식별 구조만 포함해야 합니다. 채팅, 연락처, token, APK 또는 원본 dex를 공개하지 않습니다.
 
 ### 호환 정보
@@ -100,7 +100,7 @@ APK 설치만으로는 효과가 없습니다. 필요하지 않을 때 Android �
 ```text
 application id: io.github.supermonster003.autojs6.plugin.accessibilitycompat
 accessibility service: io.github.supermonster003.autojs6.plugin.accessibilitycompat/com.google.android.accessibility.selecttospeak.SelectToSpeakService
-target package: com.tencent.mm
+supported packages: com.tencent.mm
 minimum Android: Android 7.0 (API 24)
 minimum AutoJs6 build: 3923
 ```
@@ -113,43 +113,31 @@ minimum AutoJs6 build: 3923
 
 #### 설치 후 아무 변화가 없는 이유는 무엇입니까?
 
-Android는 앱이 자체 접근성 서비스를 활성화하도록 허용하지 않습니다. 사용자가 설정에서 호환 서비스와 AutoJs6를 모두 켜야 합니다. 변화가 없으면 A-B-A 절차로 현재 WeChat 버전과 페이지를 확인하십시오.
+Android는 앱이 자체 접근성 서비스를 활성화하도록 허용하지 않습니다. 사용자가 설정에서 호환 서비스와 AutoJs6를 모두 켜야 합니다. 변화가 없으면 A-B-A 절차로 현재 대상 앱 버전과 페이지를 확인하십시오.
 
-#### Mini Program에서 텍스트 노드가 여전히 없는 이유는 무엇입니까?
+#### 지원 페이지에서 텍스트 노드가 여전히 없는 이유는 무엇입니까?
 
-Mini Program이나 XWeb은 Canvas 또는 사용자 정의 렌더링을 사용하여 Android 의미 노드가 없을 수 있습니다. 서비스는 조건부로 숨겨진 트리 복원만 시도할 수 있으며 원래 노출되지 않은 정보를 만들 수 없습니다.
+WebView, 미니 앱, Canvas 또는 사용자 정의 렌더링 페이지에는 Android 의미 노드가 없을 수 있습니다. 서비스는 조건부로 숨겨진 트리 복원만 시도할 수 있으며 원래 노출되지 않은 정보를 만들 수 없습니다.
 
 #### 플러그인이 계정 안전을 보장합니까?
 
-아닙니다. WeChat 위험 제어를 우회하지 않으며 어떤 자동화도 안전하다고 약속할 수 없습니다. 위험이 낮고 감사 가능하며 사람이 확인하는 스크립트를 사용하고 플랫폼 규칙을 따르십시오.
+아닙니다. 대상 플랫폼 위험 제어를 우회하지 않으며 어떤 자동화도 안전하다고 약속할 수 없습니다. 위험이 낮고 감사 가능하며 사람이 확인하는 스크립트를 사용하고 플랫폼 규칙을 따르십시오.
 
 ### 연구 근거
 
 연구 문서는 AutoJs6 #289, #382, #432, #463, #520, #521, GKD `47267c7`과 테스트 기기의 WeChat 8.0.72에서 얻은 비식별 정적 증거를 다룹니다. 공개 사실, 재현 가능한 실험과 추론을 구분하며 WeChat 내부 동작을 공식 보장으로 표현하지 않습니다.
 
-[WeChat 접근성 호환 연구 문서 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/wechat-accessibility-compat.md)
+[접근성 서비스 신원 호환 연구 문서 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/accessibility-service-identity-compat.md)
 
 ### 릴리스 기록
 
-#### v1.0.0 - 2026/09/02
-
-##### 힌트
-
-- 이 호환 방식은 실험적입니다. 결과는 WeChat 버전, 페이지와 원격 설정에 따라 달라지며 모든 기기나 계정에서 성공한다고 보장할 수 없습니다
-- WeChat Mini Program, XWeb 또는 Canvas가 원래 노출하지 않은 의미 노드를 만들 수 없으며 로그인, 위험 제어 또는 악용 방지 체계를 우회하지 않습니다
-
-##### 기능
-
-- `com.tencent.mm`만 대상으로 하는 독립 no-op 접근성 동반 APK를 제공하고 실제 애플리케이션 ID, 아이콘, 라벨, 설명과 서명을 명확히 표시
-- 공개 실험이 뒷받침하는 호환 서비스 구현 클래스 이름을 등록하면서 노드 읽기와 조작은 AutoJs6 자체 서비스가 계속 수행하고 동반 콜백은 사용자 내용을 읽지 않는 구조
-- AutoJs6 플러그인 정보 인터페이스로 호환 모드, 대상 패키지, 서비스 구성 요소와 최소 호스트 빌드를 보고하고 사용자가 서비스를 켜고 끄는 화면 제공
+#### v1.1.0 - 2026/09/03
 
 ##### 개선
 
-- [AutoJs6#289](https://github.com/SuperMonster003/AutoJs6/issues/289), [#382](https://github.com/SuperMonster003/AutoJs6/issues/382), [#432](https://github.com/SuperMonster003/AutoJs6/issues/432), [#463](https://github.com/SuperMonster003/AutoJs6/issues/463), [#520](https://github.com/SuperMonster003/AutoJs6/issues/520), [#521](https://github.com/SuperMonster003/AutoJs6/issues/521), GKD `47267c7`과 WeChat 8.0.72 비식별 정적 증거 문서화
-- 개인 노드 텍스트나 스크린샷을 저장하지 않고 반복 통계와 가역성으로 호환 효과를 로딩 및 캐시 우연과 구분하는 A-B-A 기기 절차 제공
-- 10개 언어 README와 changelog 문안, 재현 가능한 Markdown 생성기, 읽기 전용 일관성 검사와 GitHub Actions 게이트 추가
-- QV710AF65F에서 AutoJs6 자체로 수행한 7회 표본 A-B-A 실측을 기록했습니다. 노드 수가 1에서 244로 안정적으로 증가하고 호환 서비스를 끈 뒤 1로 돌아왔으며 시스템 접근성 설정의 정확한 복원도 확인했습니다
+- 앱, 접근성 서비스, 플러그인 메타데이터, 내장 안내 및 README 문구를 앱 독립적인 지원 프로필 표현으로 일반화하고 WeChat (`com.tencent.mm`)은 현재 유일한 검증 프로필로 유지
+- 대상별 플러그인 변형을 `service-identity`로 교체하고 지원 패키지를 컬렉션으로 게시하며 일반 UI 동작으로 설치된 지원 앱을 나열하거나 실행
+- A-B-A 절차, 연구 진입점 및 개인정보 보호 측정 도구를 일반화하고 향후 프로필을 위한 명시적 `targetPackage` 입력 추가
 
 [전체 릴리스 기록 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-ko.md)
 
@@ -176,6 +164,6 @@ py .python\generate_markdown.py --check
 ### 링크
 
 - [AutoJs6](https://github.com/SuperMonster003/AutoJs6)
-- [WeChat 접근성 호환 연구 문서 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/wechat-accessibility-compat.md)
+- [접근성 서비스 신원 호환 연구 문서 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/accessibility-service-identity-compat.md)
 - [전체 A-B-A 검증 절차 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/aba-device-validation.md)
 - [QV710AF65F 전체 비식별 보고서 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/device-QV710AF65F.md)

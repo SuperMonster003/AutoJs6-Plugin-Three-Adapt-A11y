@@ -6,7 +6,7 @@
     <img src="https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/app/src/main/res/mipmap/ic_launcher.png?raw=true" alt="autojs6-plugin-accessibility-compat-icon" border="0" width="128" />
   </p>
   <h1>Accessibility Compat</h1>
-  <p>Un activador de compatibilidad de accesibilidad con privacidad mínima para versiones afectadas de WeChat</p>
+  <p>Un activador de compatibilidad de accesibilidad con privacidad mínima para aplicaciones compatibles</p>
   <p>
     <a href="https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat?label=Release"/></a>
     <a href="https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat?color=A24232&label=Issues"/></a>
@@ -22,18 +22,18 @@
 
 ### Estado del proyecto
 
-Accessibility Compat es un APK complementario, independiente y experimental. Intenta que las versiones afectadas de WeChat vuelvan a exponer su árbol de controles al servicio de accesibilidad de AutoJs6. No es un motor de automatización general y nunca sustituye a AutoJs6 como lector u operador de controles.
+Accessibility Compat es un APK complementario, independiente y experimental. Intenta ayudar a que las aplicaciones cubiertas por perfiles de soporte publicados expongan sus árboles de controles al servicio de accesibilidad de AutoJs6. No es un motor de automatización general y nunca sustituye a AutoJs6 como lector u operador de controles.
 
-> La compatibilidad depende de la versión de WeChat y de su configuración remota. El proyecto no puede garantizar el resultado en cada versión, página, cuenta o dispositivo. Complete una validación A-B-A antes de usarlo en un script.
+> La compatibilidad depende de la versión, la página, el dispositivo y la configuración remota de cada aplicación objetivo. El proyecto no puede garantizar el resultado en todos los entornos. Complete una validación A-B-A antes de usarlo en un script.
 
 ### Arquitectura complementaria no-op
 
-El proyecto aísla el experimento de compatibilidad con WeChat en un APK separado y no cambia el nombre ni el comportamiento general del servicio principal de AutoJs6:
+El proyecto aísla los perfiles de compatibilidad de aplicaciones en un APK separado y no cambia el nombre ni el comportamiento general del servicio principal de AutoJs6:
 
 - El servicio de accesibilidad de AutoJs6 sigue siendo el único componente que lee, consulta y opera nodos.
 - El complemento registra un nombre de clase de servicio respaldado por experimentos públicos, mientras que su ID, icono, etiquetas, descripción y firma identifican honestamente a Accessibility Compat.
 - Las devoluciones del servicio de compatibilidad son no-op. Nunca leen `event.source`, `event.text`, `rootInActiveWindow`, capturas de pantalla ni contenido de la página.
-- Esta versión no es un proxy de nodos ni un puente Binder. Solo intenta activar la exposición global de nodos de WeChat.
+- Esta versión no es un proxy de nodos ni un puente Binder. Solo intenta activar la exposición condicional de nodos documentada por sus perfiles de soporte.
 
 ### Instalación y uso
 
@@ -41,7 +41,7 @@ El proyecto aísla el experimento de compatibilidad con WeChat en un APK separad
 2. Instale el APK solo desde las [Releases](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/releases) de este proyecto o una entrada de complemento AutoJs6 de confianza.
 3. Abra Accessibility Compat, compruebe su nombre y finalidad reales y siga la indicación hasta los ajustes de accesibilidad de Android.
 4. Active manualmente el servicio de accesibilidad mostrado bajo Accessibility Compat. La advertencia de riesgo de Android es normal. No omita el consentimiento mediante ADB.
-5. Mantenga también activo el servicio de accesibilidad de AutoJs6, vuelva a abrir la página de WeChat y lea los nodos desde el inspector de diseño de AutoJs6 o un script.
+5. Mantenga también activo el servicio de accesibilidad de AutoJs6, vuelva a abrir una página objetivo indicada en un perfil de soporte y lea los nodos desde el inspector de diseño de AutoJs6 o un script.
 
 Instalar el APK por sí solo no produce ningún efecto. Desactive el servicio en los ajustes de Android cuando no lo necesite o desinstale la aplicación al terminar.
 
@@ -70,16 +70,16 @@ Esto verifica el activador para esa combinación de dispositivo, versión de WeC
 
 ### Limitaciones conocidas
 
-- El objetivo de compatibilidad es solo `com.tencent.mm`. No es un parche de accesibilidad general para otras aplicaciones.
-- Los Mini Programs de WeChat, XWeb, Canvas y los controles dibujados a medida pueden carecer de nodos semánticos nativos. El complemento no puede inventar `text` ni `content-desc` ausentes.
+- Los perfiles actuales solo contienen WeChat (`com.tencent.mm`). Es un conjunto de soporte explícito y no una afirmación de compatibilidad universal.
+- WebView, miniaplicaciones, Canvas y los controles dibujados a medida pueden carecer de nodos semánticos nativos. El complemento no puede inventar `text` ni `content-desc` ausentes.
 - Aunque vuelva un nodo raíz, algunas páginas pueden exponer atributos vacíos, nodos obsoletos, árboles aleatorios o solo límites geométricos.
-- Una actualización o configuración remota de WeChat puede invalidar el método en cualquier momento. Bajar de versión, OCR y coordenadas también tienen costes de seguridad y estabilidad.
+- Una actualización o configuración remota de la aplicación objetivo puede invalidar un perfil en cualquier momento. Bajar de versión, OCR y coordenadas también tienen costes de seguridad y estabilidad.
 - El complemento solo aborda la observabilidad. No evita inicios de sesión, controles de riesgo, captchas, permisos, restricciones de cuenta ni sistemas contra abusos.
 
 ### Límite de privacidad
 
 - Las devoluciones de compatibilidad no leen fuentes o textos de eventos, la raíz de la ventana activa ni imágenes de pantalla.
-- La aplicación no sube, almacena ni registra contenido de páginas de WeChat y no incluye funciones de red o análisis.
+- La aplicación no sube, almacena ni registra contenido de páginas de aplicaciones objetivo y no incluye funciones de red o análisis.
 - La aplicación no solicita permisos de almacenamiento, superposición, cámara, micrófono ni multimedia.
 - El Binder de información solo comunica metadatos de versión, identidad y capacidades. Nunca transfiere un árbol de nodos.
 - El usuario activa y desactiva explícitamente el servicio en Android. El proyecto nunca cambia ese ajuste de forma silenciosa.
@@ -90,7 +90,7 @@ La compatibilidad de accesibilidad solo debe ayudar a automatizar interfaces que
 
 - Úselo solo en su propio dispositivo, cuenta y flujos con autorización explícita.
 - No lo use para acoso, spam, recopilación sin consentimiento, vigilancia ni evasión de controles de seguridad.
-- Cumpla la ley, las reglas de WeChat y las políticas de su organización, con confirmación humana y condiciones de parada ante cambios o errores de interfaz.
+- Cumpla la ley, las reglas de la plataforma objetivo y las políticas de su organización, con confirmación humana y condiciones de parada ante cambios o errores de interfaz.
 - Comparta solo estadísticas agregadas y estructuras desidentificadas. Nunca publique chats, contactos, tokens, APK ni archivos dex sin procesar.
 
 ### Información de compatibilidad
@@ -100,7 +100,7 @@ El componente de servicio contiene un nombre de clase usado en experimentos púb
 ```text
 application id: io.github.supermonster003.autojs6.plugin.accessibilitycompat
 accessibility service: io.github.supermonster003.autojs6.plugin.accessibilitycompat/com.google.android.accessibility.selecttospeak.SelectToSpeakService
-target package: com.tencent.mm
+supported packages: com.tencent.mm
 minimum Android: Android 7.0 (API 24)
 minimum AutoJs6 build: 3923
 ```
@@ -113,43 +113,31 @@ No. Solo el nombre de clase de implementación del servicio se usa para el exper
 
 #### Por qué no cambia nada tras la instalación?
 
-Android no permite que una aplicación active su propio servicio de accesibilidad. El usuario debe activar el servicio de compatibilidad y AutoJs6 en los ajustes. Si nada cambia, use el protocolo A-B-A para comprobar la versión y la página actuales de WeChat.
+Android no permite que una aplicación active su propio servicio de accesibilidad. El usuario debe activar el servicio de compatibilidad y AutoJs6 en los ajustes. Si nada cambia, use el protocolo A-B-A para comprobar la versión y la página actuales de la aplicación objetivo.
 
-#### Por qué siguen faltando nodos de texto en un Mini Program?
+#### Por qué siguen faltando nodos de texto en una página compatible?
 
-Un Mini Program o una página XWeb puede dibujarse con Canvas o renderizado personalizado sin nodos semánticos Android. El servicio solo intenta restaurar un árbol oculto condicionalmente. No puede crear datos que la página nunca expone.
+Una página WebView, una miniaplicación, Canvas o un renderizado personalizado puede carecer de nodos semánticos Android. El servicio solo intenta restaurar un árbol oculto condicionalmente. No puede crear datos que la página nunca expone.
 
 #### El complemento garantiza la seguridad de la cuenta?
 
-No. No evita los controles de riesgo de WeChat ni puede prometer que una automatización sea segura. Use scripts de bajo riesgo, auditables y con confirmación humana y respete las reglas de la plataforma.
+No. No evita los controles de riesgo de la plataforma objetivo ni puede prometer que una automatización sea segura. Use scripts de bajo riesgo, auditables y con confirmación humana y respete las reglas de la plataforma.
 
 ### Base de investigación
 
 La nota de investigación cubre AutoJs6 #289, #382, #432, #463, #520 y #521, GKD `47267c7` y evidencia estática desidentificada de WeChat 8.0.72 en el dispositivo de prueba. Separa hechos públicos, experimentos reproducibles e inferencias sin presentar el funcionamiento interno de WeChat como garantía pública.
 
-[Leer la nota de compatibilidad de accesibilidad de WeChat](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/wechat-accessibility-compat.md)
+[Leer la nota sobre compatibilidad de identidad de servicios de accesibilidad](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/accessibility-service-identity-compat.md)
 
 ### Historial de versiones
 
-#### v1.0.0 - 2026/09/02
-
-##### Aviso
-
-- Este enfoque de compatibilidad es experimental. El resultado depende de la versión, la página y la configuración remota de WeChat, y una versión no puede garantizar todos los dispositivos o cuentas
-- El servicio no puede crear nodos semánticos que un Mini Program de WeChat, XWeb o Canvas nunca expuso, ni evita el inicio de sesión, los controles de riesgo o los sistemas contra abusos
-
-##### Función
-
-- Proporcionar un APK complementario de accesibilidad no-op, independiente y limitado a `com.tencent.mm`, con ID, icono, etiquetas, descripción y firma veraces y distintos
-- Registrar un nombre de clase de servicio de compatibilidad respaldado por experimentos públicos mientras AutoJs6 sigue leyendo y operando nodos con su propio servicio y las devoluciones del complemento no leen contenido del usuario
-- Comunicar el modo de compatibilidad, paquete objetivo, componente de servicio y compilación mínima del host mediante la interfaz de información de AutoJs6, con una pantalla controlada por el usuario para activar y desactivar el servicio
+#### v1.1.0 - 2026/09/03
 
 ##### Mejora
 
-- Documentar [AutoJs6#289](https://github.com/SuperMonster003/AutoJs6/issues/289), [#382](https://github.com/SuperMonster003/AutoJs6/issues/382), [#432](https://github.com/SuperMonster003/AutoJs6/issues/432), [#463](https://github.com/SuperMonster003/AutoJs6/issues/463), [#520](https://github.com/SuperMonster003/AutoJs6/issues/520), [#521](https://github.com/SuperMonster003/AutoJs6/issues/521), GKD `47267c7` y evidencia estática desidentificada de WeChat 8.0.72
-- Proporcionar un protocolo A-B-A que no guarda texto privado de nodos ni capturas y usa estadísticas repetidas y reversibilidad para distinguir el efecto de compatibilidad de la carga y la caché
-- Añadir fuentes de README y changelog en 10 idiomas, un generador Markdown reproducible, una comprobación de coherencia de solo lectura y controles de GitHub Actions
-- Documentar una prueba A-B-A de 7 muestras realizada por AutoJs6 en QV710AF65F, donde el número de nodos subió de forma estable de 1 a 244 y volvió a 1 al desactivar la compatibilidad, verificando además la restauración exacta de la configuración de accesibilidad del sistema
+- Generalizar la aplicación, el servicio de accesibilidad, los metadatos del complemento, las instrucciones integradas y el README mediante perfiles de soporte independientes de la aplicación, manteniendo WeChat (`com.tencent.mm`) como único perfil verificado actualmente
+- Sustituir la variante específica por `service-identity`, publicar los paquetes compatibles como una colección y listar o abrir aplicaciones compatibles instaladas mediante acciones genéricas de la interfaz
+- Generalizar el protocolo A-B-A, la entrada de investigación y la herramienta de métricas respetuosa con la privacidad, incluida una entrada `targetPackage` explícita para futuros perfiles
 
 [Leer el historial completo](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-es.md)
 
@@ -176,6 +164,6 @@ El código del proyecto usa la [Mozilla Public License 2.0](https://github.com/S
 ### Enlaces
 
 - [AutoJs6](https://github.com/SuperMonster003/AutoJs6)
-- [Leer la nota de compatibilidad de accesibilidad de WeChat](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/wechat-accessibility-compat.md)
+- [Leer la nota sobre compatibilidad de identidad de servicios de accesibilidad](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/accessibility-service-identity-compat.md)
 - [Leer el protocolo completo de validación A-B-A](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/aba-device-validation.md)
 - [Leer el informe completo y anonimizado de QV710AF65F](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/device-QV710AF65F.md)

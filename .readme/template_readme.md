@@ -77,7 +77,7 @@
 ```text
 application id: {{ application_id }}
 accessibility service: {{ service_component }}
-target package: {{ target_package }}
+supported packages: {{ supported_packages }}
 minimum Android: {{ minimum_android }}
 minimum AutoJs6 build: {{ required_host_build }}
 ```

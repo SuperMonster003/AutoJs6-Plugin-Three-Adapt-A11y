@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="accessibility_service_description">영향받는 WeChat 버전을 위한 실험적 로컬 호환 트리거입니다. 이 서비스는 접근성 이벤트 또는 노드를 읽거나 저장하지 않습니다.</string>
-    <string name="accessibility_service_name">AutoJs6 WeChat 접근성 호환 서비스</string>
+    <string name="accessibility_service_description">게시된 지원 프로필을 위한 실험적 로컬 접근성 호환 트리거입니다. 이 서비스는 접근성 이벤트 또는 노드를 읽거나 저장하지 않습니다.</string>
+    <string name="accessibility_service_name">AutoJs6 접근성 호환 서비스</string>
     <string name="button_open_accessibility_settings">접근성 설정 열기</string>
-    <string name="button_open_wechat">WeChat 열기</string>
+    <string name="button_open_supported_app">지원 앱 열기</string>
     <string name="button_refresh">상태 새로 고침</string>
-    <string name="limitations_body">호환성은 WeChat 버전과 기기에 따라 달라지며, 업데이트 후 작동하지 않을 수 있습니다. 이 서비스는 페이지가 공개하지 않는 의미 노드를 만들 수 없습니다. Mini Programs, XWeb, Canvas 및 사용자 지정 그리기 화면의 컨트롤은 계속 사용할 수 없을 수 있습니다.</string>
+    <string name="limitations_body">호환성은 대상 앱 버전과 페이지 및 기기에 따라 달라지며, 업데이트 후 작동하지 않을 수 있습니다. 이 서비스는 페이지가 공개하지 않는 의미 노드를 만들 수 없습니다. WebView, Canvas 및 사용자 지정 그리기 화면의 컨트롤은 계속 사용할 수 없을 수 있습니다.</string>
     <string name="limitations_title">제한 사항</string>
-    <string name="mechanism_body">영향받는 WeChat 버전은 활성화된 서비스의 구현 클래스 이름에 따라 정상 노드 공개 여부를 결정할 수 있습니다. 이 플러그인에는 실험적 호환 클래스 이름 com.google.android.accessibility.selecttospeak.SelectToSpeakService가 포함됩니다. 이 플러그인은 Google Select to Speak가 아니며 Google과 제휴하지 않습니다. AutoJs6는 계속 자체 접근성 서비스를 통해 노드를 읽고 조작합니다.</string>
+    <string name="mechanism_body">영향받는 일부 앱은 활성화된 서비스의 구현 클래스 이름에 따라 정상 노드 공개 여부를 결정할 수 있습니다. 이 플러그인에는 현재 지원 프로필에 필요한 실험적 호환 클래스 이름 com.google.android.accessibility.selecttospeak.SelectToSpeakService가 포함됩니다. 이 플러그인은 Google Select to Speak가 아니며 Google과 제휴하지 않습니다. AutoJs6는 계속 자체 접근성 서비스를 통해 노드를 읽고 조작합니다.</string>
     <string name="mechanism_title">호환 메커니즘</string>
-    <string name="plugin_description">AutoJs6가 WeChat 접근성 노드를 가져오도록 도울 수 있는 선택적 실험용 컴패니언입니다. 로컬에서 실행되고 모든 이벤트를 무시하며 Mini Programs 노드를 보장하지 않습니다</string>
-    <string name="privacy_body">서비스 콜백은 아무 작업도 하지 않습니다. 플러그인은 이벤트 소스, 이벤트 텍스트, 루트 노드, 스크린샷 또는 사용자 콘텐츠를 읽지 않습니다. 데이터를 저장하거나 공유하지 않으며 네트워크에 연결하지 않습니다. 서비스는 com.tencent.mm 전용으로 구성됩니다.</string>
+    <string name="plugin_description">AutoJs6가 지원 앱의 접근성 노드를 가져오도록 도울 수 있는 선택적 실험용 컴패니언입니다. 로컬에서 실행되고 모든 이벤트를 무시하며 모든 페이지의 노드를 보장하지 않습니다</string>
+    <string name="privacy_body">서비스 콜백은 아무 작업도 하지 않습니다. 플러그인은 이벤트 소스, 이벤트 텍스트, 루트 노드, 스크린샷 또는 사용자 콘텐츠를 읽지 않습니다. 데이터를 저장하거나 공유하지 않으며 네트워크에 연결하지 않습니다. 서비스는 게시된 지원 목록의 패키지에서 발생한 이벤트만 수신합니다.</string>
     <string name="privacy_title">개인 정보 보호</string>
-    <string name="screen_intro">AutoJs6가 영향을 받는 WeChat 버전에서 접근성 노드를 가져오도록 돕는 선택적 실험용 컴패니언입니다.</string>
+    <string name="screen_intro">AutoJs6가 지원 앱에서 접근성 노드를 가져오도록 도울 수 있는 선택적 실험용 컴패니언입니다.</string>
     <string name="service_status_disabled">사용 안 함</string>
     <string name="service_status_enabled">사용</string>
     <string name="service_status_format">호환 서비스 상태: %1$s</string>
     <string name="settings_unavailable">시스템 접근성 설정을 열 수 없습니다.</string>
+    <string name="supported_app_unavailable">지원 앱이 설치되어 있지 않거나 열 수 없습니다.</string>
+    <string name="supported_apps_title">현재 지원 앱</string>
     <string name="version_format">버전: %1$s</string>
-    <string name="wechat_unavailable">WeChat이 설치되지 않았거나 열 수 없습니다.</string>
 </resources>
