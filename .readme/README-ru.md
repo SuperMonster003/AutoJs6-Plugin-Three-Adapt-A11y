@@ -140,6 +140,10 @@ WebView, мини-приложение, Canvas или собственная о�
 - Обобщить протокол A-B-A, точку входа исследования и безопасный для конфиденциальности инструмент метрик, добавив явный параметр `targetPackage` для будущих профилей
 - Удалить устаревшие свойства минимальной версии Android Studio и IntelliJ IDEA, поскольку совместимость IDE и набора инструментов теперь выбирается централизованно
 
+##### Зависимость
+
+- Обновить `io.github.supermonster003.autojs6-platform-versions` с 1.7.0 до 1.7.3, чтобы сборки на JDK 25 и 26 автоматически выравнивали выбранный KGP в classpath корневого buildscript
+
 [Открыть полную историю выпусков](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-ru.md)
 
 ### Сборка и проверка документации

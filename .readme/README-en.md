@@ -140,6 +140,10 @@ The research note covers AutoJs6 #289, #382, #432, #463, #520, and #521, GKD `47
 - Generalize the A-B-A protocol, research entry point, and privacy-safe metrics tool, including an explicit `targetPackage` input for future support profiles
 - Remove obsolete minimum Android Studio and IntelliJ IDEA version properties now that IDE and toolchain compatibility is selected centrally
 
+##### Dependency
+
+- Upgrade `io.github.supermonster003.autojs6-platform-versions` from 1.7.0 to 1.7.3 so JDK 25 and 26 builds automatically align the selected KGP on the root buildscript classpath
+
 [Read the complete release history](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-en.md)
 
 ### Build and Documentation Checks
