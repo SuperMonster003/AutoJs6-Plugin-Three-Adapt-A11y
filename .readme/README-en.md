@@ -138,6 +138,7 @@ The research note covers AutoJs6 #289, #382, #432, #463, #520, and #521, GKD `47
 - Generalize the app, accessibility service, plugin metadata, embedded instructions, and README wording around application-neutral support profiles while keeping WeChat (`com.tencent.mm`) as the only currently verified profile
 - Replace the target-specific plugin variant with `service-identity`, publish supported packages as a collection, and list or open installed supported apps through generic UI actions
 - Generalize the A-B-A protocol, research entry point, and privacy-safe metrics tool, including an explicit `targetPackage` input for future support profiles
+- Remove obsolete minimum Android Studio and IntelliJ IDEA version properties now that IDE and toolchain compatibility is selected centrally
 
 [Read the complete release history](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-en.md)
 
