@@ -140,6 +140,10 @@ minimum AutoJs6 build: 3923
 - تعميم بروتوكول A-B-A ومدخل البحث وأداة القياس الآمنة للخصوصية, مع إدخال `targetPackage` صريح لملفات الدعم المستقبلية
 - إزالة خصائص الحد الأدنى القديمة لإصدارات Android Studio وIntelliJ IDEA بعد أن أصبح توافق بيئة التطوير وسلسلة الأدوات محددا مركزيا
 
+##### تبعية
+
+- ترقية `io.github.supermonster003.autojs6-platform-versions` من 1.7.0 إلى 1.7.3 لكي تحاذي عمليات البناء باستخدام JDK 25 و26 إصدار KGP المحدد تلقائيا على classpath الخاص بملف buildscript الجذري
+
 [قراءة سجل الإصدارات الكامل](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-ar.md)
 
 ### البناء وفحص التوثيق

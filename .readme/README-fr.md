@@ -140,6 +140,10 @@ La note de recherche couvre AutoJs6 #289, #382, #432, #463, #520 et #521, GKD `4
 - Généraliser le protocole A-B-A, le point d'entrée de recherche et l'outil de mesure respectueux de la confidentialité, avec une entrée `targetPackage` explicite pour les futurs profils
 - Supprimer les propriétés obsolètes de version minimale d'Android Studio et d'IntelliJ IDEA puisque la compatibilité de l'IDE et de la chaîne d'outils est désormais sélectionnée de manière centralisée
 
+##### Dépendance
+
+- Mettre à niveau `io.github.supermonster003.autojs6-platform-versions` de 1.7.0 vers 1.7.3 afin que les builds JDK 25 et 26 alignent automatiquement le KGP sélectionné sur le classpath du buildscript racine
+
 [Lire l'historique complet](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-fr.md)
 
 ### Compilation et contrôle de la documentation

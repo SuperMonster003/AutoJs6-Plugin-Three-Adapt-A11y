@@ -140,6 +140,10 @@ WebView, ミニアプリ, Canvas, 独自描画ページは Android の意味ノ�
 - A-B-A 手順, 調査入口, プライバシー安全な測定ツールを一般化し, 将来のプロファイル向けに明示的な `targetPackage` 入力を追加
 - IDE とツールチェーンの互換性を中央で選択するため, 古い Android Studio および IntelliJ IDEA 最小バージョンプロパティを削除
 
+##### 依存関係
+
+- `io.github.supermonster003.autojs6-platform-versions` を 1.7.0 から 1.7.3 に更新し, JDK 25 および 26 のビルドで選択された KGP をルート buildscript classpath に自動整合
+
 [完全なリリース履歴を読む](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-ja.md)
 
 ### ビルドと文書検証

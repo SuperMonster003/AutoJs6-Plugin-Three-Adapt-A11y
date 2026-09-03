@@ -140,6 +140,10 @@ WebView, 小程序, Canvas 或自繪頁面可能沒有對應 Android 語義節�
 - 通用化 A-B-A 協議, 研究入口及私隱安全度量工具, 包括為未來支援配置提供明確的 `targetPackage` 輸入
 - 移除已過時的 Android Studio 及 IntelliJ IDEA 最低版本屬性, IDE 與工具鏈兼容性現由中央機制選擇
 
+##### 依賴
+
+- 將 `io.github.supermonster003.autojs6-platform-versions` 由 1.7.0 升級至 1.7.3, 讓 JDK 25 及 26 構建自動在根 buildscript classpath 對齊所選 KGP
+
 [查看完整發行歷史](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-zh-Hant-HK.md)
 
 ### 構建及文檔校驗

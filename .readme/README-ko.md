@@ -140,6 +140,10 @@ WebView, 미니 앱, Canvas 또는 사용자 정의 렌더링 페이지에는 An
 - A-B-A 절차, 연구 진입점 및 개인정보 보호 측정 도구를 일반화하고 향후 프로필을 위한 명시적 `targetPackage` 입력 추가
 - IDE 및 도구 체인 호환성을 중앙에서 선택하므로 오래된 Android Studio 및 IntelliJ IDEA 최소 버전 속성 제거
 
+##### 의존성
+
+- `io.github.supermonster003.autojs6-platform-versions`를 1.7.0에서 1.7.3으로 올려 JDK 25 및 26 빌드가 선택된 KGP를 루트 buildscript classpath에 자동 정렬하도록 개선
+
 [전체 릴리스 기록 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-ko.md)
 
 ### 빌드와 문서 검사

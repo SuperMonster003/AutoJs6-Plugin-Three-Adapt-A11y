@@ -13,6 +13,10 @@
 - 通用化 A-B-A 协议, 研究入口和隐私安全度量工具, 包括为未来支持配置提供明确的 `targetPackage` 输入
 - 移除已过时的 Android Studio 与 IntelliJ IDEA 最低版本属性, IDE 与工具链兼容性现由中央机制选择
 
+### 依赖
+
+- 将 `io.github.supermonster003.autojs6-platform-versions` 从 1.7.0 升级至 1.7.3, 使 JDK 25 和 26 构建自动在根 buildscript classpath 对齐所选 KGP
+
 ## v1.0.0 - 2026/09/02
 
 ### 提示
