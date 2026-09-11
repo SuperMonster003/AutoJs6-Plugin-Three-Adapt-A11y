@@ -4,7 +4,7 @@
 
 > Page language: English
 
-## v1.1.0 - 2026/09/03
+## v1.1.0 - 2026/09/11
 
 ### Improvement
 
@@ -12,6 +12,7 @@
 - Replace the target-specific plugin variant with `service-identity`, publish supported packages as a collection, and list or open installed supported apps through generic UI actions
 - Generalize the A-B-A protocol, research entry point, and privacy-safe metrics tool, including an explicit `targetPackage` input for future support profiles
 - Remove obsolete minimum Android Studio and IntelliJ IDEA version properties now that IDE and toolchain compatibility is selected centrally
+- Build verification rejects accidental native dependencies and produces a JSON report
 
 ### Dependency
 

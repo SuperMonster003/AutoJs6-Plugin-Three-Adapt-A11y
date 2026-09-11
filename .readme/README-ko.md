@@ -131,7 +131,7 @@ WebView, 미니 앱, Canvas 또는 사용자 정의 렌더링 페이지에는 An
 
 ### 릴리스 기록
 
-#### v1.1.0 - 2026/09/03
+#### v1.1.0 - 2026/09/11
 
 ##### 개선
 
@@ -139,6 +139,7 @@ WebView, 미니 앱, Canvas 또는 사용자 정의 렌더링 페이지에는 An
 - 대상별 플러그인 변형을 `service-identity`로 교체하고 지원 패키지를 컬렉션으로 게시하며 일반 UI 동작으로 설치된 지원 앱을 나열하거나 실행
 - A-B-A 절차, 연구 진입점 및 개인정보 보호 측정 도구를 일반화하고 향후 프로필을 위한 명시적 `targetPackage` 입력 추가
 - IDE 및 도구 체인 호환성을 중앙에서 선택하므로 오래된 Android Studio 및 IntelliJ IDEA 최소 버전 속성 제거
+- 빌드 시 의도하지 않은 네이티브 의존성을 거부하고 JSON 보고서 생성
 
 ##### 의존성
 
@@ -172,3 +173,6 @@ py .python\generate_markdown.py --check
 - [접근성 서비스 신원 호환 연구 문서 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/accessibility-service-identity-compat.md)
 - [전체 A-B-A 검증 절차 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/aba-device-validation.md)
 - [QV710AF65F 전체 비식별 보고서 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/device-QV710AF65F.md)
+
+
+[16 KB page alignment and build verification](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/16kb.md)

@@ -131,7 +131,7 @@ The research note covers AutoJs6 #289, #382, #432, #463, #520, and #521, GKD `47
 
 ### Release History
 
-#### v1.1.0 - 2026/09/03
+#### v1.1.0 - 2026/09/11
 
 ##### Improvement
 
@@ -139,6 +139,7 @@ The research note covers AutoJs6 #289, #382, #432, #463, #520, and #521, GKD `47
 - Replace the target-specific plugin variant with `service-identity`, publish supported packages as a collection, and list or open installed supported apps through generic UI actions
 - Generalize the A-B-A protocol, research entry point, and privacy-safe metrics tool, including an explicit `targetPackage` input for future support profiles
 - Remove obsolete minimum Android Studio and IntelliJ IDEA version properties now that IDE and toolchain compatibility is selected centrally
+- Build verification rejects accidental native dependencies and produces a JSON report
 
 ##### Dependency
 
@@ -172,3 +173,6 @@ Project code is licensed under the [Mozilla Public License 2.0](https://github.c
 - [Read the accessibility service identity compatibility research note](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/accessibility-service-identity-compat.md)
 - [Read the complete A-B-A validation protocol](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/aba-device-validation.md)
 - [Read the complete sanitized QV710AF65F report](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/device-QV710AF65F.md)
+
+
+[16 KB page alignment and build verification](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/16kb.md)

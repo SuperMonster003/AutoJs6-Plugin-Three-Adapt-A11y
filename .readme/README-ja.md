@@ -131,7 +131,7 @@ WebView, ミニアプリ, Canvas, 独自描画ページは Android の意味ノ�
 
 ### リリース履歴
 
-#### v1.1.0 - 2026/09/03
+#### v1.1.0 - 2026/09/11
 
 ##### 改善
 
@@ -139,6 +139,7 @@ WebView, ミニアプリ, Canvas, 独自描画ページは Android の意味ノ�
 - 対象固有のプラグインバリアントを `service-identity` に置き換え, 対応パッケージをコレクションとして公開し, 汎用 UI 操作でインストール済み対応アプリを一覧表示または起動
 - A-B-A 手順, 調査入口, プライバシー安全な測定ツールを一般化し, 将来のプロファイル向けに明示的な `targetPackage` 入力を追加
 - IDE とツールチェーンの互換性を中央で選択するため, 古い Android Studio および IntelliJ IDEA 最小バージョンプロパティを削除
+- 意図しないネイティブ依存関係をビルド時に拒否し, JSON レポートを生成
 
 ##### 依存関係
 
@@ -172,3 +173,6 @@ py .python\generate_markdown.py --check
 - [アクセシビリティサービス ID 互換調査を読む](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/accessibility-service-identity-compat.md)
 - [完全な A-B-A 検証手順を読む](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/aba-device-validation.md)
 - [QV710AF65F の完全な匿名化レポートを読む](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/device-QV710AF65F.md)
+
+
+[16 KB page alignment and build verification](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/16kb.md)

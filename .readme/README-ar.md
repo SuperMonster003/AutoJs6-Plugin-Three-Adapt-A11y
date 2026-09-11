@@ -131,7 +131,7 @@ minimum AutoJs6 build: 3923
 
 ### سجل الإصدارات
 
-#### v1.1.0 - 2026/09/03
+#### v1.1.0 - 2026/09/11
 
 ##### تحسين
 
@@ -139,6 +139,7 @@ minimum AutoJs6 build: 3923
 - استبدال متغير المكون الخاص بالهدف بالقيمة `service-identity`, ونشر الحزم المدعومة كمجموعة, وإدراج التطبيقات المدعومة المثبتة أو فتحها عبر إجراءات واجهة عامة
 - تعميم بروتوكول A-B-A ومدخل البحث وأداة القياس الآمنة للخصوصية, مع إدخال `targetPackage` صريح لملفات الدعم المستقبلية
 - إزالة خصائص الحد الأدنى القديمة لإصدارات Android Studio وIntelliJ IDEA بعد أن أصبح توافق بيئة التطوير وسلسلة الأدوات محددا مركزيا
+- التحقق أثناء البناء لمنع إدخال تبعيات أصلية غير مقصودة, مع تقرير JSON
 
 ##### تبعية
 
@@ -172,3 +173,6 @@ py .python\generate_markdown.py --check
 - [قراءة بحث توافق هوية خدمات إمكانية الوصول](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/accessibility-service-identity-compat.md)
 - [قراءة بروتوكول تحقق A-B-A الكامل](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/aba-device-validation.md)
 - [قراءة تقرير QV710AF65F الكامل والمنزوع الهوية](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/device-QV710AF65F.md)
+
+
+[16 KB page alignment and build verification](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/16kb.md)

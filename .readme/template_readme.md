@@ -124,3 +124,6 @@ py .python\generate_markdown.py --check
 - [{{ text_research_link }}]({{ research_url }})
 - [{{ text_validation_link }}]({{ validation_url }})
 - [{{ text_verified_device_report }}]({{ device_report_url }})
+
+
+[16 KB page alignment and build verification](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/16kb.md)
