@@ -2,6 +2,7 @@ import java.util.Properties
 import java.util.zip.CRC32
 
 plugins {
+    id("io.github.supermonster003.autojs6-native-alignment")
     id("org.autojs.build.utils")
     id("org.autojs.build.versions")
     id("org.autojs.build.signs")
@@ -114,3 +115,6 @@ private fun CRC32.outputStream() = object : java.io.OutputStream() {
     override fun write(value: Int) = update(value)
     override fun write(bytes: ByteArray, offset: Int, length: Int) = update(bytes, offset, length)
 }
+
+// Reject accidental native dependencies on every ABI.
+nativeAlignment { expectNoNativeLibraries.set(true) }

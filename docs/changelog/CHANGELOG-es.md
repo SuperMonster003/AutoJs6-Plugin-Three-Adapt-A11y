@@ -4,7 +4,7 @@
 
 > Idioma de esta página: español
 
-## v1.1.0 - 2026/09/03
+## v1.1.0 - 2026/09/11
 
 ### Mejora
 
@@ -12,6 +12,7 @@
 - Sustituir la variante específica por `service-identity`, publicar los paquetes compatibles como una colección y listar o abrir aplicaciones compatibles instaladas mediante acciones genéricas de la interfaz
 - Generalizar el protocolo A-B-A, la entrada de investigación y la herramienta de métricas respetuosa con la privacidad, incluida una entrada `targetPackage` explícita para futuros perfiles
 - Eliminar las propiedades obsoletas de versión mínima de Android Studio e IntelliJ IDEA ahora que la compatibilidad del IDE y la cadena de herramientas se selecciona de forma centralizada
+- La verificación de compilación rechaza dependencias nativas accidentales y genera un informe JSON
 
 ### Dependencia
 

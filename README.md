@@ -131,7 +131,7 @@ WebView, 小程序, Canvas 或自绘页面可能没有对应的 Android 语义�
 
 ### 发行历史
 
-#### v1.1.0 - 2026/09/03
+#### v1.1.0 - 2026/09/11
 
 ##### 优化
 
@@ -139,6 +139,7 @@ WebView, 小程序, Canvas 或自绘页面可能没有对应的 Android 语义�
 - 将特定目标插件变体改为 `service-identity`, 以集合形式发布受支持包名, 并通过通用界面操作列出或打开已安装的受支持应用
 - 通用化 A-B-A 协议, 研究入口和隐私安全度量工具, 包括为未来支持配置提供明确的 `targetPackage` 输入
 - 移除已过时的 Android Studio 与 IntelliJ IDEA 最低版本属性, IDE 与工具链兼容性现由中央机制选择
+- 构建阶段阻止意外引入原生依赖, 并输出 JSON 校验报告
 
 ##### 依赖
 
@@ -172,3 +173,6 @@ py .python\generate_markdown.py --check
 - [查看无障碍服务身份兼容研究记录](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/accessibility-service-identity-compat.md)
 - [查看完整 A-B-A 验收协议](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/aba-device-validation.md)
 - [查看 QV710AF65F 完整脱敏报告](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/device-QV710AF65F.md)
+
+
+[16 KB page alignment and build verification](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/16kb.md)

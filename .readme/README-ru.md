@@ -131,7 +131,7 @@ WebView, мини-приложение, Canvas или собственная о�
 
 ### История выпусков
 
-#### v1.1.0 - 2026/09/03
+#### v1.1.0 - 2026/09/11
 
 ##### Улучшение
 
@@ -139,6 +139,7 @@ WebView, мини-приложение, Canvas или собственная о�
 - Заменить целевой вариант плагина на `service-identity`, публиковать поддерживаемые пакеты как коллекцию и показывать или открывать установленные поддерживаемые приложения через общие действия интерфейса
 - Обобщить протокол A-B-A, точку входа исследования и безопасный для конфиденциальности инструмент метрик, добавив явный параметр `targetPackage` для будущих профилей
 - Удалить устаревшие свойства минимальной версии Android Studio и IntelliJ IDEA, поскольку совместимость IDE и набора инструментов теперь выбирается централизованно
+- Проверка сборки отклоняет непреднамеренные нативные зависимости и создает отчет JSON
 
 ##### Зависимость
 
@@ -172,3 +173,6 @@ py .python\generate_markdown.py --check
 - [Открыть исследование совместимости идентичности служб специальных возможностей](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/accessibility-service-identity-compat.md)
 - [Открыть полный протокол проверки A-B-A](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/aba-device-validation.md)
 - [Открыть полный обезличенный отчет QV710AF65F](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/device-QV710AF65F.md)
+
+
+[16 KB page alignment and build verification](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/16kb.md)
