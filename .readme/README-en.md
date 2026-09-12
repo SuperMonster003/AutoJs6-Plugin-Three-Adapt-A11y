@@ -131,12 +131,13 @@ The research note covers AutoJs6 #289, #382, #432, #463, #520, and #521, GKD `47
 
 ### Release History
 
-#### v1.1.0 - 2026/09/11
+#### v1.1.0 - 2026/09/12
 
 ##### Improvement
 
 - Generalize the app, accessibility service, plugin metadata, embedded instructions, and README wording around application-neutral support profiles while keeping WeChat (`com.tencent.mm`) as the only currently verified profile
 - Replace the target-specific plugin variant with `service-identity`, publish supported packages as a collection, and list or open installed supported apps through generic UI actions
+- Refresh adaptive launcher icons with light and dark variants and a monochrome layer for themed icons
 - Generalize the A-B-A protocol, research entry point, and privacy-safe metrics tool, including an explicit `targetPackage` input for future support profiles
 - Remove obsolete minimum Android Studio and IntelliJ IDEA version properties now that IDE and toolchain compatibility is selected centrally
 - Build verification rejects accidental native dependencies and produces a JSON report
