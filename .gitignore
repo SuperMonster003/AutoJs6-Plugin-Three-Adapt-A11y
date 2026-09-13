@@ -9,6 +9,8 @@
 *.patch
 *.salive
 *.pre-platform-versions.bak
+__pycache__/
+*.py[cod]
 .tmp_*.txt
 
 .DS_Store
