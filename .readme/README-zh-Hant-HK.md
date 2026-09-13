@@ -131,20 +131,15 @@ WebView, 小程序, Canvas 或自繪頁面可能沒有對應 Android 語義節�
 
 ### 發行歷史
 
-#### v1.1.0 - 2026/09/12
+#### v1.2.0 - 2026/09/13
+
+##### 新增
+
+- 介面提供本地發行歷史, 支援多語言及英語回退
 
 ##### 優化
 
-- 將應用程式, 無障礙服務, 插件中繼資料, 內嵌說明及 README 文案統一改為應用程式無關的支援配置表達, 同時保留微信 (`com.tencent.mm`) 作為目前唯一通過驗證的配置
-- 將特定目標插件變體改為 `service-identity`, 以集合形式發佈受支援套件名稱, 並透過通用介面操作列出或開啟已安裝的受支援應用程式
-- 完善自適應啟動圖示, 提供明暗主題變體及主題圖示所需的單色圖層
-- 通用化 A-B-A 協議, 研究入口及私隱安全度量工具, 包括為未來支援配置提供明確的 `targetPackage` 輸入
-- 移除已過時的 Android Studio 及 IntelliJ IDEA 最低版本屬性, IDE 與工具鏈兼容性現由中央機制選擇
-- 建置階段阻止意外引入原生相依套件, 並輸出 JSON 校驗報告
-
-##### 依賴
-
-- 將 `io.github.supermonster003.autojs6-platform-versions` 由 1.7.0 升級至 1.7.3, 讓 JDK 25 及 26 構建自動在根 buildscript classpath 對齊所選 KGP
+- 校驗發行簽署設定, 預期 APK 集合與可重現文件
 
 [查看完整發行歷史](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-zh-Hant-HK.md)
 

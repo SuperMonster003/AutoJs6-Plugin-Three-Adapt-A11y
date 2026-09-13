@@ -12,6 +12,8 @@
     <string name="plugin_description">Compagnon expérimental et facultatif qui peut aider AutoJs6 à obtenir les noeuds d\'accessibilité des applications compatibles. Il fonctionne localement, ignore chaque événement et ne garantit pas les noeuds sur toutes les pages</string>
     <string name="privacy_body">Le rappel du service est sans effet. Le plugin ne lit pas les sources ou les textes des événements, les noeuds racines, les captures d\'écran ou le contenu utilisateur. Il ne stocke ni ne partage de données et ne se connecte pas au réseau. Le service reçoit uniquement les événements des paquets figurant dans la liste de support publiée.</string>
     <string name="privacy_title">Confidentialité</string>
+    <string name="release_history">Historique des versions</string>
+    <string name="release_history_unavailable">L\'historique des versions est indisponible</string>
     <string name="screen_intro">Un compagnon expérimental et facultatif qui peut aider AutoJs6 à obtenir les noeuds d\'accessibilité des applications compatibles.</string>
     <string name="service_status_disabled">Désactivé</string>
     <string name="service_status_enabled">Activé</string>

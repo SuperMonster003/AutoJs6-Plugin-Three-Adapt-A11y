@@ -131,20 +131,15 @@ WebView, 미니 앱, Canvas 또는 사용자 정의 렌더링 페이지에는 An
 
 ### 릴리스 기록
 
-#### v1.1.0 - 2026/09/12
+#### v1.2.0 - 2026/09/13
+
+##### 기능
+
+- 화면에서 현지화된 로컬 릴리스 기록을 표시하고 영어 대체 제공
 
 ##### 개선
 
-- 앱, 접근성 서비스, 플러그인 메타데이터, 내장 안내 및 README 문구를 앱 독립적인 지원 프로필 표현으로 일반화하고 WeChat (`com.tencent.mm`)은 현재 유일한 검증 프로필로 유지
-- 대상별 플러그인 변형을 `service-identity`로 교체하고 지원 패키지를 컬렉션으로 게시하며 일반 UI 동작으로 설치된 지원 앱을 나열하거나 실행
-- 밝은 모드와 어두운 모드 변형 및 테마 아이콘용 단색 레이어로 적응형 런처 아이콘 개선
-- A-B-A 절차, 연구 진입점 및 개인정보 보호 측정 도구를 일반화하고 향후 프로필을 위한 명시적 `targetPackage` 입력 추가
-- IDE 및 도구 체인 호환성을 중앙에서 선택하므로 오래된 Android Studio 및 IntelliJ IDEA 최소 버전 속성 제거
-- 빌드 시 의도하지 않은 네이티브 의존성을 거부하고 JSON 보고서 생성
-
-##### 의존성
-
-- `io.github.supermonster003.autojs6-platform-versions`를 1.7.0에서 1.7.3으로 올려 JDK 25 및 26 빌드가 선택된 KGP를 루트 buildscript classpath에 자동 정렬하도록 개선
+- 릴리스 서명 설정, 예상 APK 구성 및 문서 재생성 결과 검증
 
 [전체 릴리스 기록 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-ko.md)
 

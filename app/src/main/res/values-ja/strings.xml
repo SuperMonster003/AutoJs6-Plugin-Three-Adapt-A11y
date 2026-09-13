@@ -12,6 +12,8 @@
     <string name="plugin_description">AutoJs6 による対応アプリのアクセシビリティノード取得を補助する可能性がある, 任意の試験的コンパニオンです. ローカルで動作し, すべてのイベントを無視します. すべてのページのノードは保証されません</string>
     <string name="privacy_body">サービスのコールバックは何も実行しません. プラグインはイベントのソースやテキスト, ルートノード, スクリーンショット, ユーザーコンテンツを読み取りません. データを保存または共有せず, ネットワークにも接続しません. サービスは公開済みサポートリストのパッケージからのイベントのみを受信します.</string>
     <string name="privacy_title">プライバシー</string>
+    <string name="release_history">リリース履歴</string>
+    <string name="release_history_unavailable">リリース履歴を表示できません</string>
     <string name="screen_intro">AutoJs6 が対応アプリからアクセシビリティノードを取得するための, 任意の試験的コンパニオンです.</string>
     <string name="service_status_disabled">無効</string>
     <string name="service_status_enabled">有効</string>

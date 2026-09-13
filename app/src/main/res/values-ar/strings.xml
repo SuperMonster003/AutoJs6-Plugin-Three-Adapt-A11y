@@ -12,6 +12,8 @@
     <string name="plugin_description">مكون إضافي تجريبي اختياري قد يساعد AutoJs6 على استرداد عقد إمكانية الوصول من التطبيقات المدعومة. يعمل محليا ويتجاهل كل الأحداث ولا يضمن العقد في كل الصفحات</string>
     <string name="privacy_body">رد نداء الخدمة لا ينفذ أي عملية. لا يقرأ المكون الإضافي مصادر الأحداث أو نصوصها أو العقد الجذرية أو لقطات الشاشة أو محتوى المستخدم. لا يخزن البيانات ولا يشاركها ولا يتصل بالشبكة. تستقبل الخدمة الأحداث فقط من الحزم المدرجة في قائمة الدعم المنشورة.</string>
     <string name="privacy_title">الخصوصية</string>
+    <string name="release_history">سجل الإصدارات</string>
+    <string name="release_history_unavailable">سجل الإصدارات غير متاح</string>
     <string name="screen_intro">مكون إضافي تجريبي اختياري قد يساعد AutoJs6 على استرداد عقد إمكانية الوصول من التطبيقات المدعومة.</string>
     <string name="service_status_disabled">غير مفعلة</string>
     <string name="service_status_enabled">مفعلة</string>
