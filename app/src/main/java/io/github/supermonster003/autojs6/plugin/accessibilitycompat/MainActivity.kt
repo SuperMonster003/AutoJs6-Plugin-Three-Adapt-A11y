@@ -97,6 +97,10 @@ class MainActivity : Activity() {
                         openSupportedApp()
                     }, layoutParams(matchParent(), wrapContent(), bottom = 28))
 
+                    addView(secondaryButton(getString(R.string.release_history), palette) {
+                        showReleaseHistory()
+                    }, layoutParams(matchParent(), wrapContent(), bottom = 10))
+
                     addSection(
                         title = getString(R.string.supported_apps_title),
                         body = supportedAppsSummary(),

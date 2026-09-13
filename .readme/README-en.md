@@ -131,20 +131,15 @@ The research note covers AutoJs6 #289, #382, #432, #463, #520, and #521, GKD `47
 
 ### Release History
 
-#### v1.1.0 - 2026/09/12
+#### v1.2.0 - 2026/09/13
+
+##### Feature
+
+- Local release history is available from the interface, with localized text and an English fallback
 
 ##### Improvement
 
-- Generalize the app, accessibility service, plugin metadata, embedded instructions, and README wording around application-neutral support profiles while keeping WeChat (`com.tencent.mm`) as the only currently verified profile
-- Replace the target-specific plugin variant with `service-identity`, publish supported packages as a collection, and list or open installed supported apps through generic UI actions
-- Refresh adaptive launcher icons with light and dark variants and a monochrome layer for themed icons
-- Generalize the A-B-A protocol, research entry point, and privacy-safe metrics tool, including an explicit `targetPackage` input for future support profiles
-- Remove obsolete minimum Android Studio and IntelliJ IDEA version properties now that IDE and toolchain compatibility is selected centrally
-- Build verification rejects accidental native dependencies and produces a JSON report
-
-##### Dependency
-
-- Upgrade `io.github.supermonster003.autojs6-platform-versions` from 1.7.0 to 1.7.3 so JDK 25 and 26 builds automatically align the selected KGP on the root buildscript classpath
+- Release packages are checked for a complete signing configuration, exact APK contents and reproducible documentation
 
 [Read the complete release history](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-en.md)
 

@@ -12,6 +12,8 @@
     <string name="plugin_description">Complemento experimental y opcional que puede ayudar a AutoJs6 a obtener nodos de accesibilidad de aplicaciones compatibles. Funciona localmente, ignora todos los eventos y no garantiza nodos en todas las páginas</string>
     <string name="privacy_body">La llamada del servicio no realiza ninguna operación. El complemento no lee fuentes o textos de eventos, nodos raíz, capturas de pantalla ni contenido del usuario. No guarda ni comparte datos y no accede a la red. El servicio solo recibe eventos de paquetes incluidos en la lista de soporte publicada.</string>
     <string name="privacy_title">Privacidad</string>
+    <string name="release_history">Historial de versiones</string>
+    <string name="release_history_unavailable">El historial de versiones no está disponible</string>
     <string name="screen_intro">Un complemento experimental y opcional que puede ayudar a AutoJs6 a obtener nodos de accesibilidad de aplicaciones compatibles.</string>
     <string name="service_status_disabled">Deshabilitado</string>
     <string name="service_status_enabled">Habilitado</string>

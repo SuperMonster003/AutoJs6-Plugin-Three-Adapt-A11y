@@ -12,6 +12,8 @@
     <string name="plugin_description">Optional experimental companion that may help AutoJs6 retrieve accessibility nodes from supported apps. It runs locally, ignores every event, and does not guarantee nodes on every page</string>
     <string name="privacy_body">The service callback is a no-op. The plugin does not read event sources, event text, root nodes, screenshots, or user content. It does not store or share data and has no network access. The service receives events only from packages in the published support list.</string>
     <string name="privacy_title">Privacy</string>
+    <string name="release_history">Release history</string>
+    <string name="release_history_unavailable">Release history is unavailable</string>
     <string name="screen_intro">An optional experimental companion that may help AutoJs6 retrieve accessibility nodes from supported apps.</string>
     <string name="service_status_disabled">Disabled</string>
     <string name="service_status_enabled">Enabled</string>

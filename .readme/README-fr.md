@@ -131,20 +131,15 @@ La note de recherche couvre AutoJs6 #289, #382, #432, #463, #520 et #521, GKD `4
 
 ### Historique des versions
 
-#### v1.1.0 - 2026/09/12
+#### v1.2.0 - 2026/09/13
+
+##### Fonctionnalité
+
+- Historique local accessible depuis l'interface, avec traductions et repli en anglais
 
 ##### Amélioration
 
-- Généraliser les termes de l'application, du service d'accessibilité, des métadonnées du plugin, des instructions intégrées et du README autour de profils indépendants de l'application, tout en conservant WeChat (`com.tencent.mm`) comme seul profil actuellement vérifié
-- Remplacer la variante propre à la cible par `service-identity`, publier les paquets pris en charge sous forme de collection et répertorier ou ouvrir les applications compatibles installées avec des actions génériques
-- Actualiser les icônes adaptatives du lanceur avec des variantes claires et sombres et une couche monochrome pour les icônes à thème
-- Généraliser le protocole A-B-A, le point d'entrée de recherche et l'outil de mesure respectueux de la confidentialité, avec une entrée `targetPackage` explicite pour les futurs profils
-- Supprimer les propriétés obsolètes de version minimale d'Android Studio et d'IntelliJ IDEA puisque la compatibilité de l'IDE et de la chaîne d'outils est désormais sélectionnée de manière centralisée
-- La vérification de compilation rejette les dépendances natives involontaires et produit un rapport JSON
-
-##### Dépendance
-
-- Mettre à niveau `io.github.supermonster003.autojs6-platform-versions` de 1.7.0 vers 1.7.3 afin que les builds JDK 25 et 26 alignent automatiquement le KGP sélectionné sur le classpath du buildscript racine
+- Vérification de la signature complète, des APK attendus et de la reproductibilité de la documentation
 
 [Lire l'historique complet](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-fr.md)
 

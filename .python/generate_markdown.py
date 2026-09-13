@@ -63,7 +63,7 @@ PLACEHOLDER_MARKERS = (
     "MACHINE_TRANSLATION_PLACEHOLDER",
 )
 FORBIDDEN_PUNCTUATION = set("，。；：！？（）［］【】《》“”‘’、…　،؛؟")
-EXPECTED_ARTIFACT_COUNT = 22
+EXPECTED_ARTIFACT_COUNT = 32
 
 
 class MarkdownGenerationError(Exception):
@@ -351,6 +351,7 @@ def expected_artifacts(root: Path) -> dict[Path, str]:
         }
         rendered_changelog = render_template(changelog_template, changelog_values).rstrip() + "\n"
         outputs[root / "docs" / "changelog" / f"CHANGELOG-{code}.md"] = rendered_changelog
+        outputs[root / "app" / "src" / "main" / "assets" / "doc" / f"CHANGELOG-{code}.md"] = rendered_changelog
 
     outputs[root / "README.md"] = outputs[root / ".readme" / f"README-{DEFAULT_LANGUAGE}.md"]
     outputs[root / "docs" / "changelog" / "CHANGELOG.md"] = outputs[
@@ -365,6 +366,7 @@ def validate_no_orphans(root: Path, expected: dict[Path, str]) -> None:
     changelog_dir = root / "docs" / "changelog"
     if changelog_dir.is_dir():
         actual.update(changelog_dir.glob("CHANGELOG*.md"))
+    actual.update((root / "app/src/main/assets/doc").glob("CHANGELOG*.md"))
     expected_generated = {path for path in expected if path != root / "README.md"}
     orphans = sorted(path.relative_to(root).as_posix() for path in actual - expected_generated)
     require(not orphans, f"Orphan generated Markdown files: {orphans}")

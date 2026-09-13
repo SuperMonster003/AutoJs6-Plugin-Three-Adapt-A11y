@@ -131,20 +131,15 @@ WebView, ミニアプリ, Canvas, 独自描画ページは Android の意味ノ�
 
 ### リリース履歴
 
-#### v1.1.0 - 2026/09/12
+#### v1.2.0 - 2026/09/13
+
+##### 機能
+
+- 画面からローカルのリリース履歴を表示し, 各言語と英語へのフォールバックに対応
 
 ##### 改善
 
-- アプリ, アクセシビリティサービス, プラグインメタデータ, 組み込み説明, README の表現をアプリに依存しないサポートプロファイルへ一般化し, WeChat (`com.tencent.mm`) は現在唯一の検証済みプロファイルとして維持
-- 対象固有のプラグインバリアントを `service-identity` に置き換え, 対応パッケージをコレクションとして公開し, 汎用 UI 操作でインストール済み対応アプリを一覧表示または起動
-- ライトモードとダークモードに対応したアダプティブランチャーアイコンとテーマアイコン用の単色レイヤーを整備
-- A-B-A 手順, 調査入口, プライバシー安全な測定ツールを一般化し, 将来のプロファイル向けに明示的な `targetPackage` 入力を追加
-- IDE とツールチェーンの互換性を中央で選択するため, 古い Android Studio および IntelliJ IDEA 最小バージョンプロパティを削除
-- 意図しないネイティブ依存関係をビルド時に拒否し, JSON レポートを生成
-
-##### 依存関係
-
-- `io.github.supermonster003.autojs6-platform-versions` を 1.7.0 から 1.7.3 に更新し, JDK 25 および 26 のビルドで選択された KGP をルート buildscript classpath に自動整合
+- リリース署名の設定, APK の構成, ドキュメントの再生成結果を検証
 
 [完全なリリース履歴を読む](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-ja.md)
 

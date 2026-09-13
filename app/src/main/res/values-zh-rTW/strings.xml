@@ -12,6 +12,8 @@
     <string name="plugin_description">可選的實驗性伴生外掛程式, 可能協助 AutoJs6 取得支援應用程式的無障礙節點. 它只在本機執行, 忽略所有事件, 不保證所有頁面節點可用</string>
     <string name="privacy_body">服務回呼不執行任何操作. 外掛程式不讀取事件來源, 事件文字, 根節點, 螢幕截圖或使用者內容, 不儲存或分享資料, 也不連線至網路. 服務只接收已發布支援套件名稱的事件.</string>
     <string name="privacy_title">隱私</string>
+    <string name="release_history">發行歷史</string>
+    <string name="release_history_unavailable">發行歷史暫不可用</string>
     <string name="screen_intro">一個可選的實驗性伴生外掛程式, 用於協助 AutoJs6 取得支援應用程式的無障礙節點.</string>
     <string name="service_status_disabled">未啟用</string>
     <string name="service_status_enabled">已啟用</string>
