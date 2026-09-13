@@ -37,7 +37,7 @@ class RepositoryContractInstrumentationTest {
     }
 
     @Test fun discoversExactServiceAndGetsInstalledMetadataOverRealBinder() {
-        val intent = Intent("org.autojs.plugin.INFO").addCategory("android.intent.category.DEFAULT").setPackage(context.packageName)
+        val intent = Intent("org.autojs.plugin.INFO").addCategory("accessibility-compat").setPackage(context.packageName)
         val services = context.packageManager.queryIntentServices(intent, 0)
         assertEquals(listOf("io.github.supermonster003.autojs6.plugin.accessibilitycompat.AccessibilityCompatInfoService"), services.map { it.serviceInfo.name })
         val service = services.single().serviceInfo
