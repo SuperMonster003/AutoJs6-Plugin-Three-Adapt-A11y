@@ -47,6 +47,7 @@ CHANGELOG_LABEL_KEYS = [f"changelog_label_{category}" for category in CHANGELOG_
 README_LIST_KEYS = [
     "architecture_points",
     "install_steps",
+    "settings_points",
     "validation_points",
     "verified_device_points",
     "limit_points",
@@ -328,6 +329,7 @@ def expected_artifacts(root: Path) -> dict[Path, str]:
             "placeholder_language_navigation": navigation,
             "placeholder_architecture_points": bullet_list(localized["architecture_points"]),
             "placeholder_install_steps": numbered_list(localized["install_steps"]),
+            "placeholder_settings_points": bullet_list(localized["settings_points"]),
             "placeholder_validation_points": bullet_list(localized["validation_points"]),
             "placeholder_verified_device_points": bullet_list(localized["verified_device_points"]),
             "placeholder_limit_points": bullet_list(localized["limit_points"]),

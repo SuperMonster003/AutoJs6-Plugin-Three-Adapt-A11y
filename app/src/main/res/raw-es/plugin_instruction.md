@@ -7,11 +7,12 @@ Este es un complemento experimental y opcional. Puede ayudar a AutoJs6 a obtener
 ## Habilitar el servicio
 
 1. Instala AutoJs6 y este complemento.
-2. Habilita manualmente el servicio de AutoJs6 y Compatibilidad de accesibilidad de AutoJs6 en los ajustes de accesibilidad de Android.
-3. Cierra por completo y vuelve a abrir una aplicación objetivo de la lista de soporte, y revisa varias veces la misma página estática.
-4. Deshabilita este servicio en los ajustes del sistema cuando no necesites la compatibilidad.
+2. Abre el complemento y toca la tarjeta de estado para abrir el gestor del servicio de compatibilidad. La política predeterminada, seguir a AutoJs6, mantiene el servicio de compatibilidad habilitado mientras el servicio de accesibilidad de AutoJs6 esté habilitado.
+3. Sin root, WRITE_SECURE_SETTINGS ni Shizuku, habilita manualmente el servicio de AutoJs6 y Compatibilidad de accesibilidad de AutoJs6 en los ajustes de accesibilidad de Android. En cuanto concedas uno de ellos, el complemento aplica por sí mismo la política seleccionada.
+4. Cierra por completo y vuelve a abrir una aplicación objetivo de la lista de soporte, y revisa varias veces la misma página estática.
+5. Elige la política deshabilitado en el gestor, o deshabilita este servicio en los ajustes del sistema, cuando no necesites la compatibilidad.
 
-Android no permite que una aplicación normal habilite silenciosamente un servicio de accesibilidad. Este complemento no intenta eludir esa restricción.
+Android no permite que una aplicación normal habilite silenciosamente un servicio de accesibilidad. Este complemento solo cambia el servicio automáticamente después de que concedas explícitamente root, WRITE_SECURE_SETTINGS o Shizuku, y solo modifica la lista de servicios de accesibilidad habilitados.
 
 ## Mecanismo experimental de compatibilidad
 

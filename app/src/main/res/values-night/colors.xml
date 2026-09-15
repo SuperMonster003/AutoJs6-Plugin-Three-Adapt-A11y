@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="divider">#2B3441</color>
+    <color name="outline">#3A4453</color>
+    <color name="state_positive">#3CC4A6</color>
+    <color name="state_warning">#E0A24C</color>
+    <color name="surface">#1D232D</color>
+    <color name="surface_variant">#2F3947</color>
+    <color name="text_primary">#F0F4FA</color>
+    <color name="text_secondary">#BAC4D3</color>
     <color name="theme_accent">#2DAB97</color>
     <color name="theme_background">#10141B</color>
     <color name="theme_navigation_bar">#10141B</color>

@@ -7,6 +7,23 @@
   "changelog_label_improvement": "Mejora",
   "changelog_label_dependency": "Dependencia",
   "$data": {
+    "v1.3.0": {
+      "released_date": "2026/09/15",
+      "feature": [
+        "Se añade una pantalla de ajustes con opciones de idioma, modo oscuro y color del tema que siguen a AutoJs6 de forma predeterminada, junto con las entradas de mecanismo, privacidad, limitaciones, historial de versiones y acerca de",
+        "Se añade un gestor del servicio de compatibilidad con una política de tres opciones (seguir a AutoJs6, habilitado, deshabilitado) que puede cambiar el servicio mediante root, WRITE_SECURE_SETTINGS o Shizuku, con estado en vivo y un informe copiable",
+        "El servicio sigue automáticamente al servicio de accesibilidad de AutoJs6 mediante una difusión de estado del anfitrión, una tarea activada por la lista de servicios habilitados y comprobaciones al conectar el servicio y al abrir la aplicación",
+        "La política de servicio seleccionada se publica mediante las capacidades de plugin-info y el contrato compartido de complemento de accesibilidad (versión de contrato 3)"
+      ],
+      "improvement": [
+        "Rediseño de la pantalla principal: la tarjeta de estado abre el gestor, las aplicaciones compatibles tienen botón de inicio y los antiguos botones de abrir aplicación, ajustes de accesibilidad y actualizar pasan a la pantalla de ajustes",
+        "Compilación contra la API 37 de Android para coincidir con la API común de complementos actualizada"
+      ],
+      "dependency": [
+        "Se añaden Shizuku API 13.1.5 y AndroidX Annotation 1.10.0",
+        "Se actualiza la API común de complementos incluida para incorporar el contrato de complemento de accesibilidad"
+      ]
+    },
     "v1.2.0": {
       "released_date": "2026/09/13",
       "feature": [

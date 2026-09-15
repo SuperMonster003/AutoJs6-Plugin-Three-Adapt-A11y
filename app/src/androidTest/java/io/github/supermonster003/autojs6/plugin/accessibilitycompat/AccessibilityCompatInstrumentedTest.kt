@@ -17,6 +17,11 @@ import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityManager
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import io.github.supermonster003.autojs6.plugin.accessibilitycompat.settings.CompatSettingsStore
+import io.github.supermonster003.autojs6.plugin.accessibilitycompat.settings.ServicePolicy
+import io.github.supermonster003.autojs6.plugin.accessibilitycompat.sync.HostServiceStateReceiver
+import io.github.supermonster003.autojs6.plugin.accessibilitycompat.sync.SecureSettingsWatchJob
+import org.autojs.plugin.common.api.AutoJs6AccessibilityCompanionContract
 import org.autojs.plugin.common.api.IPluginInfoProvider
 import org.autojs.plugin.common.api.PluginCapabilityKeys
 import org.junit.After
@@ -121,9 +126,13 @@ class AccessibilityCompatInstrumentedTest {
             R.string.accessibility_service_description,
             R.string.plugin_description,
             R.string.screen_intro,
-            R.string.button_open_supported_app,
-            R.string.supported_app_unavailable,
+            R.string.action_open,
+            R.string.value_not_installed,
             R.string.supported_apps_title,
+            R.string.status_card_title,
+            R.string.manager_title,
+            R.string.policy_follow_host_summary,
+            R.string.settings_title,
             R.string.mechanism_body,
             R.string.limitations_body,
             R.string.privacy_body,
@@ -169,7 +178,7 @@ class AccessibilityCompatInstrumentedTest {
     }
 
     @Test
-    fun packageRequestsOnlyPluginPermissionAndNoSensitiveCapabilities() {
+    fun packageRequestsOnlyServiceControlPermissionsAndNoSensitiveCapabilities() {
         val packageInfo = context.packageManager.packageInfo()
         val requested = packageInfo.requestedPermissions.orEmpty().toSet()
         val prohibited = setOf(
@@ -191,12 +200,71 @@ class AccessibilityCompatInstrumentedTest {
             "android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION",
         )
 
-        assertEquals(setOf(AccessibilityCompatContract.PLUGIN_PERMISSION), requested)
+        // WRITE_SECURE_SETTINGS and the Shizuku permission only serve the optional unattended
+        // service control documented in docs/development/service-control.md.
+        assertEquals(
+            setOf(
+                AccessibilityCompatContract.PLUGIN_PERMISSION,
+                Manifest.permission.WRITE_SECURE_SETTINGS,
+                "moe.shizuku.manager.permission.API_V23",
+            ),
+            requested,
+        )
         assertTrue("Sensitive permissions declared: ${requested.intersect(prohibited)}", requested.none { it in prohibited })
         assertEquals(
             0,
             requireNotNull(packageInfo.applicationInfo).flags and ApplicationInfo.FLAG_ALLOW_BACKUP,
         )
+    }
+
+    @Test
+    fun companionComponentsAreDiscoverableAndProtectedByThePluginPermission() {
+        val packageInfo = context.packageManager.packageInfo()
+        val activities = packageInfo.activities.orEmpty().associateBy { it.name }
+        assertFalse(activities.getValue(SettingsActivity::class.java.name).exported)
+        assertFalse(activities.getValue(DocumentActivity::class.java.name).exported)
+
+        val companionIntent = Intent(AccessibilityCompatContract.INFO_ACTION)
+            .addCategory(AccessibilityCompatContract.COMPANION_INFO_CATEGORY)
+            .setPackage(context.packageName)
+        val discovered = context.packageManager.queryIntentServicesCompat(companionIntent).single().serviceInfo
+        assertEquals(AccessibilityCompatInfoService::class.java.name, discovered.name)
+
+        val receivers = packageInfo.receivers.orEmpty().associateBy { it.name }
+        val receiver = receivers.getValue(HostServiceStateReceiver::class.java.name)
+        assertTrue(receiver.exported)
+        assertEquals(AccessibilityCompatContract.PLUGIN_PERMISSION, receiver.permission)
+        val stateIntent = Intent(AccessibilityCompatContract.HOST_SERVICE_STATE_ACTION).setPackage(context.packageName)
+        assertTrue(
+            context.packageManager.queryBroadcastReceiversCompat(stateIntent)
+                .any { it.activityInfo.name == HostServiceStateReceiver::class.java.name },
+        )
+
+        val providers = packageInfo.providers.orEmpty().associateBy { it.authority }
+        val shizukuProvider = providers.getValue("${context.packageName}.shizuku")
+        assertTrue(shizukuProvider.exported)
+        assertEquals("rikka.shizuku.ShizukuProvider", shizukuProvider.name)
+        assertFalse(shizukuProvider.multiprocess)
+
+        val jobs = packageInfo.services.orEmpty().associateBy { it.name }
+        assertEquals(Manifest.permission.BIND_JOB_SERVICE, jobs.getValue(SecureSettingsWatchJob::class.java.name).permission)
+    }
+
+    @Test
+    fun infoServicePublishesTheStoredServicePolicy() {
+        val store = CompatSettingsStore(context)
+        val original = store.load()
+        try {
+            store.save(original.copy(servicePolicy = ServicePolicy.DISABLED))
+            val (_, provider) = bindInfoService()
+            val capabilities = requireNotNull(provider.info.capabilities)
+            assertEquals(
+                AutoJs6AccessibilityCompanionContract.SERVICE_POLICY_DISABLED,
+                capabilities.getString(AccessibilityCompatContract.CAPABILITY_SERVICE_POLICY),
+            )
+        } finally {
+            store.save(original)
+        }
     }
 
     @Test
@@ -301,6 +369,7 @@ class AccessibilityCompatInstrumentedTest {
 
     private fun PackageManager.packageInfo(): PackageInfo {
         val flags = PackageManager.GET_ACTIVITIES or PackageManager.GET_SERVICES or
+            PackageManager.GET_RECEIVERS or PackageManager.GET_PROVIDERS or
             PackageManager.GET_PERMISSIONS or PackageManager.GET_META_DATA
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             getPackageInfo(context.packageName, PackageManager.PackageInfoFlags.of(flags.toLong()))
@@ -316,6 +385,14 @@ class AccessibilityCompatInstrumentedTest {
         } else {
             @Suppress("DEPRECATION")
             queryIntentServices(intent, 0)
+        }
+
+    private fun PackageManager.queryBroadcastReceiversCompat(intent: Intent) =
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            queryBroadcastReceivers(intent, PackageManager.ResolveInfoFlags.of(0))
+        } else {
+            @Suppress("DEPRECATION")
+            queryBroadcastReceivers(intent, 0)
         }
 
     private fun PackageManager.queryIntentActivitiesCompat(intent: Intent) =
