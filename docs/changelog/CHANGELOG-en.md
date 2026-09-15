@@ -12,11 +12,17 @@
 - Add a compatibility service manager with a three-way control policy (Follow AutoJs6, Enabled, Disabled) that can change the service through root, WRITE_SECURE_SETTINGS, or Shizuku, with live state rows and a copyable report
 - Follow the AutoJs6 accessibility service automatically through a host state broadcast, a content-triggered job on the enabled services list, and checks when the service connects or the app opens
 - Publish the selected service policy through the plugin-info capabilities and the shared accessibility companion contract (contract version 3)
+- Add an about screen for the app and developer with the version, package name, open-source license, project page, and feedback links
+
+### Fix
+
+- Row titles and summaries align to the layout direction instead of the text direction, so the Arabic option in the language dialog stays next to its radio button
 
 ### Improvement
 
 - Redesign the main screen: the status card opens the manager, supported apps carry launch buttons, and the former open, accessibility settings, and refresh buttons move into the settings screen
 - Compile against Android API 37 to match the updated common plugin API
+- Align the policy options of the service manager with its other rows, remove the redundant apply-now row because a policy applies as soon as it is chosen, and rebuild the appearance choice dialogs with matching text sizes, insets, and spacing
 
 ### Dependency
 

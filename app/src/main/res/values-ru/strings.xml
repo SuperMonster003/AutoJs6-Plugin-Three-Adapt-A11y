@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="about_developer_summary">Открыть страницу разработчика на GitHub</string>
+    <string name="about_feedback">Обратная связь и проблемы</string>
+    <string name="about_feedback_summary">Сообщить о проблеме или предложить улучшение на GitHub</string>
+    <string name="about_license">Лицензия открытого исходного кода</string>
+    <string name="about_license_summary">Mozilla Public License 2.0</string>
+    <string name="about_package_name">Имя пакета</string>
+    <string name="about_project_page">Страница проекта</string>
+    <string name="about_section_app">Приложение</string>
+    <string name="about_section_developer">Разработчик</string>
+    <string name="about_version">Версия</string>
+    <string name="about_version_value">%1$s (сборка %2$d)</string>
     <string name="accessibility_service_description">Экспериментальный локальный триггер совместимости специальных возможностей для опубликованных профилей поддержки. Служба не читает и не сохраняет события или узлы специальных возможностей.</string>
     <string name="accessibility_service_name">Служба совместимости AutoJs6</string>
-    <string name="action_apply_now">Применить сейчас</string>
-    <string name="action_apply_now_summary">Повторно проверить текущее состояние и применить выбранную политику</string>
     <string name="action_close">Закрыть</string>
     <string name="action_copy">Копировать</string>
     <string name="action_open">Открыть</string>
@@ -29,6 +38,7 @@
     <string name="language_name_zh_hant_tw">繁體中文 (台灣)</string>
     <string name="limitations_body">Совместимость зависит от версии и страницы целевого приложения и устройства и может перестать работать после обновления. Служба не может создать семантические узлы, которые страница не предоставляет. Элементы WebView, Canvas и интерфейсов с собственной отрисовкой могут остаться недоступными.</string>
     <string name="limitations_title">Ограничения</string>
+    <string name="link_unavailable">Не удалось открыть эту ссылку.</string>
     <string name="manager_section_automation">Автоматическое управление</string>
     <string name="manager_section_control">Политика управления</string>
     <string name="manager_section_state">Состояние</string>
@@ -45,14 +55,13 @@
     <string name="policy_follow_host_summary">Включать службу совместимости только пока включена служба специальных возможностей AutoJs6</string>
     <string name="privacy_body">Обратный вызов службы не выполняет никаких действий. Плагин не читает источники или текст событий, корневые узлы, снимки экрана или пользовательские данные. Он не сохраняет и не передает данные и не использует сеть. Служба получает события только от пакетов из опубликованного списка поддержки. Если вы это разрешили, приложение изменяет только список включенных служб специальных возможностей через root, защищенные настройки или Shizuku и не затрагивает другие настройки.</string>
     <string name="privacy_title">Конфиденциальность</string>
-    <string name="project_page_unavailable">Не удалось открыть страницу проекта.</string>
     <string name="release_history">История выпусков</string>
     <string name="release_history_unavailable">История выпусков недоступна</string>
     <string name="screen_intro">Необязательный экспериментальный компонент, который может помочь AutoJs6 получать узлы специальных возможностей из поддерживаемых приложений.</string>
     <string name="secure_settings_grant_body">Выполните эту команду на компьютере с ADB или в root shell на устройстве, затем снова откройте менеджер:\n\n%1$s</string>
     <string name="secure_settings_grant_title">Выдать доступ к защищенным настройкам</string>
-    <string name="settings_about">О приложении</string>
-    <string name="settings_about_summary">Версия %1$s, разработчик %2$s. Нажмите, чтобы открыть страницу проекта</string>
+    <string name="settings_about">О приложении и разработчике</string>
+    <string name="settings_about_summary">Сведения о версии, проекте, разработчике и лицензии</string>
     <string name="settings_dark">Темная</string>
     <string name="settings_dark_mode">Темная тема</string>
     <string name="settings_follow_autojs6">Следовать AutoJs6</string>

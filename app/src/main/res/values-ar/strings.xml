@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="about_developer_summary">فتح صفحة المطور على GitHub</string>
+    <string name="about_feedback">الملاحظات والمشكلات</string>
+    <string name="about_feedback_summary">الإبلاغ عن مشكلة أو اقتراح تحسين على GitHub</string>
+    <string name="about_license">رخصة المصدر المفتوح</string>
+    <string name="about_license_summary">Mozilla Public License 2.0</string>
+    <string name="about_package_name">اسم الحزمة</string>
+    <string name="about_project_page">صفحة المشروع</string>
+    <string name="about_section_app">التطبيق</string>
+    <string name="about_section_developer">المطور</string>
+    <string name="about_version">الإصدار</string>
+    <string name="about_version_value">%1$s (البنية %2$d)</string>
     <string name="accessibility_service_description">مشغل محلي تجريبي لتوافق إمكانية الوصول مع ملفات الدعم المنشورة. لا تقرأ الخدمة أحداث إمكانية الوصول أو العقد ولا تخزنها.</string>
     <string name="accessibility_service_name">خدمة توافق إمكانية الوصول من AutoJs6</string>
-    <string name="action_apply_now">تطبيق الآن</string>
-    <string name="action_apply_now_summary">إعادة فحص الحالة الحالية وتطبيق السياسة المحددة</string>
     <string name="action_close">إغلاق</string>
     <string name="action_copy">نسخ</string>
     <string name="action_open">فتح</string>
@@ -29,6 +38,7 @@
     <string name="language_name_zh_hant_tw">繁體中文 (台灣)</string>
     <string name="limitations_body">يعتمد التوافق على إصدار التطبيق المستهدف وصفحته والجهاز, وقد يتوقف بعد أي تحديث. لا تستطيع هذه الخدمة إنشاء عقد دلالية لا تعرضها الصفحة أصلا. قد تظل عناصر WebView و Canvas والواجهات المرسومة يدويا غير متاحة.</string>
     <string name="limitations_title">القيود</string>
+    <string name="link_unavailable">تعذر فتح هذا الرابط.</string>
     <string name="manager_section_automation">التحكم التلقائي</string>
     <string name="manager_section_control">سياسة التحكم</string>
     <string name="manager_section_state">الحالة</string>
@@ -45,14 +55,13 @@
     <string name="policy_follow_host_summary">تفعيل خدمة التوافق فقط ما دامت خدمة إمكانية الوصول في AutoJs6 مفعلة</string>
     <string name="privacy_body">رد نداء الخدمة لا ينفذ أي عملية. لا يقرأ المكون الإضافي مصادر الأحداث أو نصوصها أو العقد الجذرية أو لقطات الشاشة أو محتوى المستخدم. لا يخزن البيانات ولا يشاركها ولا يتصل بالشبكة. تستقبل الخدمة الأحداث فقط من الحزم المدرجة في قائمة الدعم المنشورة. عندما تسمح بذلك, لا يغير التطبيق سوى قائمة خدمات إمكانية الوصول المفعلة عبر root أو الإعدادات الآمنة أو Shizuku, ولا يمس أي إعدادات أخرى.</string>
     <string name="privacy_title">الخصوصية</string>
-    <string name="project_page_unavailable">تعذر فتح صفحة المشروع.</string>
     <string name="release_history">سجل الإصدارات</string>
     <string name="release_history_unavailable">سجل الإصدارات غير متاح</string>
     <string name="screen_intro">مكون إضافي تجريبي اختياري قد يساعد AutoJs6 على استرداد عقد إمكانية الوصول من التطبيقات المدعومة.</string>
     <string name="secure_settings_grant_body">نفذ هذا الأمر على حاسوب متصل عبر ADB أو في root shell على الجهاز, ثم أعد فتح المدير:\n\n%1$s</string>
     <string name="secure_settings_grant_title">منح الوصول إلى الإعدادات الآمنة</string>
-    <string name="settings_about">حول</string>
-    <string name="settings_about_summary">الإصدار %1$s من %2$s. انقر لفتح صفحة المشروع</string>
+    <string name="settings_about">حول التطبيق والمطور</string>
+    <string name="settings_about_summary">معلومات الإصدار والمشروع والمطور والرخصة</string>
     <string name="settings_dark">داكن</string>
     <string name="settings_dark_mode">الوضع الداكن</string>
     <string name="settings_follow_autojs6">اتباع AutoJs6</string>

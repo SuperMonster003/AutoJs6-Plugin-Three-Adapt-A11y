@@ -57,6 +57,11 @@
             android:exported="false" />
 
         <activity
+            android:name=".AboutActivity"
+            android:exported="false"
+            android:label="@string/settings_about" />
+
+        <activity
             android:name=".WakeActivity"
             android:excludeFromRecents="true"
             android:exported="true"

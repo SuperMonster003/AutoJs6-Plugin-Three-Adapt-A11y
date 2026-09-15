@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="about_developer_summary">Ouvrir la page du développeur sur GitHub</string>
+    <string name="about_feedback">Commentaires et problèmes</string>
+    <string name="about_feedback_summary">Signaler un problème ou proposer une amélioration sur GitHub</string>
+    <string name="about_license">Licence open source</string>
+    <string name="about_license_summary">Mozilla Public License 2.0</string>
+    <string name="about_package_name">Nom du paquet</string>
+    <string name="about_project_page">Page du projet</string>
+    <string name="about_section_app">Application</string>
+    <string name="about_section_developer">Développeur</string>
+    <string name="about_version">Version</string>
+    <string name="about_version_value">%1$s (build %2$d)</string>
     <string name="accessibility_service_description">Déclencheur local et expérimental de compatibilité d\'accessibilité pour les profils publiés. Le service ne lit ni ne stocke les événements ou les noeuds d\'accessibilité.</string>
     <string name="accessibility_service_name">Compatibilité d\'accessibilité AutoJs6</string>
-    <string name="action_apply_now">Appliquer maintenant</string>
-    <string name="action_apply_now_summary">Vérifier de nouveau l\'état actuel et appliquer la politique choisie</string>
     <string name="action_close">Fermer</string>
     <string name="action_copy">Copier</string>
     <string name="action_open">Ouvrir</string>
@@ -29,6 +38,7 @@
     <string name="language_name_zh_hant_tw">繁體中文 (台灣)</string>
     <string name="limitations_body">La compatibilité dépend de la version et de la page de l\'application cible ainsi que de l\'appareil, et peut cesser de fonctionner après une mise à jour. Ce service ne peut pas créer les noeuds sémantiques que la page ne publie pas. Les contrôles de WebView, de Canvas et des interfaces dessinées sur mesure peuvent rester indisponibles.</string>
     <string name="limitations_title">Limites</string>
+    <string name="link_unavailable">Impossible d\'ouvrir ce lien.</string>
     <string name="manager_section_automation">Contrôle automatique</string>
     <string name="manager_section_control">Politique de contrôle</string>
     <string name="manager_section_state">État</string>
@@ -45,14 +55,13 @@
     <string name="policy_follow_host_summary">Activer le service de compatibilité uniquement tant que le service d\'accessibilité AutoJs6 est activé</string>
     <string name="privacy_body">Le rappel du service est sans effet. Le plugin ne lit pas les sources ou les textes des événements, les noeuds racines, les captures d\'écran ou le contenu utilisateur. Il ne stocke ni ne partage de données et ne se connecte pas au réseau. Le service reçoit uniquement les événements des paquets figurant dans la liste de support publiée. Lorsque vous l\'autorisez, l\'application ne modifie que la liste des services d\'accessibilité activés via root, les paramètres sécurisés ou Shizuku, et ne touche jamais aux autres paramètres.</string>
     <string name="privacy_title">Confidentialité</string>
-    <string name="project_page_unavailable">Impossible d\'ouvrir la page du projet.</string>
     <string name="release_history">Historique des versions</string>
     <string name="release_history_unavailable">L\'historique des versions est indisponible</string>
     <string name="screen_intro">Un compagnon expérimental et facultatif qui peut aider AutoJs6 à obtenir les noeuds d\'accessibilité des applications compatibles.</string>
     <string name="secure_settings_grant_body">Exécutez cette commande sur un ordinateur avec ADB, ou dans un shell root sur l\'appareil, puis rouvrez le gestionnaire:\n\n%1$s</string>
     <string name="secure_settings_grant_title">Accorder l\'accès aux paramètres sécurisés</string>
-    <string name="settings_about">À propos</string>
-    <string name="settings_about_summary">Version %1$s par %2$s. Appuyez pour ouvrir la page du projet</string>
+    <string name="settings_about">À propos de l\'application et du développeur</string>
+    <string name="settings_about_summary">Informations sur la version, le projet, le développeur et la licence</string>
     <string name="settings_dark">Sombre</string>
     <string name="settings_dark_mode">Mode sombre</string>
     <string name="settings_follow_autojs6">Suivre AutoJs6</string>

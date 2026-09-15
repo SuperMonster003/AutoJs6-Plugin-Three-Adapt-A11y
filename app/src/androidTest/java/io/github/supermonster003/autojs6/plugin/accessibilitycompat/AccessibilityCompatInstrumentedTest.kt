@@ -223,6 +223,7 @@ class AccessibilityCompatInstrumentedTest {
         val activities = packageInfo.activities.orEmpty().associateBy { it.name }
         assertFalse(activities.getValue(SettingsActivity::class.java.name).exported)
         assertFalse(activities.getValue(DocumentActivity::class.java.name).exported)
+        assertFalse(activities.getValue(AboutActivity::class.java.name).exported)
 
         val companionIntent = Intent(AccessibilityCompatContract.INFO_ACTION)
             .addCategory(AccessibilityCompatContract.COMPANION_INFO_CATEGORY)
@@ -247,7 +248,7 @@ class AccessibilityCompatInstrumentedTest {
         assertFalse(shizukuProvider.multiprocess)
 
         val jobs = packageInfo.services.orEmpty().associateBy { it.name }
-        assertEquals(Manifest.permission.BIND_JOB_SERVICE, jobs.getValue(SecureSettingsWatchJob::class.java.name).permission)
+        assertEquals("android.permission.BIND_JOB_SERVICE", jobs.getValue(SecureSettingsWatchJob::class.java.name).permission)
     }
 
     @Test
