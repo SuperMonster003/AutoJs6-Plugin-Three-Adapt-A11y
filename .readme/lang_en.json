@@ -18,11 +18,19 @@
   "install_steps": [
     "Confirm that the device runs {{ minimum_android }} or later and that the AutoJs6 internal build is at least {{ required_host_build }}.",
     "Install the APK only from this project's [Releases]({{ repo_url }}/releases) or a trusted AutoJs6 plugin entry.",
-    "Open Accessibility Compat, verify its real name and purpose, then follow the prompt to Android accessibility settings.",
-    "Manually enable the accessibility service listed under Accessibility Compat. Android's risk warning is expected. Do not bypass consent with ADB.",
+    "Open Accessibility Compat, verify its real name and purpose, then tap the status card to open the compatibility service manager. The default policy, Follow AutoJs6, keeps the service enabled only while the AutoJs6 accessibility service is enabled.",
+    "Without root access, WRITE_SECURE_SETTINGS, or Shizuku, enable the accessibility service listed under Accessibility Compat manually in Android settings; Android's risk warning is expected. With one of them granted on purpose, the app applies the selected policy itself and touches no other setting.",
     "Keep the AutoJs6 accessibility service enabled as well, reopen a target page listed in a support profile, and inspect nodes from the AutoJs6 layout inspector or a script."
   ],
-  "p_disable": "Installing the APK alone has no effect. Disable the compatibility service in Android settings when it is not needed, or uninstall the app when finished.",
+  "p_disable": "Installing the APK alone has no effect. Select the Disabled policy or disable the compatibility service in Android settings when it is not needed, or uninstall the app when finished.",
+  "h3_settings": "Settings and Service Control",
+  "p_settings": "The settings screen groups generic options that can follow AutoJs6, and the compatibility service manager decides when the service runs:",
+  "settings_points": [
+    "Language, dark mode, and theme color default to Follow AutoJs6 and are read from the AutoJs6 settings contract; without AutoJs6 they fall back to the system or built-in values.",
+    "The control policy is a three-way choice: Follow AutoJs6 (default), Enabled, or Disabled. Follow AutoJs6 keeps the compatibility service in the same state as the AutoJs6 accessibility service and re-checks it when AutoJs6 reports a change, when the system list of enabled services changes, and when the app opens.",
+    "Automatic changes use root, WRITE_SECURE_SETTINGS (granted with `adb shell pm grant`), or Shizuku, and each method can be switched off. Without any of them the app only opens the system accessibility settings.",
+    "The manager shows the live state of both services and of each method, copies a diagnostic report, and opens the Android settings page of the service."
+  ],
   "h3_validation": "A-B-A Device Validation",
   "p_validation": "Do not treat one successful dump as proof. Run an A-B-A comparison on the same static page before attributing a change to this service:",
   "validation_points": [
@@ -53,9 +61,9 @@
   "privacy_points": [
     "Compatibility callbacks do not read event sources, event text, the active-window root, or screen images.",
     "The app does not upload, persist, or log target-app page content and contains no networking or analytics feature.",
-    "The app requests no storage, overlay, camera, microphone, or media permission.",
+    "The app requests no storage, overlay, camera, microphone, or media permission. It declares WRITE_SECURE_SETTINGS and the Shizuku permission only for optional service control, and both stay inactive until you grant them.",
     "The plugin-info Binder reports only version, identity, and capability metadata. It never transfers a node tree.",
-    "Users explicitly enable and disable the service in Android settings. The project never changes that setting silently."
+    "The compatibility service changes only according to the control policy you selected, through root, secure settings, or Shizuku when you allowed them. The app never modifies any other system setting and never enables the AutoJs6 service."
   ],
   "h3_ethics": "Ethics and Compliance",
   "p_ethics": "Accessibility compatibility should only help users automate interfaces they are authorized to operate. The user remains responsible for script behavior and account consequences.",
@@ -75,7 +83,7 @@
     },
     {
       "q": "Why did nothing change after installation?",
-      "a": "Android does not let an app enable its own accessibility service. The user must enable the compatibility service in system settings and also enable AutoJs6. If nothing changes, use the A-B-A protocol to determine whether the current target-app version and page are supported."
+      "a": "Without root access, WRITE_SECURE_SETTINGS, or Shizuku, Android does not let an app enable its own accessibility service, so enable the compatibility service in system settings and also enable AutoJs6. With one of them available, the compatibility service manager applies the selected policy for you. If nothing changes, use the A-B-A protocol to determine whether the current target-app version and page are supported."
     },
     {
       "q": "Why are text nodes still missing on a supported page?",

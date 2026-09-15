@@ -7,11 +7,12 @@ Ce compagnon expérimental et facultatif peut aider AutoJs6 à obtenir des noeud
 ## Activer le service
 
 1. Installez AutoJs6 et ce compagnon.
-2. Activez manuellement le service AutoJs6 et Compatibilité d'accessibilité AutoJs6 dans les paramètres d'accessibilité Android.
-3. Fermez complètement puis rouvrez une application cible de la liste de support, et inspectez plusieurs fois la même page statique.
-4. Désactivez ce service dans les paramètres système lorsque la compatibilité n'est pas nécessaire.
+2. Ouvrez le compagnon et touchez la carte d'état pour ouvrir le gestionnaire du service de compatibilité. La politique par défaut, suivre AutoJs6, garde le service de compatibilité activé tant que le service d'accessibilité AutoJs6 est activé.
+3. Sans root, WRITE_SECURE_SETTINGS ni Shizuku, activez manuellement le service AutoJs6 et Compatibilité d'accessibilité AutoJs6 dans les paramètres d'accessibilité Android. Dès que l'un d'eux est accordé, le compagnon applique lui-même la politique choisie.
+4. Fermez complètement puis rouvrez une application cible de la liste de support, et inspectez plusieurs fois la même page statique.
+5. Choisissez la politique désactivé dans le gestionnaire, ou désactivez ce service dans les paramètres système, lorsque la compatibilité n'est pas nécessaire.
 
-Android ne permet pas à une application ordinaire d'activer silencieusement un service d'accessibilité. Ce compagnon ne tente pas de contourner cette restriction.
+Android ne permet pas à une application ordinaire d'activer silencieusement un service d'accessibilité. Ce compagnon ne change le service automatiquement qu'après que vous avez explicitement accordé root, WRITE_SECURE_SETTINGS ou Shizuku, et il ne modifie que la liste des services d'accessibilité activés.
 
 ## Mécanisme de compatibilité expérimental
 

@@ -75,6 +75,12 @@ android {
 dependencies {
     implementation(files("$rootDir/libs/common-plugin-api.aar"))
 
+    implementation(libs.androidx.annotation)
+
+    // Optional unattended service control through Shizuku; see docs/development/service-control.md.
+    implementation(libs.shizuku.api)
+    implementation(libs.shizuku.provider)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.test.ext.junit)
     androidTestImplementation(libs.test.runner)

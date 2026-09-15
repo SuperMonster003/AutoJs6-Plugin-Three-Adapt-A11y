@@ -38,6 +38,12 @@
 
 {{ p_disable }}
 
+### {{ h3_settings }}
+
+{{ p_settings }}
+
+{{ placeholder_settings_points }}
+
 ### {{ h3_validation }}
 
 {{ p_validation }}

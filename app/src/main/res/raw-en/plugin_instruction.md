@@ -7,11 +7,12 @@ This is an optional experimental companion. It may help AutoJs6 retrieve more no
 ## Enable the service
 
 1. Install AutoJs6 and this companion.
-2. Manually enable both the AutoJs6 service and AutoJs6 Accessibility Compat in Android accessibility settings.
-3. Fully exit and reopen a target app from the support list, then inspect the same static page several times.
-4. Disable this service in system settings when compatibility is not needed.
+2. Open the companion and tap the status card to open the compatibility service manager. The default policy, Follow AutoJs6, keeps the compatibility service enabled whenever the AutoJs6 accessibility service is enabled.
+3. Without root access, WRITE_SECURE_SETTINGS, or Shizuku, manually enable both the AutoJs6 service and AutoJs6 Accessibility Compat in Android accessibility settings. Once one of them is granted, the companion applies the selected policy itself.
+4. Fully exit and reopen a target app from the support list, then inspect the same static page several times.
+5. Select the Disabled policy in the manager, or disable this service in system settings, when compatibility is not needed.
 
-Android does not let an ordinary app silently enable an accessibility service. This companion does not attempt to bypass that restriction.
+Android does not let an ordinary app silently enable an accessibility service. This companion changes the service automatically only after you explicitly grant root access, WRITE_SECURE_SETTINGS, or Shizuku, and it modifies only the list of enabled accessibility services.
 
 ## Experimental compatibility mechanism
 

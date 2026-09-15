@@ -4,6 +4,25 @@
 
 > Page language: English
 
+## v1.3.0 - 2026/09/15
+
+### Feature
+
+- Add a settings screen with language, dark mode, and theme color options that follow AutoJs6 by default, plus mechanism, privacy, limitations, release history, and about entries
+- Add a compatibility service manager with a three-way control policy (Follow AutoJs6, Enabled, Disabled) that can change the service through root, WRITE_SECURE_SETTINGS, or Shizuku, with live state rows and a copyable report
+- Follow the AutoJs6 accessibility service automatically through a host state broadcast, a content-triggered job on the enabled services list, and checks when the service connects or the app opens
+- Publish the selected service policy through the plugin-info capabilities and the shared accessibility companion contract (contract version 3)
+
+### Improvement
+
+- Redesign the main screen: the status card opens the manager, supported apps carry launch buttons, and the former open, accessibility settings, and refresh buttons move into the settings screen
+- Compile against Android API 37 to match the updated common plugin API
+
+### Dependency
+
+- Add Shizuku API 13.1.5 and AndroidX Annotation 1.10.0
+- Update the bundled common plugin API to include the accessibility companion contract
+
 ## v1.2.0 - 2026/09/13
 
 ### Feature

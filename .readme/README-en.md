@@ -39,11 +39,20 @@ The project isolates application compatibility profiles in a separate APK and le
 
 1. Confirm that the device runs Android 7.0 (API 24) or later and that the AutoJs6 internal build is at least 3923.
 2. Install the APK only from this project's [Releases](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/releases) or a trusted AutoJs6 plugin entry.
-3. Open Accessibility Compat, verify its real name and purpose, then follow the prompt to Android accessibility settings.
-4. Manually enable the accessibility service listed under Accessibility Compat. Android's risk warning is expected. Do not bypass consent with ADB.
+3. Open Accessibility Compat, verify its real name and purpose, then tap the status card to open the compatibility service manager. The default policy, Follow AutoJs6, keeps the service enabled only while the AutoJs6 accessibility service is enabled.
+4. Without root access, WRITE_SECURE_SETTINGS, or Shizuku, enable the accessibility service listed under Accessibility Compat manually in Android settings; Android's risk warning is expected. With one of them granted on purpose, the app applies the selected policy itself and touches no other setting.
 5. Keep the AutoJs6 accessibility service enabled as well, reopen a target page listed in a support profile, and inspect nodes from the AutoJs6 layout inspector or a script.
 
-Installing the APK alone has no effect. Disable the compatibility service in Android settings when it is not needed, or uninstall the app when finished.
+Installing the APK alone has no effect. Select the Disabled policy or disable the compatibility service in Android settings when it is not needed, or uninstall the app when finished.
+
+### Settings and Service Control
+
+The settings screen groups generic options that can follow AutoJs6, and the compatibility service manager decides when the service runs:
+
+- Language, dark mode, and theme color default to Follow AutoJs6 and are read from the AutoJs6 settings contract; without AutoJs6 they fall back to the system or built-in values.
+- The control policy is a three-way choice: Follow AutoJs6 (default), Enabled, or Disabled. Follow AutoJs6 keeps the compatibility service in the same state as the AutoJs6 accessibility service and re-checks it when AutoJs6 reports a change, when the system list of enabled services changes, and when the app opens.
+- Automatic changes use root, WRITE_SECURE_SETTINGS (granted with `adb shell pm grant`), or Shizuku, and each method can be switched off. Without any of them the app only opens the system accessibility settings.
+- The manager shows the live state of both services and of each method, copies a diagnostic report, and opens the Android settings page of the service.
 
 ### A-B-A Device Validation
 
@@ -80,9 +89,9 @@ This verifies the compatibility trigger for that device, WeChat build, and Launc
 
 - Compatibility callbacks do not read event sources, event text, the active-window root, or screen images.
 - The app does not upload, persist, or log target-app page content and contains no networking or analytics feature.
-- The app requests no storage, overlay, camera, microphone, or media permission.
+- The app requests no storage, overlay, camera, microphone, or media permission. It declares WRITE_SECURE_SETTINGS and the Shizuku permission only for optional service control, and both stay inactive until you grant them.
 - The plugin-info Binder reports only version, identity, and capability metadata. It never transfers a node tree.
-- Users explicitly enable and disable the service in Android settings. The project never changes that setting silently.
+- The compatibility service changes only according to the control policy you selected, through root, secure settings, or Shizuku when you allowed them. The app never modifies any other system setting and never enables the AutoJs6 service.
 
 ### Ethics and Compliance
 
@@ -113,7 +122,7 @@ No. Only the accessibility service implementation class name is used for the com
 
 #### Why did nothing change after installation?
 
-Android does not let an app enable its own accessibility service. The user must enable the compatibility service in system settings and also enable AutoJs6. If nothing changes, use the A-B-A protocol to determine whether the current target-app version and page are supported.
+Without root access, WRITE_SECURE_SETTINGS, or Shizuku, Android does not let an app enable its own accessibility service, so enable the compatibility service in system settings and also enable AutoJs6. With one of them available, the compatibility service manager applies the selected policy for you. If nothing changes, use the A-B-A protocol to determine whether the current target-app version and page are supported.
 
 #### Why are text nodes still missing on a supported page?
 
@@ -131,15 +140,24 @@ The research note covers AutoJs6 #289, #382, #432, #463, #520, and #521, GKD `47
 
 ### Release History
 
-#### v1.2.0 - 2026/09/13
+#### v1.3.0 - 2026/09/15
 
 ##### Feature
 
-- Local release history is available from the interface, with localized text and an English fallback
+- Add a settings screen with language, dark mode, and theme color options that follow AutoJs6 by default, plus mechanism, privacy, limitations, release history, and about entries
+- Add a compatibility service manager with a three-way control policy (Follow AutoJs6, Enabled, Disabled) that can change the service through root, WRITE_SECURE_SETTINGS, or Shizuku, with live state rows and a copyable report
+- Follow the AutoJs6 accessibility service automatically through a host state broadcast, a content-triggered job on the enabled services list, and checks when the service connects or the app opens
+- Publish the selected service policy through the plugin-info capabilities and the shared accessibility companion contract (contract version 3)
 
 ##### Improvement
 
-- Release packages are checked for a complete signing configuration, exact APK contents and reproducible documentation
+- Redesign the main screen: the status card opens the manager, supported apps carry launch buttons, and the former open, accessibility settings, and refresh buttons move into the settings screen
+- Compile against Android API 37 to match the updated common plugin API
+
+##### Dependency
+
+- Add Shizuku API 13.1.5 and AndroidX Annotation 1.10.0
+- Update the bundled common plugin API to include the accessibility companion contract
 
 [Read the complete release history](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-en.md)
 

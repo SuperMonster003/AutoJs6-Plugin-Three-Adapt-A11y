@@ -18,11 +18,19 @@
   "install_steps": [
     "Vérifiez que l'appareil utilise {{ minimum_android }} ou une version ultérieure et qu'AutoJs6 porte au moins le numéro de build interne {{ required_host_build }}.",
     "Installez l'APK uniquement depuis les [Releases]({{ repo_url }}/releases) du projet ou une entrée de plugin AutoJs6 de confiance.",
-    "Ouvrez Accessibility Compat, vérifiez son nom et son objectif réels, puis suivez l'invite vers les paramètres d'accessibilité Android.",
-    "Activez manuellement le service d'accessibilité affiché sous Accessibility Compat. L'avertissement de risque d'Android est normal. Ne contournez pas le consentement avec ADB.",
+    "Ouvrez Accessibility Compat, vérifiez son nom et son objectif réels, puis touchez la carte d'état pour ouvrir le gestionnaire du service de compatibilité. La politique par défaut, suivre AutoJs6, garde le service activé uniquement tant que le service d'accessibilité AutoJs6 est activé.",
+    "Sans root, WRITE_SECURE_SETTINGS ni Shizuku, activez manuellement le service d'accessibilité affiché sous Accessibility Compat dans les paramètres Android; l'avertissement de risque d'Android est normal. Si vous accordez volontairement l'un d'eux, l'application applique elle-même la politique choisie sans toucher à aucun autre réglage.",
     "Laissez aussi le service d'accessibilité AutoJs6 actif, rouvrez une page cible indiquée dans un profil de support, puis inspectez les noeuds avec l'analyseur de disposition AutoJs6 ou un script."
   ],
-  "p_disable": "L'installation seule de l'APK n'a aucun effet. Désactivez le service dans les paramètres Android lorsqu'il est inutile, ou désinstallez l'application après usage.",
+  "p_disable": "L'installation seule de l'APK n'a aucun effet. Choisissez la politique désactivé ou désactivez le service dans les paramètres Android lorsqu'il est inutile, ou désinstallez l'application après usage.",
+  "h3_settings": "Paramètres et contrôle du service",
+  "p_settings": "L'écran des paramètres regroupe des options générales qui peuvent suivre AutoJs6, et le gestionnaire du service de compatibilité décide quand le service fonctionne:",
+  "settings_points": [
+    "La langue, le mode sombre et la couleur du thème suivent AutoJs6 par défaut et sont lus depuis le contrat de paramètres d'AutoJs6; sans AutoJs6, ils reviennent aux valeurs du système ou intégrées.",
+    "La politique de contrôle offre trois choix: suivre AutoJs6 (par défaut), activé ou désactivé. Suivre AutoJs6 maintient le service de compatibilité dans le même état que le service d'accessibilité AutoJs6 et le revérifie lorsqu'AutoJs6 signale un changement, lorsque la liste système des services activés change et à l'ouverture de l'application.",
+    "Les changements automatiques passent par root, WRITE_SECURE_SETTINGS (accordé avec `adb shell pm grant`) ou Shizuku, et chaque méthode peut être désactivée. Sans aucune d'elles, l'application ouvre seulement les paramètres d'accessibilité du système.",
+    "Le gestionnaire affiche l'état en direct des deux services et de chaque méthode, copie un rapport de diagnostic et ouvre la page des paramètres Android du service."
+  ],
   "h3_validation": "Validation A-B-A sur appareil",
   "p_validation": "Ne prenez pas un seul dump réussi pour une preuve. Comparez A-B-A sur la même page statique avant d'attribuer un changement au service:",
   "validation_points": [
@@ -53,9 +61,9 @@
   "privacy_points": [
     "Les rappels de compatibilité ne lisent ni la source ni le texte des événements, ni la racine de la fenêtre active, ni l'image de l'écran.",
     "L'application ne téléverse, ne stocke et ne journalise pas le contenu des pages des applications cibles, et ne contient aucune fonction réseau ou analytique.",
-    "L'application ne demande aucune permission de stockage, de superposition, de caméra, de microphone ou de média.",
+    "L'application ne demande aucune permission de stockage, de superposition, de caméra, de microphone ou de média. Elle déclare WRITE_SECURE_SETTINGS et la permission Shizuku uniquement pour le contrôle optionnel du service, et les deux restent inactives tant que vous ne les accordez pas.",
     "Le Binder d'informations rapporte seulement les métadonnées de version, d'identité et de capacités. Il ne transfère jamais d'arbre de noeuds.",
-    "L'utilisateur active et désactive explicitement le service dans Android. Le projet ne modifie jamais ce réglage en silence."
+    "Le service de compatibilité ne change que selon la politique de contrôle que vous avez choisie, via root, les paramètres sécurisés ou Shizuku lorsque vous les avez autorisés. L'application ne modifie jamais un autre réglage système et n'active jamais le service AutoJs6."
   ],
   "h3_ethics": "Éthique et conformité",
   "p_ethics": "La compatibilité d'accessibilité doit uniquement aider un utilisateur à automatiser une interface qu'il est autorisé à utiliser. L'utilisateur reste responsable du script et des conséquences pour son compte.",
@@ -75,7 +83,7 @@
     },
     {
       "q": "Pourquoi rien ne change après l'installation?",
-      "a": "Android interdit à une application d'activer elle-même son service d'accessibilité. L'utilisateur doit activer le service de compatibilité et AutoJs6 dans les paramètres. Si rien ne change, utilisez le protocole A-B-A pour tester la version et la page actuelles de l'application cible."
+      "a": "Sans root, WRITE_SECURE_SETTINGS ni Shizuku, Android interdit à une application d'activer elle-même son service d'accessibilité: activez alors le service de compatibilité et AutoJs6 dans les paramètres. Si l'un d'eux est disponible, le gestionnaire du service de compatibilité applique la politique choisie pour vous. Si rien ne change, utilisez le protocole A-B-A pour tester la version et la page actuelles de l'application cible."
     },
     {
       "q": "Pourquoi les noeuds texte manquent-ils encore sur une page prise en charge?",
