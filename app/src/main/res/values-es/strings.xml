@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="about_developer_summary">Abrir la página del desarrollador en GitHub</string>
+    <string name="about_feedback">Comentarios y problemas</string>
+    <string name="about_feedback_summary">Informar de un problema o proponer una mejora en GitHub</string>
+    <string name="about_license">Licencia de código abierto</string>
+    <string name="about_license_summary">Mozilla Public License 2.0</string>
+    <string name="about_package_name">Nombre del paquete</string>
+    <string name="about_project_page">Página del proyecto</string>
+    <string name="about_section_app">Aplicación</string>
+    <string name="about_section_developer">Desarrollador</string>
+    <string name="about_version">Versión</string>
+    <string name="about_version_value">%1$s (compilación %2$d)</string>
     <string name="accessibility_service_description">Activador local y experimental de compatibilidad de accesibilidad para perfiles de soporte publicados. El servicio no lee ni guarda eventos o nodos de accesibilidad.</string>
     <string name="accessibility_service_name">Compatibilidad de accesibilidad de AutoJs6</string>
-    <string name="action_apply_now">Aplicar ahora</string>
-    <string name="action_apply_now_summary">Volver a comprobar el estado actual y aplicar la política seleccionada</string>
     <string name="action_close">Cerrar</string>
     <string name="action_copy">Copiar</string>
     <string name="action_open">Abrir</string>
@@ -29,6 +38,7 @@
     <string name="language_name_zh_hant_tw">繁體中文 (台灣)</string>
     <string name="limitations_body">La compatibilidad depende de la versión y la página de la aplicación objetivo y del dispositivo, y puede dejar de funcionar tras una actualización. Este servicio no puede crear nodos semánticos que una página no exponga. Es posible que los controles de WebView, Canvas y las interfaces dibujadas de forma personalizada sigan sin estar disponibles.</string>
     <string name="limitations_title">Limitaciones</string>
+    <string name="link_unavailable">No se puede abrir este enlace.</string>
     <string name="manager_section_automation">Control automático</string>
     <string name="manager_section_control">Política de control</string>
     <string name="manager_section_state">Estado</string>
@@ -45,14 +55,13 @@
     <string name="policy_follow_host_summary">Habilitar el servicio de compatibilidad solo mientras el servicio de accesibilidad de AutoJs6 esté habilitado</string>
     <string name="privacy_body">La llamada del servicio no realiza ninguna operación. El complemento no lee fuentes o textos de eventos, nodos raíz, capturas de pantalla ni contenido del usuario. No guarda ni comparte datos y no accede a la red. El servicio solo recibe eventos de paquetes incluidos en la lista de soporte publicada. Cuando lo permites, la aplicación solo cambia la lista de servicios de accesibilidad habilitados mediante root, ajustes seguros o Shizuku, y nunca toca otros ajustes.</string>
     <string name="privacy_title">Privacidad</string>
-    <string name="project_page_unavailable">No se puede abrir la página del proyecto.</string>
     <string name="release_history">Historial de versiones</string>
     <string name="release_history_unavailable">El historial de versiones no está disponible</string>
     <string name="screen_intro">Un complemento experimental y opcional que puede ayudar a AutoJs6 a obtener nodos de accesibilidad de aplicaciones compatibles.</string>
     <string name="secure_settings_grant_body">Ejecuta este comando en un ordenador con ADB o en un shell root del dispositivo y vuelve a abrir el gestor:\n\n%1$s</string>
     <string name="secure_settings_grant_title">Conceder acceso a los ajustes seguros</string>
-    <string name="settings_about">Acerca de</string>
-    <string name="settings_about_summary">Versión %1$s por %2$s. Toca para abrir la página del proyecto</string>
+    <string name="settings_about">Acerca de la aplicación y el desarrollador</string>
+    <string name="settings_about_summary">Información sobre la versión, el proyecto, el desarrollador y la licencia</string>
     <string name="settings_dark">Oscuro</string>
     <string name="settings_dark_mode">Modo oscuro</string>
     <string name="settings_follow_autojs6">Seguir a AutoJs6</string>

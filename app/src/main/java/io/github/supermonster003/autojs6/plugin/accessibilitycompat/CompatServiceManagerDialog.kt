@@ -28,8 +28,9 @@ import java.util.concurrent.Executors
 
 /**
  * Manager of the compatibility service, opened from the status card and from the settings screen.
- * Three sections: live state rows (each copyable), the control policy, and the unattended methods
- * the user allows. Mirrors the AutoJs6 accessibility service manager in shape and wording.
+ * Three sections: live state rows (each copyable), the control policy (applied as soon as an option
+ * is chosen), and the unattended methods the user allows. Mirrors the AutoJs6 accessibility service
+ * manager in shape and wording.
  */
 internal class CompatServiceManagerDialog private constructor(
     private val activity: ThemedActivity,
@@ -79,11 +80,6 @@ internal class CompatServiceManagerDialog private constructor(
                 policyRadios[policy] = radio
                 addView(row)
             }
-            addView(
-                activity.row(activity.getString(R.string.action_apply_now), activity.getString(R.string.action_apply_now_summary), R.drawable.ic_refresh) {
-                    applyPolicy()
-                }.aligned(),
-            )
 
             addView(sectionTitle(R.string.manager_section_automation))
             addView(activity.switchRow(activity.getString(R.string.auto_root_title), activity.getString(R.string.auto_root_summary), settings.enableWithRoot) { checked ->

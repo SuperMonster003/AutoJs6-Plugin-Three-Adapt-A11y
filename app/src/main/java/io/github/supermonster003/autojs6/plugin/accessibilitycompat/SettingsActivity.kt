@@ -1,13 +1,7 @@
 package io.github.supermonster003.autojs6.plugin.accessibilitycompat
 
-import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.style.ForegroundColorSpan
-import android.text.style.RelativeSizeSpan
 import android.widget.LinearLayout
 import androidx.annotation.StringRes
 import io.github.supermonster003.autojs6.plugin.accessibilitycompat.control.CompatServiceController
@@ -50,7 +44,7 @@ internal class SettingsActivity : ThemedActivity() {
             addView(divider(56))
             addView(row(getString(R.string.settings_dark_mode), darkModeSummary(), R.drawable.ic_dark_mode) { showDarkModeDialog() })
             addView(divider(56))
-            addView(row(getString(R.string.settings_theme_color), themeSummary(), R.drawable.ic_palette, trailing = colorSwatch()) { showThemeColorDialog() })
+            addView(row(getString(R.string.settings_theme_color), themeSummary(), R.drawable.ic_palette, trailing = colorSwatch(palette.accent, 24)) { showThemeColorDialog() })
         })
 
         addView(sectionTitle(getString(R.string.settings_section_service)))
@@ -81,17 +75,14 @@ internal class SettingsActivity : ThemedActivity() {
                 startActivity(DocumentActivity.intent(this@SettingsActivity, DocumentActivity.Document.RELEASE_HISTORY))
             })
             addView(divider(56))
-            addView(row(getString(R.string.settings_about), aboutSummary(), R.drawable.ic_info) { openProjectPage() })
+            addView(row(getString(R.string.settings_about), getString(R.string.settings_about_summary), R.drawable.ic_info) {
+                startActivity(Intent(this@SettingsActivity, AboutActivity::class.java))
+            })
         })
     }
 
     private fun documentRow(@StringRes titleRes: Int, iconRes: Int, document: DocumentActivity.Document) =
         row(getString(titleRes), null, iconRes) { startActivity(DocumentActivity.intent(this, document)) }
-
-    private fun colorSwatch() = android.view.View(this).apply {
-        background = roundedBackground(palette.accent, 12f, palette.outline)
-        layoutParams = lp(dp(24), dp(24))
-    }
 
     /* Summaries. */
 
@@ -120,12 +111,6 @@ internal class SettingsActivity : ThemedActivity() {
         return "$policy (${getString(state)})"
     }
 
-    private fun aboutSummary(): String = getString(
-        R.string.settings_about_summary,
-        runCatching { packageManager.getPackageInfo(packageName, 0).versionName }.getOrNull().orEmpty(),
-        getString(R.string.plugin_author),
-    )
-
     private fun followSummary(resolved: String): String =
         if (hostResult.selectable) getString(R.string.settings_follow_autojs6_summary, resolved)
         else getString(R.string.settings_follow_autojs6_unavailable, resolved)
@@ -146,9 +131,13 @@ internal class SettingsActivity : ThemedActivity() {
         val values = AppLanguage.entries
         singleChoiceDialog(
             title = getString(R.string.settings_language),
-            labels = values.map { value ->
+            choices = values.map { value ->
                 val label = getString(value.labelRes())
-                if (value == AppLanguage.FOLLOW_AUTOJS6) followChoiceLabel(label, getString(R.string.settings_follow_system)) else label
+                if (value == AppLanguage.FOLLOW_AUTOJS6) {
+                    Choice(label, followChoiceSummary(resolvedHostLanguageLabel(), getString(R.string.settings_follow_system)))
+                } else {
+                    Choice(label)
+                }
             },
             checkedIndex = values.indexOf(settings.language),
         ) { index -> save(settings.copy(language = values[index])) }
@@ -158,9 +147,14 @@ internal class SettingsActivity : ThemedActivity() {
         val values = AppDarkMode.entries
         singleChoiceDialog(
             title = getString(R.string.settings_dark_mode),
-            labels = values.map { value ->
+            choices = values.map { value ->
                 val label = getString(value.labelRes())
-                if (value == AppDarkMode.FOLLOW_AUTOJS6) followChoiceLabel(label, getString(R.string.settings_follow_system)) else label
+                if (value == AppDarkMode.FOLLOW_AUTOJS6) {
+                    val resolved = getString(hostResult.snapshot?.darkModePolicy?.labelRes() ?: R.string.settings_follow_system)
+                    Choice(label, followChoiceSummary(resolved, getString(R.string.settings_follow_system)))
+                } else {
+                    Choice(label)
+                }
             },
             checkedIndex = values.indexOf(settings.darkMode),
         ) { index -> save(settings.copy(darkMode = values[index])) }
@@ -170,27 +164,23 @@ internal class SettingsActivity : ThemedActivity() {
         val values = AppThemeColor.entries
         singleChoiceDialog(
             title = getString(R.string.settings_theme_color),
-            labels = values.map { value ->
+            choices = values.map { value ->
                 val label = getString(value.labelRes())
-                when (value) {
-                    AppThemeColor.FOLLOW_AUTOJS6 -> followChoiceLabel("$label (${ColorPolicy.hex(followedThemeSeed())})", ColorPolicy.hex(SettingsPolicy.AUTOJS6_DEFAULT_THEME_COLOR))
-                    else -> "$label (${ColorPolicy.hex(requireNotNull(value.seed))})"
+                if (value == AppThemeColor.FOLLOW_AUTOJS6) {
+                    val seed = followedThemeSeed()
+                    Choice(label, followChoiceSummary(ColorPolicy.hex(seed), ColorPolicy.hex(SettingsPolicy.AUTOJS6_DEFAULT_THEME_COLOR)), seed)
+                } else {
+                    val seed = requireNotNull(value.seed)
+                    Choice(label, ColorPolicy.hex(seed), seed)
                 }
             },
             checkedIndex = values.indexOf(settings.themeColor),
         ) { index -> save(settings.copy(themeColor = values[index])) }
     }
 
-    /** The follow choice stays selectable while the host is absent; a hint explains the fallback. */
-    private fun followChoiceLabel(title: String, fallback: String): CharSequence {
-        if (hostResult.selectable) return title
-        val hint = getString(R.string.settings_follow_autojs6_unavailable, fallback)
-        return SpannableString("$title\n$hint").apply {
-            val start = title.length + 1
-            setSpan(ForegroundColorSpan(palette.secondaryText), start, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            setSpan(RelativeSizeSpan(0.82f), start, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        }
-    }
+    /** The follow choice shows what it resolves to, or the fallback used while the host is absent. */
+    private fun followChoiceSummary(resolved: String, fallback: String): String =
+        if (hostResult.selectable) resolved else getString(R.string.settings_follow_autojs6_unavailable, fallback)
 
     private fun save(updated: CompatSettings) {
         settingsStore.save(updated)
@@ -198,14 +188,6 @@ internal class SettingsActivity : ThemedActivity() {
         HostSettingsClient.invalidate()
         toast(getString(R.string.settings_saved))
         recreate()
-    }
-
-    private fun openProjectPage() {
-        try {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(AccessibilityCompatContract.PROJECT_URL)))
-        } catch (_: ActivityNotFoundException) {
-            toast(getString(R.string.project_page_unavailable))
-        }
     }
 }
 

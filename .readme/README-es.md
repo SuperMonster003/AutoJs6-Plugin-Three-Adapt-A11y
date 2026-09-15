@@ -148,11 +148,17 @@ La nota de investigación cubre AutoJs6 #289, #382, #432, #463, #520 y #521, GKD
 - Se añade un gestor del servicio de compatibilidad con una política de tres opciones (seguir a AutoJs6, habilitado, deshabilitado) que puede cambiar el servicio mediante root, WRITE_SECURE_SETTINGS o Shizuku, con estado en vivo y un informe copiable
 - El servicio sigue automáticamente al servicio de accesibilidad de AutoJs6 mediante una difusión de estado del anfitrión, una tarea activada por la lista de servicios habilitados y comprobaciones al conectar el servicio y al abrir la aplicación
 - La política de servicio seleccionada se publica mediante las capacidades de plugin-info y el contrato compartido de complemento de accesibilidad (versión de contrato 3)
+- Añadir una pantalla acerca de la aplicación y el desarrollador con la versión, el nombre del paquete, la licencia de código abierto, la página del proyecto y los enlaces de comentarios
+
+##### Corrección
+
+- Los títulos y resúmenes de las filas se alinean según la dirección del diseño y no la del texto, de modo que la opción en árabe del diálogo de idioma permanece junto a su botón de opción
 
 ##### Mejora
 
 - Rediseño de la pantalla principal: la tarjeta de estado abre el gestor, las aplicaciones compatibles tienen botón de inicio y los antiguos botones de abrir aplicación, ajustes de accesibilidad y actualizar pasan a la pantalla de ajustes
 - Compilación contra la API 37 de Android para coincidir con la API común de complementos actualizada
+- Alinear las opciones de política del administrador del servicio con el resto de filas, eliminar la fila redundante de aplicar ahora porque una política se aplica en cuanto se elige, y reconstruir los diálogos de selección de apariencia con tamaños de texto, márgenes y espaciado coherentes
 
 ##### Dependencia
 

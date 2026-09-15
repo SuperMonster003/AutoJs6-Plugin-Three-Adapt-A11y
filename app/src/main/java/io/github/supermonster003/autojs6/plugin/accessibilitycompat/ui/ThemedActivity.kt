@@ -16,9 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowInsets
 import android.view.WindowInsetsController
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.CheckedTextView
 import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -220,10 +218,15 @@ internal abstract class ThemedActivity : Activity() {
         }
     }
 
+    /**
+     * A dialog option. The 32dp radio drawable insets its 20dp circle by 6dp, so 18dp of start
+     * padding puts the circle on the 24dp inset shared by dialog titles, state rows and switches.
+     */
     fun radioRow(
         title: CharSequence,
         summary: CharSequence?,
         checked: Boolean,
+        trailing: View? = null,
         onSelect: () -> Unit,
     ): Pair<LinearLayout, RadioButton> {
         val radio = RadioButton(this).apply {
@@ -235,10 +238,14 @@ internal abstract class ThemedActivity : Activity() {
         val shell = LinearLayout(this).apply {
             orientation = LinearLayout.HORIZONTAL
             gravity = Gravity.CENTER_VERTICAL
-            minimumHeight = dp(56)
-            setPaddingRelative(dp(10), dp(8), dp(18), dp(8))
-            addView(radio, lp(WRAP_CONTENT, WRAP_CONTENT).apply { marginEnd = dp(6) })
+            minimumHeight = dp(48)
+            setPaddingRelative(dp(18), dp(6), dp(24), dp(6))
+            addView(radio, lp(WRAP_CONTENT, WRAP_CONTENT).apply { marginEnd = dp(10) })
             addView(textColumn(title, summary), lp(0, WRAP_CONTENT, weight = 1f))
+            if (trailing != null) {
+                val params = trailing.layoutParams as? LinearLayout.LayoutParams ?: lp(WRAP_CONTENT, WRAP_CONTENT)
+                addView(trailing, params.apply { marginStart = dp(12) })
+            }
             isClickable = true
             isFocusable = true
             background = rippleBackground()
@@ -266,11 +273,19 @@ internal abstract class ThemedActivity : Activity() {
             }
         }
 
+    /**
+     * Title over optional summary. Both align to the view start rather than to the text
+     * direction, so a right-to-left label (an Arabic language name) stays next to its icon
+     * or radio button in a left-to-right layout, and the reverse.
+     */
     private fun textColumn(title: CharSequence, summary: CharSequence?): LinearLayout = LinearLayout(this).apply {
         orientation = LinearLayout.VERTICAL
-        addView(text(title, 15.5f, palette.primaryText))
+        addView(text(title, 15.5f, palette.primaryText).apply { textAlignment = View.TEXT_ALIGNMENT_VIEW_START })
         if (!summary.isNullOrEmpty()) {
-            addView(text(summary, 12.5f, palette.secondaryText).apply { setPaddingRelative(0, dp(2), 0, 0) })
+            addView(text(summary, 12.5f, palette.secondaryText).apply {
+                textAlignment = View.TEXT_ALIGNMENT_VIEW_START
+                setPaddingRelative(0, dp(2), 0, 0)
+            })
         }
     }
 
@@ -317,22 +332,44 @@ internal abstract class ThemedActivity : Activity() {
 
     /* Dialogs. */
 
+    /** One option of [singleChoiceDialog]; [swatch] is a color shown at the end of the row. */
+    class Choice(val title: CharSequence, val summary: CharSequence? = null, val swatch: Int? = null)
+
+    /**
+     * Options are [radioRow]s instead of the platform list items, so that text sizes, insets and
+     * spacing match the rest of the app. Choosing an option dismisses the dialog; re-choosing the
+     * current one only dismisses it.
+     */
     fun singleChoiceDialog(
         title: CharSequence,
-        labels: List<CharSequence>,
+        choices: List<Choice>,
         checkedIndex: Int,
         onSelect: (Int) -> Unit,
     ) {
-        val adapter = ChoiceAdapter(this, labels, palette)
-        val dialog = AlertDialog.Builder(this)
-            .setTitle(title)
-            .setSingleChoiceItems(adapter, checkedIndex) { dialog, index ->
-                dialog.dismiss()
-                onSelect(index)
+        var dialog: AlertDialog? = null
+        val list = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            setPaddingRelative(0, dp(4), 0, dp(8))
+            choices.forEachIndexed { index, choice ->
+                val (row, _) = radioRow(choice.title, choice.summary, index == checkedIndex, choice.swatch?.let { colorSwatch(it) }) {
+                    dialog?.dismiss()
+                    if (index != checkedIndex) onSelect(index)
+                }
+                addView(row)
             }
+        }
+        dialog = AlertDialog.Builder(this)
+            .setTitle(title)
+            .setView(ScrollView(this).apply { addView(list) })
             .setNegativeButton(android.R.string.cancel, null)
             .create()
         showDialog(dialog)
+    }
+
+    /** A filled circle for theme colors, used as a row trailing view. */
+    fun colorSwatch(color: Int, sizeDp: Int = 22): View = View(this).apply {
+        background = roundedBackground(color, sizeDp / 2f, palette.outline)
+        layoutParams = lp(dp(sizeDp), dp(sizeDp))
     }
 
     fun showDialog(dialog: AlertDialog) {
@@ -446,23 +483,6 @@ internal abstract class ThemedActivity : Activity() {
             insets
         }
         root.requestApplyInsets()
-    }
-
-    private class ChoiceAdapter(context: Context, labels: List<CharSequence>, private val palette: Palette) :
-        ArrayAdapter<CharSequence>(context, android.R.layout.select_dialog_singlechoice, android.R.id.text1, labels) {
-        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-            val view = super.getView(position, convertView, parent)
-            // Only colors are touched: CheckedTextView folds the check mark into its reported
-            // padding, so re-applying padding on every bind would grow it without bound.
-            (view as? CheckedTextView)?.apply {
-                setTextColor(palette.primaryText)
-                checkMarkTintList = ColorStateList(
-                    arrayOf(intArrayOf(android.R.attr.state_checked), intArrayOf()),
-                    intArrayOf(palette.accent, palette.secondaryText),
-                )
-            }
-            return view
-        }
     }
 
     companion object {
