@@ -84,6 +84,7 @@ Esto verifica el activador para esa combinación de dispositivo, versión de WeC
 - Aunque vuelva un nodo raíz, algunas páginas pueden exponer atributos vacíos, nodos obsoletos, árboles aleatorios o solo límites geométricos.
 - Una actualización o configuración remota de la aplicación objetivo puede invalidar un perfil en cualquier momento. Bajar de versión, OCR y coordenadas también tienen costes de seguridad y estabilidad.
 - El complemento solo aborda la observabilidad. No evita inicios de sesión, controles de riesgo, captchas, permisos, restricciones de cuenta ni sistemas contra abusos.
+- La protección avanzada de Android 17 puede restringir los servicios que no son herramientas de accesibilidad, incluido este servicio de compatibilidad. El modo global por sí solo no indica si el servicio está bloqueado. Comprueba su estado real y los ajustes de accesibilidad de Android. El permiso de ajustes seguros no elude las restricciones del sistema.
 
 ### Límite de privacidad
 
@@ -140,30 +141,12 @@ La nota de investigación cubre AutoJs6 #289, #382, #432, #463, #520 y #521, GKD
 
 ### Historial de versiones
 
-#### v1.3.0 - 2026/09/15
-
-##### Función
-
-- Se añade una pantalla de ajustes con opciones de idioma, modo oscuro y color del tema que siguen a AutoJs6 de forma predeterminada, junto con las entradas de mecanismo, privacidad, limitaciones, historial de versiones y acerca de
-- Se añade un gestor del servicio de compatibilidad con una política de tres opciones (seguir a AutoJs6, habilitado, deshabilitado) que puede cambiar el servicio mediante root, WRITE_SECURE_SETTINGS o Shizuku, con estado en vivo y un informe copiable
-- El servicio sigue automáticamente al servicio de accesibilidad de AutoJs6 mediante una difusión de estado del anfitrión, una tarea activada por la lista de servicios habilitados y comprobaciones al conectar el servicio y al abrir la aplicación
-- La política de servicio seleccionada se publica mediante las capacidades de plugin-info y el contrato compartido de complemento de accesibilidad (versión de contrato 3)
-- Añadir una pantalla acerca de la aplicación y el desarrollador con la versión, el nombre del paquete, la licencia de código abierto, la página del proyecto y los enlaces de comentarios
-
-##### Corrección
-
-- Los títulos y resúmenes de las filas se alinean según la dirección del diseño y no la del texto, de modo que la opción en árabe del diálogo de idioma permanece junto a su botón de opción
+#### v1.3.1 - 2026/09/16
 
 ##### Mejora
 
-- Rediseño de la pantalla principal: la tarjeta de estado abre el gestor, las aplicaciones compatibles tienen botón de inicio y los antiguos botones de abrir aplicación, ajustes de accesibilidad y actualizar pasan a la pantalla de ajustes
-- Compilación contra la API 37 de Android para coincidir con la API común de complementos actualizada
-- Alinear las opciones de política del administrador del servicio con el resto de filas, eliminar la fila redundante de aplicar ahora porque una política se aplica en cuanto se elige, y reconstruir los diálogos de selección de apariencia con tamaños de texto, márgenes y espaciado coherentes
-
-##### Dependencia
-
-- Se añaden Shizuku API 13.1.5 y AndroidX Annotation 1.10.0
-- Se actualiza la API común de complementos incluida para incorporar el contrato de complemento de accesibilidad
+- Explicación de la protección avanzada en el anfitrión y el complemento, diferenciando el modo global de la disponibilidad real del servicio y el control de ajustes seguros
+- Tras compileSdk, targetSdk sube a 37 (Android 17); el comportamiento del plugin no depende del nuevo objetivo
 
 [Leer el historial completo](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-es.md)
 

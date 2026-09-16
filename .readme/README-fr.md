@@ -84,6 +84,7 @@ Ce résultat vérifie le déclencheur pour cette combinaison d'appareil, de vers
 - Même lorsqu'une racine revient, certaines pages peuvent exposer des attributs vides, des noeuds obsolètes, des arbres aléatoires ou seulement des limites géométriques.
 - Une mise à jour ou une configuration distante de l'application cible peut invalider un profil à tout moment. Le retour de version, l'OCR et les coordonnées ont aussi des coûts de sécurité et de stabilité.
 - Le plugin ne traite que l'observabilité. Il ne contourne pas la connexion, les contrôles de risque, les captchas, les permissions, les restrictions de compte ou les mécanismes anti-abus.
+- La protection avancée Android 17 peut restreindre les services qui ne sont pas des outils d'accessibilité, y compris ce service de compatibilité. Le mode global ne suffit pas à établir si ce service est bloqué. Vérifiez son état réel et les paramètres d'accessibilité Android. Le droit de modifier les paramètres sécurisés ne contourne pas les restrictions système.
 
 ### Limite de confidentialité
 
@@ -140,30 +141,12 @@ La note de recherche couvre AutoJs6 #289, #382, #432, #463, #520 et #521, GKD `4
 
 ### Historique des versions
 
-#### v1.3.0 - 2026/09/15
-
-##### Fonctionnalité
-
-- Ajout d'un écran de paramètres avec des options de langue, de mode sombre et de couleur de thème qui suivent AutoJs6 par défaut, ainsi que les entrées mécanisme, confidentialité, limites, historique des versions et à propos
-- Ajout d'un gestionnaire du service de compatibilité avec une politique à trois choix (suivre AutoJs6, activé, désactivé) capable de changer le service via root, WRITE_SECURE_SETTINGS ou Shizuku, avec l'état en direct et un rapport copiable
-- Suivi automatique du service d'accessibilité AutoJs6 grâce à une diffusion d'état de l'hôte, une tâche déclenchée par la liste des services activés et des vérifications à la connexion du service et à l'ouverture de l'application
-- Publication de la politique de service choisie via les capacités plugin-info et le contrat partagé de compagnon d'accessibilité (version de contrat 3)
-- Ajouter un écran à propos de l'application et du développeur avec la version, le nom du paquet, la licence open source, la page du projet et les liens de commentaires
-
-##### Correctif
-
-- Les titres et résumés des lignes s'alignent sur le sens de la mise en page et non sur celui du texte, si bien que l'option arabe de la boîte de dialogue de langue reste à côté de son bouton radio
+#### v1.3.1 - 2026/09/16
 
 ##### Amélioration
 
-- Refonte de l'écran principal: la carte d'état ouvre le gestionnaire, les applications compatibles ont un bouton de lancement et les anciens boutons d'ouverture, de paramètres d'accessibilité et d'actualisation passent dans l'écran des paramètres
-- Compilation avec l'API Android 37 pour correspondre à l'API commune des plugins mise à jour
-- Aligner les options de politique du gestionnaire de service sur ses autres lignes, supprimer la ligne redondante d'application immédiate puisqu'une politique s'applique dès son choix, et reconstruire les boîtes de dialogue de choix d'apparence avec des tailles de texte, marges et espacements cohérents
-
-##### Dépendance
-
-- Ajout de Shizuku API 13.1.5 et AndroidX Annotation 1.10.0
-- Mise à jour de l'API commune des plugins intégrée pour inclure le contrat de compagnon d'accessibilité
+- Explications de la protection avancée dans l'hôte et le compagnon, distinguant le mode global de la disponibilité réelle du service et du contrôle des paramètres sécurisés
+- Après compileSdk, targetSdk passe à 37 (Android 17) ; le comportement du plugin ne dépend pas de la nouvelle cible
 
 [Lire l'historique complet](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-fr.md)
 

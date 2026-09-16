@@ -7,6 +7,13 @@
   "changelog_label_improvement": "개선",
   "changelog_label_dependency": "의존성",
   "$data": {
+    "v1.3.1": {
+      "released_date": "2026/09/16",
+      "improvement": [
+        "호스트와 호환 플러그인에 고급 보호 설명을 표시하고 전역 모드, 실제 서비스 가용성 및 보안 설정 제어를 구분",
+        "compileSdk 에 이어 targetSdk 를 37 (Android 17) 로 올리며, 플러그인 동작은 새 대상 버전의 영향을 받지 않음"
+      ]
+    },
     "v1.3.0": {
       "released_date": "2026/09/15",
       "feature": [

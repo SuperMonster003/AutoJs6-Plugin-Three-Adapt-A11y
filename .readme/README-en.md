@@ -84,6 +84,7 @@ This verifies the compatibility trigger for that device, WeChat build, and Launc
 - Even when a root returns, some pages may expose empty attributes, stale nodes, random trees, or bounds only.
 - A target app update or remote configuration change can invalidate a profile at any time. Downgrades, OCR, and coordinate fallbacks carry their own safety and stability costs.
 - The plugin only addresses observability. It does not bypass login, risk controls, captchas, permissions, account restrictions, or platform anti-abuse systems.
+- Android 17 Advanced Protection can restrict accessibility services that are not accessibility tools, including this compatibility service. The global mode alone does not establish whether this service is blocked. Check the actual service state and Android accessibility settings. Granting secure settings access does not bypass system restrictions.
 
 ### Privacy Boundary
 
@@ -140,30 +141,12 @@ The research note covers AutoJs6 #289, #382, #432, #463, #520, and #521, GKD `47
 
 ### Release History
 
-#### v1.3.0 - 2026/09/15
-
-##### Feature
-
-- Add a settings screen with language, dark mode, and theme color options that follow AutoJs6 by default, plus mechanism, privacy, limitations, release history, and about entries
-- Add a compatibility service manager with a three-way control policy (Follow AutoJs6, Enabled, Disabled) that can change the service through root, WRITE_SECURE_SETTINGS, or Shizuku, with live state rows and a copyable report
-- Follow the AutoJs6 accessibility service automatically through a host state broadcast, a content-triggered job on the enabled services list, and checks when the service connects or the app opens
-- Publish the selected service policy through the plugin-info capabilities and the shared accessibility companion contract (contract version 3)
-- Add an about screen for the app and developer with the version, package name, open-source license, project page, and feedback links
-
-##### Fix
-
-- Row titles and summaries align to the layout direction instead of the text direction, so the Arabic option in the language dialog stays next to its radio button
+#### v1.3.1 - 2026/09/16
 
 ##### Improvement
 
-- Redesign the main screen: the status card opens the manager, supported apps carry launch buttons, and the former open, accessibility settings, and refresh buttons move into the settings screen
-- Compile against Android API 37 to match the updated common plugin API
-- Align the policy options of the service manager with its other rows, remove the redundant apply-now row because a policy applies as soon as it is chosen, and rebuild the appearance choice dialogs with matching text sizes, insets, and spacing
-
-##### Dependency
-
-- Add Shizuku API 13.1.5 and AndroidX Annotation 1.10.0
-- Update the bundled common plugin API to include the accessibility companion contract
+- Explain Advanced Protection in the host and companion, showing the global mode separately from actual service availability and secure settings control
+- Raise targetSdk to 37 (Android 17) after compileSdk; the plugin's behavior does not depend on the new target
 
 [Read the complete release history](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-en.md)
 

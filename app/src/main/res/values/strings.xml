@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="a11y_advanced_protection_explanation">Android 17 Advanced Protection can restrict accessibility services that are not accessibility tools, including this compatibility service. The global mode alone does not establish whether this service is blocked. Check the actual service state and Android accessibility settings. Granting secure settings access does not bypass system restrictions.</string>
+    <string name="a11y_advanced_protection_off">Off</string>
+    <string name="a11y_advanced_protection_on">On</string>
+    <string name="a11y_advanced_protection_title">Advanced Protection</string>
+    <string name="a11y_advanced_protection_unknown">Unavailable</string>
     <string name="about_developer_summary">Open the developer page on GitHub</string>
     <string name="about_feedback">Feedback and issues</string>
     <string name="about_feedback_summary">Report a problem or suggest an improvement on GitHub</string>

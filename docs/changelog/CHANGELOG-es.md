@@ -4,6 +4,13 @@
 
 > Idioma de esta página: español
 
+## v1.3.1 - 2026/09/16
+
+### Mejora
+
+- Explicación de la protección avanzada en el anfitrión y el complemento, diferenciando el modo global de la disponibilidad real del servicio y el control de ajustes seguros
+- Tras compileSdk, targetSdk sube a 37 (Android 17); el comportamiento del plugin no depende del nuevo objetivo
+
 ## v1.3.0 - 2026/09/15
 
 ### Función

@@ -4,6 +4,13 @@
 
 > Langue de cette page: français
 
+## v1.3.1 - 2026/09/16
+
+### Amélioration
+
+- Explications de la protection avancée dans l'hôte et le compagnon, distinguant le mode global de la disponibilité réelle du service et du contrôle des paramètres sécurisés
+- Après compileSdk, targetSdk passe à 37 (Android 17) ; le comportement du plugin ne dépend pas de la nouvelle cible
+
 ## v1.3.0 - 2026/09/15
 
 ### Fonctionnalité

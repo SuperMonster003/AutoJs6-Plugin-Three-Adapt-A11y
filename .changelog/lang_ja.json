@@ -7,6 +7,13 @@
   "changelog_label_improvement": "改善",
   "changelog_label_dependency": "依存関係",
   "$data": {
+    "v1.3.1": {
+      "released_date": "2026/09/16",
+      "improvement": [
+        "ホストと互換プラグインに高度な保護の説明を表示し, 全体のモードと実際のサービス可用性, 安全な設定の制御を区別",
+        "compileSdk に続き targetSdk を 37 (Android 17) に引き上げ, プラグインの動作は新しいターゲットの影響を受けない"
+      ]
+    },
     "v1.3.0": {
       "released_date": "2026/09/15",
       "feature": [
