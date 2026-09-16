@@ -55,7 +55,8 @@
     "WebView, mini-app, Canvas, and custom-drawn controls may have no native semantic nodes. The plugin cannot invent missing `text` or `content-desc`.",
     "Even when a root returns, some pages may expose empty attributes, stale nodes, random trees, or bounds only.",
     "A target app update or remote configuration change can invalidate a profile at any time. Downgrades, OCR, and coordinate fallbacks carry their own safety and stability costs.",
-    "The plugin only addresses observability. It does not bypass login, risk controls, captchas, permissions, account restrictions, or platform anti-abuse systems."
+    "The plugin only addresses observability. It does not bypass login, risk controls, captchas, permissions, account restrictions, or platform anti-abuse systems.",
+    "Android 17 Advanced Protection can restrict accessibility services that are not accessibility tools, including this compatibility service. The global mode alone does not establish whether this service is blocked. Check the actual service state and Android accessibility settings. Granting secure settings access does not bypass system restrictions."
   ],
   "h3_privacy": "Privacy Boundary",
   "privacy_points": [

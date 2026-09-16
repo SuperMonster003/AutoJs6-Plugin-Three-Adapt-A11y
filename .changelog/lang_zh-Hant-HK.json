@@ -7,6 +7,13 @@
   "changelog_label_improvement": "優化",
   "changelog_label_dependency": "依賴",
   "$data": {
+    "v1.3.1": {
+      "released_date": "2026/09/16",
+      "improvement": [
+        "宿主與相容插件顯示進階保護說明, 區分全域模式, 實際服務可用性及安全設定控制能力",
+        "繼 compileSdk 之後將 targetSdk 提升到 37 (Android 17), 插件行為不受新目標版本影響"
+      ]
+    },
     "v1.3.0": {
       "released_date": "2026/09/15",
       "feature": [

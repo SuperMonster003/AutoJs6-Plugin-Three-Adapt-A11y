@@ -23,6 +23,7 @@ internal class SettingsActivity : ThemedActivity() {
     private lateinit var settings: CompatSettings
     private lateinit var hostResult: HostSettingsResult
     private var managerDialog: CompatServiceManagerDialog? = null
+    private var advancedProtectionRow: LinearLayout? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +38,13 @@ internal class SettingsActivity : ThemedActivity() {
         super.onDestroy()
     }
 
+    override fun onResume() {
+        super.onResume()
+        advancedProtectionRow?.let { row ->
+            rowSummary(row)?.text = AdvancedProtectionNotice.summary(this)
+        }
+    }
+
     private fun LinearLayout.buildContent() {
         addView(sectionTitle(getString(R.string.settings_section_appearance)))
         addView(card {
@@ -49,6 +57,11 @@ internal class SettingsActivity : ThemedActivity() {
 
         addView(sectionTitle(getString(R.string.settings_section_service)))
         addView(card {
+            advancedProtectionRow = row(getString(R.string.a11y_advanced_protection_title), AdvancedProtectionNotice.summary(this@SettingsActivity), R.drawable.ic_shield) {
+                AccessibilitySettingsLauncher.open(this@SettingsActivity)
+            }
+            addView(advancedProtectionRow)
+            addView(divider(56))
             lateinit var managerRow: LinearLayout
             managerRow = row(getString(R.string.settings_service_manager), serviceSummary(), R.drawable.ic_accessibility) {
                 managerDialog = CompatServiceManagerDialog.show(this@SettingsActivity) {

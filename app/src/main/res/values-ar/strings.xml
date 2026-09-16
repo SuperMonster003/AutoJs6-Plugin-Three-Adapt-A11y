@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="a11y_advanced_protection_explanation">قد تقيد الحماية المتقدمة في Android 17 خدمات تسهيل الاستخدام التي ليست أدوات مساعدة, بما فيها خدمة التوافق هذه. الوضع العام وحده لا يثبت حظر الخدمة. تحقق من حالة الخدمة الفعلية وإعدادات تسهيل الاستخدام في Android. منح إذن الإعدادات الآمنة لا يتجاوز قيود النظام.</string>
+    <string name="a11y_advanced_protection_off">معطلة</string>
+    <string name="a11y_advanced_protection_on">مفعلة</string>
+    <string name="a11y_advanced_protection_title">الحماية المتقدمة</string>
+    <string name="a11y_advanced_protection_unknown">غير متاح</string>
     <string name="about_developer_summary">فتح صفحة المطور على GitHub</string>
     <string name="about_feedback">الملاحظات والمشكلات</string>
     <string name="about_feedback_summary">الإبلاغ عن مشكلة أو اقتراح تحسين على GitHub</string>

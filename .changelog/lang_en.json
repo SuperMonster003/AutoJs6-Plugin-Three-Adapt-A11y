@@ -7,6 +7,13 @@
   "changelog_label_improvement": "Improvement",
   "changelog_label_dependency": "Dependency",
   "$data": {
+    "v1.3.1": {
+      "released_date": "2026/09/16",
+      "improvement": [
+        "Explain Advanced Protection in the host and companion, showing the global mode separately from actual service availability and secure settings control",
+        "Raise targetSdk to 37 (Android 17) after compileSdk; the plugin's behavior does not depend on the new target"
+      ]
+    },
     "v1.3.0": {
       "released_date": "2026/09/15",
       "feature": [

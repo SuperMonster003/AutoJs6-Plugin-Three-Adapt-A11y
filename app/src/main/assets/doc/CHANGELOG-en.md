@@ -4,6 +4,13 @@
 
 > Page language: English
 
+## v1.3.1 - 2026/09/16
+
+### Improvement
+
+- Explain Advanced Protection in the host and companion, showing the global mode separately from actual service availability and secure settings control
+- Raise targetSdk to 37 (Android 17) after compileSdk; the plugin's behavior does not depend on the new target
+
 ## v1.3.0 - 2026/09/15
 
 ### Feature

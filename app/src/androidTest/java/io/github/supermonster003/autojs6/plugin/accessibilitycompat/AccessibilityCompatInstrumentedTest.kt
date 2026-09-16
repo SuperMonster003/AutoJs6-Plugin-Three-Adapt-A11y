@@ -206,6 +206,7 @@ class AccessibilityCompatInstrumentedTest {
             setOf(
                 AccessibilityCompatContract.PLUGIN_PERMISSION,
                 Manifest.permission.WRITE_SECURE_SETTINGS,
+                "android.permission.QUERY_ADVANCED_PROTECTION_MODE",
                 "moe.shizuku.manager.permission.API_V23",
             ),
             requested,

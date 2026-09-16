@@ -55,7 +55,8 @@
     "WebView, les mini-applications, Canvas et les contrôles dessinés sur mesure peuvent ne posséder aucun noeud sémantique natif. Le plugin ne peut inventer un `text` ou `content-desc` absent.",
     "Même lorsqu'une racine revient, certaines pages peuvent exposer des attributs vides, des noeuds obsolètes, des arbres aléatoires ou seulement des limites géométriques.",
     "Une mise à jour ou une configuration distante de l'application cible peut invalider un profil à tout moment. Le retour de version, l'OCR et les coordonnées ont aussi des coûts de sécurité et de stabilité.",
-    "Le plugin ne traite que l'observabilité. Il ne contourne pas la connexion, les contrôles de risque, les captchas, les permissions, les restrictions de compte ou les mécanismes anti-abus."
+    "Le plugin ne traite que l'observabilité. Il ne contourne pas la connexion, les contrôles de risque, les captchas, les permissions, les restrictions de compte ou les mécanismes anti-abus.",
+    "La protection avancée Android 17 peut restreindre les services qui ne sont pas des outils d'accessibilité, y compris ce service de compatibilité. Le mode global ne suffit pas à établir si ce service est bloqué. Vérifiez son état réel et les paramètres d'accessibilité Android. Le droit de modifier les paramètres sécurisés ne contourne pas les restrictions système."
   ],
   "h3_privacy": "Limite de confidentialité",
   "privacy_points": [
