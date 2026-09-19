@@ -4,7 +4,11 @@
 
 > Page language: English
 
-## v1.3.1 - 2026/09/16
+## v1.3.1 - 2026/09/19
+
+### Fix
+
+- SDK XML v4 parsing warnings with AGP 9.1 and APK native alignment checks incorrectly triggered by JVM unit-test assembly tasks, using shared build plugins 1.8.3
 
 ### Improvement
 

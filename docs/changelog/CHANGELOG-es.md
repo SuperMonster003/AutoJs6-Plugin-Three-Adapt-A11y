@@ -4,7 +4,11 @@
 
 > Idioma de esta página: español
 
-## v1.3.1 - 2026/09/16
+## v1.3.1 - 2026/09/19
+
+### Corrección
+
+- Advertencias de lectura de SDK XML v4 con AGP 9.1 y comprobaciones de alineación nativa de APK activadas por error al ensamblar pruebas unitarias JVM, mediante los plugins de compilación compartidos 1.8.3
 
 ### Mejora
 

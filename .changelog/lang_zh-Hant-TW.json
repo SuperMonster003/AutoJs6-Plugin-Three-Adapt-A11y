@@ -8,10 +8,13 @@
   "changelog_label_dependency": "相依性",
   "$data": {
     "v1.3.1": {
-      "released_date": "2026/09/16",
+      "released_date": "2026/09/19",
       "improvement": [
         "宿主與相容外掛顯示進階保護說明, 區分全域模式, 實際服務可用性及安全設定控制能力",
         "繼 compileSdk 之後將 targetSdk 提升到 37 (Android 17), 外掛程式行為不受新目標版本影響"
+      ],
+      "fix": [
+        "AGP 9.1 建置時的 SDK XML v4 解析警告及 JVM 單元測試組裝工作誤觸發 APK 原生程式庫對齊檢查的問題 (共用建置外掛 1.8.3)"
       ]
     },
     "v1.3.0": {
