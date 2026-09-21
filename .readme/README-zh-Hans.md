@@ -145,12 +145,12 @@ WebView, 小程序, Canvas 或自绘页面可能没有对应的 Android 语义�
 
 ##### 修复
 
-- AGP 9.1 构建时的 SDK XML v4 解析警告及 JVM 单元测试组装任务误触发 APK 原生库对齐检查的问题 (共享构建插件 1.8.3)
+- AGP 9.1 构建时的 SDK XML v4 解析警告, 以及 JVM 单元测试误触发 APK 原生库对齐检查的问题 (共享构建插件 1.8.3)
 
 ##### 优化
 
 - 宿主与兼容插件显示高级保护说明, 区分全局模式, 实际服务可用性和安全设置控制能力
-- 继 compileSdk 之后将 targetSdk 提升到 37 (Android 17), 插件行为不受新目标版本影响
+- targetSdk 升级至 37 (Android 17)
 
 [查看完整发行历史](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-zh-Hans.md)
 
