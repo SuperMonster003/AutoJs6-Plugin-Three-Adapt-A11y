@@ -3,7 +3,10 @@
 
 <div align="center">
   <p>
-    <img src="https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/app/src/main/res/mipmap/ic_launcher.png?raw=true" alt="autojs6-plugin-three-adapt-a11y-ic-launcher" border="0" width="128" />
+    <picture>
+      <source srcset="https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/app/src/main/res/mipmap-night/ic_launcher.png?raw=true" media="(prefers-color-scheme: dark)" />
+      <img src="https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/app/src/main/res/mipmap/ic_launcher.png?raw=true" alt="autojs6-plugin-three-adapt-a11y-ic-launcher" border="0" width="128" />
+    </picture>
   </p>
   <h1>3-Adapt A11y</h1>
   <p>面向受支援應用程式的私隱最小化無障礙兼容觸發器</p>
@@ -150,6 +153,7 @@ WebView, 小程序, Canvas 或自繪頁面可能沒有對應 Android 語義節�
 ##### 優化
 
 - 插件由 Accessibility Compat 更名為 3-Adapt A11y, 應用標題, 無障礙服務標籤, 插件 ID `three-adapt-a11y`, 包名與組件名, 發佈產物, 文檔及 GitHub 倉庫同步更新
+- 啟動器圖標改為維護者提供的 3-Adapt A11y 圖案: 亮色模式為淺灰底深色圖案, 暗色模式為深灰底淺色圖案, 圓形與自適應圖標由同一源圖合成
 
 [查看完整發行歷史](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-zh-Hant-HK.md)
 
