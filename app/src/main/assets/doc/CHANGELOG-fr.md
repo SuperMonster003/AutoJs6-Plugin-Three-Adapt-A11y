@@ -1,8 +1,18 @@
 <!-- This file is generated. Edit .changelog/lang_*.json and rerun .python/generate_markdown.py. -->
 
-# Historique des versions Accessibility Compat
+# Historique des versions 3-Adapt A11y
 
 > Langue de cette page: français
+
+## v1.4.0 - 2026/09/29
+
+### Note
+
+- L'ID d'application passe de `io.github.supermonster003.autojs6.plugin.accessibilitycompat` à `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, Android considère donc cette version comme une nouvelle application : désinstallez d'abord Accessibility Compat 1.3.1 ou antérieur, puis réactivez le service d'accessibilité 3-Adapt A11y
+
+### Amélioration
+
+- Le plugin Accessibility Compat est renommé 3-Adapt A11y dans le titre de l'application, le libellé du service d'accessibilité, l'ID de plugin `three-adapt-a11y`, les noms de package et de composants, les artefacts de publication, la documentation et le dépôt GitHub
 
 ## v1.3.1 - 2026/09/19
 

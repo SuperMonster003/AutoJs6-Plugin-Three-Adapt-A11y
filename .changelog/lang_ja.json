@@ -1,5 +1,5 @@
 {
-  "h1_release_history": "Accessibility Compat リリース履歴",
+  "h1_release_history": "3-Adapt A11y リリース履歴",
   "language_notice": "このページの言語: 日本語",
   "changelog_label_hint": "ヒント",
   "changelog_label_feature": "機能",
@@ -7,6 +7,15 @@
   "changelog_label_improvement": "改善",
   "changelog_label_dependency": "依存関係",
   "$data": {
+    "v1.4.0": {
+      "released_date": "2026/09/29",
+      "hint": [
+        "アプリケーション ID が `io.github.supermonster003.autojs6.plugin.accessibilitycompat` から `io.github.supermonster003.autojs6.plugin.three.adapt.a11y` に変わったため, Android はこのバージョンを新しいアプリとして扱います. 先に Accessibility Compat 1.3.1 以前をアンインストールし, 3-Adapt A11y のアクセシビリティサービスを再度有効にしてください"
+      ],
+      "improvement": [
+        "プラグイン名を Accessibility Compat から 3-Adapt A11y に変更し, アプリ名, アクセシビリティサービスのラベル, プラグイン ID `three-adapt-a11y`, パッケージ名とコンポーネント名, リリース成果物, ドキュメント, GitHub リポジトリを更新"
+      ]
+    },
     "v1.3.1": {
       "released_date": "2026/09/19",
       "improvement": [

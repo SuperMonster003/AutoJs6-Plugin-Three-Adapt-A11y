@@ -1,8 +1,18 @@
 <!-- This file is generated. Edit .changelog/lang_*.json and rerun .python/generate_markdown.py. -->
 
-# Accessibility Compat 릴리스 기록
+# 3-Adapt A11y 릴리스 기록
 
 > 이 페이지의 언어: 한국어
+
+## v1.4.0 - 2026/09/29
+
+### 힌트
+
+- 애플리케이션 ID가 `io.github.supermonster003.autojs6.plugin.accessibilitycompat`에서 `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`로 바뀌어 Android는 이 버전을 새 앱으로 취급합니다. 먼저 Accessibility Compat 1.3.1 이하를 제거한 뒤 3-Adapt A11y 접근성 서비스를 다시 활성화하세요
+
+### 개선
+
+- 플러그인 이름을 Accessibility Compat에서 3-Adapt A11y로 변경하고 앱 제목, 접근성 서비스 라벨, 플러그인 ID `three-adapt-a11y`, 패키지 및 구성 요소 이름, 릴리스 산출물, 문서, GitHub 저장소를 함께 갱신
 
 ## v1.3.1 - 2026/09/19
 

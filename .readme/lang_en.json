@@ -4,13 +4,13 @@
   "language_notice": "Page language: English",
   "h3_languages": "Languages",
   "h3_status": "Project Status",
-  "p_status": "Accessibility Compat is a standalone experimental companion APK. It attempts to help apps covered by published support profiles expose their control trees to the AutoJs6 accessibility service. It is not a general automation engine and never replaces AutoJs6 as the reader or operator of controls.",
+  "p_status": "3-Adapt A11y is a standalone experimental companion APK. It attempts to help apps covered by published support profiles expose their control trees to the AutoJs6 accessibility service. It is not a general automation engine and never replaces AutoJs6 as the reader or operator of controls.",
   "p_experimental": "Compatibility depends on each target app version, page, device, and remote configuration. The project cannot promise success in every environment. Complete A-B-A validation before relying on it in a script.",
   "h3_architecture": "No-op Companion Architecture",
   "p_architecture": "The project isolates application compatibility profiles in a separate APK and leaves the name and general behavior of the AutoJs6 core service unchanged:",
   "architecture_points": [
     "The AutoJs6 accessibility service remains the only component that reads, queries, and acts on nodes.",
-    "The companion registers a service implementation class name supported by public experiments, while its application ID, icon, labels, description, and signature truthfully identify Accessibility Compat.",
+    "The companion registers a service implementation class name supported by public experiments, while its application ID, icon, labels, description, and signature truthfully identify 3-Adapt A11y.",
     "The compatibility service callbacks are no-op. They never read `event.source`, `event.text`, `rootInActiveWindow`, screenshots, or page content.",
     "This release is not a node proxy or Binder bridge. It only attempts to trigger the conditional node-exposure behavior documented by its support profiles."
   ],
@@ -18,8 +18,8 @@
   "install_steps": [
     "Confirm that the device runs {{ minimum_android }} or later and that the AutoJs6 internal build is at least {{ required_host_build }}.",
     "Install the APK only from this project's [Releases]({{ repo_url }}/releases) or a trusted AutoJs6 plugin entry.",
-    "Open Accessibility Compat, verify its real name and purpose, then tap the status card to open the compatibility service manager. The default policy, Follow AutoJs6, keeps the service enabled only while the AutoJs6 accessibility service is enabled.",
-    "Without root access, WRITE_SECURE_SETTINGS, or Shizuku, enable the accessibility service listed under Accessibility Compat manually in Android settings; Android's risk warning is expected. With one of them granted on purpose, the app applies the selected policy itself and touches no other setting.",
+    "Open 3-Adapt A11y, verify its real name and purpose, then tap the status card to open the compatibility service manager. The default policy, Follow AutoJs6, keeps the service enabled only while the AutoJs6 accessibility service is enabled.",
+    "Without root access, WRITE_SECURE_SETTINGS, or Shizuku, enable the accessibility service listed under 3-Adapt A11y manually in Android settings; Android's risk warning is expected. With one of them granted on purpose, the app applies the selected policy itself and touches no other setting.",
     "Keep the AutoJs6 accessibility service enabled as well, reopen a target page listed in a support profile, and inspect nodes from the AutoJs6 layout inspector or a script."
   ],
   "p_disable": "Installing the APK alone has no effect. Select the Disabled policy or disable the compatibility service in Android settings when it is not needed, or uninstall the app when finished.",

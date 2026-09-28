@@ -117,7 +117,7 @@ WebView, 小程序, Canvas 或自绘控件没有把视觉内容映射为 Android
 ## 当前实现为何采用 no-op 伴生 APK
 
 - 保持 AutoJs6 核心 `AccessibilityServiceUsher` 的真实名称和通用语义.
-- 应用 ID 固定为 `io.github.supermonster003.autojs6.plugin.accessibilitycompat`, 不模仿 Google 包名.
+- 应用 ID 固定为 `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, 不模仿 Google 包名.
 - 服务标签, 描述, 图标, 设置界面, 文档和签名均明确显示真实用途.
 - 兼容服务只监听已发布支持配置中的包名, 当前集合为 `com.tencent.mm`. 回调不读取 `event.source`, `event.text`, `rootInActiveWindow` 或截图.
 - 不提供网络, 分析, 存储, 悬浮窗, 相机或麦克风能力.

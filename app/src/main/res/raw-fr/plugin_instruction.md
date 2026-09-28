@@ -1,4 +1,4 @@
-# Compatibilité d'accessibilité AutoJs6
+# AutoJs6 3-Adapt A11y
 
 ## Objectif
 
@@ -8,7 +8,7 @@ Ce compagnon expérimental et facultatif peut aider AutoJs6 à obtenir des noeud
 
 1. Installez AutoJs6 et ce compagnon.
 2. Ouvrez le compagnon et touchez la carte d'état pour ouvrir le gestionnaire du service de compatibilité. La politique par défaut, suivre AutoJs6, garde le service de compatibilité activé tant que le service d'accessibilité AutoJs6 est activé.
-3. Sans root, WRITE_SECURE_SETTINGS ni Shizuku, activez manuellement le service AutoJs6 et Compatibilité d'accessibilité AutoJs6 dans les paramètres d'accessibilité Android. Dès que l'un d'eux est accordé, le compagnon applique lui-même la politique choisie.
+3. Sans root, WRITE_SECURE_SETTINGS ni Shizuku, activez manuellement le service AutoJs6 et 3-Adapt A11y dans les paramètres d'accessibilité Android. Dès que l'un d'eux est accordé, le compagnon applique lui-même la politique choisie.
 4. Fermez complètement puis rouvrez une application cible de la liste de support, et inspectez plusieurs fois la même page statique.
 5. Choisissez la politique désactivé dans le gestionnaire, ou désactivez ce service dans les paramètres système, lorsque la compatibilité n'est pas nécessaire.
 

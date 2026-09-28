@@ -17,7 +17,7 @@
     <string name="about_version">Версия</string>
     <string name="about_version_value">%1$s (сборка %2$d)</string>
     <string name="accessibility_service_description">Экспериментальный локальный триггер совместимости специальных возможностей для опубликованных профилей поддержки. Служба не читает и не сохраняет события или узлы специальных возможностей.</string>
-    <string name="accessibility_service_name">Служба совместимости AutoJs6</string>
+    <string name="accessibility_service_name">3-Adapt A11y</string>
     <string name="action_close">Закрыть</string>
     <string name="action_copy">Копировать</string>
     <string name="action_open">Открыть</string>

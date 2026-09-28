@@ -1,10 +1,32 @@
 # Workspace rules
 
-This repository contains the `Accessibility Compat` Android companion for AutoJs6.
+This repository contains the `3-Adapt A11y` Android companion for AutoJs6. It was renamed from `Accessibility Compat` on 2026-09-29; the shared rename procedure for the Three series lives in `D:/idea-projects/AUTOJS6_PLUGIN_THREE_SERIES_RENAME_AGENTS.md`.
+
+## Identity
+
+The following values MUST stay identical across Gradle, the Manifest, `ThreeAdaptA11yContract`, resources, documentation, tests, the AutoJs6 host catalog, and the official plugin index. Change every location together and rerun `ThreeAdaptA11yContractTest`, `PluginRuntimeInfoTest`, and the instrumentation suite.
+
+| Item | Value |
+|---|---|
+| Repository and directory name | `AutoJs6-Plugin-Three-Adapt-A11y` |
+| `rootProject.name` | `autojs6-plugin-three-adapt-a11y` |
+| Application title (`app_name` resValue, English, not translated) and accessibility service label | `3-Adapt A11y` |
+| `applicationId` / namespace / Kotlin package | `io.github.supermonster003.autojs6.plugin.three.adapt.a11y` |
+| Plugin ID / engine / variant | `three-adapt-a11y` / `accessibility` / `service-identity` |
+| INFO service | `ThreeAdaptA11yInfoService`, action `org.autojs.plugin.INFO`, categories `three-adapt-a11y` and `org.autojs.plugin.category.ACCESSIBILITY_COMPANION` |
+| Accessibility service | `com.google.android.accessibility.selecttospeak.SelectToSpeakService` extending `ThreeAdaptA11yService`; the class name is the documented compatibility shim and MUST NOT be renamed |
+| Theme | `Theme.ThreeAdaptA11y` |
+| Release artifact | `autojs6-plugin-three-adapt-a11y-v{VERSION_NAME}-{CRC32}.apk` |
+| Plugin instruction heading (all locales) | `# AutoJs6 3-Adapt A11y` |
+| Host and index references | AutoJs6 `PluginInstallWizardCatalog` entry `official("three.adapt.a11y")`, the Advanced Protection row in AutoJs6 `PluginSettingsFragment`, and `official-repositories.json` in AutoJs6-Official-Plugins-Index |
+
+Names that describe the mechanism rather than the product (`CompatServiceController`, `CompatServiceSync`, `CompatSettings`, `CompatServiceManagerDialog`, the "compatibility service" strings, `tools/autojs6-compat-metrics.js`, `docs/research/accessibility-service-identity-compat.md`) are deliberately kept; they are truthful descriptions of the accessibility compatibility shim, not identity.
+
+## Rules
 
 - Preserve user changes and inspect `git status --short` before and after edits.
 - Use the online `io.github.supermonster003.autojs6-platform-versions` plugin. Do not use `mavenLocal()` or sibling-project build dependencies.
-- Keep the application identity honest. The application ID is `io.github.supermonster003.autojs6.plugin.accessibilitycompat`; do not imitate another application's package, label, icon, or signature.
+- Keep the application identity honest. The application ID is `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`; do not imitate another application's package, label, icon, or signature.
 - The allow-listed accessibility class name is an explicitly documented compatibility shim. Its visible service label and description must remain truthful.
 - The accessibility callback is privacy-minimal: do not read `event.source`, `event.text`, `rootInActiveWindow`, screenshots, or user content; do not add networking, analytics, storage, overlay, microphone, or camera permissions.
 - `WRITE_SECURE_SETTINGS` and the Shizuku permission exist only for the optional service control described in `docs/development/service-control.md`. That code may change the `enabled_accessibility_services` secure setting for this package's own service and nothing else; keep the three methods individually switchable, keep "Follow AutoJs6" the default policy, and never touch the AutoJs6 service or other settings.

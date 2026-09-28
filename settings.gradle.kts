@@ -1,6 +1,6 @@
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-rootProject.name = "autojs6-plugin-accessibility-compat"
+rootProject.name = "autojs6-plugin-three-adapt-a11y"
 
 pluginManagement {
     providers.gradleProperty("autojs.buildPlugins.includeBuild").orNull?.let { includeBuild(it) }

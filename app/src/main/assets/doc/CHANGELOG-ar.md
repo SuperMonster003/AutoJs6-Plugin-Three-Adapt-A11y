@@ -1,8 +1,18 @@
 <!-- This file is generated. Edit .changelog/lang_*.json and rerun .python/generate_markdown.py. -->
 
-# سجل إصدارات Accessibility Compat
+# سجل إصدارات 3-Adapt A11y
 
 > لغة هذه الصفحة: العربية
+
+## v1.4.0 - 2026/09/29
+
+### تلميح
+
+- تغير معرف التطبيق من `io.github.supermonster003.autojs6.plugin.accessibilitycompat` إلى `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, لذلك يعامل Android هذا الإصدار كتطبيق جديد: أزل أولا Accessibility Compat 1.3.1 أو أقدم, ثم فعل خدمة إمكانية الوصول 3-Adapt A11y من جديد
+
+### تحسين
+
+- أعيدت تسمية المكون الإضافي من Accessibility Compat إلى 3-Adapt A11y في عنوان التطبيق وتسمية خدمة إمكانية الوصول ومعرف المكون `three-adapt-a11y` وأسماء الحزمة والمكونات ومخرجات الإصدار والوثائق ومستودع GitHub
 
 ## v1.3.1 - 2026/09/19
 

@@ -17,7 +17,7 @@
     <string name="about_version">版本</string>
     <string name="about_version_value">%1$s (組建 %2$d)</string>
     <string name="accessibility_service_description">為已發布支援設定提供實驗性本機無障礙相容觸發. 此服務不會讀取或儲存無障礙事件和節點.</string>
-    <string name="accessibility_service_name">AutoJs6 無障礙相容服務</string>
+    <string name="accessibility_service_name">3-Adapt A11y</string>
     <string name="action_close">關閉</string>
     <string name="action_copy">複製</string>
     <string name="action_open">開啟</string>

@@ -1,4 +1,4 @@
-# AutoJs6 無障礙兼容插件
+# AutoJs6 3-Adapt A11y
 
 ## 用途
 
@@ -8,7 +8,7 @@
 
 1. 安裝 AutoJs6 和此插件.
 2. 開啟此插件, 點按狀態卡片開啟兼容服務管理器. 預設策略為跟隨 AutoJs6: 只要 AutoJs6 無障礙服務已啟用, 兼容服務就會保持啟用.
-3. 沒有 root, WRITE_SECURE_SETTINGS 或 Shizuku 時, 在 Android 系統無障礙設定中手動啟用 AutoJs6 服務和 AutoJs6 無障礙兼容服務. 授予其中一種能力後, 插件會自行套用所選策略.
+3. 沒有 root, WRITE_SECURE_SETTINGS 或 Shizuku 時, 在 Android 系統無障礙設定中手動啟用 AutoJs6 服務和 3-Adapt A11y 服務. 授予其中一種能力後, 插件會自行套用所選策略.
 4. 完全退出並重新開啟支援清單中的目標應用程式, 然後在同一個靜止頁面連續檢查多次節點結果.
 5. 不需要兼容功能時, 在管理器中選擇停用, 或在系統設定中關閉此服務.
 

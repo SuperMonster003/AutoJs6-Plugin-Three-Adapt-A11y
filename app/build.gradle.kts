@@ -10,7 +10,7 @@ plugins {
     id("com.android.application")
 }
 
-val globalApplicationId = "io.github.supermonster003.autojs6.plugin.accessibilitycompat"
+val globalApplicationId = "io.github.supermonster003.autojs6.plugin.three.adapt.a11y"
 var isSignsValid = false
 
 android {
@@ -26,10 +26,10 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        resValue("string", "app_name", "AutoJs6 Accessibility Compat")
+        resValue("string", "app_name", "3-Adapt A11y")
         resValue("string", "plugin_author", "SuperMonster003")
         resValue("string", "plugin_engine", "accessibility")
-        resValue("string", "plugin_id", "accessibility-compat")
+        resValue("string", "plugin_id", "three-adapt-a11y")
         resValue("string", "plugin_variant", "service-identity")
         resValue("string", "plugin_version_date", utils.getDateString("MMM d, yyyy", "GMT+08:00"))
     }
@@ -110,7 +110,7 @@ tasks.register("appendDigestToReleasedFiles") {
         val crc32 = CRC32().apply { source.inputStream().use { input -> input.copyTo(outputStream()) } }.value
         val digest = crc32.toString(16).uppercase().padStart(8, '0')
         source.copyTo(
-            releaseDirectory.resolve("autojs6-plugin-accessibility-compat-v${android.defaultConfig.versionName}-$digest.apk"),
+            releaseDirectory.resolve("autojs6-plugin-three-adapt-a11y-v${android.defaultConfig.versionName}-$digest.apk"),
             overwrite = true,
         )
     }

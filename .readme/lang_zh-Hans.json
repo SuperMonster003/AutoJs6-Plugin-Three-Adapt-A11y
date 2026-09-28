@@ -4,13 +4,13 @@
   "language_notice": "本页语言: 简体中文",
   "h3_languages": "语言 (Languages)",
   "h3_status": "项目状态",
-  "p_status": "Accessibility Compat 是一个独立的实验性伴生 APK. 它尝试帮助已发布支持配置覆盖的应用向 AutoJs6 无障碍服务公开控件树. 它不是通用自动化引擎, 也不会代替 AutoJs6 读取或操作控件.",
+  "p_status": "3-Adapt A11y 是一个独立的实验性伴生 APK. 它尝试帮助已发布支持配置覆盖的应用向 AutoJs6 无障碍服务公开控件树. 它不是通用自动化引擎, 也不会代替 AutoJs6 读取或操作控件.",
   "p_experimental": "兼容效果由各目标应用版本, 页面, 设备和远程配置决定. 本项目不承诺在所有环境中有效. 请先完成 A-B-A 验收再用于任何脚本.",
   "h3_architecture": "No-op 伴生架构",
   "p_architecture": "项目将应用兼容配置隔离在独立 APK 中, 保持 AutoJs6 核心服务名称和通用行为不变:",
   "architecture_points": [
     "AutoJs6 自己的无障碍服务仍是唯一读取, 查询和操作节点的组件.",
-    "伴生 APK 注册一个已被公开实证识别的服务实现类名, 但应用 ID, 图标, 标签, 描述和签名都如实标识为 Accessibility Compat.",
+    "伴生 APK 注册一个已被公开实证识别的服务实现类名, 但应用 ID, 图标, 标签, 描述和签名都如实标识为 3-Adapt A11y.",
     "兼容服务的事件回调是 no-op. 它不读取 `event.source`, `event.text`, `rootInActiveWindow`, 截图或页面内容.",
     "本版本不是节点代理或 Binder 桥. 它只尝试触发支持配置中记录的条件性节点公开行为."
   ],
@@ -18,8 +18,8 @@
   "install_steps": [
     "确认设备为 {{ minimum_android }} 及以上, AutoJs6 内部版本号不低于 {{ required_host_build }}.",
     "仅从本项目 [Releases]({{ repo_url }}/releases) 或可信的 AutoJs6 插件入口安装 APK.",
-    "打开 Accessibility Compat, 核对真实应用名称和用途, 再点击状态卡片打开兼容服务管理器. 默认策略为跟随 AutoJs6, 仅在 AutoJs6 无障碍服务已启用时保持兼容服务启用.",
-    "没有 root, WRITE_SECURE_SETTINGS 或 Shizuku 时, 由用户在 Android 设置中手动启用 Accessibility Compat 对应的无障碍服务, Android 显示无障碍风险提示是正常现象. 主动授予其中一种能力后, 应用会自行应用所选策略, 不触碰其他设置.",
+    "打开 3-Adapt A11y, 核对真实应用名称和用途, 再点击状态卡片打开兼容服务管理器. 默认策略为跟随 AutoJs6, 仅在 AutoJs6 无障碍服务已启用时保持兼容服务启用.",
+    "没有 root, WRITE_SECURE_SETTINGS 或 Shizuku 时, 由用户在 Android 设置中手动启用 3-Adapt A11y 对应的无障碍服务, Android 显示无障碍风险提示是正常现象. 主动授予其中一种能力后, 应用会自行应用所选策略, 不触碰其他设置.",
     "同时保持 AutoJs6 的无障碍服务启用, 重新进入支持配置所列目标页面, 再从 AutoJs6 布局分析器或脚本读取节点."
   ],
   "p_disable": "安装 APK 本身不会生效. 不使用时请选择禁用策略或在系统无障碍设置中关闭兼容服务, 如不再需要可直接卸载.",
@@ -84,7 +84,7 @@
     },
     {
       "q": "为什么安装后没有任何变化?",
-      "a": "没有 root, WRITE_SECURE_SETTINGS 或 Shizuku 时, Android 不允许应用自行启用无障碍服务, 必须在系统设置中同时启用 Accessibility Compat 与 AutoJs6; 具备其中一种能力后, 兼容服务管理器会替你应用所选策略. 请确认应用首页显示兼容服务已启用. 如果目标包节点结果仍异常, 先关闭并重新启用兼容服务, 等待至少 10 秒后完全退出并重新进入目标页面. 只有两个服务都已启用且实际 bound 后, 才按 A-B-A 协议判断当前应用版本和页面是否受支持."
+      "a": "没有 root, WRITE_SECURE_SETTINGS 或 Shizuku 时, Android 不允许应用自行启用无障碍服务, 必须在系统设置中同时启用 3-Adapt A11y 与 AutoJs6; 具备其中一种能力后, 兼容服务管理器会替你应用所选策略. 请确认应用首页显示兼容服务已启用. 如果目标包节点结果仍异常, 先关闭并重新启用兼容服务, 等待至少 10 秒后完全退出并重新进入目标页面. 只有两个服务都已启用且实际 bound 后, 才按 A-B-A 协议判断当前应用版本和页面是否受支持."
     },
     {
       "q": "为什么受支持页面仍然没有文字节点?",

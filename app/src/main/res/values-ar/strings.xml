@@ -17,7 +17,7 @@
     <string name="about_version">الإصدار</string>
     <string name="about_version_value">%1$s (البنية %2$d)</string>
     <string name="accessibility_service_description">مشغل محلي تجريبي لتوافق إمكانية الوصول مع ملفات الدعم المنشورة. لا تقرأ الخدمة أحداث إمكانية الوصول أو العقد ولا تخزنها.</string>
-    <string name="accessibility_service_name">خدمة توافق إمكانية الوصول من AutoJs6</string>
+    <string name="accessibility_service_name">3-Adapt A11y</string>
     <string name="action_close">إغلاق</string>
     <string name="action_copy">نسخ</string>
     <string name="action_open">فتح</string>

@@ -17,7 +17,7 @@
     <string name="about_version">Version</string>
     <string name="about_version_value">%1$s (build %2$d)</string>
     <string name="accessibility_service_description">Déclencheur local et expérimental de compatibilité d\'accessibilité pour les profils publiés. Le service ne lit ni ne stocke les événements ou les noeuds d\'accessibilité.</string>
-    <string name="accessibility_service_name">Compatibilité d\'accessibilité AutoJs6</string>
+    <string name="accessibility_service_name">3-Adapt A11y</string>
     <string name="action_close">Fermer</string>
     <string name="action_copy">Copier</string>
     <string name="action_open">Ouvrir</string>

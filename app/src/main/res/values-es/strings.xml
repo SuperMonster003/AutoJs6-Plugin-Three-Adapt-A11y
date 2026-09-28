@@ -17,7 +17,7 @@
     <string name="about_version">Versión</string>
     <string name="about_version_value">%1$s (compilación %2$d)</string>
     <string name="accessibility_service_description">Activador local y experimental de compatibilidad de accesibilidad para perfiles de soporte publicados. El servicio no lee ni guarda eventos o nodos de accesibilidad.</string>
-    <string name="accessibility_service_name">Compatibilidad de accesibilidad de AutoJs6</string>
+    <string name="accessibility_service_name">3-Adapt A11y</string>
     <string name="action_close">Cerrar</string>
     <string name="action_copy">Copiar</string>
     <string name="action_open">Abrir</string>
