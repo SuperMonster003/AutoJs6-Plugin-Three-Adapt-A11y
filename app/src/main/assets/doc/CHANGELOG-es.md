@@ -13,6 +13,7 @@
 ### Mejora
 
 - El complemento Accessibility Compat pasa a llamarse 3-Adapt A11y en el título de la aplicación, la etiqueta del servicio de accesibilidad, el ID de complemento `three-adapt-a11y`, los nombres de paquete y componentes, los artefactos de publicación, la documentación y el repositorio de GitHub
+- El icono del lanzador es la ilustración 3-Adapt A11y proporcionada por el mantenedor: glifo oscuro sobre gris claro en modo claro, glifo claro sobre gris oscuro en modo oscuro, con los iconos redondo y adaptativo compuestos desde la misma fuente
 
 ## v1.3.1 - 2026/09/19
 

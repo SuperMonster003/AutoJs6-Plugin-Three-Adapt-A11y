@@ -3,7 +3,10 @@
 
 <div align="center">
   <p>
-    <img src="https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/app/src/main/res/mipmap/ic_launcher.png?raw=true" alt="autojs6-plugin-three-adapt-a11y-ic-launcher" border="0" width="128" />
+    <picture>
+      <source srcset="https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/app/src/main/res/mipmap-night/ic_launcher.png?raw=true" media="(prefers-color-scheme: dark)" />
+      <img src="https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/app/src/main/res/mipmap/ic_launcher.png?raw=true" alt="autojs6-plugin-three-adapt-a11y-ic-launcher" border="0" width="128" />
+    </picture>
   </p>
   <h1>3-Adapt A11y</h1>
   <p>対応アプリ向けのプライバシー最小化アクセシビリティ互換トリガー</p>
@@ -150,6 +153,7 @@ WebView, ミニアプリ, Canvas, 独自描画ページは Android の意味ノ�
 ##### 改善
 
 - プラグイン名を Accessibility Compat から 3-Adapt A11y に変更し, アプリ名, アクセシビリティサービスのラベル, プラグイン ID `three-adapt-a11y`, パッケージ名とコンポーネント名, リリース成果物, ドキュメント, GitHub リポジトリを更新
+- ランチャーアイコンをメンテナー提供の 3-Adapt A11y アートワークに変更: ライトモードでは明るいグレー地に暗いグリフ, ダークモードでは暗いグレー地に明るいグリフで, 丸型と適応型アイコンも同じ元画像から合成
 
 [完全なリリース履歴を読む](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-ja.md)
 

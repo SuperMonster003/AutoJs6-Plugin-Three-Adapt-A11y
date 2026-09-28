@@ -3,7 +3,10 @@
 
 <div align="center">
   <p>
-    <img src="https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/app/src/main/res/mipmap/ic_launcher.png?raw=true" alt="autojs6-plugin-three-adapt-a11y-ic-launcher" border="0" width="128" />
+    <picture>
+      <source srcset="https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/app/src/main/res/mipmap-night/ic_launcher.png?raw=true" media="(prefers-color-scheme: dark)" />
+      <img src="https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/app/src/main/res/mipmap/ic_launcher.png?raw=true" alt="autojs6-plugin-three-adapt-a11y-ic-launcher" border="0" width="128" />
+    </picture>
   </p>
   <h1>3-Adapt A11y</h1>
   <p>Минимальный по отношению к конфиденциальности триггер совместимости специальных возможностей для поддерживаемых приложений</p>
@@ -150,6 +153,7 @@ WebView, мини-приложение, Canvas или собственная о�
 ##### Улучшение
 
 - Плагин Accessibility Compat переименован в 3-Adapt A11y: обновлены название приложения, метка службы специальных возможностей, идентификатор плагина `three-adapt-a11y`, имена пакета и компонентов, артефакты выпуска, документация и репозиторий GitHub
+- Значок запуска заменен на предоставленное сопровождающим изображение 3-Adapt A11y: темный глиф на светло-сером фоне в светлой теме, светлый глиф на темно-сером фоне в темной теме, круглый и адаптивный значки собраны из того же исходника
 
 [Открыть полную историю выпусков](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-ru.md)
 

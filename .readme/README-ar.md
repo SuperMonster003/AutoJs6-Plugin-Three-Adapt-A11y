@@ -3,7 +3,10 @@
 
 <div align="center">
   <p>
-    <img src="https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/app/src/main/res/mipmap/ic_launcher.png?raw=true" alt="autojs6-plugin-three-adapt-a11y-ic-launcher" border="0" width="128" />
+    <picture>
+      <source srcset="https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/app/src/main/res/mipmap-night/ic_launcher.png?raw=true" media="(prefers-color-scheme: dark)" />
+      <img src="https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/app/src/main/res/mipmap/ic_launcher.png?raw=true" alt="autojs6-plugin-three-adapt-a11y-ic-launcher" border="0" width="128" />
+    </picture>
   </p>
   <h1>3-Adapt A11y</h1>
   <p>مشغل توافق لإمكانية الوصول بأقل قدر من التعامل مع الخصوصية للتطبيقات المدعومة</p>
@@ -150,6 +153,7 @@ minimum AutoJs6 build: 3923
 ##### تحسين
 
 - أعيدت تسمية المكون الإضافي من Accessibility Compat إلى 3-Adapt A11y في عنوان التطبيق وتسمية خدمة إمكانية الوصول ومعرف المكون `three-adapt-a11y` وأسماء الحزمة والمكونات ومخرجات الإصدار والوثائق ومستودع GitHub
+- أصبحت أيقونة المشغل هي رسم 3-Adapt A11y المقدم من المشرف: رمز داكن على رمادي فاتح في الوضع الفاتح, ورمز فاتح على رمادي داكن في الوضع الداكن, مع تركيب الأيقونتين الدائرية والتكيفية من المصدر نفسه
 
 [قراءة سجل الإصدارات الكامل](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-ar.md)
 

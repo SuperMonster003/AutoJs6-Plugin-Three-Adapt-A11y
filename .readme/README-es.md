@@ -3,7 +3,10 @@
 
 <div align="center">
   <p>
-    <img src="https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/app/src/main/res/mipmap/ic_launcher.png?raw=true" alt="autojs6-plugin-three-adapt-a11y-ic-launcher" border="0" width="128" />
+    <picture>
+      <source srcset="https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/app/src/main/res/mipmap-night/ic_launcher.png?raw=true" media="(prefers-color-scheme: dark)" />
+      <img src="https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/app/src/main/res/mipmap/ic_launcher.png?raw=true" alt="autojs6-plugin-three-adapt-a11y-ic-launcher" border="0" width="128" />
+    </picture>
   </p>
   <h1>3-Adapt A11y</h1>
   <p>Un activador de compatibilidad de accesibilidad con privacidad mínima para aplicaciones compatibles</p>
@@ -150,6 +153,7 @@ La nota de investigación cubre AutoJs6 #289, #382, #432, #463, #520 y #521, GKD
 ##### Mejora
 
 - El complemento Accessibility Compat pasa a llamarse 3-Adapt A11y en el título de la aplicación, la etiqueta del servicio de accesibilidad, el ID de complemento `three-adapt-a11y`, los nombres de paquete y componentes, los artefactos de publicación, la documentación y el repositorio de GitHub
+- El icono del lanzador es la ilustración 3-Adapt A11y proporcionada por el mantenedor: glifo oscuro sobre gris claro en modo claro, glifo claro sobre gris oscuro en modo oscuro, con los iconos redondo y adaptativo compuestos desde la misma fuente
 
 [Leer el historial completo](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-es.md)
 

@@ -13,6 +13,7 @@
 ### Improvement
 
 - Rename the plugin from Accessibility Compat to 3-Adapt A11y across the application title, accessibility service label, plugin ID `three-adapt-a11y`, package and component names, release artifacts, documentation, and the GitHub repository
+- The launcher icon is the maintainer-provided 3-Adapt A11y artwork: a dark glyph on light grey in light mode, a light glyph on dark grey in dark mode, with the round and adaptive icons composed from the same source
 
 ## v1.3.1 - 2026/09/19
 
