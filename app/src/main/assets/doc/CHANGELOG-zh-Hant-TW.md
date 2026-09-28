@@ -1,8 +1,18 @@
 <!-- This file is generated. Edit .changelog/lang_*.json and rerun .python/generate_markdown.py. -->
 
-# Accessibility Compat 發行歷史
+# 3-Adapt A11y 發行歷史
 
 > 本頁語言: 台灣繁體中文
+
+## v1.4.0 - 2026/09/29
+
+### 提示
+
+- 應用程式 ID 由 `io.github.supermonster003.autojs6.plugin.accessibilitycompat` 改為 `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, Android 會將本版本視為新應用程式: 請先解除安裝 Accessibility Compat 1.3.1 及更早版本, 再重新啟用 3-Adapt A11y 無障礙服務
+
+### 優化
+
+- 外掛程式由 Accessibility Compat 更名為 3-Adapt A11y, 應用程式標題, 無障礙服務標籤, 外掛程式 ID `three-adapt-a11y`, 套件名稱與元件名稱, 發行產物, 文件及 GitHub 儲存庫同步更新
 
 ## v1.3.1 - 2026/09/19
 

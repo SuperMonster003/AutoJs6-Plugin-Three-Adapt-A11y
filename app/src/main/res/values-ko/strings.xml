@@ -17,7 +17,7 @@
     <string name="about_version">버전</string>
     <string name="about_version_value">%1$s (빌드 %2$d)</string>
     <string name="accessibility_service_description">게시된 지원 프로필을 위한 실험적 로컬 접근성 호환 트리거입니다. 이 서비스는 접근성 이벤트 또는 노드를 읽거나 저장하지 않습니다.</string>
-    <string name="accessibility_service_name">AutoJs6 접근성 호환 서비스</string>
+    <string name="accessibility_service_name">3-Adapt A11y</string>
     <string name="action_close">닫기</string>
     <string name="action_copy">복사</string>
     <string name="action_open">열기</string>

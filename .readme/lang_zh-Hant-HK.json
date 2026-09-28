@@ -4,13 +4,13 @@
   "language_notice": "本頁語言: 香港繁體中文",
   "h3_languages": "語言 (Languages)",
   "h3_status": "項目狀態",
-  "p_status": "Accessibility Compat 是一個獨立的實驗性伴生 APK. 它嘗試協助已發佈支援配置涵蓋的應用程式向 AutoJs6 無障礙服務提供控件樹. 它不是通用自動化引擎, 也不會代替 AutoJs6 讀取或操作控件.",
+  "p_status": "3-Adapt A11y 是一個獨立的實驗性伴生 APK. 它嘗試協助已發佈支援配置涵蓋的應用程式向 AutoJs6 無障礙服務提供控件樹. 它不是通用自動化引擎, 也不會代替 AutoJs6 讀取或操作控件.",
   "p_experimental": "兼容效果由各目標應用程式版本, 頁面, 裝置及遠端配置決定. 本項目不保證在所有環境中有效. 請先完成 A-B-A 驗收再用於任何腳本.",
   "h3_architecture": "No-op 伴生架構",
   "p_architecture": "項目將應用程式兼容配置隔離於獨立 APK, 保持 AutoJs6 核心服務名稱及通用行為不變:",
   "architecture_points": [
     "AutoJs6 自己的無障礙服務仍是唯一讀取, 查詢及操作節點的組件.",
-    "伴生 APK 註冊一個已獲公開實證識別的服務實現類別名稱, 但應用程式 ID, 圖示, 標籤, 說明及簽名均如實標識為 Accessibility Compat.",
+    "伴生 APK 註冊一個已獲公開實證識別的服務實現類別名稱, 但應用程式 ID, 圖示, 標籤, 說明及簽名均如實標識為 3-Adapt A11y.",
     "兼容服務的事件回調是 no-op. 它不讀取 `event.source`, `event.text`, `rootInActiveWindow`, 螢幕截圖或頁面內容.",
     "本版本不是節點代理或 Binder 橋接. 它只嘗試觸發支援配置中記錄的條件性節點提供行為."
   ],
@@ -18,8 +18,8 @@
   "install_steps": [
     "確認裝置為 {{ minimum_android }} 或以上, AutoJs6 內部版本號不低於 {{ required_host_build }}.",
     "只從本項目 [Releases]({{ repo_url }}/releases) 或可信的 AutoJs6 插件入口安裝 APK.",
-    "開啟 Accessibility Compat, 核對真實應用程式名稱及用途, 再點按狀態卡片開啟兼容服務管理器. 預設策略為跟隨 AutoJs6, 只在 AutoJs6 無障礙服務已啟用時保持兼容服務啟用.",
-    "沒有 root, WRITE_SECURE_SETTINGS 或 Shizuku 時, 由使用者在 Android 設定中手動啟用 Accessibility Compat 對應的無障礙服務, Android 顯示無障礙風險提示屬正常. 主動授予其中一種能力後, 應用程式會自行套用所選策略, 不觸碰其他設定.",
+    "開啟 3-Adapt A11y, 核對真實應用程式名稱及用途, 再點按狀態卡片開啟兼容服務管理器. 預設策略為跟隨 AutoJs6, 只在 AutoJs6 無障礙服務已啟用時保持兼容服務啟用.",
+    "沒有 root, WRITE_SECURE_SETTINGS 或 Shizuku 時, 由使用者在 Android 設定中手動啟用 3-Adapt A11y 對應的無障礙服務, Android 顯示無障礙風險提示屬正常. 主動授予其中一種能力後, 應用程式會自行套用所選策略, 不觸碰其他設定.",
     "同時保持 AutoJs6 無障礙服務啟用, 重新進入支援配置所列目標頁面, 再從 AutoJs6 佈局分析器或腳本讀取節點."
   ],
   "p_disable": "只安裝 APK 不會生效. 不使用時請選擇停用策略或在系統無障礙設定關閉兼容服務, 如不再需要可直接解除安裝.",

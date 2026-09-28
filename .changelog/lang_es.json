@@ -1,5 +1,5 @@
 {
-  "h1_release_history": "Historial de versiones de Accessibility Compat",
+  "h1_release_history": "Historial de versiones de 3-Adapt A11y",
   "language_notice": "Idioma de esta página: español",
   "changelog_label_hint": "Aviso",
   "changelog_label_feature": "Función",
@@ -7,6 +7,15 @@
   "changelog_label_improvement": "Mejora",
   "changelog_label_dependency": "Dependencia",
   "$data": {
+    "v1.4.0": {
+      "released_date": "2026/09/29",
+      "hint": [
+        "El ID de aplicación cambia de `io.github.supermonster003.autojs6.plugin.accessibilitycompat` a `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, por lo que Android trata esta versión como una aplicación nueva: desinstala primero Accessibility Compat 1.3.1 o anterior y vuelve a habilitar el servicio de accesibilidad 3-Adapt A11y"
+      ],
+      "improvement": [
+        "El complemento Accessibility Compat pasa a llamarse 3-Adapt A11y en el título de la aplicación, la etiqueta del servicio de accesibilidad, el ID de complemento `three-adapt-a11y`, los nombres de paquete y componentes, los artefactos de publicación, la documentación y el repositorio de GitHub"
+      ]
+    },
     "v1.3.1": {
       "released_date": "2026/09/19",
       "improvement": [

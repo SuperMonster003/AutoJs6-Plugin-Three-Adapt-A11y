@@ -4,13 +4,13 @@
   "language_notice": "Langue de cette page: français",
   "h3_languages": "Langues",
   "h3_status": "État du projet",
-  "p_status": "Accessibility Compat est un APK compagnon expérimental et autonome. Il tente d'aider les applications couvertes par des profils de support publiés à exposer leurs arbres de contrôles au service d'accessibilité AutoJs6. Ce n'est pas un moteur d'automatisation général et il ne remplace jamais AutoJs6 pour lire ou actionner les contrôles.",
+  "p_status": "3-Adapt A11y est un APK compagnon expérimental et autonome. Il tente d'aider les applications couvertes par des profils de support publiés à exposer leurs arbres de contrôles au service d'accessibilité AutoJs6. Ce n'est pas un moteur d'automatisation général et il ne remplace jamais AutoJs6 pour lire ou actionner les contrôles.",
   "p_experimental": "La compatibilité dépend de la version, de la page, de l'appareil et de la configuration distante de chaque application cible. Le projet ne peut garantir le résultat dans tous les environnements. Effectuez une validation A-B-A avant de l'utiliser dans un script.",
   "h3_architecture": "Architecture compagnon no-op",
   "p_architecture": "Le projet isole les profils de compatibilité des applications dans un APK séparé et ne modifie ni le nom ni le comportement général du service principal AutoJs6:",
   "architecture_points": [
     "Le service d'accessibilité AutoJs6 reste le seul composant qui lit, interroge et actionne les noeuds.",
-    "Le compagnon enregistre un nom de classe de service observé dans des expériences publiques, tandis que son ID d'application, son icône, ses libellés, sa description et sa signature identifient honnêtement Accessibility Compat.",
+    "Le compagnon enregistre un nom de classe de service observé dans des expériences publiques, tandis que son ID d'application, son icône, ses libellés, sa description et sa signature identifient honnêtement 3-Adapt A11y.",
     "Les rappels du service de compatibilité sont no-op. Ils ne lisent jamais `event.source`, `event.text`, `rootInActiveWindow`, les captures d'écran ou le contenu de la page.",
     "Cette version n'est ni un proxy de noeuds ni un pont Binder. Elle tente uniquement de déclencher l'exposition conditionnelle des noeuds documentée par ses profils de support."
   ],
@@ -18,8 +18,8 @@
   "install_steps": [
     "Vérifiez que l'appareil utilise {{ minimum_android }} ou une version ultérieure et qu'AutoJs6 porte au moins le numéro de build interne {{ required_host_build }}.",
     "Installez l'APK uniquement depuis les [Releases]({{ repo_url }}/releases) du projet ou une entrée de plugin AutoJs6 de confiance.",
-    "Ouvrez Accessibility Compat, vérifiez son nom et son objectif réels, puis touchez la carte d'état pour ouvrir le gestionnaire du service de compatibilité. La politique par défaut, suivre AutoJs6, garde le service activé uniquement tant que le service d'accessibilité AutoJs6 est activé.",
-    "Sans root, WRITE_SECURE_SETTINGS ni Shizuku, activez manuellement le service d'accessibilité affiché sous Accessibility Compat dans les paramètres Android; l'avertissement de risque d'Android est normal. Si vous accordez volontairement l'un d'eux, l'application applique elle-même la politique choisie sans toucher à aucun autre réglage.",
+    "Ouvrez 3-Adapt A11y, vérifiez son nom et son objectif réels, puis touchez la carte d'état pour ouvrir le gestionnaire du service de compatibilité. La politique par défaut, suivre AutoJs6, garde le service activé uniquement tant que le service d'accessibilité AutoJs6 est activé.",
+    "Sans root, WRITE_SECURE_SETTINGS ni Shizuku, activez manuellement le service d'accessibilité affiché sous 3-Adapt A11y dans les paramètres Android; l'avertissement de risque d'Android est normal. Si vous accordez volontairement l'un d'eux, l'application applique elle-même la politique choisie sans toucher à aucun autre réglage.",
     "Laissez aussi le service d'accessibilité AutoJs6 actif, rouvrez une page cible indiquée dans un profil de support, puis inspectez les noeuds avec l'analyseur de disposition AutoJs6 ou un script."
   ],
   "p_disable": "L'installation seule de l'APK n'a aucun effet. Choisissez la politique désactivé ou désactivez le service dans les paramètres Android lorsqu'il est inutile, ou désinstallez l'application après usage.",

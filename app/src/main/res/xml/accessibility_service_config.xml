@@ -7,4 +7,4 @@
     android:description="@string/accessibility_service_description"
     android:notificationTimeout="100"
     android:packageNames="com.tencent.mm"
-    android:settingsActivity="io.github.supermonster003.autojs6.plugin.accessibilitycompat.MainActivity" />
+    android:settingsActivity="io.github.supermonster003.autojs6.plugin.three.adapt.a11y.MainActivity" />

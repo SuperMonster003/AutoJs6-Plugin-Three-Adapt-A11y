@@ -17,7 +17,7 @@
     <string name="about_version">バージョン</string>
     <string name="about_version_value">%1$s (ビルド %2$d)</string>
     <string name="accessibility_service_description">公開済みサポートプロファイル向けの試験的なローカルアクセシビリティ互換トリガーです. このサービスはアクセシビリティイベントやノードを読み取らず, 保存もしません.</string>
-    <string name="accessibility_service_name">AutoJs6 アクセシビリティ互換サービス</string>
+    <string name="accessibility_service_name">3-Adapt A11y</string>
     <string name="action_close">閉じる</string>
     <string name="action_copy">コピー</string>
     <string name="action_open">開く</string>

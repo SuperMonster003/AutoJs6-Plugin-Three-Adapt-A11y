@@ -17,7 +17,7 @@
     <string name="about_version">Version</string>
     <string name="about_version_value">%1$s (build %2$d)</string>
     <string name="accessibility_service_description">Experimental local accessibility compatibility trigger for published support profiles. The service does not read or store accessibility events or nodes.</string>
-    <string name="accessibility_service_name">AutoJs6 Accessibility Compat</string>
+    <string name="accessibility_service_name">3-Adapt A11y</string>
     <string name="action_close">Close</string>
     <string name="action_copy">Copy</string>
     <string name="action_open">Open</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.AccessibilityCompat" parent="@android:style/Theme.Material.NoActionBar">
+    <style name="Theme.ThreeAdaptA11y" parent="@android:style/Theme.Material.NoActionBar">
         <item name="android:colorAccent">@color/theme_accent</item>
         <item name="android:fontFamily">sans</item>
         <item name="android:navigationBarColor">@color/theme_navigation_bar</item>

@@ -3,5 +3,5 @@
 -dontwarn kotlinx.parcelize.Parcelize
 
 # The Shizuku server instantiates the user service reflectively by class name.
--keep class io.github.supermonster003.autojs6.plugin.accessibilitycompat.shizuku.ShizukuShellService { <init>(...); *; }
--keep class io.github.supermonster003.autojs6.plugin.accessibilitycompat.shizuku.IShizukuShell** { *; }
+-keep class io.github.supermonster003.autojs6.plugin.three.adapt.a11y.shizuku.ShizukuShellService { <init>(...); *; }
+-keep class io.github.supermonster003.autojs6.plugin.three.adapt.a11y.shizuku.IShizukuShell** { *; }

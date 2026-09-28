@@ -35,7 +35,7 @@ invoked by:
   `Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES`, scheduled only while the policy is
   `FOLLOW_HOST` and re-armed after every run (content-triggered jobs are one-shot and cannot be
   persisted; the wake activity and the receiver re-arm it after a reboot).
-- `AccessibilityCompatService`: while bound, a `ContentObserver` on the same setting and the
+- `ThreeAdaptA11yService`: while bound, a `ContentObserver` on the same setting and the
   `onServiceConnected` callback.
 - `WakeActivity` (`org.autojs.plugin.action.WAKE`) and `MainActivity.onResume`.
 
@@ -50,7 +50,7 @@ skipped when its switch in the manager is off or the capability is missing:
 
 1. Root: `su -c settings put secure enabled_accessibility_services '<value>'`.
 2. Secure settings: `Settings.Secure.putString` with `WRITE_SECURE_SETTINGS`, which the user grants
-   with `adb shell pm grant io.github.supermonster003.autojs6.plugin.accessibilitycompat android.permission.WRITE_SECURE_SETTINGS`
+   with `adb shell pm grant io.github.supermonster003.autojs6.plugin.three.adapt.a11y android.permission.WRITE_SECURE_SETTINGS`
    (the manager shows and copies this command).
 3. Shizuku: a user service (`ShizukuShellService`) that runs `settings get|put` with the shell
    identity, bound through `Shizuku.bindUserService` after the user granted the Shizuku permission.

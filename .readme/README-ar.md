@@ -3,14 +3,14 @@
 
 <div align="center">
   <p>
-    <img src="https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/app/src/main/res/mipmap/ic_launcher.png?raw=true" alt="autojs6-plugin-accessibility-compat-icon" border="0" width="128" />
+    <img src="https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/app/src/main/res/mipmap/ic_launcher.png?raw=true" alt="autojs6-plugin-three-adapt-a11y-ic-launcher" border="0" width="128" />
   </p>
-  <h1>Accessibility Compat</h1>
+  <h1>3-Adapt A11y</h1>
   <p>مشغل توافق لإمكانية الوصول بأقل قدر من التعامل مع الخصوصية للتطبيقات المدعومة</p>
   <p>
-    <a href="https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat?label=Release"/></a>
-    <a href="https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat?color=A24232&label=Issues"/></a>
-    <a href="https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat?color=534BAE&label=License"/></a>
+    <a href="https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y?label=Release"/></a>
+    <a href="https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y?color=A24232&label=Issues"/></a>
+    <a href="https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y?color=534BAE&label=License"/></a>
   </p>
 </div>
 
@@ -18,11 +18,11 @@
 
 ### اللغات
 
-[简体中文](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-zh-Hans.md) | [香港繁體](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-zh-Hant-HK.md) | [台灣繁體](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-zh-Hant-TW.md) | [English](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-en.md) | [Français](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-fr.md) | [Español](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-es.md) | [日本語](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-ja.md) | [한국어](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-ko.md) | [Русский](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-ru.md) | [العربية](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/.readme/README-ar.md)
+[简体中文](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/.readme/README-zh-Hans.md) | [香港繁體](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/.readme/README-zh-Hant-HK.md) | [台灣繁體](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/.readme/README-zh-Hant-TW.md) | [English](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/.readme/README-en.md) | [Français](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/.readme/README-fr.md) | [Español](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/.readme/README-es.md) | [日本語](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/.readme/README-ja.md) | [한국어](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/.readme/README-ko.md) | [Русский](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/.readme/README-ru.md) | [العربية](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/.readme/README-ar.md)
 
 ### حالة المشروع
 
-Accessibility Compat هو APK مرافق مستقل وتجريبي. يحاول مساعدة التطبيقات التي تغطيها ملفات الدعم المنشورة على عرض أشجار عناصر التحكم لخدمة إمكانية الوصول في AutoJs6. وهو ليس محرك أتمتة عاما ولا يحل محل AutoJs6 في قراءة العناصر أو تشغيلها.
+3-Adapt A11y هو APK مرافق مستقل وتجريبي. يحاول مساعدة التطبيقات التي تغطيها ملفات الدعم المنشورة على عرض أشجار عناصر التحكم لخدمة إمكانية الوصول في AutoJs6. وهو ليس محرك أتمتة عاما ولا يحل محل AutoJs6 في قراءة العناصر أو تشغيلها.
 
 > يعتمد التوافق على إصدار كل تطبيق مستهدف وصفحته وجهازه وإعداده البعيد. لا يضمن المشروع النجاح في كل البيئات. أكمل تحقق A-B-A قبل الاعتماد عليه في أي سكربت.
 
@@ -31,16 +31,16 @@ Accessibility Compat هو APK مرافق مستقل وتجريبي. يحاول �
 يعزل المشروع ملفات توافق التطبيقات في APK منفصل ولا يغير اسم خدمة AutoJs6 الأساسية أو سلوكها العام:
 
 - تبقى خدمة إمكانية الوصول في AutoJs6 المكون الوحيد الذي يقرأ العقد ويبحث فيها وينفذ الإجراءات عليها.
-- يسجل المرافق اسم فئة تنفيذ لخدمة تدعمه تجارب علنية, بينما تعرف هوية التطبيق والأيقونة والتسميات والوصف والتوقيع المشروع بصدق على أنه Accessibility Compat.
+- يسجل المرافق اسم فئة تنفيذ لخدمة تدعمه تجارب علنية, بينما تعرف هوية التطبيق والأيقونة والتسميات والوصف والتوقيع المشروع بصدق على أنه 3-Adapt A11y.
 - استدعاءات خدمة التوافق هي no-op. ولا تقرأ `event.source` أو `event.text` أو `rootInActiveWindow` أو لقطات الشاشة أو محتوى الصفحة.
 - هذا الإصدار ليس وسيط عقد ولا جسر Binder. إنه يحاول فقط تشغيل سلوك عرض العقد المشروط الموثق في ملفات الدعم.
 
 ### التثبيت والاستخدام
 
 1. تأكد من أن الجهاز يعمل بنظام Android 7.0 (API 24) أو أحدث وأن رقم بناء AutoJs6 الداخلي لا يقل عن 3923.
-2. ثبت APK فقط من [Releases](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/releases) لهذا المشروع أو من مدخل موثوق لمكونات AutoJs6 الإضافية.
-3. افتح Accessibility Compat وتحقق من اسمه الحقيقي وغرضه, ثم انقر بطاقة الحالة لفتح مدير خدمة التوافق. السياسة الافتراضية هي اتباع AutoJs6, وهي تبقي الخدمة مفعلة فقط ما دامت خدمة إمكانية الوصول في AutoJs6 مفعلة.
-4. بدون root أو WRITE_SECURE_SETTINGS أو Shizuku, فعل يدويا خدمة إمكانية الوصول المعروضة تحت Accessibility Compat من إعدادات Android; تحذير المخاطر في Android متوقع. وإذا منحت أحدها عمدا, يطبق التطبيق السياسة المحددة بنفسه دون المساس بأي إعداد آخر.
+2. ثبت APK فقط من [Releases](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/releases) لهذا المشروع أو من مدخل موثوق لمكونات AutoJs6 الإضافية.
+3. افتح 3-Adapt A11y وتحقق من اسمه الحقيقي وغرضه, ثم انقر بطاقة الحالة لفتح مدير خدمة التوافق. السياسة الافتراضية هي اتباع AutoJs6, وهي تبقي الخدمة مفعلة فقط ما دامت خدمة إمكانية الوصول في AutoJs6 مفعلة.
+4. بدون root أو WRITE_SECURE_SETTINGS أو Shizuku, فعل يدويا خدمة إمكانية الوصول المعروضة تحت 3-Adapt A11y من إعدادات Android; تحذير المخاطر في Android متوقع. وإذا منحت أحدها عمدا, يطبق التطبيق السياسة المحددة بنفسه دون المساس بأي إعداد آخر.
 5. أبق خدمة إمكانية الوصول في AutoJs6 مفعلة أيضا, وأعد فتح صفحة مستهدفة مدرجة في ملف دعم, ثم افحص العقد من محلل التخطيط في AutoJs6 أو من سكربت.
 
 تثبيت APK وحده لا يحدث أثرا. اختر سياسة معطلة أو عطل خدمة التوافق في إعدادات Android عند عدم الحاجة إليها, أو أزل التطبيق بعد الانتهاء.
@@ -63,7 +63,7 @@ Accessibility Compat هو APK مرافق مستقل وتجريبي. يحاول �
 - A2: عطل خدمة التوافق مرة أخرى وكرر الجمع. يجب أن ينعكس التغيير لاستبعاد أثر التحميل أو الذاكرة المؤقتة.
 - سجل عدد العقد وحقول text/desc/resource-id غير الفارغة وعدد clickable وhash للبنية. لا تحتفظ بالمحادثات أو أسماء جهات الاتصال أو لقطات الشاشة.
 
-[قراءة بروتوكول تحقق A-B-A الكامل](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/aba-device-validation.md)
+[قراءة بروتوكول تحقق A-B-A الكامل](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/testing/aba-device-validation.md)
 
 ### نتيجة موثقة على جهاز فعلي
 
@@ -75,7 +75,7 @@ Accessibility Compat هو APK مرافق مستقل وتجريبي. يحاول �
 
 تثبت هذه النتيجة المشغل لهذه المجموعة فقط من الجهاز وإصدار WeChat وصفحة LauncherUI. لا يمكن تعميمها على إصدارات أو حسابات أو أجهزة أخرى أو Mini Programs أو XWeb أو صفحات Canvas.
 
-[قراءة تقرير QV710AF65F الكامل والمنزوع الهوية](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/device-QV710AF65F.md)
+[قراءة تقرير QV710AF65F الكامل والمنزوع الهوية](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/testing/device-QV710AF65F.md)
 
 ### القيود المعروفة
 
@@ -108,8 +108,8 @@ Accessibility Compat هو APK مرافق مستقل وتجريبي. يحاول �
 يتضمن مكون الخدمة اسم فئة توافق مستخدما في تجارب علنية. وهو ليس Google Select to Speak ولا يقدم قراءة نصية ولا ينتحل تطبيق Google أو توقيعه. تبقى الهوية الحقيقية ظاهرة في ID والتسميات والأيقونة وصفحة المعلومات وتوقيع المشروع.
 
 ```text
-application id: io.github.supermonster003.autojs6.plugin.accessibilitycompat
-accessibility service: io.github.supermonster003.autojs6.plugin.accessibilitycompat/com.google.android.accessibility.selecttospeak.SelectToSpeakService
+application id: io.github.supermonster003.autojs6.plugin.three.adapt.a11y
+accessibility service: io.github.supermonster003.autojs6.plugin.three.adapt.a11y/com.google.android.accessibility.selecttospeak.SelectToSpeakService
 supported packages: com.tencent.mm
 minimum Android: Android 7.0 (API 24)
 minimum AutoJs6 build: 3923
@@ -137,22 +137,21 @@ minimum AutoJs6 build: 3923
 
 تغطي مذكرة البحث AutoJs6 #289 و#382 و#432 و#463 و#520 و#521 وGKD `47267c7` وأدلة ثابتة منزوعة الهوية من WeChat 8.0.72 على جهاز الاختبار. وهي تفصل الحقائق العامة والتجارب القابلة للتكرار والاستنتاجات ولا تقدم آلية WeChat الداخلية كضمان عام.
 
-[قراءة بحث توافق هوية خدمات إمكانية الوصول](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/accessibility-service-identity-compat.md)
+[قراءة بحث توافق هوية خدمات إمكانية الوصول](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/research/accessibility-service-identity-compat.md)
 
 ### سجل الإصدارات
 
-#### v1.3.1 - 2026/09/19
+#### v1.4.0 - 2026/09/29
 
-##### إصلاح
+##### تلميح
 
-- تحذيرات قراءة SDK XML v4 مع AGP 9.1 وتشغيل فحص محاذاة مكتبات APK الأصلية خطأ عند تجميع اختبارات JVM, باستخدام إضافات البناء المشتركة 1.8.3
+- تغير معرف التطبيق من `io.github.supermonster003.autojs6.plugin.accessibilitycompat` إلى `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, لذلك يعامل Android هذا الإصدار كتطبيق جديد: أزل أولا Accessibility Compat 1.3.1 أو أقدم, ثم فعل خدمة إمكانية الوصول 3-Adapt A11y من جديد
 
 ##### تحسين
 
-- شرح الحماية المتقدمة في المضيف والإضافة مع فصل الوضع العام عن توفر الخدمة الفعلي والتحكم في الإعدادات الآمنة
-- بعد compileSdk, رفع targetSdk إلى 37 (Android 17), لا يعتمد سلوك المكون الإضافي على الهدف الجديد
+- أعيدت تسمية المكون الإضافي من Accessibility Compat إلى 3-Adapt A11y في عنوان التطبيق وتسمية خدمة إمكانية الوصول ومعرف المكون `three-adapt-a11y` وأسماء الحزمة والمكونات ومخرجات الإصدار والوثائق ومستودع GitHub
 
-[قراءة سجل الإصدارات الكامل](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/changelog/CHANGELOG-ar.md)
+[قراءة سجل الإصدارات الكامل](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-ar.md)
 
 ### البناء وفحص التوثيق
 
@@ -172,14 +171,14 @@ py .python\generate_markdown.py --check
 
 ### الترخيص
 
-كود المشروع مرخص وفق [Mozilla Public License 2.0](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/LICENSE). تعود أسماء WeChat وGoogle وSelect to Speak إلى مالكيها. هذا المشروع غير تابع لتلك الشركات ولا معتمد منها.
+كود المشروع مرخص وفق [Mozilla Public License 2.0](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/LICENSE). تعود أسماء WeChat وGoogle وSelect to Speak إلى مالكيها. هذا المشروع غير تابع لتلك الشركات ولا معتمد منها.
 
 ### الروابط
 
 - [AutoJs6](https://github.com/SuperMonster003/AutoJs6)
-- [قراءة بحث توافق هوية خدمات إمكانية الوصول](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/research/accessibility-service-identity-compat.md)
-- [قراءة بروتوكول تحقق A-B-A الكامل](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/aba-device-validation.md)
-- [قراءة تقرير QV710AF65F الكامل والمنزوع الهوية](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/testing/device-QV710AF65F.md)
+- [قراءة بحث توافق هوية خدمات إمكانية الوصول](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/research/accessibility-service-identity-compat.md)
+- [قراءة بروتوكول تحقق A-B-A الكامل](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/testing/aba-device-validation.md)
+- [قراءة تقرير QV710AF65F الكامل والمنزوع الهوية](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/testing/device-QV710AF65F.md)
 
 
-[16 KB page alignment and build verification](https://github.com/SuperMonster003/AutoJs6-Plugin-Accessibility-Compat/blob/master/docs/16kb.md)
+[16 KB page alignment and build verification](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/16kb.md)

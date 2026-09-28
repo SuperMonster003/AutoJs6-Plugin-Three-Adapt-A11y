@@ -1,7 +1,7 @@
 "auto";
 
 /**
- * Privacy-safe AutoJs6 verifier for the Accessibility Compat companion.
+ * Privacy-safe AutoJs6 verifier for the 3-Adapt A11y companion.
  *
  * Run while a supported target page is visible, or pass a targetPackage launch extra.
  * The script reads nodes through AutoJs6's own
@@ -13,7 +13,7 @@ var SAMPLE_COUNT = 7;
 var SAMPLE_DELAY_MILLIS = 450;
 var DEFAULT_OUTPUT = files.join(
     context.getFilesDir().getAbsolutePath(),
-    "autojs6-accessibility-compat-metrics.json"
+    "autojs6-three-adapt-a11y-metrics.json"
 );
 
 function intentStringExtra(name, fallback) {
@@ -124,4 +124,4 @@ for (var sampleIndex = 0; sampleIndex < SAMPLE_COUNT; sampleIndex += 1) {
 }
 
 files.write(output, JSON.stringify(report, null, 2));
-toast("Accessibility Compat metrics saved: " + phase);
+toast("3-Adapt A11y metrics saved: " + phase);

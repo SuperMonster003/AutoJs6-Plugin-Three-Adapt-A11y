@@ -1,8 +1,8 @@
-# Accessibility Compat A-B-A 设备验收协议
+# 3-Adapt A11y A-B-A 设备验收协议
 
 ## 目的
 
-本协议用于判断开启 Accessibility Compat 是否让 AutoJs6 自己的无障碍服务在同一目标应用页面上稳定获得更完整的节点树. A-B-A 表示兼容服务关闭, 开启, 再关闭. 最后一次关闭用于验证结果可逆, 排除页面加载, 缓存和随机返回造成的假阳性.
+本协议用于判断开启 3-Adapt A11y 是否让 AutoJs6 自己的无障碍服务在同一目标应用页面上稳定获得更完整的节点树. A-B-A 表示兼容服务关闭, 开启, 再关闭. 最后一次关闭用于验证结果可逆, 排除页面加载, 缓存和随机返回造成的假阳性.
 
 Shell `uiautomator` 只可作为次要诊断. 正式判据必须来自 AutoJs6 布局分析器或经审阅的 AutoJs6 脚本, 因为 shell `UiAutomation` 与普通 AccessibilityService 的身份不同.
 
@@ -14,14 +14,14 @@ Shell `uiautomator` 只可作为次要诊断. 正式判据必须来自 AutoJs6 �
 - 不把目标应用 APK, dex 或反编译目录放入仓库或测试报告.
 - 常规用户必须在 Android 系统设置中手动启用或关闭服务, 不应使用 `settings put secure` 或其他 ADB 命令绕过确认.
 - 自动化实验只有在设备所有者明确授权时才可通过 ADB 切换. 实验必须先保存两个 secure setting 的原始值, 只对目标组件做精确合并或移除且保留全部既有服务, 并在 `finally` 中恢复原值及回读校验. 不得把原始服务列表写入公开报告.
-- 测试完成后恢复原有无障碍服务状态, 并在不需要时关闭 Accessibility Compat.
+- 测试完成后恢复原有无障碍服务状态, 并在不需要时关闭 3-Adapt A11y.
 
 ### 授权自动化实验的切换约束
 
 ADB 例外仅用于可审计的受控实验, 不属于普通安装或使用步骤. 自动化脚本必须同时满足:
 
 1. 在第一次写入前原样读取并暂存 `enabled_accessibility_services` 与 `accessibility_enabled`.
-2. 把 AutoJs6 或 Accessibility Compat 组件精确并入原列表, 不重排, 替换或删除其他组件.
+2. 把 AutoJs6 或 3-Adapt A11y 组件精确并入原列表, 不重排, 替换或删除其他组件.
 3. 每次切换后回读设置, 并用 `dumpsys accessibility` 确认预期服务状态.
 4. 把所有恢复逻辑放入 `finally`, 即使采样, 启动目标应用或解析结果失败也必须执行.
 5. 恢复后再次回读两个设置, 与实验前保存的原始值逐字比较. 不一致时立即停止并报告恢复失败.
@@ -75,7 +75,7 @@ package | class | resource-id | bounds | clickable | focusable | scrollable | ch
 ## 阶段 A1: 关闭兼容服务
 
 1. 保持 AutoJs6 无障碍服务开启.
-2. 常规用户在 Android 无障碍设置中关闭 Accessibility Compat 对应的服务. 已授权自动化实验只从保存的原列表精确移除该兼容组件.
+2. 常规用户在 Android 无障碍设置中关闭 3-Adapt A11y 对应的服务. 已授权自动化实验只从保存的原列表精确移除该兼容组件.
 3. 关闭或固定记录所有其他无障碍服务.
 4. 按预先定义的路径进入目标应用页面, 停止交互并等待至少 10 秒.
 5. 使用 AutoJs6 连续采集至少 5 次聚合指标.
@@ -86,14 +86,14 @@ package | class | resource-id | bounds | clickable | focusable | scrollable | ch
 ## 阶段 B: 开启兼容服务
 
 1. 不修改 AutoJs6, 目标应用, 页面内容, 网络或其他服务.
-2. 常规用户在 Android 无障碍设置中开启 Accessibility Compat 对应的服务. 已授权自动化实验只把该兼容组件精确合并到当前列表.
+2. 常规用户在 Android 无障碍设置中开启 3-Adapt A11y 对应的服务. 已授权自动化实验只把该兼容组件精确合并到当前列表.
 3. 用与 A1 完全相同的路径返回目标页面并等待至少 10 秒.
 4. 使用同一 AutoJs6 工具连续采集相同次数的指标.
 5. 不因第一次看见目标节点就停止采样.
 
 ## 阶段 A2: 再次关闭兼容服务
 
-1. 常规用户再次手动关闭 Accessibility Compat 对应的服务. 已授权自动化实验只移除该兼容组件, 不改变其他组件.
+1. 常规用户再次手动关闭 3-Adapt A11y 对应的服务. 已授权自动化实验只移除该兼容组件, 不改变其他组件.
 2. 使用与 A1 和 B 相同的返回页面和等待步骤.
 3. 再次采集相同次数的指标.
 4. 确认指标是否回到 A1 的失败分布.
@@ -129,7 +129,7 @@ package | class | resource-id | bounds | clickable | focusable | scrollable | ch
 - Android/API:
 - AutoJs6 versionCode/versionName:
 - Target app package/versionCode/versionName:
-- Accessibility Compat versionCode/versionName:
+- 3-Adapt A11y versionCode/versionName:
 - Target page category: main | chat | mini-program | XWeb | other
 - Other enabled accessibility services:
 - Service switching: manual | owner-authorized ADB
@@ -192,7 +192,7 @@ $nodes = @($doc.SelectNodes('//node'))
 
 1. 保存聚合表, 不保存原始页面内容.
 2. 恢复测试前的无障碍服务组合.
-3. 不再使用时关闭 Accessibility Compat.
+3. 不再使用时关闭 3-Adapt A11y.
 4. 检查仓库和临时目录, 确认没有 APK, dump, 截图, dex 或解包目录.
 5. 报告 `PASS`, `FAIL`, `NOT_REPRODUCED` 或 `INCONCLUSIVE`, 不以含糊的 "看起来可以" 代替判定.
 

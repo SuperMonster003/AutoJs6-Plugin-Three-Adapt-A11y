@@ -1,4 +1,4 @@
-# AutoJs6 Accessibility Compat
+# AutoJs6 3-Adapt A11y
 
 ## Purpose
 
@@ -8,7 +8,7 @@ This is an optional experimental companion. It may help AutoJs6 retrieve more no
 
 1. Install AutoJs6 and this companion.
 2. Open the companion and tap the status card to open the compatibility service manager. The default policy, Follow AutoJs6, keeps the compatibility service enabled whenever the AutoJs6 accessibility service is enabled.
-3. Without root access, WRITE_SECURE_SETTINGS, or Shizuku, manually enable both the AutoJs6 service and AutoJs6 Accessibility Compat in Android accessibility settings. Once one of them is granted, the companion applies the selected policy itself.
+3. Without root access, WRITE_SECURE_SETTINGS, or Shizuku, manually enable both the AutoJs6 service and 3-Adapt A11y in Android accessibility settings. Once one of them is granted, the companion applies the selected policy itself.
 4. Fully exit and reopen a target app from the support list, then inspect the same static page several times.
 5. Select the Disabled policy in the manager, or disable this service in system settings, when compatibility is not needed.
 

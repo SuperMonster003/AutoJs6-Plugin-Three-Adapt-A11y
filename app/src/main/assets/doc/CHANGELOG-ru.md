@@ -1,8 +1,18 @@
 <!-- This file is generated. Edit .changelog/lang_*.json and rerun .python/generate_markdown.py. -->
 
-# История выпусков Accessibility Compat
+# История выпусков 3-Adapt A11y
 
 > Язык страницы: русский
+
+## v1.4.0 - 2026/09/29
+
+### Подсказка
+
+- Идентификатор приложения изменился с `io.github.supermonster003.autojs6.plugin.accessibilitycompat` на `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, поэтому Android считает этот выпуск новым приложением: сначала удалите Accessibility Compat 1.3.1 или старше, затем снова включите службу специальных возможностей 3-Adapt A11y
+
+### Улучшение
+
+- Плагин Accessibility Compat переименован в 3-Adapt A11y: обновлены название приложения, метка службы специальных возможностей, идентификатор плагина `three-adapt-a11y`, имена пакета и компонентов, артефакты выпуска, документация и репозиторий GitHub
 
 ## v1.3.1 - 2026/09/19
 
