@@ -56,6 +56,7 @@
 - 控制策略為三選一: 跟隨 AutoJs6 (預設), 啟用或停用. 跟隨 AutoJs6 使相容服務與 AutoJs6 無障礙服務保持相同狀態, 並在 AutoJs6 通知變化, 系統已啟用服務清單變化以及應用程式開啟時重新檢查.
 - 自動變更透過 root, WRITE_SECURE_SETTINGS (使用 `adb shell pm grant` 授予) 或 Shizuku 完成, 每種方式都可以單獨關閉. 三者都不可用時, 應用程式只會開啟系統無障礙設定.
 - 管理器顯示兩個服務與每種方式的即時狀態, 可複製診斷報告, 並可開啟此服務的 Android 設定頁面.
+- 啟動器圖示可選擇自適應亮色, 自適應暗色 (預設), 自適應自動或透明背景. 自動模式嘗試跟隨系統主題, 但啟動器可能快取單一配色; 透明圖示可能被啟動器新增背景或遮罩. 切換保持應用程式執行, 顯示重新整理可能需要幾秒鐘.
 
 ### A-B-A 裝置驗收
 
@@ -150,10 +151,13 @@ WebView, 小程式, Canvas 或自繪頁面可能沒有對應 Android 語意節�
 
 - 應用程式 ID 由 `io.github.supermonster003.autojs6.plugin.accessibilitycompat` 改為 `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, Android 會將本版本視為新應用程式: 請先解除安裝 Accessibility Compat 1.3.1 及更早版本, 再重新啟用 3-Adapt A11y 無障礙服務
 
+##### 新增
+
+- 啟動器圖示可選擇自適應亮色, 自適應暗色 (預設), 自適應自動或透明背景. 自動模式嘗試跟隨系統主題, 但啟動器可能快取單一配色; 透明圖示可能被啟動器新增背景或遮罩. 切換保持應用程式執行, 顯示重新整理可能需要幾秒鐘.
+
 ##### 優化
 
 - 外掛程式由 Accessibility Compat 更名為 3-Adapt A11y, 應用程式標題, 無障礙服務標籤, 外掛程式 ID `three-adapt-a11y`, 套件名稱與元件名稱, 發行產物, 文件及 GitHub 儲存庫同步更新
-- 統一 Three 系列啟動器圖示為淺色圖案配深色背景, 外掛中心與應用程式內圖案隨應用主題切換並保持透明背景, 避免部分裝置出現啟動器背景套環
 
 [查看完整發行歷史](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-zh-Hant-TW.md)
 

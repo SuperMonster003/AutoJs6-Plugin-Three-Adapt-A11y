@@ -29,7 +29,8 @@
     "La langue, le mode sombre et la couleur du thème suivent AutoJs6 par défaut et sont lus depuis le contrat de paramètres d'AutoJs6; sans AutoJs6, ils reviennent aux valeurs du système ou intégrées.",
     "La politique de contrôle offre trois choix: suivre AutoJs6 (par défaut), activé ou désactivé. Suivre AutoJs6 maintient le service de compatibilité dans le même état que le service d'accessibilité AutoJs6 et le revérifie lorsqu'AutoJs6 signale un changement, lorsque la liste système des services activés change et à l'ouverture de l'application.",
     "Les changements automatiques passent par root, WRITE_SECURE_SETTINGS (accordé avec `adb shell pm grant`) ou Shizuku, et chaque méthode peut être désactivée. Sans aucune d'elles, l'application ouvre seulement les paramètres d'accessibilité du système.",
-    "Le gestionnaire affiche l'état en direct des deux services et de chaque méthode, copie un rapport de diagnostic et ouvre la page des paramètres Android du service."
+    "Le gestionnaire affiche l'état en direct des deux services et de chaque méthode, copie un rapport de diagnostic et ouvre la page des paramètres Android du service.",
+    "L'icône du lanceur propose les modes adaptatif clair, adaptatif sombre (par défaut), adaptatif automatique et fond transparent. Le mode automatique tente de suivre le thème système, mais le lanceur peut garder une palette en cache; il peut ajouter un fond ou un masque aux icônes transparentes. Le changement conserve l'application en cours et peut prendre quelques secondes."
   ],
   "h3_validation": "Validation A-B-A sur appareil",
   "p_validation": "Ne prenez pas un seul dump réussi pour une preuve. Comparez A-B-A sur la même page statique avant d'attribuer un changement au service:",

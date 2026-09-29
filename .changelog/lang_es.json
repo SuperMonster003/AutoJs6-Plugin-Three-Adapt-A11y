@@ -13,8 +13,10 @@
         "El ID de aplicación cambia de `io.github.supermonster003.autojs6.plugin.accessibilitycompat` a `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, por lo que Android trata esta versión como una aplicación nueva: desinstala primero Accessibility Compat 1.3.1 o anterior y vuelve a habilitar el servicio de accesibilidad 3-Adapt A11y"
       ],
       "improvement": [
-        "El complemento Accessibility Compat pasa a llamarse 3-Adapt A11y en el título de la aplicación, la etiqueta del servicio de accesibilidad, el ID de complemento `three-adapt-a11y`, los nombres de paquete y componentes, los artefactos de publicación, la documentación y el repositorio de GitHub",
-        "Unificar los iconos del lanzador de la serie Three con dibujos claros sobre un fondo oscuro fijo, mantener transparentes los del centro de complementos y de la aplicación según su tema y evitar fondos superpuestos en algunos dispositivos"
+        "El complemento Accessibility Compat pasa a llamarse 3-Adapt A11y en el título de la aplicación, la etiqueta del servicio de accesibilidad, el ID de complemento `three-adapt-a11y`, los nombres de paquete y componentes, los artefactos de publicación, la documentación y el repositorio de GitHub"
+      ],
+      "feature": [
+        "El icono del lanzador admite adaptable claro, adaptable oscuro (predeterminado), adaptable automático y fondo transparente. El modo automático intenta seguir el tema del sistema, pero el lanzador puede guardar una sola paleta en caché; puede agregar un fondo o una máscara a los iconos transparentes. El cambio mantiene la aplicación en ejecución y puede tardar unos segundos."
       ]
     },
     "v1.3.1": {

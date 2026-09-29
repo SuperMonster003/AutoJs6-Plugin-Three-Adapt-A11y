@@ -29,7 +29,8 @@
     "El idioma, el modo oscuro y el color del tema siguen a AutoJs6 de forma predeterminada y se leen del contrato de ajustes de AutoJs6; sin AutoJs6 vuelven a los valores del sistema o integrados.",
     "La política de control tiene tres opciones: seguir a AutoJs6 (predeterminada), habilitado o deshabilitado. Seguir a AutoJs6 mantiene el servicio de compatibilidad en el mismo estado que el servicio de accesibilidad de AutoJs6 y lo vuelve a comprobar cuando AutoJs6 notifica un cambio, cuando cambia la lista de servicios habilitados del sistema y al abrir la aplicación.",
     "Los cambios automáticos usan root, WRITE_SECURE_SETTINGS (concedido con `adb shell pm grant`) o Shizuku, y cada método puede desactivarse. Sin ninguno de ellos, la aplicación solo abre los ajustes de accesibilidad del sistema.",
-    "El gestor muestra el estado en vivo de ambos servicios y de cada método, copia un informe de diagnóstico y abre la página de ajustes de Android del servicio."
+    "El gestor muestra el estado en vivo de ambos servicios y de cada método, copia un informe de diagnóstico y abre la página de ajustes de Android del servicio.",
+    "El icono del lanzador admite adaptable claro, adaptable oscuro (predeterminado), adaptable automático y fondo transparente. El modo automático intenta seguir el tema del sistema, pero el lanzador puede guardar una sola paleta en caché; puede agregar un fondo o una máscara a los iconos transparentes. El cambio mantiene la aplicación en ejecución y puede tardar unos segundos."
   ],
   "h3_validation": "Validación A-B-A en dispositivo",
   "p_validation": "No considere una sola extracción correcta como prueba. Compare A-B-A en la misma página estática antes de atribuir un cambio al servicio:",
