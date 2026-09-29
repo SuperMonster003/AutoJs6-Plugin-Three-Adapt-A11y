@@ -14,6 +14,10 @@
 
 - L'icône du lanceur propose les modes adaptatif clair, adaptatif sombre (par défaut), adaptatif automatique et fond transparent. Le mode automatique tente de suivre le thème système, mais le lanceur peut garder une palette en cache; il peut ajouter un fond ou un masque aux icônes transparentes. Le changement conserve l'application en cours et peut prendre quelques secondes.
 
+### Correctif
+
+- Conserver la ressource automatique dynamique après installation afin que le lanceur puisse charger la variante claire ou sombre correspondante.
+
 ### Amélioration
 
 - Le plugin Accessibility Compat est renommé 3-Adapt A11y dans le titre de l'application, le libellé du service d'accessibilité, l'ID de plugin `three-adapt-a11y`, les noms de package et de composants, les artefacts de publication, la documentation et le dépôt GitHub

@@ -155,6 +155,10 @@ The research note covers AutoJs6 #289, #382, #432, #463, #520, and #521, GKD `47
 
 - Launcher icon can be set to adaptive light, adaptive dark (default), adaptive automatic or transparent background. Automatic mode tries to follow the system theme, but launchers may cache a single color scheme; transparent icons may receive a launcher background or mask. Switching preserves the running app and may take a few seconds to appear.
 
+##### Fix
+
+- Keep the automatic launcher icon resource dynamic after installation so launchers can load the matching light or dark variant.
+
 ##### Improvement
 
 - Rename the plugin from Accessibility Compat to 3-Adapt A11y across the application title, accessibility service label, plugin ID `three-adapt-a11y`, package and component names, release artifacts, documentation, and the GitHub repository
