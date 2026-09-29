@@ -56,6 +56,7 @@ The settings screen groups generic options that can follow AutoJs6, and the comp
 - The control policy is a three-way choice: Follow AutoJs6 (default), Enabled, or Disabled. Follow AutoJs6 keeps the compatibility service in the same state as the AutoJs6 accessibility service and re-checks it when AutoJs6 reports a change, when the system list of enabled services changes, and when the app opens.
 - Automatic changes use root, WRITE_SECURE_SETTINGS (granted with `adb shell pm grant`), or Shizuku, and each method can be switched off. Without any of them the app only opens the system accessibility settings.
 - The manager shows the live state of both services and of each method, copies a diagnostic report, and opens the Android settings page of the service.
+- Launcher icon can be set to adaptive light, adaptive dark (default), adaptive automatic or transparent background. Automatic mode tries to follow the system theme, but launchers may cache a single color scheme; transparent icons may receive a launcher background or mask. Switching preserves the running app and may take a few seconds to appear.
 
 ### A-B-A Device Validation
 
@@ -150,10 +151,13 @@ The research note covers AutoJs6 #289, #382, #432, #463, #520, and #521, GKD `47
 
 - The application ID changed from `io.github.supermonster003.autojs6.plugin.accessibilitycompat` to `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, so Android treats this release as a new app: uninstall Accessibility Compat 1.3.1 or earlier first, then enable the 3-Adapt A11y accessibility service again
 
+##### Feature
+
+- Launcher icon can be set to adaptive light, adaptive dark (default), adaptive automatic or transparent background. Automatic mode tries to follow the system theme, but launchers may cache a single color scheme; transparent icons may receive a launcher background or mask. Switching preserves the running app and may take a few seconds to appear.
+
 ##### Improvement
 
 - Rename the plugin from Accessibility Compat to 3-Adapt A11y across the application title, accessibility service label, plugin ID `three-adapt-a11y`, package and component names, release artifacts, documentation, and the GitHub repository
-- Unify Three series launcher icons with light artwork on a stable dark background, while plugin-center and in-app icons remain transparent and follow the application theme; prevent nested launcher backgrounds on some devices
 
 [Read the complete release history](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-en.md)
 

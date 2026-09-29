@@ -10,10 +10,13 @@
 
 - The application ID changed from `io.github.supermonster003.autojs6.plugin.accessibilitycompat` to `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, so Android treats this release as a new app: uninstall Accessibility Compat 1.3.1 or earlier first, then enable the 3-Adapt A11y accessibility service again
 
+### Feature
+
+- Launcher icon can be set to adaptive light, adaptive dark (default), adaptive automatic or transparent background. Automatic mode tries to follow the system theme, but launchers may cache a single color scheme; transparent icons may receive a launcher background or mask. Switching preserves the running app and may take a few seconds to appear.
+
 ### Improvement
 
 - Rename the plugin from Accessibility Compat to 3-Adapt A11y across the application title, accessibility service label, plugin ID `three-adapt-a11y`, package and component names, release artifacts, documentation, and the GitHub repository
-- Unify Three series launcher icons with light artwork on a stable dark background, while plugin-center and in-app icons remain transparent and follow the application theme; prevent nested launcher backgrounds on some devices
 
 ## v1.3.1 - 2026/09/19
 

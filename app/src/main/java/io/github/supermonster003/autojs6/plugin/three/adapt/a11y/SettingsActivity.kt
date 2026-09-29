@@ -24,6 +24,8 @@ internal class SettingsActivity : ThemedActivity() {
     private lateinit var hostResult: HostSettingsResult
     private var managerDialog: CompatServiceManagerDialog? = null
     private var advancedProtectionRow: LinearLayout? = null
+    private var launcherIconRow: LinearLayout? = null
+    internal var launcherIconDialog: android.app.AlertDialog? = null; private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +35,7 @@ internal class SettingsActivity : ThemedActivity() {
     }
 
     override fun onDestroy() {
+        launcherIconDialog?.dismiss()
         managerDialog?.dismiss()
         managerDialog = null
         super.onDestroy()
@@ -53,6 +56,11 @@ internal class SettingsActivity : ThemedActivity() {
             addView(row(getString(R.string.settings_dark_mode), darkModeSummary(), R.drawable.ic_dark_mode) { showDarkModeDialog() })
             addView(divider(56))
             addView(row(getString(R.string.settings_theme_color), themeSummary(), R.drawable.ic_palette, trailing = colorSwatch(palette.accent, 24)) { showThemeColorDialog() })
+            addView(divider(56))
+            launcherIconRow = row(getString(R.string.launcher_icon_title),
+                getString(launcherIconLabels[LauncherIcons.current(this@SettingsActivity).ordinal]), R.drawable.ic_palette) { showLauncherIconDialog() }
+                .apply { tag = "launcher-icon" }
+            addView(launcherIconRow)
         })
 
         addView(sectionTitle(getString(R.string.settings_section_service)))
@@ -139,6 +147,23 @@ internal class SettingsActivity : ThemedActivity() {
     }
 
     /* Dialogs. */
+
+    private fun showLauncherIconDialog() {
+        launcherIconDialog = singleChoiceDialog(getString(R.string.launcher_icon_title), LauncherIconMode.entries.map { mode ->
+            Choice(getString(launcherIconLabels[mode.ordinal]), when (mode) {
+                LauncherIconMode.AUTO -> getString(R.string.launcher_icon_auto_note)
+                LauncherIconMode.TRANSPARENT -> getString(R.string.launcher_icon_transparent_note)
+                else -> null
+            })
+        }, LauncherIcons.current(this).ordinal) { index ->
+            val result = runCatching { LauncherIcons.select(this, LauncherIconMode.entries[index]) }
+            toast(getString(if (result.isSuccess) R.string.launcher_icon_applied_note else R.string.launcher_icon_failed), long = true)
+            launcherIconRow?.let { rowSummary(it)?.text = getString(launcherIconLabels[LauncherIcons.current(this).ordinal]) }
+        }
+    }
+
+    internal val launcherIconLabels = listOf(R.string.launcher_icon_light, R.string.launcher_icon_dark,
+        R.string.launcher_icon_auto, R.string.launcher_icon_transparent)
 
     private fun showLanguageDialog() {
         val values = AppLanguage.entries

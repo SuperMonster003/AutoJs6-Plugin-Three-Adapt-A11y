@@ -345,7 +345,7 @@ internal abstract class ThemedActivity : Activity() {
         choices: List<Choice>,
         checkedIndex: Int,
         onSelect: (Int) -> Unit,
-    ) {
+    ): AlertDialog {
         var dialog: AlertDialog? = null
         val list = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
@@ -364,6 +364,7 @@ internal abstract class ThemedActivity : Activity() {
             .setNegativeButton(android.R.string.cancel, null)
             .create()
         showDialog(dialog)
+        return dialog
     }
 
     /** A filled circle for theme colors, used as a row trailing view. */

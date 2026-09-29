@@ -41,6 +41,15 @@
     <string name="language_name_zh_hans">简体中文</string>
     <string name="language_name_zh_hant_hk">繁體中文 (香港)</string>
     <string name="language_name_zh_hant_tw">繁體中文 (台灣)</string>
+    <string name="launcher_icon_applied_note">啓動器可能需要幾秒鐘刷新. 部分主畫面快捷方式可能需要重新添加.</string>
+    <string name="launcher_icon_auto">自適應自動</string>
+    <string name="launcher_icon_auto_note">嘗試跟隨系統主題. 部分啓動器會快取圖標或只使用一種配色.</string>
+    <string name="launcher_icon_dark">自適應暗色</string>
+    <string name="launcher_icon_failed">無法切換啓動器圖標, 請重試.</string>
+    <string name="launcher_icon_light">自適應亮色</string>
+    <string name="launcher_icon_title">啓動器圖標</string>
+    <string name="launcher_icon_transparent">透明背景</string>
+    <string name="launcher_icon_transparent_note">部分啓動器會自行添加背景或遮罩, 透明效果可能無法保留.</string>
     <string name="limitations_body">兼容效果取決於目標應用程式版本, 頁面和裝置, 並可能在更新後失效. 此服務不能建立頁面原本未公開的語義節點. WebView, Canvas 和自訂繪製介面的控制項仍可能無法使用.</string>
     <string name="limitations_title">限制</string>
     <string name="link_unavailable">無法開啟此連結.</string>

@@ -10,10 +10,13 @@
 
 - 應用 ID 由 `io.github.supermonster003.autojs6.plugin.accessibilitycompat` 改為 `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, Android 會將本版本視為新應用: 請先卸載 Accessibility Compat 1.3.1 及更早版本, 再重新啟用 3-Adapt A11y 無障礙服務
 
+### 新增
+
+- 啓動器圖標可選擇自適應亮色, 自適應暗色 (預設), 自適應自動或透明背景. 自動模式嘗試跟隨系統主題, 但啓動器可能快取單一配色; 透明圖標可能被啓動器添加背景或遮罩. 切換保持應用程式運行, 顯示刷新可能需要幾秒鐘.
+
 ### 優化
 
 - 插件由 Accessibility Compat 更名為 3-Adapt A11y, 應用標題, 無障礙服務標籤, 插件 ID `three-adapt-a11y`, 包名與組件名, 發佈產物, 文檔及 GitHub 倉庫同步更新
-- 統一 Three 系列啟動器圖示為淺色圖案配深色背景, 插件中心與應用程式內圖案隨應用主題切換並保持透明背景, 避免部分裝置出現啟動器背景套環
 
 ## v1.3.1 - 2026/09/19
 

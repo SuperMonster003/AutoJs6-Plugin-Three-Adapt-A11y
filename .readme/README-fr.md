@@ -56,6 +56,7 @@ L'écran des paramètres regroupe des options générales qui peuvent suivre Aut
 - La politique de contrôle offre trois choix: suivre AutoJs6 (par défaut), activé ou désactivé. Suivre AutoJs6 maintient le service de compatibilité dans le même état que le service d'accessibilité AutoJs6 et le revérifie lorsqu'AutoJs6 signale un changement, lorsque la liste système des services activés change et à l'ouverture de l'application.
 - Les changements automatiques passent par root, WRITE_SECURE_SETTINGS (accordé avec `adb shell pm grant`) ou Shizuku, et chaque méthode peut être désactivée. Sans aucune d'elles, l'application ouvre seulement les paramètres d'accessibilité du système.
 - Le gestionnaire affiche l'état en direct des deux services et de chaque méthode, copie un rapport de diagnostic et ouvre la page des paramètres Android du service.
+- L'icône du lanceur propose les modes adaptatif clair, adaptatif sombre (par défaut), adaptatif automatique et fond transparent. Le mode automatique tente de suivre le thème système, mais le lanceur peut garder une palette en cache; il peut ajouter un fond ou un masque aux icônes transparentes. Le changement conserve l'application en cours et peut prendre quelques secondes.
 
 ### Validation A-B-A sur appareil
 
@@ -150,10 +151,13 @@ La note de recherche couvre AutoJs6 #289, #382, #432, #463, #520 et #521, GKD `4
 
 - L'ID d'application passe de `io.github.supermonster003.autojs6.plugin.accessibilitycompat` à `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, Android considère donc cette version comme une nouvelle application : désinstallez d'abord Accessibility Compat 1.3.1 ou antérieur, puis réactivez le service d'accessibilité 3-Adapt A11y
 
+##### Fonctionnalité
+
+- L'icône du lanceur propose les modes adaptatif clair, adaptatif sombre (par défaut), adaptatif automatique et fond transparent. Le mode automatique tente de suivre le thème système, mais le lanceur peut garder une palette en cache; il peut ajouter un fond ou un masque aux icônes transparentes. Le changement conserve l'application en cours et peut prendre quelques secondes.
+
 ##### Amélioration
 
 - Le plugin Accessibility Compat est renommé 3-Adapt A11y dans le titre de l'application, le libellé du service d'accessibilité, l'ID de plugin `three-adapt-a11y`, les noms de package et de composants, les artefacts de publication, la documentation et le dépôt GitHub
-- Uniformiser les icônes du lanceur de la série Three avec un dessin clair sur fond sombre fixe, conserver la transparence et le thème des icônes dans le centre des plugins et dans l'application, et éviter les fonds imbriqués sur certains appareils
 
 [Lire l'historique complet](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-fr.md)
 
