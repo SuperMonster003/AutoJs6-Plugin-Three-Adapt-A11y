@@ -153,7 +153,7 @@ WebView, 미니 앱, Canvas 또는 사용자 정의 렌더링 페이지에는 An
 ##### 개선
 
 - 플러그인 이름을 Accessibility Compat에서 3-Adapt A11y로 변경하고 앱 제목, 접근성 서비스 라벨, 플러그인 ID `three-adapt-a11y`, 패키지 및 구성 요소 이름, 릴리스 산출물, 문서, GitHub 저장소를 함께 갱신
-- 런처 아이콘을 유지 관리자가 제공한 3-Adapt A11y 아트워크로 변경: 라이트 모드는 밝은 회색 바탕에 어두운 글리프, 다크 모드는 어두운 회색 바탕에 밝은 글리프이며, 원형 및 적응형 아이콘도 같은 원본에서 합성
+- Three 시리즈 런처 아이콘을 밝은 그림과 고정된 어두운 배경으로 통일하고, 플러그인 센터와 앱 내부 아이콘은 앱 테마에 따라 투명 배경을 유지하며 일부 기기에서 런처 배경이 겹치는 문제를 방지
 
 [전체 릴리스 기록 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-ko.md)
 
