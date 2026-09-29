@@ -13,7 +13,7 @@
 ### Amélioration
 
 - Le plugin Accessibility Compat est renommé 3-Adapt A11y dans le titre de l'application, le libellé du service d'accessibilité, l'ID de plugin `three-adapt-a11y`, les noms de package et de composants, les artefacts de publication, la documentation et le dépôt GitHub
-- L'icône du lanceur reprend l'illustration 3-Adapt A11y fournie par le mainteneur : glyphe sombre sur gris clair en mode clair, glyphe clair sur gris foncé en mode sombre, les icônes ronde et adaptative étant composées à partir de la même source
+- Uniformiser les icônes du lanceur de la série Three avec un dessin clair sur fond sombre fixe, conserver la transparence et le thème des icônes dans le centre des plugins et dans l'application, et éviter les fonds imbriqués sur certains appareils
 
 ## v1.3.1 - 2026/09/19
 

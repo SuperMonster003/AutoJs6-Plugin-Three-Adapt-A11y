@@ -153,7 +153,7 @@ WebView, ミニアプリ, Canvas, 独自描画ページは Android の意味ノ�
 ##### 改善
 
 - プラグイン名を Accessibility Compat から 3-Adapt A11y に変更し, アプリ名, アクセシビリティサービスのラベル, プラグイン ID `three-adapt-a11y`, パッケージ名とコンポーネント名, リリース成果物, ドキュメント, GitHub リポジトリを更新
-- ランチャーアイコンをメンテナー提供の 3-Adapt A11y アートワークに変更: ライトモードでは明るいグレー地に暗いグリフ, ダークモードでは暗いグレー地に明るいグリフで, 丸型と適応型アイコンも同じ元画像から合成
+- Three シリーズのランチャーアイコンを明るい図案と固定の暗い背景に統一し, プラグインセンターとアプリ内ではアプリのテーマに応じた透明背景の画像を使用し, 一部の端末で背景が二重になる問題を解消
 
 [完全なリリース履歴を読む](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-ja.md)
 

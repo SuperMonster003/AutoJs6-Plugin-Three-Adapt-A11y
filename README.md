@@ -153,7 +153,7 @@ WebView, 小程序, Canvas 或自绘页面可能没有对应的 Android 语义�
 ##### 优化
 
 - 插件由 Accessibility Compat 更名为 3-Adapt A11y, 应用标题, 无障碍服务标签, 插件 ID `three-adapt-a11y`, 包名与组件名, 发布产物, 文档及 GitHub 仓库同步更新
-- 启动器图标改为维护者提供的 3-Adapt A11y 图案: 亮色模式为浅灰底深色图案, 暗色模式为深灰底浅色图案, 圆形与自适应图标由同一源图合成
+- 统一 Three 系列启动器图标为浅色图案配深色背景, 插件中心与应用内图案随应用主题切换并保持透明背景, 避免部分设备出现启动器背景套环
 
 [查看完整发行历史](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-zh-Hans.md)
 
