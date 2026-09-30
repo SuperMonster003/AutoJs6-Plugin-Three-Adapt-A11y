@@ -1,7 +1,12 @@
 package io.github.supermonster003.autojs6.plugin.three.adapt.a11y.ui
 
-import android.app.Activity
-import android.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import android.content.res.Configuration
+import androidx.appcompat.app.AlertDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.materialswitch.MaterialSwitch
+import com.google.android.material.radiobutton.MaterialRadioButton
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -33,9 +38,9 @@ import io.github.supermonster003.autojs6.plugin.three.adapt.a11y.settings.Compat
 /**
  * Base of every screen: applies the language, dark-mode and theme-color settings (following AutoJs6
  * when selected), recreates itself when they change, and offers the small programmatic view kit the
- * screens are built from. The app deliberately stays on framework widgets only.
+ * screens are built from. Interactive controls use Material 3 with an explicit runtime palette.
  */
-internal abstract class ThemedActivity : Activity() {
+internal abstract class ThemedActivity : AppCompatActivity() {
     lateinit var palette: Palette
         private set
 
@@ -43,16 +48,27 @@ internal abstract class ThemedActivity : Activity() {
 
     private var appliedAppearance: Int? = null
     private var recreateRequested = false
+    private lateinit var systemContext: Context
+    private var appearanceGeneration = 0
+    private var interacted = false
+    protected open fun hasUnconfirmedDialog(): Boolean = false
+    override fun onUserInteraction() { interacted = true; super.onUserInteraction() }
 
     override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(AppConfiguration.wrap(newBase))
+        systemContext = newBase
+        val configured = AppConfiguration.wrap(newBase)
+        // Keep AppCompat dialogs on the same explicit app night mode as the wrapped resources.
+        delegate.localNightMode = if (configured.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES)
+            AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+        super.attachBaseContext(configured)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        io.github.supermonster003.autojs6.plugin.three.adapt.a11y.LauncherIcons.normalizeAsync(this)
         actionBar?.hide()
         palette = Palette.resolve(this)
-        appliedAppearance = AppConfiguration.appearanceSignature(this)
+        appliedAppearance = AppConfiguration.appearanceSignature(systemContext)
         configureWindow()
         applyLayoutDirection(window)
     }
@@ -69,17 +85,29 @@ internal abstract class ThemedActivity : Activity() {
     /** Screens recreate themselves when the language, dark mode or theme color they show changed. */
     override fun onResume() {
         super.onResume()
-        if (recreateRequested) return
-        if (AppConfiguration.appearanceSignature(this, appliedAppearance) != appliedAppearance) {
+        interacted = false
+        if (!recreateRequested && !hasUnconfirmedDialog() && AppConfiguration.appearanceSignature(systemContext) != appliedAppearance) {
             recreateRequested = true
             recreate()
+            return
+        }
+        val expected = ++appearanceGeneration
+        io.github.supermonster003.autojs6.plugin.three.adapt.a11y.host.HostSettingsClient.refresh(applicationContext) { next ->
+            if (expected != appearanceGeneration || isFinishing || isDestroyed) return@refresh
+            io.github.supermonster003.autojs6.plugin.three.adapt.a11y.host.HostSettingsClient.publish(next)
+            if (!interacted && !hasUnconfirmedDialog() && !recreateRequested && AppConfiguration.appearanceSignature(systemContext) != appliedAppearance) {
+                recreateRequested = true
+                recreate()
+            }
         }
     }
+
+    override fun onPause() { appearanceGeneration++; super.onPause() }
 
     /* Screen scaffolding. */
 
     /** Root with system-bar insets applied, an optional [toolbar] and a scrolling [content]. */
-    fun screen(toolbar: View?, content: LinearLayout.() -> Unit): View {
+    fun screen(toolbar: View?, pageInsetDp: Int = SCREEN_MARGIN, content: LinearLayout.() -> Unit): View {
         val column = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
             toolbar?.let { addView(it, lp(MATCH_PARENT, WRAP_CONTENT)) }
@@ -90,7 +118,7 @@ internal abstract class ThemedActivity : Activity() {
                     addView(
                         LinearLayout(context).apply {
                             orientation = LinearLayout.VERTICAL
-                            setPaddingRelative(dp(SCREEN_MARGIN), dp(4), dp(SCREEN_MARGIN), dp(28))
+                            setPaddingRelative(dp(pageInsetDp), dp(4), dp(pageInsetDp), dp(28))
                             content()
                         },
                         ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT),
@@ -137,14 +165,21 @@ internal abstract class ThemedActivity : Activity() {
         this.text = text
         textSize = sizeSp
         setTextColor(color)
+        setLinkTextColor(palette.accent)
+        highlightColor = ColorPolicy.withAlpha(palette.accent, 0x55)
+        if (Build.VERSION.SDK_INT >= 29) {
+            textSelectHandle?.mutate()?.apply { setTint(palette.accent) }?.let(::setTextSelectHandle)
+            textSelectHandleLeft?.mutate()?.apply { setTint(palette.accent) }?.let(::setTextSelectHandleLeft)
+            textSelectHandleRight?.mutate()?.apply { setTint(palette.accent) }?.let(::setTextSelectHandleRight)
+        }
         setTypeface(typeface)
         this.gravity = gravity
         setLineSpacing(0f, 1.18f)
     }
 
     fun sectionTitle(title: CharSequence): TextView =
-        text(title, 13.5f, palette.accent, Typeface.DEFAULT_BOLD).apply {
-            setPaddingRelative(dp(4), dp(20), dp(4), dp(8))
+        text(title, 14f, palette.secondaryText, Typeface.create("sans-serif-medium", Typeface.NORMAL)).apply {
+            setPaddingRelative(dp(24), dp(24), dp(24), dp(8))
             letterSpacing = 0.02f
         }
 
@@ -172,8 +207,8 @@ internal abstract class ThemedActivity : Activity() {
         val shell = LinearLayout(this).apply {
             orientation = LinearLayout.HORIZONTAL
             gravity = Gravity.CENTER_VERTICAL
-            minimumHeight = dp(60)
-            setPaddingRelative(dp(18), dp(12), dp(14), dp(12))
+            minimumHeight = dp(if (summary.isNullOrEmpty()) 56 else 72)
+            setPaddingRelative(dp(24), dp(12), dp(24), dp(12))
         }
         iconRes?.let { shell.addView(rowIcon(it, palette.secondaryText)) }
         shell.addView(textColumn(title, summary), lp(0, WRAP_CONTENT, weight = 1f))
@@ -184,10 +219,10 @@ internal abstract class ThemedActivity : Activity() {
         } else if (onClick != null) {
             shell.addView(
                 ImageView(this).apply {
-                    setImageDrawable(icon(R.drawable.ic_chevron_right, palette.secondaryText))
+                    setImageDrawable(icon(R.drawable.ic_settings_chevron, palette.secondaryText))
                     alpha = 0.7f
                 },
-                lp(dp(22), dp(22)).apply { marginStart = dp(8) },
+                lp(dp(24), dp(24)).apply { marginStart = dp(16) },
             )
         }
         if (onClick != null) {
@@ -206,15 +241,26 @@ internal abstract class ThemedActivity : Activity() {
         @DrawableRes iconRes: Int? = null,
         onToggle: (Boolean) -> Unit,
     ): LinearLayout {
-        val switch = Switch(this).apply {
+        val switch = MaterialSwitch(this).apply {
             isChecked = checked
             isClickable = false
             isFocusable = false
+            importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
             tint(this)
         }
         return row(title, summary, iconRes, trailing = switch) {
             switch.isChecked = !switch.isChecked
             onToggle(switch.isChecked)
+        }.apply {
+            accessibilityDelegate = object : View.AccessibilityDelegate() {
+                override fun onInitializeAccessibilityNodeInfo(host: View, info: android.view.accessibility.AccessibilityNodeInfo) {
+                    super.onInitializeAccessibilityNodeInfo(host, info)
+                    info.className = Switch::class.java.name
+                    info.isCheckable = true
+                    info.isChecked = switch.isChecked
+                    info.text = listOfNotNull(title, rowSummary(this@apply)?.text).joinToString(", ")
+                }
+            }
         }
     }
 
@@ -229,7 +275,7 @@ internal abstract class ThemedActivity : Activity() {
         trailing: View? = null,
         onSelect: () -> Unit,
     ): Pair<LinearLayout, RadioButton> {
-        val radio = RadioButton(this).apply {
+        val radio = MaterialRadioButton(this).apply {
             isChecked = checked
             isClickable = false
             isFocusable = false
@@ -238,8 +284,8 @@ internal abstract class ThemedActivity : Activity() {
         val shell = LinearLayout(this).apply {
             orientation = LinearLayout.HORIZONTAL
             gravity = Gravity.CENTER_VERTICAL
-            minimumHeight = dp(48)
-            setPaddingRelative(dp(18), dp(6), dp(24), dp(6))
+            minimumHeight = dp(if (summary.isNullOrEmpty()) 56 else 72)
+            setPaddingRelative(dp(24), dp(8), dp(24), dp(8))
             addView(radio, lp(WRAP_CONTENT, WRAP_CONTENT).apply { marginEnd = dp(10) })
             addView(textColumn(title, summary), lp(0, WRAP_CONTENT, weight = 1f))
             if (trailing != null) {
@@ -280,11 +326,11 @@ internal abstract class ThemedActivity : Activity() {
      */
     private fun textColumn(title: CharSequence, summary: CharSequence?): LinearLayout = LinearLayout(this).apply {
         orientation = LinearLayout.VERTICAL
-        addView(text(title, 15.5f, palette.primaryText).apply { textAlignment = View.TEXT_ALIGNMENT_VIEW_START })
+        addView(text(title, 16f, palette.primaryText).apply { textAlignment = View.TEXT_ALIGNMENT_VIEW_START })
         if (!summary.isNullOrEmpty()) {
-            addView(text(summary, 12.5f, palette.secondaryText).apply {
+            addView(text(summary, 14f, palette.secondaryText).apply {
                 textAlignment = View.TEXT_ALIGNMENT_VIEW_START
-                setPaddingRelative(0, dp(2), 0, 0)
+                setPaddingRelative(0, dp(4), 0, 0)
             })
         }
     }
@@ -295,7 +341,8 @@ internal abstract class ThemedActivity : Activity() {
 
     private fun rowIcon(@DrawableRes iconRes: Int, color: Int): ImageView = ImageView(this).apply {
         setImageDrawable(icon(iconRes, color))
-        layoutParams = lp(dp(22), dp(22)).apply { marginEnd = dp(16) }
+        importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
+        layoutParams = lp(dp(24), dp(24)).apply { marginEnd = dp(16) }
     }
 
     /* Buttons. */
@@ -304,8 +351,8 @@ internal abstract class ThemedActivity : Activity() {
         text = label
         isAllCaps = false
         textSize = 15f
-        setTextColor(palette.onAccent)
-        backgroundTintList = ColorStateList.valueOf(palette.accent)
+        setTextColor(palette.onPrimary)
+        backgroundTintList = ColorStateList.valueOf(palette.primary)
         minHeight = dp(50)
         setOnClickListener { onClick() }
     }
@@ -337,8 +384,8 @@ internal abstract class ThemedActivity : Activity() {
 
     /**
      * Options are [radioRow]s instead of the platform list items, so that text sizes, insets and
-     * spacing match the rest of the app. Choosing an option dismisses the dialog; re-choosing the
-     * current one only dismisses it.
+     * spacing match the rest of the app. Item taps only update a draft; OK commits it, and all
+     * other dismissal paths discard it.
      */
     fun singleChoiceDialog(
         title: CharSequence,
@@ -346,22 +393,25 @@ internal abstract class ThemedActivity : Activity() {
         checkedIndex: Int,
         onSelect: (Int) -> Unit,
     ): AlertDialog {
-        var dialog: AlertDialog? = null
+        var draft = checkedIndex
+        val radios = mutableListOf<RadioButton>()
         val list = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
             setPaddingRelative(0, dp(4), 0, dp(8))
             choices.forEachIndexed { index, choice ->
-                val (row, _) = radioRow(choice.title, choice.summary, index == checkedIndex, choice.swatch?.let { colorSwatch(it) }) {
-                    dialog?.dismiss()
-                    if (index != checkedIndex) onSelect(index)
+                val (row, radio) = radioRow(choice.title, choice.summary, index == checkedIndex, choice.swatch?.let { colorSwatch(it) }) {
+                    draft = index
+                    radios.forEachIndexed { position, button -> button.isChecked = position == draft }
                 }
+                radios += radio
                 addView(row)
             }
         }
-        dialog = AlertDialog.Builder(this)
+        val dialog = MaterialAlertDialogBuilder(this)
             .setTitle(title)
             .setView(ScrollView(this).apply { addView(list) })
             .setNegativeButton(android.R.string.cancel, null)
+            .setPositiveButton(android.R.string.ok) { _, _ -> onSelect(draft) }
             .create()
         showDialog(dialog)
         return dialog
@@ -376,17 +426,31 @@ internal abstract class ThemedActivity : Activity() {
     fun showDialog(dialog: AlertDialog) {
         applyLayoutDirection(dialog.window)
         dialog.show()
+        dialog.window?.setBackgroundDrawable(roundedBackground(palette.surface, 24f))
+        val width = minOf(dp(560), resources.displayMetrics.widthPixels - dp(48))
+        dialog.window?.setLayout(width, WRAP_CONTENT)
+        dialog.window?.decorView?.post {
+            val maximum = (resources.displayMetrics.heightPixels * 0.85f).toInt()
+            if ((dialog.window?.decorView?.height ?: 0) > maximum) dialog.window?.setLayout(width, maximum)
+        }
+        dialog.findViewById<TextView>(androidx.appcompat.R.id.alertTitle)?.apply { textSize = 20f; setTextColor(palette.primaryText) }
         tintDialog(dialog)
     }
 
     fun tintDialog(dialog: AlertDialog) {
         listOf(AlertDialog.BUTTON_POSITIVE, AlertDialog.BUTTON_NEGATIVE, AlertDialog.BUTTON_NEUTRAL).forEach { which ->
-            dialog.getButton(which)?.setTextColor(palette.accent)
+            dialog.getButton(which)?.apply {
+                isAllCaps = false
+                setTextColor(ColorStateList(arrayOf(intArrayOf(-android.R.attr.state_enabled), intArrayOf()),
+                    intArrayOf(ColorPolicy.withAlpha(palette.secondaryText, 0x66), palette.accent)))
+                if (this is com.google.android.material.button.MaterialButton)
+                    rippleColor = ColorStateList.valueOf(ColorPolicy.withAlpha(palette.accent, 0x2E))
+            }
         }
     }
 
     fun toast(message: CharSequence, long: Boolean = false) {
-        Toast.makeText(this, message, if (long) Toast.LENGTH_LONG else Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, message, if (long) Toast.LENGTH_LONG else Toast.LENGTH_SHORT).show()
     }
 
     /* Drawables and tints. */
@@ -405,17 +469,19 @@ internal abstract class ThemedActivity : Activity() {
         val value = TypedValue()
         val attr = if (borderless) android.R.attr.selectableItemBackgroundBorderless else android.R.attr.selectableItemBackground
         theme.resolveAttribute(attr, value, true)
-        return getDrawable(value.resourceId)
+        return getDrawable(value.resourceId)?.mutate()?.also {
+            (it as? android.graphics.drawable.RippleDrawable)?.setColor(ColorStateList.valueOf(ColorPolicy.withAlpha(palette.accent, 0x2E)))
+        }
     }
 
-    fun tint(switch: Switch) {
+    fun tint(switch: MaterialSwitch) {
         switch.thumbTintList = ColorStateList(
             arrayOf(intArrayOf(-android.R.attr.state_enabled), intArrayOf(android.R.attr.state_checked), intArrayOf()),
-            intArrayOf(ColorPolicy.withAlpha(palette.secondaryText, 0x55), palette.accent, if (palette.isDark) palette.secondaryText else Color.WHITE),
+            intArrayOf(ColorPolicy.withAlpha(palette.secondaryText, 0x55), palette.onPrimary, palette.secondaryText),
         )
         switch.trackTintList = ColorStateList(
             arrayOf(intArrayOf(-android.R.attr.state_enabled), intArrayOf(android.R.attr.state_checked), intArrayOf()),
-            intArrayOf(ColorPolicy.withAlpha(palette.secondaryText, 0x24), ColorPolicy.withAlpha(palette.accent, 0x66), ColorPolicy.withAlpha(palette.secondaryText, 0x66)),
+            intArrayOf(ColorPolicy.withAlpha(palette.secondaryText, 0x24), palette.primary, palette.surfaceVariant),
         )
     }
 
@@ -446,7 +512,7 @@ internal abstract class ThemedActivity : Activity() {
     @Suppress("DEPRECATION")
     private fun configureWindow() {
         window.statusBarColor = Color.TRANSPARENT
-        window.navigationBarColor = palette.background
+        window.navigationBarColor = if (Build.VERSION.SDK_INT >= 26) palette.background else 0xff121212.toInt()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.setDecorFitsSystemWindows(false)
         } else {

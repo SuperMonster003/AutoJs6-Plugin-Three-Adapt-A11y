@@ -36,6 +36,7 @@ internal enum class AppThemeColor(val seed: Int?) {
     ORANGE(-0x109400), // #EF6C00
     PURPLE(-0x95b34f), // #6A4CB1
     RED(-0x39d7d8), // #C62828
+    CUSTOM(null),
 }
 
 /** How the compatibility service should be kept; mirrors the companion contract values. */
@@ -53,6 +54,7 @@ internal data class CompatSettings(
     val enableWithRoot: Boolean = true,
     val enableWithSecureSettings: Boolean = true,
     val enableWithShizuku: Boolean = true,
+    val customThemeColor: Int = SettingsPolicy.AUTOJS6_DEFAULT_THEME_COLOR,
 ) {
     val followsHostAppearance: Boolean
         get() = language == AppLanguage.FOLLOW_AUTOJS6 ||
@@ -69,13 +71,14 @@ internal object SettingsPolicy {
 
     fun normalizeOpaque(color: Int): Int = color or -0x1000000
 
-    fun resolveThemeSeed(themeColor: AppThemeColor, hostThemeColor: Int?): Int = when (themeColor) {
+    fun resolveThemeSeed(themeColor: AppThemeColor, hostThemeColor: Int?, customThemeColor: Int = AUTOJS6_DEFAULT_THEME_COLOR): Int = when (themeColor) {
         AppThemeColor.FOLLOW_AUTOJS6 -> normalizeOpaque(hostThemeColor ?: AUTOJS6_DEFAULT_THEME_COLOR)
+        AppThemeColor.CUSTOM -> normalizeOpaque(customThemeColor)
         else -> normalizeOpaque(requireNotNull(themeColor.seed))
     }
 
-    fun resolveDark(mode: AppDarkMode, hostPolicy: HostDarkModePolicy?, systemDark: Boolean): Boolean = when (mode) {
-        AppDarkMode.FOLLOW_AUTOJS6 -> when (hostPolicy) {
+    fun resolveDark(mode: AppDarkMode, hostPolicy: HostDarkModePolicy?, systemDark: Boolean, hostDarkActive: Boolean? = null): Boolean = when (mode) {
+        AppDarkMode.FOLLOW_AUTOJS6 -> hostDarkActive ?: when (hostPolicy) {
             HostDarkModePolicy.LIGHT -> false
             HostDarkModePolicy.DARK -> true
             HostDarkModePolicy.FOLLOW_SYSTEM, null -> systemDark
@@ -139,6 +142,7 @@ internal class CompatSettingsStore(context: Context) {
         enableWithRoot = preferences.getBoolean(KEY_ENABLE_WITH_ROOT, true),
         enableWithSecureSettings = preferences.getBoolean(KEY_ENABLE_WITH_SECURE_SETTINGS, true),
         enableWithShizuku = preferences.getBoolean(KEY_ENABLE_WITH_SHIZUKU, true),
+        customThemeColor = SettingsPolicy.normalizeOpaque(preferences.getInt(KEY_CUSTOM_THEME_COLOR, SettingsPolicy.AUTOJS6_DEFAULT_THEME_COLOR)),
     )
 
     fun save(settings: CompatSettings) {
@@ -146,6 +150,7 @@ internal class CompatSettingsStore(context: Context) {
             .putString(KEY_LANGUAGE, settings.language.name)
             .putString(KEY_DARK_MODE, settings.darkMode.name)
             .putString(KEY_THEME_COLOR, settings.themeColor.name)
+            .putInt(KEY_CUSTOM_THEME_COLOR, SettingsPolicy.normalizeOpaque(settings.customThemeColor))
             .putString(KEY_SERVICE_POLICY, settings.servicePolicy.name)
             .putBoolean(KEY_ENABLE_WITH_ROOT, settings.enableWithRoot)
             .putBoolean(KEY_ENABLE_WITH_SECURE_SETTINGS, settings.enableWithSecureSettings)
@@ -165,6 +170,7 @@ internal class CompatSettingsStore(context: Context) {
         const val KEY_LANGUAGE = "language"
         const val KEY_DARK_MODE = "dark-mode"
         const val KEY_THEME_COLOR = "theme-color"
+        const val KEY_CUSTOM_THEME_COLOR = "custom-theme-color"
         const val KEY_SERVICE_POLICY = "service-policy"
         const val KEY_ENABLE_WITH_ROOT = "enable-with-root"
         const val KEY_ENABLE_WITH_SECURE_SETTINGS = "enable-with-secure-settings"

@@ -48,8 +48,12 @@ class LauncherIconSelectionTest {
                         assertNotNull(findText(dialog.window!!.decorView, activity.getString(R.string.launcher_icon_transparent_note)))
                         var click: View = checkNotNull(findText(dialog.window!!.decorView, activity.getString(activity.launcherIconLabels[mode.ordinal])))
                         while (!click.isClickable) click = click.parent as View
+                        val saved = LauncherIcons.current(context)
                         click.performClick()
+                        assertEquals("A draft must not mutate launcher state", saved, LauncherIcons.current(context))
+                        dialog.getButton(android.content.DialogInterface.BUTTON_POSITIVE).performClick()
                     }
+                    InstrumentationRegistry.getInstrumentation().waitForIdleSync()
                     assertEquals(mode, LauncherIcons.current(context))
                     assertEquals(process, Process.myPid())
                     val matches = pm.queryIntentActivities(Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER).setPackage(context.packageName), 0)

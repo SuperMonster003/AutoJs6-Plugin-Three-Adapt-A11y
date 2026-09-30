@@ -31,7 +31,7 @@ internal object AppConfiguration {
         val snapshot = resolved.host?.snapshot
         val configuration = Configuration(base.resources.configuration)
         val systemDark = configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
-        val dark = SettingsPolicy.resolveDark(resolved.settings.darkMode, snapshot?.darkModePolicy, systemDark)
+        val dark = SettingsPolicy.resolveDark(resolved.settings.darkMode, snapshot?.darkModePolicy, systemDark, snapshot?.darkModeActive)
         configuration.uiMode = configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK.inv() or
             if (dark) Configuration.UI_MODE_NIGHT_YES else Configuration.UI_MODE_NIGHT_NO
         SettingsPolicy.resolveLanguageTag(resolved.settings.language, snapshot?.resolvedLanguageTag)
@@ -47,22 +47,20 @@ internal object AppConfiguration {
     /**
      * Changes only when something a visible screen depends on changes: the appearance settings and,
      * while following AutoJs6, the host fields they resolve against. Service-control settings and a
-     * transient failure to reach the host (an update in progress, say) keep the previous value so
-     * that an open dialog is not thrown away by a needless recreate.
+     * service controls are excluded. An unavailable snapshot resolves a real fallback; the Activity
+     * defers recreation while the user is interacting or has an unconfirmed dialog.
      */
-    fun appearanceSignature(context: Context, previous: Int? = null): Int {
-        val settings = CompatSettingsStore(context).load()
-        var signature = listOf(settings.language, settings.darkMode, settings.themeColor).hashCode()
-        if (settings.followsHostAppearance) {
-            val host = HostSettingsClient.query(context)
-            if (host.availability == HostAvailability.CONTRACT_UNAVAILABLE && previous != null) return previous
-            signature = 31 * signature + listOf(
-                host.availability,
-                host.snapshot?.themeColorPrimary,
-                host.snapshot?.darkModePolicy,
-                host.snapshot?.resolvedLanguageTag,
-            ).hashCode()
-        }
-        return signature
+    fun appearanceSignature(context: Context): Int {
+        val resolved = resolve(context)
+        val settings = resolved.settings
+        val host = resolved.host?.snapshot
+        val system = context.resources.configuration
+        val language = SettingsPolicy.resolveLanguageTag(settings.language, host?.resolvedLanguageTag) ?: system.locales[0].toLanguageTag()
+        val dark = SettingsPolicy.resolveDark(settings.darkMode, host?.darkModePolicy,
+            system.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES, host?.darkModeActive)
+        val seed = SettingsPolicy.resolveThemeSeed(settings.themeColor, host?.themeColorPrimary, settings.customThemeColor)
+        val accent = if (settings.themeColor == io.github.supermonster003.autojs6.plugin.three.adapt.a11y.settings.AppThemeColor.FOLLOW_AUTOJS6)
+            host?.themeColorAccent ?: seed else seed
+        return listOf(language, dark, seed, accent, resolved.host?.selectable).hashCode()
     }
 }
