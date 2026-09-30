@@ -43,29 +43,24 @@ internal data class HostSettingsResult(
 
 /**
  * Client for the read-only appearance snapshot AutoJs6 exposes to official plugins. Results are
- * cached briefly because several steps of one screen creation query it on the main thread.
+ * read on a worker and published only by a live owner. Main-thread consumers read the snapshot.
  */
 internal object HostSettingsClient {
     private val settingsUri: Uri = Uri.parse(Contract.CONTENT_URI)
-    private const val CACHE_TTL_MILLIS = 1_500L
+    @Volatile private var cached = HostSettingsResult(HostAvailability.CONTRACT_UNAVAILABLE)
+    private val worker = java.util.concurrent.Executors.newSingleThreadExecutor()
+    private val main = android.os.Handler(android.os.Looper.getMainLooper())
 
-    private var cached: HostSettingsResult? = null
-    private var cachedAt = 0L
+    fun query(context: Context): HostSettingsResult =
+        if (android.os.Looper.myLooper() == android.os.Looper.getMainLooper()) cached else runCatching { queryUncached(context.applicationContext) }.getOrDefault(HostSettingsResult(HostAvailability.CONTRACT_UNAVAILABLE))
 
-    @Synchronized
-    fun query(context: Context): HostSettingsResult {
-        val now = SystemClock.elapsedRealtime()
-        cached?.takeIf { now - cachedAt < CACHE_TTL_MILLIS }?.let { return it }
-        return queryUncached(context).also {
-            cached = it
-            cachedAt = now
-        }
+    fun refresh(context: Context, result: (HostSettingsResult) -> Unit) {
+        val app = context.applicationContext
+        worker.execute { val next = runCatching { queryUncached(app) }.getOrDefault(HostSettingsResult(HostAvailability.CONTRACT_UNAVAILABLE)); main.post { result(next) } }
     }
 
-    @Synchronized
-    fun invalidate() {
-        cached = null
-    }
+    fun publish(result: HostSettingsResult) { cached = result }
+    fun invalidate() { cached = HostSettingsResult(HostAvailability.CONTRACT_UNAVAILABLE) }
 
     fun inspectHostPackage(context: Context): HostAvailability {
         val packageManager = context.packageManager
@@ -98,6 +93,12 @@ internal object HostSettingsClient {
             context.contentResolver.call(settingsUri, Contract.METHOD_GET_SETTINGS, null, null)
         }.getOrNull() ?: return HostSettingsResult(HostAvailability.CONTRACT_UNAVAILABLE)
         val snapshot = runCatching {
+            require(!bundle.hasFileDescriptors())
+            @Suppress("DEPRECATION")
+            val typesValid = bundle.get(Contract.KEY_DARK_MODE_ACTIVE) is Boolean && bundle.get(Contract.KEY_THEME_COLOR_PRIMARY) is Int && bundle.get(Contract.KEY_THEME_COLOR_ACCENT) is Int
+            require(typesValid)
+            val resolvedTag = requireNotNull(bundle.getString(Contract.KEY_RESOLVED_LANGUAGE_TAG))
+            require(resolvedTag.length in 2..80 && resolvedTag.matches(Regex("[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*")) && java.util.Locale.forLanguageTag(resolvedTag).language.isNotBlank())
             require(bundle.getInt(Contract.KEY_PROTOCOL_VERSION, 0) == Contract.PROTOCOL_VERSION)
             require(bundle.getString(Contract.KEY_HOST_PACKAGE_NAME) == Contract.HOST_PACKAGE_NAME)
             require(bundle.containsKey(Contract.KEY_THEME_COLOR_PRIMARY))

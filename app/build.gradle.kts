@@ -24,7 +24,12 @@ android {
         versionCode = versions.appVersionCode
         versionName = versions.appVersionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        // The pre-Material APK lacks AndroidX Trace, so upgrade preparation has a framework-only runner.
+        testInstrumentationRunner = if (providers.gradleProperty("launcherUpgradeProbe").orNull == "true") {
+            "$globalApplicationId.LauncherUpgradeInstrumentation"
+        } else {
+            "androidx.test.runner.AndroidJUnitRunner"
+        }
 
         resValue("string", "app_name", "3-Adapt A11y")
         resValue("string", "plugin_author", "SuperMonster003")
@@ -76,6 +81,8 @@ dependencies {
     implementation(files("$rootDir/libs/common-plugin-api.aar"))
 
     implementation(libs.androidx.annotation)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
 
     // Optional unattended service control through Shizuku; see docs/development/service-control.md.
     implementation(libs.shizuku.api)

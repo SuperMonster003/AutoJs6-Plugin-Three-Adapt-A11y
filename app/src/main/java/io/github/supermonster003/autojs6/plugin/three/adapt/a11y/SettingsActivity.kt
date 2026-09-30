@@ -25,16 +25,20 @@ internal class SettingsActivity : ThemedActivity() {
     private var managerDialog: CompatServiceManagerDialog? = null
     private var advancedProtectionRow: LinearLayout? = null
     private var launcherIconRow: LinearLayout? = null
-    internal var launcherIconDialog: android.app.AlertDialog? = null; private set
+    internal var appearanceDialog: androidx.appcompat.app.AlertDialog? = null; private set
+    internal var launcherIconDialog: androidx.appcompat.app.AlertDialog? = null; private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         settings = settingsStore.load()
         hostResult = HostSettingsClient.query(this)
-        setContentView(screen(toolbar(getString(R.string.settings_title), showBack = true)) { buildContent() })
+        setContentView(screen(toolbar(getString(R.string.settings_title), showBack = true), pageInsetDp = 0) { buildContent() })
     }
 
+    override fun hasUnconfirmedDialog() = appearanceDialog?.isShowing == true || launcherIconDialog?.isShowing == true || managerDialog?.isShowing == true
+
     override fun onDestroy() {
+        appearanceDialog?.dismiss()
         launcherIconDialog?.dismiss()
         managerDialog?.dismiss()
         managerDialog = null
@@ -50,26 +54,28 @@ internal class SettingsActivity : ThemedActivity() {
 
     private fun LinearLayout.buildContent() {
         addView(sectionTitle(getString(R.string.settings_section_appearance)))
-        addView(card {
-            addView(row(getString(R.string.settings_language), languageSummary(), R.drawable.ic_language) { showLanguageDialog() })
-            addView(divider(56))
-            addView(row(getString(R.string.settings_dark_mode), darkModeSummary(), R.drawable.ic_dark_mode) { showDarkModeDialog() })
-            addView(divider(56))
-            addView(row(getString(R.string.settings_theme_color), themeSummary(), R.drawable.ic_palette, trailing = colorSwatch(palette.accent, 24)) { showThemeColorDialog() })
-            addView(divider(56))
+        addView(LinearLayout(this@SettingsActivity).apply {
+            orientation = LinearLayout.VERTICAL
+            addView(row(getString(R.string.settings_language), languageSummary(), R.drawable.ic_settings_language) { showLanguageDialog() })
+            addView(divider(64))
+            addView(row(getString(R.string.settings_dark_mode), darkModeSummary(), R.drawable.ic_settings_night) { showDarkModeDialog() })
+            addView(divider(64))
+            addView(row(getString(R.string.settings_theme_color), themeSummary(), R.drawable.ic_settings_theme) { showThemeColorDialog() })
+            addView(divider(64))
             launcherIconRow = row(getString(R.string.launcher_icon_title),
-                getString(launcherIconLabels[LauncherIcons.current(this@SettingsActivity).ordinal]), R.drawable.ic_palette) { showLauncherIconDialog() }
+                getString(launcherIconLabels[LauncherIcons.current(this@SettingsActivity).ordinal]), R.drawable.ic_settings_launcher) { showLauncherIconDialog() }
                 .apply { tag = "launcher-icon" }
             addView(launcherIconRow)
         })
 
         addView(sectionTitle(getString(R.string.settings_section_service)))
-        addView(card {
+        addView(LinearLayout(this@SettingsActivity).apply {
+            orientation = LinearLayout.VERTICAL
             advancedProtectionRow = row(getString(R.string.a11y_advanced_protection_title), AdvancedProtectionNotice.summary(this@SettingsActivity), R.drawable.ic_shield) {
                 AccessibilitySettingsLauncher.open(this@SettingsActivity)
             }
             addView(advancedProtectionRow)
-            addView(divider(56))
+            addView(divider(64))
             lateinit var managerRow: LinearLayout
             managerRow = row(getString(R.string.settings_service_manager), serviceSummary(), R.drawable.ic_accessibility) {
                 managerDialog = CompatServiceManagerDialog.show(this@SettingsActivity) {
@@ -78,24 +84,25 @@ internal class SettingsActivity : ThemedActivity() {
                 }
             }
             addView(managerRow)
-            addView(divider(56))
+            addView(divider(64))
             addView(row(getString(R.string.settings_system_accessibility), getString(R.string.settings_system_accessibility_summary), R.drawable.ic_tune) {
                 AccessibilitySettingsLauncher.open(this@SettingsActivity)
             })
         })
 
         addView(sectionTitle(getString(R.string.settings_section_information)))
-        addView(card {
+        addView(LinearLayout(this@SettingsActivity).apply {
+            orientation = LinearLayout.VERTICAL
             addView(documentRow(R.string.mechanism_title, R.drawable.ic_extension, DocumentActivity.Document.MECHANISM))
-            addView(divider(56))
+            addView(divider(64))
             addView(documentRow(R.string.privacy_title, R.drawable.ic_shield, DocumentActivity.Document.PRIVACY))
-            addView(divider(56))
+            addView(divider(64))
             addView(documentRow(R.string.limitations_title, R.drawable.ic_block, DocumentActivity.Document.LIMITATIONS))
-            addView(divider(56))
+            addView(divider(64))
             addView(row(getString(R.string.release_history), getString(R.string.settings_release_history_summary), R.drawable.ic_history) {
                 startActivity(DocumentActivity.intent(this@SettingsActivity, DocumentActivity.Document.RELEASE_HISTORY))
             })
-            addView(divider(56))
+            addView(divider(64))
             addView(row(getString(R.string.settings_about), getString(R.string.settings_about_summary), R.drawable.ic_info) {
                 startActivity(Intent(this@SettingsActivity, AboutActivity::class.java))
             })
@@ -119,7 +126,7 @@ internal class SettingsActivity : ThemedActivity() {
 
     private fun themeSummary(): String = when (settings.themeColor) {
         AppThemeColor.FOLLOW_AUTOJS6 -> followSummary(ColorPolicy.hex(followedThemeSeed()))
-        else -> "${getString(settings.themeColor.labelRes())} (${ColorPolicy.hex(requireNotNull(settings.themeColor.seed))})"
+        else -> ColorPolicy.hex(SettingsPolicy.resolveThemeSeed(settings.themeColor, null, settings.customThemeColor))
     }
 
     private fun serviceSummary(): String {
@@ -166,8 +173,9 @@ internal class SettingsActivity : ThemedActivity() {
         R.string.launcher_icon_auto, R.string.launcher_icon_transparent)
 
     private fun showLanguageDialog() {
+        hostResult = HostSettingsClient.query(this)
         val values = AppLanguage.entries
-        singleChoiceDialog(
+        appearanceDialog = singleChoiceDialog(
             title = getString(R.string.settings_language),
             choices = values.map { value ->
                 val label = getString(value.labelRes())
@@ -182,8 +190,9 @@ internal class SettingsActivity : ThemedActivity() {
     }
 
     private fun showDarkModeDialog() {
+        hostResult = HostSettingsClient.query(this)
         val values = AppDarkMode.entries
-        singleChoiceDialog(
+        appearanceDialog = singleChoiceDialog(
             title = getString(R.string.settings_dark_mode),
             choices = values.map { value ->
                 val label = getString(value.labelRes())
@@ -199,21 +208,17 @@ internal class SettingsActivity : ThemedActivity() {
     }
 
     private fun showThemeColorDialog() {
-        val values = AppThemeColor.entries
-        singleChoiceDialog(
-            title = getString(R.string.settings_theme_color),
-            choices = values.map { value ->
-                val label = getString(value.labelRes())
-                if (value == AppThemeColor.FOLLOW_AUTOJS6) {
-                    val seed = followedThemeSeed()
-                    Choice(label, followChoiceSummary(ColorPolicy.hex(seed), ColorPolicy.hex(SettingsPolicy.AUTOJS6_DEFAULT_THEME_COLOR)), seed)
-                } else {
-                    val seed = requireNotNull(value.seed)
-                    Choice(label, ColorPolicy.hex(seed), seed)
-                }
-            },
-            checkedIndex = values.indexOf(settings.themeColor),
-        ) { index -> save(settings.copy(themeColor = values[index])) }
+        hostResult = HostSettingsClient.query(this)
+        val current = if (settings.themeColor == AppThemeColor.FOLLOW_AUTOJS6) null
+            else SettingsPolicy.resolveThemeSeed(settings.themeColor, null, settings.customThemeColor)
+        appearanceDialog = ThemeColorChooser.show(this, current, followedThemeSeed(),
+            ThemeColorChooser.Palette(palette.accent, palette.surface, palette.primaryText, palette.secondaryText, palette.outline),
+            ThemeColorChooser.Labels(getString(R.string.settings_theme_color), getString(R.string.settings_follow_autojs6),
+            getString(R.string.theme_picker_presets), getString(R.string.theme_picker_custom),
+            getString(R.string.theme_picker_input), getString(R.string.theme_picker_invalid), getString(R.string.theme_picker_preview))) { color ->
+                save(if (color == null) settings.copy(themeColor = AppThemeColor.FOLLOW_AUTOJS6)
+                    else settings.copy(themeColor = AppThemeColor.CUSTOM, customThemeColor = color))
+            }
     }
 
     /** The follow choice shows what it resolves to, or the fallback used while the host is absent. */
@@ -223,7 +228,6 @@ internal class SettingsActivity : ThemedActivity() {
     private fun save(updated: CompatSettings) {
         settingsStore.save(updated)
         settings = updated
-        HostSettingsClient.invalidate()
         toast(getString(R.string.settings_saved))
         recreate()
     }
@@ -269,6 +273,7 @@ internal fun AppThemeColor.labelRes(): Int = when (this) {
     AppThemeColor.ORANGE -> R.string.theme_color_orange
     AppThemeColor.PURPLE -> R.string.theme_color_purple
     AppThemeColor.RED -> R.string.theme_color_red
+    AppThemeColor.CUSTOM -> R.string.settings_theme_color
 }
 
 @StringRes

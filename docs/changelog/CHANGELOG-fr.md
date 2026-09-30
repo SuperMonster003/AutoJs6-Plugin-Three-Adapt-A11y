@@ -4,7 +4,7 @@
 
 > Langue de cette page: français
 
-## v1.4.0 - 2026/09/29
+## v1.4.0 - 2026/09/30
 
 ### Note
 
@@ -12,7 +12,7 @@
 
 ### Fonctionnalité
 
-- L'icône du lanceur propose les modes adaptatif clair, adaptatif sombre (par défaut), adaptatif automatique et fond transparent. Le mode automatique tente de suivre le thème système, mais le lanceur peut garder une palette en cache; il peut ajouter un fond ou un masque aux icônes transparentes. Le changement conserve l'application en cours et peut prendre quelques secondes.
+- Unifier les réglages avec des groupes plats, des lignes cohérentes et des dialogues arrondis centrés. La langue, le mode nuit, la couleur et l'icône ne changent qu'après validation; Annuler conserve les valeurs enregistrées. La couleur suit AutoJs6 par défaut et propose une palette commune, une saisie HEX/RGB et un aperçu local. Les fonds neutres restent stables et les contrôles suivent le thème. L'icône utilise le mode adaptatif automatique par défaut, tout en préservant les choix explicites lors des mises à jour.
 
 ### Correctif
 
@@ -21,6 +21,10 @@
 ### Amélioration
 
 - Le plugin Accessibility Compat est renommé 3-Adapt A11y dans le titre de l'application, le libellé du service d'accessibilité, l'ID de plugin `three-adapt-a11y`, les noms de package et de composants, les artefacts de publication, la documentation et le dépôt GitHub
+
+### Dépendance
+
+- Material Components 1.13.0 / AppCompat 1.7.1 (Material 3).
 
 ## v1.3.1 - 2026/09/19
 

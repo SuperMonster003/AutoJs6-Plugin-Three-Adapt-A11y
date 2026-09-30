@@ -4,7 +4,7 @@
 
 > Idioma de esta página: español
 
-## v1.4.0 - 2026/09/29
+## v1.4.0 - 2026/09/30
 
 ### Aviso
 
@@ -12,7 +12,7 @@
 
 ### Función
 
-- El icono del lanzador admite adaptable claro, adaptable oscuro (predeterminado), adaptable automático y fondo transparente. El modo automático intenta seguir el tema del sistema, pero el lanzador puede guardar una sola paleta en caché; puede agregar un fondo o una máscara a los iconos transparentes. El cambio mantiene la aplicación en ejecución y puede tardar unos segundos.
+- Unificar los ajustes con grupos planos, filas coherentes y diálogos redondeados centrados. El idioma, el modo nocturno, el color y el icono solo cambian al confirmar; Cancelar conserva los valores guardados. El color sigue AutoJs6 por defecto, con una paleta común, entrada HEX/RGB y vista previa local. Los fondos neutros se mantienen estables y los controles siguen el tema. El icono usa el modo adaptativo automático por defecto, conservando las elecciones explícitas al actualizar.
 
 ### Corrección
 
@@ -21,6 +21,10 @@
 ### Mejora
 
 - El complemento Accessibility Compat pasa a llamarse 3-Adapt A11y en el título de la aplicación, la etiqueta del servicio de accesibilidad, el ID de complemento `three-adapt-a11y`, los nombres de paquete y componentes, los artefactos de publicación, la documentación y el repositorio de GitHub
+
+### Dependencia
+
+- Material Components 1.13.0 / AppCompat 1.7.1 (Material 3).
 
 ## v1.3.1 - 2026/09/19
 

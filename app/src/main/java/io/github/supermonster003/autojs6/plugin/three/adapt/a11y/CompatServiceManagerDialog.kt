@@ -1,6 +1,7 @@
 package io.github.supermonster003.autojs6.plugin.three.adapt.a11y
 
-import android.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.database.ContentObserver
@@ -57,6 +58,8 @@ internal class CompatServiceManagerDialog private constructor(
         override fun onChange(selfChange: Boolean) = refresh()
     }
 
+    val isShowing: Boolean get() = dialog.isShowing
+
     private val dialog: AlertDialog
 
     init {
@@ -92,7 +95,7 @@ internal class CompatServiceManagerDialog private constructor(
                 update { it.copy(enableWithShizuku = checked) }
             }.aligned())
         }
-        dialog = AlertDialog.Builder(activity)
+        dialog = MaterialAlertDialogBuilder(activity)
             .setTitle(R.string.manager_title)
             .setView(ScrollView(activity).apply { addView(content) })
             .setPositiveButton(R.string.action_system_settings) { _, _ -> AccessibilitySettingsLauncher.open(activity) }
@@ -262,7 +265,7 @@ internal class CompatServiceManagerDialog private constructor(
 
     private fun showSecureSettingsHelp() {
         val command = CompatServiceController.secureSettingsGrantCommand(activity)
-        val helpDialog = AlertDialog.Builder(activity)
+        val helpDialog = MaterialAlertDialogBuilder(activity)
             .setTitle(R.string.secure_settings_grant_title)
             .setMessage(activity.getString(R.string.secure_settings_grant_body, command))
             .setPositiveButton(R.string.action_copy) { _, _ -> copyToClipboard(command) }

@@ -56,7 +56,7 @@ The settings screen groups generic options that can follow AutoJs6, and the comp
 - The control policy is a three-way choice: Follow AutoJs6 (default), Enabled, or Disabled. Follow AutoJs6 keeps the compatibility service in the same state as the AutoJs6 accessibility service and re-checks it when AutoJs6 reports a change, when the system list of enabled services changes, and when the app opens.
 - Automatic changes use root, WRITE_SECURE_SETTINGS (granted with `adb shell pm grant`), or Shizuku, and each method can be switched off. Without any of them the app only opens the system accessibility settings.
 - The manager shows the live state of both services and of each method, copies a diagnostic report, and opens the Android settings page of the service.
-- Launcher icon can be set to adaptive light, adaptive dark (default), adaptive automatic or transparent background. Automatic mode tries to follow the system theme, but launchers may cache a single color scheme; transparent icons may receive a launcher background or mask. Switching preserves the running app and may take a few seconds to appear.
+- Unify standalone settings with flat groups, consistent rows and centered rounded dialogs. Language, night mode, theme color and launcher icon changes apply only after OK; Cancel leaves saved values unchanged. Theme color follows AutoJs6 by default, with a shared palette, HEX/RGB input and a local preview. Neutral surfaces keep stable colors and controls follow the selected theme. The launcher default is adaptive automatic, while upgrades preserve explicit saved choices.
 
 ### A-B-A Device Validation
 
@@ -145,7 +145,7 @@ The research note covers AutoJs6 #289, #382, #432, #463, #520, and #521, GKD `47
 
 ### Release History
 
-#### v1.4.0 - 2026/09/29
+#### v1.4.0 - 2026/09/30
 
 ##### Hint
 
@@ -153,7 +153,7 @@ The research note covers AutoJs6 #289, #382, #432, #463, #520, and #521, GKD `47
 
 ##### Feature
 
-- Launcher icon can be set to adaptive light, adaptive dark (default), adaptive automatic or transparent background. Automatic mode tries to follow the system theme, but launchers may cache a single color scheme; transparent icons may receive a launcher background or mask. Switching preserves the running app and may take a few seconds to appear.
+- Unify standalone settings with flat groups, consistent rows and centered rounded dialogs. Language, night mode, theme color and launcher icon changes apply only after OK; Cancel leaves saved values unchanged. Theme color follows AutoJs6 by default, with a shared palette, HEX/RGB input and a local preview. Neutral surfaces keep stable colors and controls follow the selected theme. The launcher default is adaptive automatic, while upgrades preserve explicit saved choices.
 
 ##### Fix
 
@@ -162,6 +162,10 @@ The research note covers AutoJs6 #289, #382, #432, #463, #520, and #521, GKD `47
 ##### Improvement
 
 - Rename the plugin from Accessibility Compat to 3-Adapt A11y across the application title, accessibility service label, plugin ID `three-adapt-a11y`, package and component names, release artifacts, documentation, and the GitHub repository
+
+##### Dependency
+
+- Material Components 1.13.0 / AppCompat 1.7.1 (Material 3).
 
 [Read the complete release history](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-en.md)
 

@@ -81,4 +81,10 @@ class SettingsPolicyTest {
         assertNull(SettingsPolicy.servicePolicyForContractValue("FOLLOW_HOST"))
         assertNull(SettingsPolicy.servicePolicyForContractValue(null))
     }
+    @org.junit.Test fun followingHostUsesItsResolvedNightValueWhileLocalChoicesStayIndependent() {
+        org.junit.Assert.assertTrue(SettingsPolicy.resolveDark(AppDarkMode.FOLLOW_AUTOJS6, HostDarkModePolicy.FOLLOW_SYSTEM, false, true))
+        org.junit.Assert.assertFalse(SettingsPolicy.resolveDark(AppDarkMode.LIGHT, HostDarkModePolicy.DARK, true, true))
+        org.junit.Assert.assertFalse(SettingsPolicy.resolveDark(AppDarkMode.FOLLOW_SYSTEM, HostDarkModePolicy.DARK, false, true))
+    }
+
 }

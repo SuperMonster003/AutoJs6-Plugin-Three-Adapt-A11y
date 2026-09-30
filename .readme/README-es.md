@@ -56,7 +56,7 @@ La pantalla de ajustes agrupa opciones generales que pueden seguir a AutoJs6, y 
 - La política de control tiene tres opciones: seguir a AutoJs6 (predeterminada), habilitado o deshabilitado. Seguir a AutoJs6 mantiene el servicio de compatibilidad en el mismo estado que el servicio de accesibilidad de AutoJs6 y lo vuelve a comprobar cuando AutoJs6 notifica un cambio, cuando cambia la lista de servicios habilitados del sistema y al abrir la aplicación.
 - Los cambios automáticos usan root, WRITE_SECURE_SETTINGS (concedido con `adb shell pm grant`) o Shizuku, y cada método puede desactivarse. Sin ninguno de ellos, la aplicación solo abre los ajustes de accesibilidad del sistema.
 - El gestor muestra el estado en vivo de ambos servicios y de cada método, copia un informe de diagnóstico y abre la página de ajustes de Android del servicio.
-- El icono del lanzador admite adaptable claro, adaptable oscuro (predeterminado), adaptable automático y fondo transparente. El modo automático intenta seguir el tema del sistema, pero el lanzador puede guardar una sola paleta en caché; puede agregar un fondo o una máscara a los iconos transparentes. El cambio mantiene la aplicación en ejecución y puede tardar unos segundos.
+- Unificar los ajustes con grupos planos, filas coherentes y diálogos redondeados centrados. El idioma, el modo nocturno, el color y el icono solo cambian al confirmar; Cancelar conserva los valores guardados. El color sigue AutoJs6 por defecto, con una paleta común, entrada HEX/RGB y vista previa local. Los fondos neutros se mantienen estables y los controles siguen el tema. El icono usa el modo adaptativo automático por defecto, conservando las elecciones explícitas al actualizar.
 
 ### Validación A-B-A en dispositivo
 
@@ -145,7 +145,7 @@ La nota de investigación cubre AutoJs6 #289, #382, #432, #463, #520 y #521, GKD
 
 ### Historial de versiones
 
-#### v1.4.0 - 2026/09/29
+#### v1.4.0 - 2026/09/30
 
 ##### Aviso
 
@@ -153,7 +153,7 @@ La nota de investigación cubre AutoJs6 #289, #382, #432, #463, #520 y #521, GKD
 
 ##### Función
 
-- El icono del lanzador admite adaptable claro, adaptable oscuro (predeterminado), adaptable automático y fondo transparente. El modo automático intenta seguir el tema del sistema, pero el lanzador puede guardar una sola paleta en caché; puede agregar un fondo o una máscara a los iconos transparentes. El cambio mantiene la aplicación en ejecución y puede tardar unos segundos.
+- Unificar los ajustes con grupos planos, filas coherentes y diálogos redondeados centrados. El idioma, el modo nocturno, el color y el icono solo cambian al confirmar; Cancelar conserva los valores guardados. El color sigue AutoJs6 por defecto, con una paleta común, entrada HEX/RGB y vista previa local. Los fondos neutros se mantienen estables y los controles siguen el tema. El icono usa el modo adaptativo automático por defecto, conservando las elecciones explícitas al actualizar.
 
 ##### Corrección
 
@@ -162,6 +162,10 @@ La nota de investigación cubre AutoJs6 #289, #382, #432, #463, #520 y #521, GKD
 ##### Mejora
 
 - El complemento Accessibility Compat pasa a llamarse 3-Adapt A11y en el título de la aplicación, la etiqueta del servicio de accesibilidad, el ID de complemento `three-adapt-a11y`, los nombres de paquete y componentes, los artefactos de publicación, la documentación y el repositorio de GitHub
+
+##### Dependencia
+
+- Material Components 1.13.0 / AppCompat 1.7.1 (Material 3).
 
 [Leer el historial completo](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-es.md)
 
