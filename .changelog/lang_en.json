@@ -8,9 +8,9 @@
   "changelog_label_dependency": "Dependency",
   "$data": {
     "v1.4.0": {
-      "released_date": "2026/09/30",
+      "released_date": "2026/10/03",
       "hint": [
-        "The application ID changed from `io.github.supermonster003.autojs6.plugin.accessibilitycompat` to `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, so Android treats this release as a new app: uninstall Accessibility Compat 1.3.1 or earlier first, then enable the 3-Adapt A11y accessibility service again"
+        "3-Adapt A11y uses the new package io.github.supermonster003.autojs6.plugin.three.adapt.a11y. Android installs it as a separate app. The old Accessibility Compat app and its data can remain installed; settings are not migrated automatically. Enable the new accessibility service when needed"
       ],
       "improvement": [
         "Rename the plugin from Accessibility Compat to 3-Adapt A11y across the application title, accessibility service label, plugin ID `three-adapt-a11y`, package and component names, release artifacts, documentation, and the GitHub repository",

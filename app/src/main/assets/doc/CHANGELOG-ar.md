@@ -4,11 +4,11 @@
 
 > لغة هذه الصفحة: العربية
 
-## v1.4.0 - 2026/09/30
+## v1.4.0 - 2026/10/03
 
 ### تلميح
 
-- تغير معرف التطبيق من `io.github.supermonster003.autojs6.plugin.accessibilitycompat` إلى `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, لذلك يعامل Android هذا الإصدار كتطبيق جديد: أزل أولا Accessibility Compat 1.3.1 أو أقدم, ثم فعل خدمة إمكانية الوصول 3-Adapt A11y من جديد
+- يستخدم 3-Adapt A11y الحزمة الجديدة io.github.supermonster003.autojs6.plugin.three.adapt.a11y ويثبت كتطبيق مستقل. يمكن الاحتفاظ بتطبيق Accessibility Compat وبياناته دون نقل الإعدادات تلقائيا. فعل خدمة تسهيل الاستخدام الجديدة عند الحاجة
 
 ### ميزة
 

@@ -145,11 +145,11 @@ WebView, 小程序, Canvas 或自繪頁面可能沒有對應 Android 語義節�
 
 ### 發行歷史
 
-#### v1.4.0 - 2026/09/30
+#### v1.4.0 - 2026/10/03
 
 ##### 提示
 
-- 應用 ID 由 `io.github.supermonster003.autojs6.plugin.accessibilitycompat` 改為 `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, Android 會將本版本視為新應用: 請先卸載 Accessibility Compat 1.3.1 及更早版本, 再重新啟用 3-Adapt A11y 無障礙服務
+- 3-Adapt A11y 使用新套件名稱 io.github.supermonster003.autojs6.plugin.three.adapt.a11y, Android 將其作為獨立應用程式安裝. 原 Accessibility Compat 及其資料可以保留, 設定不會自動遷移. 請按需要啟用新的無障礙服務
 
 ##### 新增
 
