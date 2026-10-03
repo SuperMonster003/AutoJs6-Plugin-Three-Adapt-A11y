@@ -10,6 +10,7 @@ import android.content.ServiceConnection
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.content.pm.PermissionInfo
 import android.content.res.Configuration
 import android.os.Build
 import android.os.IBinder
@@ -202,15 +203,24 @@ class ThreeAdaptA11yInstrumentedTest {
 
         // WRITE_SECURE_SETTINGS and the Shizuku permission only serve the optional unattended
         // service control documented in docs/development/service-control.md.
+        val receiverPermission = "${context.packageName}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         assertEquals(
             setOf(
                 ThreeAdaptA11yContract.PLUGIN_PERMISSION,
                 Manifest.permission.WRITE_SECURE_SETTINGS,
                 "android.permission.QUERY_ADVANCED_PROTECTION_MODE",
                 "moe.shizuku.manager.permission.API_V23",
+                receiverPermission,
             ),
             requested,
         )
+        // AndroidX adds this package-private signature permission when merging the
+        // APK manifest. It protects non-exported dynamic receivers; it is not a
+        // user-data or device-control capability. Keep the exact inventory above.
+        val receiverProtection = context.packageManager.getPermissionInfo(receiverPermission, 0)
+        assertEquals(context.packageName, receiverProtection.packageName)
+        assertEquals(PermissionInfo.PROTECTION_SIGNATURE,
+            receiverProtection.protectionLevel and PermissionInfo.PROTECTION_MASK_BASE)
         assertTrue("Sensitive permissions declared: ${requested.intersect(prohibited)}", requested.none { it in prohibited })
         assertEquals(
             0,
