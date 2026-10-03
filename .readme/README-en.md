@@ -162,6 +162,7 @@ The research note covers AutoJs6 #289, #382, #432, #463, #520, and #521, GKD `47
 ##### Improvement
 
 - Rename the plugin from Accessibility Compat to 3-Adapt A11y across the application title, accessibility service label, plugin ID `three-adapt-a11y`, package and component names, release artifacts, documentation, and the GitHub repository
+- Consistent visual sizing for launcher and Plugin Center icons, with transparent backgrounds and neutral black, white or grayscale artwork
 
 ##### Dependency
 

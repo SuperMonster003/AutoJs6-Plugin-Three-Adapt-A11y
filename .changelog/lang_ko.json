@@ -13,7 +13,8 @@
         "애플리케이션 ID가 `io.github.supermonster003.autojs6.plugin.accessibilitycompat`에서 `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`로 바뀌어 Android는 이 버전을 새 앱으로 취급합니다. 먼저 Accessibility Compat 1.3.1 이하를 제거한 뒤 3-Adapt A11y 접근성 서비스를 다시 활성화하세요"
       ],
       "improvement": [
-        "플러그인 이름을 Accessibility Compat에서 3-Adapt A11y로 변경하고 앱 제목, 접근성 서비스 라벨, 플러그인 ID `three-adapt-a11y`, 패키지 및 구성 요소 이름, 릴리스 산출물, 문서, GitHub 저장소를 함께 갱신"
+        "플러그인 이름을 Accessibility Compat에서 3-Adapt A11y로 변경하고 앱 제목, 접근성 서비스 라벨, 플러그인 ID `three-adapt-a11y`, 패키지 및 구성 요소 이름, 릴리스 산출물, 문서, GitHub 저장소를 함께 갱신",
+        "런처와 플러그인 센터 아이콘의 시각적 크기를 통일하고 투명 배경과 흑백 또는 중성 회색조 적용"
       ],
       "feature": [
         "독립 설정을 평면 그룹, 일관된 행과 중앙의 둥근 대화상자로 통일했습니다. 언어, 야간 모드, 테마 색과 런처 아이콘은 확인 후 적용되며 취소하면 저장 값이 유지됩니다. 색은 기본적으로 AutoJs6를 따르며 공통 팔레트, HEX/RGB 입력과 부분 미리 보기를 제공합니다. 중립 배경색은 고정하고 컨트롤은 선택한 테마를 따릅니다. 런처 기본값은 자동 적응형이며 업데이트 시 명시적 선택을 유지합니다."
