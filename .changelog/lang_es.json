@@ -13,7 +13,8 @@
         "El ID de aplicación cambia de `io.github.supermonster003.autojs6.plugin.accessibilitycompat` a `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, por lo que Android trata esta versión como una aplicación nueva: desinstala primero Accessibility Compat 1.3.1 o anterior y vuelve a habilitar el servicio de accesibilidad 3-Adapt A11y"
       ],
       "improvement": [
-        "El complemento Accessibility Compat pasa a llamarse 3-Adapt A11y en el título de la aplicación, la etiqueta del servicio de accesibilidad, el ID de complemento `three-adapt-a11y`, los nombres de paquete y componentes, los artefactos de publicación, la documentación y el repositorio de GitHub"
+        "El complemento Accessibility Compat pasa a llamarse 3-Adapt A11y en el título de la aplicación, la etiqueta del servicio de accesibilidad, el ID de complemento `three-adapt-a11y`, los nombres de paquete y componentes, los artefactos de publicación, la documentación y el repositorio de GitHub",
+        "Tamaño visual uniforme de los iconos del lanzador y del Centro de complementos, con fondos transparentes y diseños en blanco, negro o grises neutros"
       ],
       "feature": [
         "Unificar los ajustes con grupos planos, filas coherentes y diálogos redondeados centrados. El idioma, el modo nocturno, el color y el icono solo cambian al confirmar; Cancelar conserva los valores guardados. El color sigue AutoJs6 por defecto, con una paleta común, entrada HEX/RGB y vista previa local. Los fondos neutros se mantienen estables y los controles siguen el tema. El icono usa el modo adaptativo automático por defecto, conservando las elecciones explícitas al actualizar."

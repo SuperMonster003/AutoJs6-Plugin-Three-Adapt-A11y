@@ -13,7 +13,8 @@
         "アプリケーション ID が `io.github.supermonster003.autojs6.plugin.accessibilitycompat` から `io.github.supermonster003.autojs6.plugin.three.adapt.a11y` に変わったため, Android はこのバージョンを新しいアプリとして扱います. 先に Accessibility Compat 1.3.1 以前をアンインストールし, 3-Adapt A11y のアクセシビリティサービスを再度有効にしてください"
       ],
       "improvement": [
-        "プラグイン名を Accessibility Compat から 3-Adapt A11y に変更し, アプリ名, アクセシビリティサービスのラベル, プラグイン ID `three-adapt-a11y`, パッケージ名とコンポーネント名, リリース成果物, ドキュメント, GitHub リポジトリを更新"
+        "プラグイン名を Accessibility Compat から 3-Adapt A11y に変更し, アプリ名, アクセシビリティサービスのラベル, プラグイン ID `three-adapt-a11y`, パッケージ名とコンポーネント名, リリース成果物, ドキュメント, GitHub リポジトリを更新",
+        "ランチャーとプラグインセンターのアイコンの見た目の大きさを統一し, 透明な背景と白黒または無彩色のグレースケールを使用"
       ],
       "feature": [
         "独立設定を平面グループ, 統一した行と中央の角丸ダイアログに統一しました. 言語, 夜間モード, テーマ色, ランチャーアイコンは確定後に適用され, キャンセルでは保存値を変えません. 色は既定で AutoJs6 に従い, 共通パレット, HEX/RGB 入力と局所プレビューを提供します. 中立な背景色は固定し, コントロールは選択したテーマに従います. ランチャーの既定は自動適応で, 更新時には明示的な選択を保持します."
