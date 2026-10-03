@@ -4,11 +4,11 @@
 
 > Язык страницы: русский
 
-## v1.4.0 - 2026/09/30
+## v1.4.0 - 2026/10/03
 
 ### Подсказка
 
-- Идентификатор приложения изменился с `io.github.supermonster003.autojs6.plugin.accessibilitycompat` на `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, поэтому Android считает этот выпуск новым приложением: сначала удалите Accessibility Compat 1.3.1 или старше, затем снова включите службу специальных возможностей 3-Adapt A11y
+- 3-Adapt A11y устанавливается отдельно с пакетом io.github.supermonster003.autojs6.plugin.three.adapt.a11y. Accessibility Compat и его данные можно сохранить, настройки автоматически не переносятся. При необходимости включите новую службу специальных возможностей
 
 ### Функция
 

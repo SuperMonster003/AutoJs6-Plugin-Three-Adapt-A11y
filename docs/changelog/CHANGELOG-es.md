@@ -4,11 +4,11 @@
 
 > Idioma de esta página: español
 
-## v1.4.0 - 2026/09/30
+## v1.4.0 - 2026/10/03
 
 ### Aviso
 
-- El ID de aplicación cambia de `io.github.supermonster003.autojs6.plugin.accessibilitycompat` a `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, por lo que Android trata esta versión como una aplicación nueva: desinstala primero Accessibility Compat 1.3.1 o anterior y vuelve a habilitar el servicio de accesibilidad 3-Adapt A11y
+- 3-Adapt A11y usa el nuevo paquete io.github.supermonster003.autojs6.plugin.three.adapt.a11y y se instala por separado. Puede conservar Accessibility Compat y sus datos; los ajustes no se migran automáticamente. Active el nuevo servicio cuando lo necesite
 
 ### Función
 

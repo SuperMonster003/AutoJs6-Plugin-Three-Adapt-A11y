@@ -4,11 +4,11 @@
 
 > 本页语言: 简体中文
 
-## v1.4.0 - 2026/09/30
+## v1.4.0 - 2026/10/03
 
 ### 提示
 
-- 应用 ID 由 `io.github.supermonster003.autojs6.plugin.accessibilitycompat` 改为 `io.github.supermonster003.autojs6.plugin.three.adapt.a11y`, Android 会将本版本视为新应用: 请先卸载 Accessibility Compat 1.3.1 及更早版本, 再重新启用 3-Adapt A11y 无障碍服务
+- 3-Adapt A11y 使用新包名 io.github.supermonster003.autojs6.plugin.three.adapt.a11y, Android 将其作为独立应用安装. 原 Accessibility Compat 及其数据可以保留, 设置不会自动迁移. 请按需要启用新的无障碍服务
 
 ### 新增
 
