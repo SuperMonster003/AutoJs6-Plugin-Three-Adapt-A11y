@@ -145,28 +145,11 @@ WebView, 小程式, Canvas 或自繪頁面可能沒有對應 Android 語意節�
 
 ### 發行歷史
 
-#### v1.4.0 - 2026/10/03
-
-##### 提示
-
-- 3-Adapt A11y 使用新套件名稱 io.github.supermonster003.autojs6.plugin.three.adapt.a11y, Android 將其作為獨立應用程式安裝. 原 Accessibility Compat 及其資料可以保留, 設定不會自動移轉. 請按需要啟用新的無障礙服務
-
-##### 新增
-
-- 統一獨立設定的平面分組, 列規格與置中圓角對話框. 語言, 夜間模式, 主題色與啟動器圖示均在確定後生效, 取消不改變已儲存的設定. 主題色預設跟隨 AutoJs6, 提供統一色盤, HEX/RGB 輸入與局部預覽; 中性底色保持穩定, 控制項遵循所選主題. 啟動器預設自適應自動, 升級保留明確儲存的選擇.
-
-##### 修復
-
-- 修復自動啟動器圖示在安裝時被固定為單一配色, 使啟動器仍可按設定讀取明暗資源.
+#### v1.4.1 - 2026/10/04
 
 ##### 優化
 
-- 外掛程式由 Accessibility Compat 更名為 3-Adapt A11y, 應用程式標題, 無障礙服務標籤, 外掛程式 ID `three-adapt-a11y`, 套件名稱與元件名稱, 發行產物, 文件及 GitHub 儲存庫同步更新
-- 啟動器與外掛中心圖示按統一視覺尺寸標準調整, 外掛中心採用透明背景和黑白或中性灰階圖案
-
-##### 相依性
-
-- Material Components 1.13.0 / AppCompat 1.7.1 (Material 3).
+- 外掛程式中心圖示採用統一工作台調整後的尺寸, 位置, 明暗圖稿與圓形底色, 保留可重建原稿和參數
 
 [查看完整發行歷史](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-zh-Hant-TW.md)
 

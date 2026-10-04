@@ -145,28 +145,11 @@ La note de recherche couvre AutoJs6 #289, #382, #432, #463, #520 et #521, GKD `4
 
 ### Historique des versions
 
-#### v1.4.0 - 2026/10/03
-
-##### Note
-
-- 3-Adapt A11y utilise le nouveau paquet io.github.supermonster003.autojs6.plugin.three.adapt.a11y et reste une application distincte. Accessibility Compat et ses données peuvent être conservés, sans migration automatique des réglages. Activez le nouveau service si nécessaire
-
-##### Fonctionnalité
-
-- Unifier les réglages avec des groupes plats, des lignes cohérentes et des dialogues arrondis centrés. La langue, le mode nuit, la couleur et l'icône ne changent qu'après validation; Annuler conserve les valeurs enregistrées. La couleur suit AutoJs6 par défaut et propose une palette commune, une saisie HEX/RGB et un aperçu local. Les fonds neutres restent stables et les contrôles suivent le thème. L'icône utilise le mode adaptatif automatique par défaut, tout en préservant les choix explicites lors des mises à jour.
-
-##### Correctif
-
-- Conserver la ressource automatique dynamique après installation afin que le lanceur puisse charger la variante claire ou sombre correspondante.
+#### v1.4.1 - 2026/10/04
 
 ##### Amélioration
 
-- Le plugin Accessibility Compat est renommé 3-Adapt A11y dans le titre de l'application, le libellé du service d'accessibilité, l'ID de plugin `three-adapt-a11y`, les noms de package et de composants, les artefacts de publication, la documentation et le dépôt GitHub
-- Taille visuelle harmonisée des icônes du lanceur et du Centre de plugins, avec des fonds transparents et des motifs noirs, blancs ou gris neutres
-
-##### Dépendance
-
-- Material Components 1.13.0 / AppCompat 1.7.1 (Material 3).
+- Les icônes du centre de plugins utilisent les tailles, positions, images claires et sombres et fonds circulaires réglés dans Icon Studio, avec les sources et paramètres permettant de les reproduire
 
 [Lire l'historique complet](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-fr.md)
 

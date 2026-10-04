@@ -145,28 +145,11 @@ The research note covers AutoJs6 #289, #382, #432, #463, #520, and #521, GKD `47
 
 ### Release History
 
-#### v1.4.0 - 2026/10/03
-
-##### Hint
-
-- 3-Adapt A11y uses the new package io.github.supermonster003.autojs6.plugin.three.adapt.a11y. Android installs it as a separate app. The old Accessibility Compat app and its data can remain installed; settings are not migrated automatically. Enable the new accessibility service when needed
-
-##### Feature
-
-- Unify standalone settings with flat groups, consistent rows and centered rounded dialogs. Language, night mode, theme color and launcher icon changes apply only after OK; Cancel leaves saved values unchanged. Theme color follows AutoJs6 by default, with a shared palette, HEX/RGB input and a local preview. Neutral surfaces keep stable colors and controls follow the selected theme. The launcher default is adaptive automatic, while upgrades preserve explicit saved choices.
-
-##### Fix
-
-- Keep the automatic launcher icon resource dynamic after installation so launchers can load the matching light or dark variant.
+#### v1.4.1 - 2026/10/04
 
 ##### Improvement
 
-- Rename the plugin from Accessibility Compat to 3-Adapt A11y across the application title, accessibility service label, plugin ID `three-adapt-a11y`, package and component names, release artifacts, documentation, and the GitHub repository
-- Consistent visual sizing for launcher and Plugin Center icons, with transparent backgrounds and neutral black, white or grayscale artwork
-
-##### Dependency
-
-- Material Components 1.13.0 / AppCompat 1.7.1 (Material 3).
+- Plugin Center icons use the sizes, positions, light and dark artwork, and circular backgrounds adjusted in Icon Studio, retaining reproducible sources and parameters
 
 [Read the complete release history](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-en.md)
 
