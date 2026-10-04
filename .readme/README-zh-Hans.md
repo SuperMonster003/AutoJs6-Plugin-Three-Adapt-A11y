@@ -145,28 +145,11 @@ WebView, 小程序, Canvas 或自绘页面可能没有对应的 Android 语义�
 
 ### 发行历史
 
-#### v1.4.0 - 2026/10/03
-
-##### 提示
-
-- 3-Adapt A11y 使用新包名 io.github.supermonster003.autojs6.plugin.three.adapt.a11y, Android 将其作为独立应用安装. 原 Accessibility Compat 及其数据可以保留, 设置不会自动迁移. 请按需要启用新的无障碍服务
-
-##### 新增
-
-- 统一独立设置的平面分组, 行规格与居中圆角对话框. 语言, 夜间模式, 主题色与启动器图标均在确定后生效, 取消不改变已保存的设置. 主题色默认跟随 AutoJs6, 提供统一色板, HEX/RGB 输入与局部预览; 中性底色保持稳定, 控件遵循所选主题. 启动器默认自适应自动, 升级保留明确保存的选择.
-
-##### 修复
-
-- 修复自动启动器图标在安装时被固定为单一配色, 使启动器仍可按配置读取亮暗资源.
+#### v1.4.1 - 2026/10/04
 
 ##### 优化
 
-- 插件由 Accessibility Compat 更名为 3-Adapt A11y, 应用标题, 无障碍服务标签, 插件 ID `three-adapt-a11y`, 包名与组件名, 发布产物, 文档及 GitHub 仓库同步更新
-- 启动器与插件中心图标按统一视觉尺寸标准调整, 插件中心采用透明背景和黑白或中性灰阶图案
-
-##### 依赖
-
-- Material Components 1.13.0 / AppCompat 1.7.1 (Material 3).
+- 插件中心图标采用统一工作台调整后的尺寸, 位置, 亮暗图稿与圆形底色, 保留可重建原稿和参数
 
 [查看完整发行历史](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-zh-Hans.md)
 
