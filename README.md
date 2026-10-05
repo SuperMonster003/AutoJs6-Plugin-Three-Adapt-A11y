@@ -145,11 +145,12 @@ WebView, 小程序, Canvas 或自绘页面可能没有对应的 Android 语义�
 
 ### 发行历史
 
-#### v1.4.1 - 2026/10/04
+#### v1.4.1 - 2026/10/05
 
 ##### 优化
 
 - 插件中心图标采用统一工作台调整后的尺寸, 位置, 亮暗图稿与圆形底色, 保留可重建原稿和参数
+- Android 系统应用信息图标与图标工作台共用图稿和亮暗底色, 保留插件中心透明图稿及现有启动器选项
 
 [查看完整发行历史](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-zh-Hans.md)
 

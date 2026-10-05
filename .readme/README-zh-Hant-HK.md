@@ -145,11 +145,12 @@ WebView, 小程序, Canvas 或自繪頁面可能沒有對應 Android 語義節�
 
 ### 發行歷史
 
-#### v1.4.1 - 2026/10/04
+#### v1.4.1 - 2026/10/05
 
 ##### 優化
 
 - 外掛程式中心圖示採用統一工作台調整後的尺寸, 位置, 明暗圖稿與圓形底色, 保留可重建原稿和參數
+- Android 系統應用程式資訊圖示與圖示工作台共用圖稿及明暗底色, 保留外掛程式中心透明圖稿與現有啟動器選項
 
 [查看完整發行歷史](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-zh-Hant-HK.md)
 

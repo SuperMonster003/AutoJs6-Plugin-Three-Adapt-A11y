@@ -145,11 +145,12 @@ WebView, ミニアプリ, Canvas, 独自描画ページは Android の意味ノ�
 
 ### リリース履歴
 
-#### v1.4.1 - 2026/10/04
+#### v1.4.1 - 2026/10/05
 
 ##### 改善
 
 - プラグインセンターのアイコンに Icon Studio で調整したサイズ, 位置, 明暗の図稿と円形背景を適用し, 再生成可能な原稿とパラメーターを保持
+- Android のアプリ情報アイコンに Icon Studio と共通の図案と明暗の背景色を使用し, プラグインセンターの透明な図案と既存のランチャー設定を維持
 
 [完全なリリース履歴を読む](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-ja.md)
 

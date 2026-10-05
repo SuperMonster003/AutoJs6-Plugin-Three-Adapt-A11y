@@ -145,11 +145,12 @@ WebView, 미니 앱, Canvas 또는 사용자 정의 렌더링 페이지에는 An
 
 ### 릴리스 기록
 
-#### v1.4.1 - 2026/10/04
+#### v1.4.1 - 2026/10/05
 
 ##### 개선
 
 - 플러그인 센터 아이콘에 Icon Studio에서 조정한 크기, 위치, 밝은 이미지와 어두운 이미지 및 원형 배경을 적용하고 재생성 가능한 원본과 매개변수를 유지
+- Android 앱 정보 아이콘에 Icon Studio의 그림과 밝은 배경 및 어두운 배경을 사용하고 플러그인 센터의 투명 그림과 기존 런처 옵션을 유지
 
 [전체 릴리스 기록 보기](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-ko.md)
 
