@@ -62,3 +62,7 @@ desktop.ini
 
 **/assets-app/declarations/
 **/assets-app/sample/declarations/
+
+# Local agent instruction files stay out of the repository.
+AGENTS.md
+CLAUDE.md
