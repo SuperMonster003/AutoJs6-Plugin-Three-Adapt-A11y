@@ -8,7 +8,10 @@
   "changelog_label_dependency": "Dependencia",
   "$data": {
     "v1.4.1": {
-      "released_date": "2026/10/05",
+      "released_date": "2026/10/17",
+      "fix": [
+        "En la interfaz en árabe, 3-Adapt A11y ya no aparece invertido como Adapt A11y-3"
+      ],
       "improvement": [
         "Los iconos del centro de plugins usan los tamaños, posiciones, imágenes claras y oscuras y fondos circulares ajustados en Icon Studio, conservando fuentes y parámetros reproducibles",
         "Los iconos de información de la aplicación de Android comparten las imágenes y los fondos claros y oscuros de Icon Studio, conservando las imágenes transparentes del centro de plugins y las opciones del lanzador"

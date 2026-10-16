@@ -4,7 +4,11 @@
 
 > Langue de cette page: français
 
-## v1.4.1 - 2026/10/05
+## v1.4.1 - 2026/10/17
+
+### Correctif
+
+- Dans l'interface en arabe, 3-Adapt A11y ne s'affiche plus à l'envers sous la forme Adapt A11y-3
 
 ### Amélioration
 

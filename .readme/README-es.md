@@ -145,7 +145,11 @@ La nota de investigación cubre AutoJs6 #289, #382, #432, #463, #520 y #521, GKD
 
 ### Historial de versiones
 
-#### v1.4.1 - 2026/10/05
+#### v1.4.1 - 2026/10/17
+
+##### Corrección
+
+- En la interfaz en árabe, 3-Adapt A11y ya no aparece invertido como Adapt A11y-3
 
 ##### Mejora
 
