@@ -40,6 +40,9 @@ internal object ShizukuShell {
     @Volatile
     private var service: IShizukuShell? = null
 
+    /** One-shot action for the next binder delivery, see [runOnceWhenBinderReceived]. */
+    private val pendingOnBinder = java.util.concurrent.atomic.AtomicReference<(() -> Unit)?>(null)
+
     private val serviceWaiters = CopyOnWriteArrayList<CountDownLatch>()
     private val permissionListeners = CopyOnWriteArrayList<(Boolean) -> Unit>()
 
@@ -55,7 +58,10 @@ internal object ShizukuShell {
         }
     }
 
-    private val binderReceivedListener = Shizuku.OnBinderReceivedListener { binderReceived = !Shizuku.isPreV11() }
+    private val binderReceivedListener = Shizuku.OnBinderReceivedListener {
+        binderReceived = !Shizuku.isPreV11()
+        if (binderReceived) pendingOnBinder.getAndSet(null)?.invoke()
+    }
     private val binderDeadListener = Shizuku.OnBinderDeadListener {
         binderReceived = false
         service = null
@@ -75,6 +81,17 @@ internal object ShizukuShell {
             Shizuku.addBinderDeadListener(binderDeadListener)
             Shizuku.addRequestPermissionResultListener(permissionResultListener)
         }.onFailure { Log.w(TAG, "Unable to register Shizuku listeners", it) }
+    }
+
+    /**
+     * Runs [action] once when Shizuku hands this process its binder. Shizuku delivers the binder to a
+     * freshly started process asynchronously, so a pass that ran before it found no Shizuku (Q108).
+     * Runs at once when the binder already arrived; a newer action replaces a pending one.
+     */
+    fun runOnceWhenBinderReceived(action: () -> Unit) {
+        initialize()
+        pendingOnBinder.set(action)
+        if (binderReceived) pendingOnBinder.getAndSet(null)?.invoke()
     }
 
     fun isInstalled(context: Context): Boolean = runCatching {

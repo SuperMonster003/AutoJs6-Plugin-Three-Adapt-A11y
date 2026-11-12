@@ -129,6 +129,10 @@ No. Only the accessibility service implementation class name is used for the com
 
 Without root access, WRITE_SECURE_SETTINGS, or Shizuku, Android does not let an app enable its own accessibility service, so enable the compatibility service in system settings and also enable AutoJs6. With one of them available, the compatibility service manager applies the selected policy for you. If nothing changes, use the A-B-A protocol to determine whether the current target-app version and page are supported.
 
+#### The compatibility service is on in system settings, so why does the home page say it is not running?
+
+After the compatibility service process is force-closed (for example by a cleaner app or a battery saver), Android may stop running it while system settings still show it as on. With root access, WRITE_SECURE_SETTINGS, or Shizuku, opening the home page or running a sync turns it off and on again automatically. Without any of them, the home page shows a notice with a button to the system settings: turn 3-Adapt A11y off and on again in the system accessibility settings.
+
 #### Why are text nodes still missing on a supported page?
 
 A WebView, mini-app, Canvas, or custom-rendered page may have no corresponding Android semantic nodes. The service can only try to restore a conditionally hidden tree. It cannot generate information that the page never exposes.
@@ -145,16 +149,15 @@ The research note covers AutoJs6 #289, #382, #432, #463, #520, and #521, GKD `47
 
 ### Release History
 
-#### v1.4.1 - 2026/10/17
+#### v1.4.2 - 2026/11/13
 
 ##### Fix
 
-- In the Arabic interface, 3-Adapt A11y no longer appears reversed as Adapt A11y-3
+- When the compatibility service process is killed, system settings still show it as on but the system no longer runs it; sync now turns it off and on again through root, WRITE_SECURE_SETTINGS, or Shizuku, and without any of them the home page explains how to turn it off and on in the system accessibility settings and offers a button to open them
 
 ##### Improvement
 
-- Plugin Center icons use the sizes, positions, light and dark artwork, and circular backgrounds adjusted in Icon Studio, retaining reproducible sources and parameters
-- Android App info icons share Icon Studio artwork and light/dark backgrounds while preserving transparent Plugin Center artwork and existing launcher choices
+- When Shizuku is the only way to enable the compatibility service, a sync that runs before Shizuku is ready after the plugin starts is repeated once Shizuku is ready
 
 [Read the complete release history](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-en.md)
 

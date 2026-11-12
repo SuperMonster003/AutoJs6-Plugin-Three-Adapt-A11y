@@ -88,6 +88,10 @@
       "a": "Sin root, WRITE_SECURE_SETTINGS ni Shizuku, Android no permite que una aplicación active su propio servicio de accesibilidad, así que active el servicio de compatibilidad y AutoJs6 en los ajustes. Si uno de ellos está disponible, el gestor del servicio de compatibilidad aplica la política seleccionada por usted. Si nada cambia, use el protocolo A-B-A para comprobar la versión y la página actuales de la aplicación objetivo."
     },
     {
+      "q": "Por qué la página principal indica que el servicio de compatibilidad no está en ejecución si está activado en los ajustes del sistema?",
+      "a": "Tras un cierre forzado del proceso del servicio de compatibilidad (por ejemplo, por una aplicación de limpieza o el ahorro de batería), Android puede dejar de ejecutarlo aunque los ajustes del sistema lo sigan mostrando activado. Con root, WRITE_SECURE_SETTINGS o Shizuku, al abrir la página principal o ejecutar una sincronización se desactiva y se vuelve a activar automáticamente. Sin ninguno de ellos, la página principal muestra un aviso con un botón a los ajustes del sistema: desactive 3-Adapt A11y y vuelva a activarlo en los ajustes de accesibilidad del sistema."
+    },
+    {
       "q": "Por qué siguen faltando nodos de texto en una página compatible?",
       "a": "Una página WebView, una miniaplicación, Canvas o un renderizado personalizado puede carecer de nodos semánticos Android. El servicio solo intenta restaurar un árbol oculto condicionalmente. No puede crear datos que la página nunca expone."
     },

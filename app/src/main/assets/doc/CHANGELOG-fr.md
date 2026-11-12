@@ -4,6 +4,16 @@
 
 > Langue de cette page: français
 
+## v1.4.2 - 2026/11/13
+
+### Correctif
+
+- Lorsque le processus du service de compatibilité est arrêté, les paramètres système l'affichent toujours comme activé mais le système ne l'exécute plus; la synchronisation le désactive puis le réactive désormais via root, WRITE_SECURE_SETTINGS ou Shizuku, et sans aucun d'eux la page d'accueil explique comment le désactiver puis le réactiver dans les paramètres d'accessibilité du système et propose un bouton pour les ouvrir
+
+### Amélioration
+
+- Lorsque Shizuku est le seul moyen d'activer le service de compatibilité, une synchronisation lancée avant que Shizuku soit prêt au démarrage du plugin est refaite une fois Shizuku prêt
+
 ## v1.4.1 - 2026/10/17
 
 ### Correctif

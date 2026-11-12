@@ -16,6 +16,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import io.github.supermonster003.autojs6.plugin.three.adapt.a11y.control.CompatServiceController
 import io.github.supermonster003.autojs6.plugin.three.adapt.a11y.control.HostServiceState
+import io.github.supermonster003.autojs6.plugin.three.adapt.a11y.control.ServiceControlPolicy
 import io.github.supermonster003.autojs6.plugin.three.adapt.a11y.control.ServiceState
 import io.github.supermonster003.autojs6.plugin.three.adapt.a11y.sync.CompatServiceSync
 import io.github.supermonster003.autojs6.plugin.three.adapt.a11y.ui.ThemedActivity
@@ -24,6 +25,9 @@ internal class MainActivity : ThemedActivity() {
     private lateinit var statusValue: TextView
     private lateinit var statusDetail: TextView
     private lateinit var statusIndicator: View
+    private lateinit var restartHint: View
+    /** Set when a sync found the service listed but not running and could not restart it. */
+    private var restartHintWanted = false
     private var managerDialog: CompatServiceManagerDialog? = null
     private val handler = Handler(Looper.getMainLooper())
 
@@ -35,8 +39,17 @@ internal class MainActivity : ThemedActivity() {
     override fun onResume() {
         super.onResume()
         updateStatus()
-        CompatServiceSync.request(this, "main-resume") { updateStatus() }
-        // The service binds a moment after the system lists it; pick that up without a manual refresh.
+        CompatServiceSync.request(this, "main-resume") { outcome ->
+            restartHintWanted = outcome.requiresManualRestart
+            updateStatus()
+            // A repaired service binds about a second after the second write.
+            if (outcome.decision != ServiceControlPolicy.Decision.NONE) scheduleStatusUpdates()
+        }
+        scheduleStatusUpdates()
+    }
+
+    /** The service binds a moment after the system lists it; pick that up without a manual refresh. */
+    private fun scheduleStatusUpdates() {
         listOf(1_000L, 3_000L).forEach { delay -> handler.postDelayed(::updateStatus, delay) }
     }
 
@@ -54,6 +67,8 @@ internal class MainActivity : ThemedActivity() {
     private fun LinearLayout.buildContent() {
         addView(header(), lp(MATCH_PARENT, WRAP_CONTENT))
         addView(statusCard(), lp(MATCH_PARENT, WRAP_CONTENT).margins(top = 22))
+        restartHint = restartHintCard()
+        addView(restartHint, lp(MATCH_PARENT, WRAP_CONTENT).margins(top = 12))
         addView(sectionTitle(getString(R.string.supported_apps_title)))
         addView(supportedAppsCard(), lp(MATCH_PARENT, WRAP_CONTENT))
         addView(
@@ -131,6 +146,23 @@ internal class MainActivity : ThemedActivity() {
         }
     }
 
+    /**
+     * Shown while the service is listed but not running and no unattended method could restart it
+     * (its process was killed, so the system stopped binding it until it is turned off and on).
+     */
+    private fun restartHintCard(): View = card {
+        setPaddingRelative(dp(20), dp(16), dp(20), dp(16))
+        addView(text(getString(R.string.restart_hint_title), 15.5f, palette.warning, Typeface.DEFAULT_BOLD))
+        addView(
+            text(getString(R.string.restart_hint_body, getString(R.string.accessibility_service_name)), 13.5f, palette.secondaryText),
+            lp(MATCH_PARENT, WRAP_CONTENT).margins(top = 6),
+        )
+        addView(
+            tonalButton(getString(R.string.action_system_settings)) { AccessibilitySettingsLauncher.open(this@MainActivity) },
+            lp(WRAP_CONTENT, WRAP_CONTENT).margins(top = 12),
+        )
+    }.apply { visibility = View.GONE }
+
     private fun supportedAppsCard(): View = card {
         ThreeAdaptA11yContract.SUPPORTED_PACKAGES.forEachIndexed { index, targetPackage ->
             if (index > 0) addView(divider(72))
@@ -188,6 +220,8 @@ internal class MainActivity : ThemedActivity() {
             ServiceState.DISABLED -> R.string.value_disabled to palette.secondaryText
         }
         statusValue.text = getString(valueRes)
+        if (state != ServiceState.ENABLED_NOT_BOUND) restartHintWanted = false
+        restartHint.visibility = if (restartHintWanted) View.VISIBLE else View.GONE
         statusIndicator.background = roundedBackground(color, 7f)
         val hostState = when (controller.hostServiceState()) {
             HostServiceState.ENABLED -> R.string.value_enabled

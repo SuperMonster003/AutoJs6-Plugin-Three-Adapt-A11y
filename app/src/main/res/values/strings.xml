@@ -71,6 +71,8 @@
     <string name="privacy_title">Privacy</string>
     <string name="release_history">Release history</string>
     <string name="release_history_unavailable">Release history is unavailable</string>
+    <string name="restart_hint_body">It is still on in the system settings, but the system stopped running it, usually after it was force-closed. Turn %1$s off and on again in the system accessibility settings to restart it.</string>
+    <string name="restart_hint_title">Compatibility service is not running</string>
     <string name="screen_intro">An optional experimental companion that may help AutoJs6 retrieve accessibility nodes from supported apps.</string>
     <string name="secure_settings_grant_body">Run this command on a computer with ADB, or in a root shell on the device, then reopen the manager:\n\n%1$s</string>
     <string name="secure_settings_grant_title">Grant secure settings access</string>
@@ -111,6 +113,8 @@
     <string name="sync_enabled_via">Compatibility service enabled via %1$s</string>
     <string name="sync_manual_required">No automatic method is available. Change the service in the system accessibility settings.</string>
     <string name="sync_no_change">The compatibility service already matches the selected policy</string>
+    <string name="sync_restart_manual">The compatibility service is on but not running. Turn it off and on again in the system accessibility settings.</string>
+    <string name="sync_restarted_via">Compatibility service restarted via %1$s</string>
     <string name="theme_color_default">Default</string>
     <string name="theme_color_green">Green</string>
     <string name="theme_color_orange">Orange</string>

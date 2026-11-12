@@ -71,6 +71,8 @@
     <string name="privacy_title">الخصوصية</string>
     <string name="release_history">سجل الإصدارات</string>
     <string name="release_history_unavailable">سجل الإصدارات غير متاح</string>
+    <string name="restart_hint_body">لا تزال مفعلة في إعدادات النظام, لكن النظام توقف عن تشغيلها, وغالبا ما يحدث ذلك بعد إيقافها قسرا. أوقف ⁨%1$s⁩ ثم فعله مرة أخرى من إعدادات إمكانية الوصول في النظام لإعادة تشغيلها.</string>
+    <string name="restart_hint_title">خدمة التوافق غير قيد التشغيل</string>
     <string name="screen_intro">مكون إضافي تجريبي اختياري قد يساعد AutoJs6 على استرداد عقد إمكانية الوصول من التطبيقات المدعومة.</string>
     <string name="secure_settings_grant_body">نفذ هذا الأمر على حاسوب متصل عبر ADB أو في root shell على الجهاز, ثم أعد فتح المدير:\n\n%1$s</string>
     <string name="secure_settings_grant_title">منح الوصول إلى الإعدادات الآمنة</string>
@@ -111,6 +113,8 @@
     <string name="sync_enabled_via">تم تفعيل خدمة التوافق عبر %1$s</string>
     <string name="sync_manual_required">لا تتوفر أي طريقة تلقائية. بدل الخدمة من إعدادات إمكانية الوصول في النظام.</string>
     <string name="sync_no_change">خدمة التوافق مطابقة بالفعل للسياسة المحددة</string>
+    <string name="sync_restart_manual">خدمة التوافق مفعلة لكنها غير قيد التشغيل. أوقفها ثم فعلها مرة أخرى من إعدادات إمكانية الوصول في النظام.</string>
+    <string name="sync_restarted_via">تمت إعادة تشغيل خدمة التوافق عبر %1$s</string>
     <string name="theme_color_default">افتراضي</string>
     <string name="theme_color_green">أخضر</string>
     <string name="theme_color_orange">برتقالي</string>

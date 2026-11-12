@@ -3,6 +3,7 @@ package io.github.supermonster003.autojs6.plugin.three.adapt.a11y.control
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.os.SystemClock
 import android.provider.Settings.Secure
 import android.util.Log
 import io.github.supermonster003.autojs6.plugin.three.adapt.a11y.ThreeAdaptA11yContract
@@ -49,9 +50,11 @@ internal class CompatServiceController(context: Context) {
     /** The system list of bound services covers the case where another process asks. */
     fun serviceState(): ServiceState = when {
         !isServiceListed() -> ServiceState.DISABLED
-        ThreeAdaptA11yService.isBound || AccessibilityServiceStatus.isEnabled(appContext) -> ServiceState.ENABLED
+        isServiceRunning() -> ServiceState.ENABLED
         else -> ServiceState.ENABLED_NOT_BOUND
     }
+
+    fun isServiceRunning(): Boolean = ThreeAdaptA11yService.isBound || AccessibilityServiceStatus.isEnabled(appContext)
 
     fun hostServiceState(): HostServiceState = when {
         !isHostInstalled() -> HostServiceState.NOT_INSTALLED
@@ -72,19 +75,47 @@ internal class CompatServiceController(context: Context) {
     /** Applies the stored policy to the current state, returning what happened. */
     fun sync(): SyncOutcome {
         val settings = store.load()
-        val decision = ServiceControlPolicy.decide(settings.servicePolicy, isHostServiceEnabled(), isServiceListed())
+        var decision = decide(settings, isServiceRunning())
+        if (decision == ServiceControlPolicy.Decision.REPAIR) {
+            decision = decide(settings, BindingGrace.await(::isServiceRunning))
+        }
         return when (decision) {
             ServiceControlPolicy.Decision.NONE -> SyncOutcome.NO_CHANGE
             ServiceControlPolicy.Decision.ENABLE -> {
                 val via = enable(settings)
                 SyncOutcome(decision, succeeded = via != null, via = via)
             }
+            ServiceControlPolicy.Decision.REPAIR -> repair(settings)
             ServiceControlPolicy.Decision.DISABLE -> {
                 val via = disable(settings)
                 SyncOutcome(decision, succeeded = via != null, via = via)
             }
         }
     }
+
+    private fun decide(settings: CompatSettings, running: Boolean): ServiceControlPolicy.Decision =
+        ServiceControlPolicy.decide(settings.servicePolicy, isHostServiceEnabled(), isServiceListed(), running)
+
+    /**
+     * Restarts a listed service the system does not run by taking it out of the list and putting it
+     * back ([SettingsStoreStrategy.enable] waits between the two writes). Not repeated within
+     * [RepairThrottle.COOLDOWN_MILLIS], in case the system refuses to bind it for another reason.
+     */
+    private fun repair(settings: CompatSettings): SyncOutcome {
+        val decision = ServiceControlPolicy.Decision.REPAIR
+        val now = SystemClock.elapsedRealtime()
+        val last = repairPrefs.getLong(KEY_LAST_REPAIR, -1L).takeIf { it >= 0 }
+        if (!RepairThrottle.allowed(last, now)) {
+            Log.i(TAG, "Not running after a repair ${now - (last ?: now)} ms ago; leaving it to the user")
+            return SyncOutcome(decision, succeeded = false)
+        }
+        val via = enable(settings)
+        if (via != null) repairPrefs.edit().putLong(KEY_LAST_REPAIR, now).apply()
+        Log.i(TAG, "Listed but not running; repair via ${via ?: "none (no method available)"}")
+        return SyncOutcome(decision, succeeded = via != null, via = via)
+    }
+
+    private val repairPrefs get() = appContext.getSharedPreferences(REPAIR_PREFS, Context.MODE_PRIVATE)
 
     /** Returns the strategy name that enabled the service, or null when none could. */
     fun enable(settings: CompatSettings = store.load()): String? =
@@ -148,11 +179,19 @@ internal class CompatServiceController(context: Context) {
         private const val TAG = "CompatServiceController"
         private const val SELF_DISABLE_TIMEOUT_MILLIS = 1_500L
         private const val SELF_DISABLE_POLL_MILLIS = 50L
+        private const val REPAIR_PREFS = "compat_service_repair"
+        private const val KEY_LAST_REPAIR = "last_repair_elapsed_realtime"
 
         const val VIA_ROOT = "root"
         const val VIA_SECURE_SETTINGS = "secure-settings"
         const val VIA_SHIZUKU = "shizuku"
         const val VIA_SELF = "self"
+
+        /** The service is bound again, so the last repair worked and does not hold back the next one. */
+        fun onServiceRunning(context: Context) {
+            val prefs = context.applicationContext.getSharedPreferences(REPAIR_PREFS, Context.MODE_PRIVATE)
+            if (prefs.contains(KEY_LAST_REPAIR)) prefs.edit().remove(KEY_LAST_REPAIR).apply()
+        }
 
         fun isSecureSettingsGranted(context: Context): Boolean =
             context.checkCallingOrSelfPermission(Manifest.permission.WRITE_SECURE_SETTINGS) ==

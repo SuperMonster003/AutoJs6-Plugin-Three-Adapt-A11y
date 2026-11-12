@@ -88,6 +88,10 @@
       "a": "Sans root, WRITE_SECURE_SETTINGS ni Shizuku, Android interdit à une application d'activer elle-même son service d'accessibilité: activez alors le service de compatibilité et AutoJs6 dans les paramètres. Si l'un d'eux est disponible, le gestionnaire du service de compatibilité applique la politique choisie pour vous. Si rien ne change, utilisez le protocole A-B-A pour tester la version et la page actuelles de l'application cible."
     },
     {
+      "q": "Le service de compatibilité est activé dans les paramètres système: pourquoi la page d'accueil indique-t-elle qu'il ne s'exécute pas?",
+      "a": "Après l'arrêt forcé du processus du service de compatibilité (par exemple par une application de nettoyage ou un mode d'économie d'énergie), Android peut cesser de l'exécuter alors que les paramètres système l'affichent toujours comme activé. Avec root, WRITE_SECURE_SETTINGS ou Shizuku, ouvrir la page d'accueil ou lancer une synchronisation le désactive puis le réactive automatiquement. Sans aucun d'eux, la page d'accueil affiche un avis avec un bouton vers les paramètres système: désactivez puis réactivez 3-Adapt A11y dans les paramètres d'accessibilité du système."
+    },
+    {
       "q": "Pourquoi les noeuds texte manquent-ils encore sur une page prise en charge?",
       "a": "Une page WebView, une mini-application, Canvas ou un rendu personnalisé peut ne posséder aucun noeud sémantique Android. Le service peut seulement tenter de restaurer un arbre masqué conditionnellement. Il ne peut pas créer une information que la page n'expose pas."
     },

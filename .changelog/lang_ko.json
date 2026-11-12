@@ -7,6 +7,15 @@
   "changelog_label_improvement": "개선",
   "changelog_label_dependency": "의존성",
   "$data": {
+    "v1.4.2": {
+      "released_date": "2026/11/13",
+      "fix": [
+        "호환 서비스 프로세스가 종료되어 시스템 설정에서는 켜져 있지만 실행되지 않을 때, 동기화가 root, WRITE_SECURE_SETTINGS 또는 Shizuku로 서비스를 껐다가 다시 켜도록 수정하고, 이들이 모두 없으면 홈 화면에 시스템 접근성 설정에서 껐다가 다시 켜라는 안내와 설정을 여는 버튼을 표시"
+      ],
+      "improvement": [
+        "Shizuku로만 호환 서비스를 켤 수 있을 때, 플러그인 시작 후 첫 동기화가 Shizuku 준비보다 빠르면 준비된 뒤 한 번 더 동기화"
+      ]
+    },
     "v1.4.1": {
       "released_date": "2026/10/17",
       "fix": [

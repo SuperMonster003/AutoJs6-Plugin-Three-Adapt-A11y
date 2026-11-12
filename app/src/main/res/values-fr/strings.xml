@@ -71,6 +71,8 @@
     <string name="privacy_title">Confidentialité</string>
     <string name="release_history">Historique des versions</string>
     <string name="release_history_unavailable">L\'historique des versions est indisponible</string>
+    <string name="restart_hint_body">Il est toujours activé dans les paramètres du système, mais le système a cessé de l\'exécuter, en général après un arrêt forcé. Désactivez puis réactivez %1$s dans les paramètres d\'accessibilité du système pour le relancer.</string>
+    <string name="restart_hint_title">Le service de compatibilité ne s\'exécute pas</string>
     <string name="screen_intro">Un compagnon expérimental et facultatif qui peut aider AutoJs6 à obtenir les noeuds d\'accessibilité des applications compatibles.</string>
     <string name="secure_settings_grant_body">Exécutez cette commande sur un ordinateur avec ADB, ou dans un shell root sur l\'appareil, puis rouvrez le gestionnaire:\n\n%1$s</string>
     <string name="secure_settings_grant_title">Accorder l\'accès aux paramètres sécurisés</string>
@@ -111,6 +113,8 @@
     <string name="sync_enabled_via">Service de compatibilité activé via %1$s</string>
     <string name="sync_manual_required">Aucune méthode automatique n\'est disponible. Changez le service dans les paramètres d\'accessibilité du système.</string>
     <string name="sync_no_change">Le service de compatibilité correspond déjà à la politique choisie</string>
+    <string name="sync_restart_manual">Le service de compatibilité est activé mais ne s\'exécute pas. Désactivez-le puis réactivez-le dans les paramètres d\'accessibilité du système.</string>
+    <string name="sync_restarted_via">Service de compatibilité relancé via %1$s</string>
     <string name="theme_color_default">Par défaut</string>
     <string name="theme_color_green">Vert</string>
     <string name="theme_color_orange">Orange</string>

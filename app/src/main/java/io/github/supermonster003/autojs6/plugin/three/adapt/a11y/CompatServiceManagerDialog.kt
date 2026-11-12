@@ -224,6 +224,11 @@ internal class CompatServiceManagerDialog private constructor(
 
     private fun outcomeMessage(outcome: SyncOutcome): String = when {
         outcome.decision == ServiceControlPolicy.Decision.NONE -> activity.getString(R.string.sync_no_change)
+        outcome.decision == ServiceControlPolicy.Decision.REPAIR -> if (outcome.succeeded) {
+            activity.getString(R.string.sync_restarted_via, viaLabel(outcome.via))
+        } else {
+            activity.getString(R.string.sync_restart_manual)
+        }
         outcome.succeeded && outcome.decision == ServiceControlPolicy.Decision.ENABLE ->
             activity.getString(R.string.sync_enabled_via, viaLabel(outcome.via))
         outcome.succeeded -> activity.getString(R.string.sync_disabled_via, viaLabel(outcome.via))

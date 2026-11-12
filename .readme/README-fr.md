@@ -129,6 +129,10 @@ Non. Seul le nom de la classe d'implémentation du service sert à l'expérience
 
 Sans root, WRITE_SECURE_SETTINGS ni Shizuku, Android interdit à une application d'activer elle-même son service d'accessibilité: activez alors le service de compatibilité et AutoJs6 dans les paramètres. Si l'un d'eux est disponible, le gestionnaire du service de compatibilité applique la politique choisie pour vous. Si rien ne change, utilisez le protocole A-B-A pour tester la version et la page actuelles de l'application cible.
 
+#### Le service de compatibilité est activé dans les paramètres système: pourquoi la page d'accueil indique-t-elle qu'il ne s'exécute pas?
+
+Après l'arrêt forcé du processus du service de compatibilité (par exemple par une application de nettoyage ou un mode d'économie d'énergie), Android peut cesser de l'exécuter alors que les paramètres système l'affichent toujours comme activé. Avec root, WRITE_SECURE_SETTINGS ou Shizuku, ouvrir la page d'accueil ou lancer une synchronisation le désactive puis le réactive automatiquement. Sans aucun d'eux, la page d'accueil affiche un avis avec un bouton vers les paramètres système: désactivez puis réactivez 3-Adapt A11y dans les paramètres d'accessibilité du système.
+
 #### Pourquoi les noeuds texte manquent-ils encore sur une page prise en charge?
 
 Une page WebView, une mini-application, Canvas ou un rendu personnalisé peut ne posséder aucun noeud sémantique Android. Le service peut seulement tenter de restaurer un arbre masqué conditionnellement. Il ne peut pas créer une information que la page n'expose pas.
@@ -145,16 +149,15 @@ La note de recherche couvre AutoJs6 #289, #382, #432, #463, #520 et #521, GKD `4
 
 ### Historique des versions
 
-#### v1.4.1 - 2026/10/17
+#### v1.4.2 - 2026/11/13
 
 ##### Correctif
 
-- Dans l'interface en arabe, 3-Adapt A11y ne s'affiche plus à l'envers sous la forme Adapt A11y-3
+- Lorsque le processus du service de compatibilité est arrêté, les paramètres système l'affichent toujours comme activé mais le système ne l'exécute plus; la synchronisation le désactive puis le réactive désormais via root, WRITE_SECURE_SETTINGS ou Shizuku, et sans aucun d'eux la page d'accueil explique comment le désactiver puis le réactiver dans les paramètres d'accessibilité du système et propose un bouton pour les ouvrir
 
 ##### Amélioration
 
-- Les icônes du centre de plugins utilisent les tailles, positions, images claires et sombres et fonds circulaires réglés dans Icon Studio, avec les sources et paramètres permettant de les reproduire
-- Les icônes des informations d'application Android utilisent les illustrations et les fonds clairs et sombres d'Icon Studio, en conservant les images transparentes du centre de plugins et les choix du lanceur
+- Lorsque Shizuku est le seul moyen d'activer le service de compatibilité, une synchronisation lancée avant que Shizuku soit prêt au démarrage du plugin est refaite une fois Shizuku prêt
 
 [Lire l'historique complet](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-fr.md)
 

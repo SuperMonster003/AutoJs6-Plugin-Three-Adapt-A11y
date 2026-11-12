@@ -4,6 +4,16 @@
 
 > Page language: English
 
+## v1.4.2 - 2026/11/13
+
+### Fix
+
+- When the compatibility service process is killed, system settings still show it as on but the system no longer runs it; sync now turns it off and on again through root, WRITE_SECURE_SETTINGS, or Shizuku, and without any of them the home page explains how to turn it off and on in the system accessibility settings and offers a button to open them
+
+### Improvement
+
+- When Shizuku is the only way to enable the compatibility service, a sync that runs before Shizuku is ready after the plugin starts is repeated once Shizuku is ready
+
 ## v1.4.1 - 2026/10/17
 
 ### Fix

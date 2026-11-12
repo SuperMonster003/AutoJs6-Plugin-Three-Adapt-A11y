@@ -7,6 +7,15 @@
   "changelog_label_improvement": "优化",
   "changelog_label_dependency": "依赖",
   "$data": {
+    "v1.4.2": {
+      "released_date": "2026/11/13",
+      "fix": [
+        "兼容服务进程被结束后, 系统设置中仍显示开启但系统不再运行它; 插件同步现在会通过 root, WRITE_SECURE_SETTINGS 或 Shizuku 把它关闭再开启, 没有这些能力时首页提示到系统无障碍设置中关闭再开启, 并提供前往设置的按钮"
+      ],
+      "improvement": [
+        "只能通过 Shizuku 启用兼容服务时, 若插件启动后的首次同步早于 Shizuku 就绪, 就绪后会补做一次同步"
+      ]
+    },
     "v1.4.1": {
       "released_date": "2026/10/17",
       "fix": [

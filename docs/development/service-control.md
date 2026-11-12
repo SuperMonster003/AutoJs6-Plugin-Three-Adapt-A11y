@@ -15,9 +15,18 @@ the `WRITE_SECURE_SETTINGS` and Shizuku permissions declared in the manifest.
 | Enabled | `ENABLED` | `enabled` | Keep the compatibility service enabled |
 | Disabled | `DISABLED` | `disabled` | Keep the compatibility service disabled |
 
-`ServiceControlPolicy.decide(policy, hostServiceEnabled, serviceEnabled)` is the only place that turns
-the policy and the observed state into an `ENABLE`, `DISABLE`, or `NONE` decision. It is pure and
-unit tested.
+`ServiceControlPolicy.decide(policy, hostServiceEnabled, serviceEnabled, serviceRunning)` is the only
+place that turns the policy and the observed state into an `ENABLE`, `DISABLE`, `REPAIR`, or `NONE`
+decision. It is pure and unit tested.
+
+`REPAIR` means the service should be on, is listed in `enabled_accessibility_services`, but is not
+bound. After its process is killed (not force-stopped) the system may record the service as crashed
+and leave it listed without binding it again until it leaves the list and comes back. Because a
+freshly listed service is unbound for a moment, `CompatServiceController.sync()` waits up to 3 s
+(`BindingGrace`, polling every 250 ms) and decides again before repairing. A repair is not repeated
+within 60 s (`RepairThrottle`, stored in the `compat_service_repair` preferences and cleared when
+the service connects), so a service the system refuses to bind for another reason is left to the
+user instead of being rewritten by every settings change the repair itself causes.
 
 The selected policy is also published through the plugin-info capabilities as
 `org.autojs.plugin.accessibility.compat.SERVICE_POLICY` (contract version 3), so that a host which
@@ -38,6 +47,11 @@ invoked by:
 - `ThreeAdaptA11yService`: while bound, a `ContentObserver` on the same setting and the
   `onServiceConnected` callback.
 - `WakeActivity` (`org.autojs.plugin.action.WAKE`) and `MainActivity.onResume`.
+- `ShizukuShell.runOnceWhenBinderReceived` (trigger `shizuku-binder`): when a pass found no usable
+  method while Shizuku is allowed in the manager but its binder has not arrived yet (a process just
+  started by the host broadcast or the watcher job receives it a moment later), one more pass runs
+  when the binder arrives. Shizuku that is not started never delivers one, and a pass that fails with
+  Shizuku reachable does not register again.
 
 Passive triggers never open UI. The manager dialog calls `sync()` itself so that it can show the
 outcome as a toast and fall back to the system accessibility settings when no method is available.
@@ -58,7 +72,14 @@ skipped when its switch in the manager is off or the capability is missing:
 Every write goes through `EnabledAccessibilityServices.attach/detach`, which removes every service of
 this package before appending the component (the detach-then-attach cycle also revives a service that
 is listed but not running), and `SettingsStoreStrategy` reads the setting back before reporting
-success.
+success. When the component is already listed, the strategy writes the list without it, waits 1 s
+(`SettingsStoreStrategy.RELIST_GAP_MILLIS`), and writes it back: two `Settings.Secure.putString`
+calls a few milliseconds apart reach the accessibility manager as one change, so the service stayed
+crashed (measured on ColorOS 15: 3 ms apart failed every time, 300 ms and 1 s always worked).
+
+When `REPAIR` finds no method, `MainActivity` shows a card that asks the user to turn the service
+off and on again in the system accessibility settings, with a button that opens them; the card
+disappears once the service runs again.
 
 Disabling prefers `AccessibilityService.disableSelf()` when the service is bound because that needs
 no privilege; the strategies cover a listed but unbound service.
@@ -79,3 +100,9 @@ from the capabilities of official-signed plugins, attaches or detaches `follow-h
 its own strategies when its service binds or unbinds, and broadcasts the state change to each
 companion package. Older hosts that lack this logic still work: the companion follows through the
 settings watcher and the wake activity.
+
+From 6.8.1 the host also watches `enabled_accessibility_services` (and, on Android 13 and later,
+the set of bound services) while its process lives. When a `follow-host` companion was force-stopped
+(removed from the list and its package stopped) or killed (listed but not bound) while the host
+service is on, the host writes it back or repairs it with its own strategies, and broadcasts the
+state change so that the companion can do it itself when the host has no method.

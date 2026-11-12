@@ -88,6 +88,10 @@
       "a": "Without root access, WRITE_SECURE_SETTINGS, or Shizuku, Android does not let an app enable its own accessibility service, so enable the compatibility service in system settings and also enable AutoJs6. With one of them available, the compatibility service manager applies the selected policy for you. If nothing changes, use the A-B-A protocol to determine whether the current target-app version and page are supported."
     },
     {
+      "q": "The compatibility service is on in system settings, so why does the home page say it is not running?",
+      "a": "After the compatibility service process is force-closed (for example by a cleaner app or a battery saver), Android may stop running it while system settings still show it as on. With root access, WRITE_SECURE_SETTINGS, or Shizuku, opening the home page or running a sync turns it off and on again automatically. Without any of them, the home page shows a notice with a button to the system settings: turn 3-Adapt A11y off and on again in the system accessibility settings."
+    },
+    {
       "q": "Why are text nodes still missing on a supported page?",
       "a": "A WebView, mini-app, Canvas, or custom-rendered page may have no corresponding Android semantic nodes. The service can only try to restore a conditionally hidden tree. It cannot generate information that the page never exposes."
     },

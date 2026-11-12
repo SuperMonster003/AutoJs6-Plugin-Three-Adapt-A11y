@@ -71,6 +71,8 @@
     <string name="privacy_title">Конфиденциальность</string>
     <string name="release_history">История выпусков</string>
     <string name="release_history_unavailable">История выпусков недоступна</string>
+    <string name="restart_hint_body">В системных настройках она по-прежнему включена, но система перестала её запускать, обычно после принудительной остановки. Выключите и снова включите %1$s в системных настройках специальных возможностей, чтобы перезапустить её.</string>
+    <string name="restart_hint_title">Служба совместимости не запущена</string>
     <string name="screen_intro">Необязательный экспериментальный компонент, который может помочь AutoJs6 получать узлы специальных возможностей из поддерживаемых приложений.</string>
     <string name="secure_settings_grant_body">Выполните эту команду на компьютере с ADB или в root shell на устройстве, затем снова откройте менеджер:\n\n%1$s</string>
     <string name="secure_settings_grant_title">Выдать доступ к защищенным настройкам</string>
@@ -111,6 +113,8 @@
     <string name="sync_enabled_via">Служба совместимости включена через %1$s</string>
     <string name="sync_manual_required">Автоматический способ недоступен. Переключите службу в системных настройках специальных возможностей.</string>
     <string name="sync_no_change">Служба совместимости уже соответствует выбранной политике</string>
+    <string name="sync_restart_manual">Служба совместимости включена, но не запущена. Выключите и снова включите её в системных настройках специальных возможностей.</string>
+    <string name="sync_restarted_via">Служба совместимости перезапущена через %1$s</string>
     <string name="theme_color_default">По умолчанию</string>
     <string name="theme_color_green">Зеленый</string>
     <string name="theme_color_orange">Оранжевый</string>

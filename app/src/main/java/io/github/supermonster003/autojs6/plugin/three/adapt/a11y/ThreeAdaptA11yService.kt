@@ -8,6 +8,7 @@ import android.os.Looper
 import android.provider.Settings.Secure
 import android.util.Log
 import android.view.accessibility.AccessibilityEvent
+import io.github.supermonster003.autojs6.plugin.three.adapt.a11y.control.CompatServiceController
 import io.github.supermonster003.autojs6.plugin.three.adapt.a11y.sync.CompatServiceSync
 
 /**
@@ -41,6 +42,7 @@ open class ThreeAdaptA11yService : AccessibilityService() {
                 settingsObserver,
             )
         }.onFailure { Log.w(TAG, "Unable to observe the enabled accessibility services", it) }
+        runCatching { CompatServiceController.onServiceRunning(this) }
         CompatServiceSync.request(this, "service-connected")
     }
 

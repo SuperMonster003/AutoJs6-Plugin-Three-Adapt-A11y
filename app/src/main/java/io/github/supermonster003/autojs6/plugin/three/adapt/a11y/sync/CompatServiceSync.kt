@@ -12,6 +12,8 @@ import io.github.supermonster003.autojs6.plugin.three.adapt.a11y.control.CompatS
 import io.github.supermonster003.autojs6.plugin.three.adapt.a11y.control.SyncOutcome
 import io.github.supermonster003.autojs6.plugin.three.adapt.a11y.settings.CompatSettingsStore
 import io.github.supermonster003.autojs6.plugin.three.adapt.a11y.settings.ServicePolicy
+import io.github.supermonster003.autojs6.plugin.three.adapt.a11y.shizuku.ShizukuShell
+import io.github.supermonster003.autojs6.plugin.three.adapt.a11y.shizuku.ShizukuState
 import java.util.concurrent.Executors
 
 /**
@@ -38,7 +40,23 @@ internal object CompatServiceSync {
                 .getOrDefault(SyncOutcome.NO_CHANGE)
             Log.d(TAG, "Sync triggered by $trigger: $outcome")
             runCatching { ensureWatcher(appContext) }
+            if (outcome.requiresManualAction) runCatching { retryWhenShizukuArrives(appContext) }
             onDone?.let { callback -> mainHandler.post { callback(outcome) } }
+        }
+    }
+
+    /**
+     * A pass that found no usable method while Shizuku is allowed but not reachable yet runs again
+     * once Shizuku delivers its binder: in a process just started by a broadcast or the watcher job,
+     * the binder arrives a moment after the first pass (Q108). Shizuku that is not started never
+     * delivers one, and a pass that fails with Shizuku reachable does not register again.
+     */
+    private fun retryWhenShizukuArrives(context: Context) {
+        if (!CompatSettingsStore(context).load().enableWithShizuku) return
+        if (ShizukuShell.state(context) != ShizukuState.NOT_RUNNING) return
+        ShizukuShell.runOnceWhenBinderReceived {
+            Log.d(TAG, "Shizuku binder received after a pass without a usable method")
+            request(context, "shizuku-binder")
         }
     }
 
