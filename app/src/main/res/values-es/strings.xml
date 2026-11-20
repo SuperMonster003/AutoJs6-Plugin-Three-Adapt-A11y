@@ -70,7 +70,11 @@
     <string name="privacy_body">La llamada del servicio no realiza ninguna operación. El complemento no lee fuentes o textos de eventos, nodos raíz, capturas de pantalla ni contenido del usuario. No guarda ni comparte datos y no accede a la red. El servicio solo recibe eventos de paquetes incluidos en la lista de soporte publicada. Cuando lo permites, la aplicación solo cambia la lista de servicios de accesibilidad habilitados mediante root, ajustes seguros o Shizuku, y nunca toca otros ajustes.</string>
     <string name="privacy_title">Privacidad</string>
     <string name="release_history">Historial de versiones</string>
-    <string name="release_history_unavailable">El historial de versiones no está disponible</string>
+    <string name="release_history_collapse_all">Contraer todo</string>
+    <string name="release_history_collapsed">Contraído</string>
+    <string name="release_history_expand_all">Expandir todo</string>
+    <string name="release_history_expanded">Expandido</string>
+    <string name="release_history_unavailable">No se pudo cargar el historial de versiones</string>
     <string name="restart_hint_body">Sigue habilitado en los ajustes del sistema, pero el sistema dejó de ejecutarlo, normalmente tras un cierre forzado. Desactiva %1$s y vuelve a activarlo en los ajustes de accesibilidad del sistema para reanudarlo.</string>
     <string name="restart_hint_title">El servicio de compatibilidad no está en ejecución</string>
     <string name="screen_intro">Un complemento experimental y opcional que puede ayudar a AutoJs6 a obtener nodos de accesibilidad de aplicaciones compatibles.</string>
@@ -86,7 +90,7 @@
     <string name="settings_follow_system">Seguir al sistema</string>
     <string name="settings_language">Idioma</string>
     <string name="settings_light">Claro</string>
-    <string name="settings_release_history_summary">Notas de versión incluidas en esta aplicación</string>
+    <string name="settings_release_history_summary">Consultar el historial de versiones incluido en la aplicación</string>
     <string name="settings_saved">Ajustes guardados</string>
     <string name="settings_section_appearance">Apariencia</string>
     <string name="settings_section_information">Información</string>

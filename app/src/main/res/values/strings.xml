@@ -70,7 +70,11 @@
     <string name="privacy_body">The service callback is a no-op. The plugin does not read event sources, event text, root nodes, screenshots, or user content. It does not store or share data and has no network access. The service receives events only from packages in the published support list. When you allow it, the app changes only the list of enabled accessibility services through root, secure settings, or Shizuku, and never touches other settings.</string>
     <string name="privacy_title">Privacy</string>
     <string name="release_history">Release history</string>
-    <string name="release_history_unavailable">Release history is unavailable</string>
+    <string name="release_history_collapse_all">Collapse all</string>
+    <string name="release_history_collapsed">Collapsed</string>
+    <string name="release_history_expand_all">Expand all</string>
+    <string name="release_history_expanded">Expanded</string>
+    <string name="release_history_unavailable">Unable to load the release history</string>
     <string name="restart_hint_body">It is still on in the system settings, but the system stopped running it, usually after it was force-closed. Turn %1$s off and on again in the system accessibility settings to restart it.</string>
     <string name="restart_hint_title">Compatibility service is not running</string>
     <string name="screen_intro">An optional experimental companion that may help AutoJs6 retrieve accessibility nodes from supported apps.</string>
@@ -86,7 +90,7 @@
     <string name="settings_follow_system">Follow system</string>
     <string name="settings_language">Language</string>
     <string name="settings_light">Light</string>
-    <string name="settings_release_history_summary">Version notes bundled with this app</string>
+    <string name="settings_release_history_summary">Read the release history included with this app</string>
     <string name="settings_saved">Settings saved</string>
     <string name="settings_section_appearance">Appearance</string>
     <string name="settings_section_information">Information</string>

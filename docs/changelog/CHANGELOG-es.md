@@ -4,127 +4,94 @@
 
 > Idioma de esta página: español
 
-## v1.4.2 - 2026/11/13
+## v1.4.3
 
-### Corrección
+###### 2026/11/20
 
-- Cuando se finaliza el proceso del servicio de compatibilidad, los ajustes del sistema lo siguen mostrando activado pero el sistema ya no lo ejecuta; la sincronización ahora lo desactiva y lo vuelve a activar mediante root, WRITE_SECURE_SETTINGS o Shizuku, y sin ninguno de ellos la página principal explica cómo desactivarlo y volver a activarlo en los ajustes de accesibilidad del sistema y ofrece un botón para abrirlos
+* `Mejora` El historial de versiones pasa de una página de texto plano a una página nueva que se expande y contrae por versión: una versión contraída muestra su fecha y el número de entradas por categoría, una expandida nombra cada categoría una sola vez; todas las versiones se pueden expandir o contraer a la vez, la más reciente se abre expandida y el nombre del plugin aparece como subtítulo
+* `Mejora` Las instrucciones del Centro de plugins se reescribieron en cuatro partes: primeros pasos, funciones principales, requisitos y preguntas frecuentes
+* `Dependencia` Añadir Jetpack Compose BOM 2026.09.00 (página Historial de versiones)
+* `Dependencia` Actualizar los plugins de compilación compartidos versión 1.9.0 -> 1.9.7
 
-### Mejora
+## v1.4.2
 
-- Cuando Shizuku es la única forma de activar el servicio de compatibilidad, una sincronización que se ejecuta antes de que Shizuku esté listo al iniciarse el plugin se repite cuando Shizuku está listo
+###### 2026/11/13
 
-## v1.4.1 - 2026/10/17
+* `Corrección` Cuando se finaliza el proceso del servicio de compatibilidad, los ajustes del sistema lo siguen mostrando activado pero el sistema ya no lo ejecuta; la sincronización ahora lo desactiva y lo vuelve a activar mediante root, WRITE_SECURE_SETTINGS o Shizuku, y sin ninguno de ellos la página principal explica cómo desactivarlo y volver a activarlo en los ajustes de accesibilidad del sistema y ofrece un botón para abrirlos
+* `Mejora` Cuando Shizuku es la única forma de activar el servicio de compatibilidad, una sincronización que se ejecuta antes de que Shizuku esté listo al iniciarse el plugin se repite cuando Shizuku está listo
 
-### Corrección
+## v1.4.1
 
-- En la interfaz en árabe, 3-Adapt A11y ya no aparece invertido como Adapt A11y-3
+###### 2026/10/17
 
-### Mejora
+* `Corrección` En la interfaz en árabe, 3-Adapt A11y ya no aparece invertido como Adapt A11y-3
+* `Mejora` Los iconos del centro de plugins usan los tamaños, posiciones, imágenes claras y oscuras y fondos circulares ajustados en Icon Studio, conservando fuentes y parámetros reproducibles
+* `Mejora` Los iconos de información de la aplicación de Android comparten las imágenes y los fondos claros y oscuros de Icon Studio, conservando las imágenes transparentes del centro de plugins y las opciones del lanzador
 
-- Los iconos del centro de plugins usan los tamaños, posiciones, imágenes claras y oscuras y fondos circulares ajustados en Icon Studio, conservando fuentes y parámetros reproducibles
-- Los iconos de información de la aplicación de Android comparten las imágenes y los fondos claros y oscuros de Icon Studio, conservando las imágenes transparentes del centro de plugins y las opciones del lanzador
+## v1.4.0
 
-## v1.4.0 - 2026/10/03
+###### 2026/10/03
 
-### Aviso
+* `Sugerencia` 3-Adapt A11y usa el nuevo paquete io.github.supermonster003.autojs6.plugin.three.adapt.a11y y se instala por separado. Puede conservar Accessibility Compat y sus datos; los ajustes no se migran automáticamente. Active el nuevo servicio cuando lo necesite
+* `Nuevo` Unificar los ajustes con grupos planos, filas coherentes y diálogos redondeados centrados. El idioma, el modo nocturno, el color y el icono solo cambian al confirmar; Cancelar conserva los valores guardados. El color sigue AutoJs6 por defecto, con una paleta común, entrada HEX/RGB y vista previa local. Los fondos neutros se mantienen estables y los controles siguen el tema. El icono usa el modo adaptativo automático por defecto, conservando las elecciones explícitas al actualizar.
+* `Corrección` Mantener dinámico el recurso del icono automático tras la instalación para que el lanzador pueda cargar la variante clara u oscura correspondiente.
+* `Mejora` El complemento Accessibility Compat pasa a llamarse 3-Adapt A11y en el título de la aplicación, la etiqueta del servicio de accesibilidad, el ID de complemento `three-adapt-a11y`, los nombres de paquete y componentes, los artefactos de publicación, la documentación y el repositorio de GitHub
+* `Mejora` Tamaño visual uniforme de los iconos del lanzador y del Centro de complementos, con fondos transparentes y diseños en blanco, negro o grises neutros
+* `Dependencia` Material Components 1.13.0 / AppCompat 1.7.1 (Material 3).
 
-- 3-Adapt A11y usa el nuevo paquete io.github.supermonster003.autojs6.plugin.three.adapt.a11y y se instala por separado. Puede conservar Accessibility Compat y sus datos; los ajustes no se migran automáticamente. Active el nuevo servicio cuando lo necesite
+## v1.3.1
 
-### Función
+###### 2026/09/19
 
-- Unificar los ajustes con grupos planos, filas coherentes y diálogos redondeados centrados. El idioma, el modo nocturno, el color y el icono solo cambian al confirmar; Cancelar conserva los valores guardados. El color sigue AutoJs6 por defecto, con una paleta común, entrada HEX/RGB y vista previa local. Los fondos neutros se mantienen estables y los controles siguen el tema. El icono usa el modo adaptativo automático por defecto, conservando las elecciones explícitas al actualizar.
+* `Corrección` Advertencias de lectura de SDK XML v4 con AGP 9.1 y comprobaciones de alineación nativa de APK activadas por error al ensamblar pruebas unitarias JVM, mediante los plugins de compilación compartidos 1.8.3
+* `Mejora` Explicación de la protección avanzada en el anfitrión y el complemento, diferenciando el modo global de la disponibilidad real del servicio y el control de ajustes seguros
+* `Mejora` Tras compileSdk, targetSdk sube a 37 (Android 17); el comportamiento del plugin no depende del nuevo objetivo
 
-### Corrección
+## v1.3.0
 
-- Mantener dinámico el recurso del icono automático tras la instalación para que el lanzador pueda cargar la variante clara u oscura correspondiente.
+###### 2026/09/15
 
-### Mejora
+* `Nuevo` Se añade una pantalla de ajustes con opciones de idioma, modo oscuro y color del tema que siguen a AutoJs6 de forma predeterminada, junto con las entradas de mecanismo, privacidad, limitaciones, historial de versiones y acerca de
+* `Nuevo` Se añade un gestor del servicio de compatibilidad con una política de tres opciones (seguir a AutoJs6, habilitado, deshabilitado) que puede cambiar el servicio mediante root, WRITE_SECURE_SETTINGS o Shizuku, con estado en vivo y un informe copiable
+* `Nuevo` El servicio sigue automáticamente al servicio de accesibilidad de AutoJs6 mediante una difusión de estado del anfitrión, una tarea activada por la lista de servicios habilitados y comprobaciones al conectar el servicio y al abrir la aplicación
+* `Nuevo` La política de servicio seleccionada se publica mediante las capacidades de plugin-info y el contrato compartido de complemento de accesibilidad (versión de contrato 3)
+* `Nuevo` Añadir una pantalla acerca de la aplicación y el desarrollador con la versión, el nombre del paquete, la licencia de código abierto, la página del proyecto y los enlaces de comentarios
+* `Corrección` Los títulos y resúmenes de las filas se alinean según la dirección del diseño y no la del texto, de modo que la opción en árabe del diálogo de idioma permanece junto a su botón de opción
+* `Mejora` Rediseño de la pantalla principal: la tarjeta de estado abre el gestor, las aplicaciones compatibles tienen botón de inicio y los antiguos botones de abrir aplicación, ajustes de accesibilidad y actualizar pasan a la pantalla de ajustes
+* `Mejora` Compilación contra la API 37 de Android para coincidir con la API común de complementos actualizada
+* `Mejora` Alinear las opciones de política del administrador del servicio con el resto de filas, eliminar la fila redundante de aplicar ahora porque una política se aplica en cuanto se elige, y reconstruir los diálogos de selección de apariencia con tamaños de texto, márgenes y espaciado coherentes
+* `Dependencia` Se añaden Shizuku API 13.1.5 y AndroidX Annotation 1.10.0
+* `Dependencia` Se actualiza la API común de complementos incluida para incorporar el contrato de complemento de accesibilidad
 
-- El complemento Accessibility Compat pasa a llamarse 3-Adapt A11y en el título de la aplicación, la etiqueta del servicio de accesibilidad, el ID de complemento `three-adapt-a11y`, los nombres de paquete y componentes, los artefactos de publicación, la documentación y el repositorio de GitHub
-- Tamaño visual uniforme de los iconos del lanzador y del Centro de complementos, con fondos transparentes y diseños en blanco, negro o grises neutros
+## v1.2.0
 
-### Dependencia
+###### 2026/09/13
 
-- Material Components 1.13.0 / AppCompat 1.7.1 (Material 3).
+* `Nuevo` Historial de versiones local desde la interfaz con traducciones y alternativa en inglés
+* `Mejora` Comprobación de la firma completa, los APK esperados y la documentación reproducible de cada versión
 
-## v1.3.1 - 2026/09/19
+## v1.1.0
 
-### Corrección
+###### 2026/09/12
 
-- Advertencias de lectura de SDK XML v4 con AGP 9.1 y comprobaciones de alineación nativa de APK activadas por error al ensamblar pruebas unitarias JVM, mediante los plugins de compilación compartidos 1.8.3
+* `Mejora` Generalizar la aplicación, el servicio de accesibilidad, los metadatos del complemento, las instrucciones integradas y el README mediante perfiles de soporte independientes de la aplicación, manteniendo WeChat (`com.tencent.mm`) como único perfil verificado actualmente
+* `Mejora` Sustituir la variante específica por `service-identity`, publicar los paquetes compatibles como una colección y listar o abrir aplicaciones compatibles instaladas mediante acciones genéricas de la interfaz
+* `Mejora` Actualizar los iconos adaptativos del lanzador con variantes claras y oscuras y una capa monocroma para iconos temáticos
+* `Mejora` Generalizar el protocolo A-B-A, la entrada de investigación y la herramienta de métricas respetuosa con la privacidad, incluida una entrada `targetPackage` explícita para futuros perfiles
+* `Mejora` Eliminar las propiedades obsoletas de versión mínima de Android Studio e IntelliJ IDEA ahora que la compatibilidad del IDE y la cadena de herramientas se selecciona de forma centralizada
+* `Mejora` La verificación de compilación rechaza dependencias nativas accidentales y genera un informe JSON
+* `Dependencia` Actualizar `io.github.supermonster003.autojs6-platform-versions` de 1.7.0 a 1.7.3 para que las compilaciones con JDK 25 y 26 alineen automáticamente el KGP seleccionado en el classpath del buildscript raíz
 
-### Mejora
+## v1.0.0
 
-- Explicación de la protección avanzada en el anfitrión y el complemento, diferenciando el modo global de la disponibilidad real del servicio y el control de ajustes seguros
-- Tras compileSdk, targetSdk sube a 37 (Android 17); el comportamiento del plugin no depende del nuevo objetivo
+###### 2026/09/02
 
-## v1.3.0 - 2026/09/15
-
-### Función
-
-- Se añade una pantalla de ajustes con opciones de idioma, modo oscuro y color del tema que siguen a AutoJs6 de forma predeterminada, junto con las entradas de mecanismo, privacidad, limitaciones, historial de versiones y acerca de
-- Se añade un gestor del servicio de compatibilidad con una política de tres opciones (seguir a AutoJs6, habilitado, deshabilitado) que puede cambiar el servicio mediante root, WRITE_SECURE_SETTINGS o Shizuku, con estado en vivo y un informe copiable
-- El servicio sigue automáticamente al servicio de accesibilidad de AutoJs6 mediante una difusión de estado del anfitrión, una tarea activada por la lista de servicios habilitados y comprobaciones al conectar el servicio y al abrir la aplicación
-- La política de servicio seleccionada se publica mediante las capacidades de plugin-info y el contrato compartido de complemento de accesibilidad (versión de contrato 3)
-- Añadir una pantalla acerca de la aplicación y el desarrollador con la versión, el nombre del paquete, la licencia de código abierto, la página del proyecto y los enlaces de comentarios
-
-### Corrección
-
-- Los títulos y resúmenes de las filas se alinean según la dirección del diseño y no la del texto, de modo que la opción en árabe del diálogo de idioma permanece junto a su botón de opción
-
-### Mejora
-
-- Rediseño de la pantalla principal: la tarjeta de estado abre el gestor, las aplicaciones compatibles tienen botón de inicio y los antiguos botones de abrir aplicación, ajustes de accesibilidad y actualizar pasan a la pantalla de ajustes
-- Compilación contra la API 37 de Android para coincidir con la API común de complementos actualizada
-- Alinear las opciones de política del administrador del servicio con el resto de filas, eliminar la fila redundante de aplicar ahora porque una política se aplica en cuanto se elige, y reconstruir los diálogos de selección de apariencia con tamaños de texto, márgenes y espaciado coherentes
-
-### Dependencia
-
-- Se añaden Shizuku API 13.1.5 y AndroidX Annotation 1.10.0
-- Se actualiza la API común de complementos incluida para incorporar el contrato de complemento de accesibilidad
-
-## v1.2.0 - 2026/09/13
-
-### Función
-
-- Historial de versiones local desde la interfaz con traducciones y alternativa en inglés
-
-### Mejora
-
-- Comprobación de la firma completa, los APK esperados y la documentación reproducible de cada versión
-
-## v1.1.0 - 2026/09/12
-
-### Mejora
-
-- Generalizar la aplicación, el servicio de accesibilidad, los metadatos del complemento, las instrucciones integradas y el README mediante perfiles de soporte independientes de la aplicación, manteniendo WeChat (`com.tencent.mm`) como único perfil verificado actualmente
-- Sustituir la variante específica por `service-identity`, publicar los paquetes compatibles como una colección y listar o abrir aplicaciones compatibles instaladas mediante acciones genéricas de la interfaz
-- Actualizar los iconos adaptativos del lanzador con variantes claras y oscuras y una capa monocroma para iconos temáticos
-- Generalizar el protocolo A-B-A, la entrada de investigación y la herramienta de métricas respetuosa con la privacidad, incluida una entrada `targetPackage` explícita para futuros perfiles
-- Eliminar las propiedades obsoletas de versión mínima de Android Studio e IntelliJ IDEA ahora que la compatibilidad del IDE y la cadena de herramientas se selecciona de forma centralizada
-- La verificación de compilación rechaza dependencias nativas accidentales y genera un informe JSON
-
-### Dependencia
-
-- Actualizar `io.github.supermonster003.autojs6-platform-versions` de 1.7.0 a 1.7.3 para que las compilaciones con JDK 25 y 26 alineen automáticamente el KGP seleccionado en el classpath del buildscript raíz
-
-## v1.0.0 - 2026/09/02
-
-### Aviso
-
-- Este enfoque de compatibilidad es experimental. El resultado depende de la versión, la página y la configuración remota de WeChat, y una versión no puede garantizar todos los dispositivos o cuentas
-- El servicio no puede crear nodos semánticos que un Mini Program de WeChat, XWeb o Canvas nunca expuso, ni evita el inicio de sesión, los controles de riesgo o los sistemas contra abusos
-
-### Función
-
-- Proporcionar un APK complementario de accesibilidad no-op, independiente y limitado a `com.tencent.mm`, con ID, icono, etiquetas, descripción y firma veraces y distintos
-- Registrar un nombre de clase de servicio de compatibilidad respaldado por experimentos públicos mientras AutoJs6 sigue leyendo y operando nodos con su propio servicio y las devoluciones del complemento no leen contenido del usuario
-- Comunicar el modo de compatibilidad, paquete objetivo, componente de servicio y compilación mínima del host mediante la interfaz de información de AutoJs6, con una pantalla controlada por el usuario para activar y desactivar el servicio
-
-### Mejora
-
-- Documentar [AutoJs6#289](https://github.com/SuperMonster003/AutoJs6/issues/289), [#382](https://github.com/SuperMonster003/AutoJs6/issues/382), [#432](https://github.com/SuperMonster003/AutoJs6/issues/432), [#463](https://github.com/SuperMonster003/AutoJs6/issues/463), [#520](https://github.com/SuperMonster003/AutoJs6/issues/520), [#521](https://github.com/SuperMonster003/AutoJs6/issues/521), GKD `47267c7` y evidencia estática desidentificada de WeChat 8.0.72
-- Proporcionar un protocolo A-B-A que no guarda texto privado de nodos ni capturas y usa estadísticas repetidas y reversibilidad para distinguir el efecto de compatibilidad de la carga y la caché
-- Añadir fuentes de README y changelog en 10 idiomas, un generador Markdown reproducible, una comprobación de coherencia de solo lectura y controles de GitHub Actions
-- Documentar una prueba A-B-A de 7 muestras realizada por AutoJs6 en QV710AF65F, donde el número de nodos subió de forma estable de 1 a 244 y volvió a 1 al desactivar la compatibilidad, verificando además la restauración exacta de la configuración de accesibilidad del sistema
+* `Sugerencia` Este enfoque de compatibilidad es experimental. El resultado depende de la versión, la página y la configuración remota de WeChat, y una versión no puede garantizar todos los dispositivos o cuentas
+* `Sugerencia` El servicio no puede crear nodos semánticos que un Mini Program de WeChat, XWeb o Canvas nunca expuso, ni evita el inicio de sesión, los controles de riesgo o los sistemas contra abusos
+* `Nuevo` Proporcionar un APK complementario de accesibilidad no-op, independiente y limitado a `com.tencent.mm`, con ID, icono, etiquetas, descripción y firma veraces y distintos
+* `Nuevo` Registrar un nombre de clase de servicio de compatibilidad respaldado por experimentos públicos mientras AutoJs6 sigue leyendo y operando nodos con su propio servicio y las devoluciones del complemento no leen contenido del usuario
+* `Nuevo` Comunicar el modo de compatibilidad, paquete objetivo, componente de servicio y compilación mínima del host mediante la interfaz de información de AutoJs6, con una pantalla controlada por el usuario para activar y desactivar el servicio
+* `Mejora` Documentar [AutoJs6#289](https://github.com/SuperMonster003/AutoJs6/issues/289), [#382](https://github.com/SuperMonster003/AutoJs6/issues/382), [#432](https://github.com/SuperMonster003/AutoJs6/issues/432), [#463](https://github.com/SuperMonster003/AutoJs6/issues/463), [#520](https://github.com/SuperMonster003/AutoJs6/issues/520), [#521](https://github.com/SuperMonster003/AutoJs6/issues/521), GKD `47267c7` y evidencia estática desidentificada de WeChat 8.0.72
+* `Mejora` Proporcionar un protocolo A-B-A que no guarda texto privado de nodos ni capturas y usa estadísticas repetidas y reversibilidad para distinguir el efecto de compatibilidad de la carga y la caché
+* `Mejora` Añadir fuentes de README y changelog en 10 idiomas, un generador Markdown reproducible, una comprobación de coherencia de solo lectura y controles de GitHub Actions
+* `Mejora` Documentar una prueba A-B-A de 7 muestras realizada por AutoJs6 en QV710AF65F, donde el número de nodos subió de forma estable de 1 a 244 y volvió a 1 al desactivar la compatibilidad, verificando además la restauración exacta de la configuración de accesibilidad del sistema

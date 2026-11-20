@@ -1,43 +1,40 @@
-# AutoJs6 3-Adapt A11y
+3-Adapt A11y is an optional compatibility companion for AutoJs6: it enables an accessibility service that handles no events, which helps AutoJs6 retrieve more normal accessibility nodes from apps covered by published support profiles. Automation is still performed by the AutoJs6 accessibility service, and the plugin neither reads screen content nor uses the network.
 
-## 用途
+### Getting started
 
-这是一个可选的实验性伴生插件. 它可能帮助 AutoJs6 从已发布支持配置覆盖的应用中获取较正常的无障碍节点. 自动化仍由 AutoJs6 自己的无障碍服务完成.
+1. Install AutoJs6 and 3-Adapt A11y, open the plugin, and tap the "Compatibility service" status card to open "Compatibility service manager".
+2. The default "Control policy", "Follow AutoJs6", enables the compatibility service whenever the AutoJs6 accessibility service is enabled; choose "Disabled" when it is not needed.
+3. Without root access, WRITE_SECURE_SETTINGS or Shizuku, tap "System accessibility settings" in "Settings" and enable both the AutoJs6 service and 3-Adapt A11y by hand.
+4. Fully exit and reopen a target app listed under "Currently supported apps", then read the page nodes with AutoJs6.
 
-## 启用方式
+### Main features
 
-1. 安装 AutoJs6 和本插件.
-2. 打开本插件, 点击状态卡片打开兼容服务管理器. 默认策略为跟随 AutoJs6: 只要 AutoJs6 无障碍服务已启用, 兼容服务就会保持启用.
-3. 没有 root, WRITE_SECURE_SETTINGS 或 Shizuku 时, 在 Android 系统无障碍设置中手动启用 AutoJs6 服务和 3-Adapt A11y 服务. 授予其中一种能力后, 插件会自行应用所选策略.
-4. 完全退出并重新打开支持清单中的目标应用, 然后在同一个静止页面连续检查多次节点结果.
-5. 不需要兼容功能时, 在管理器中选择禁用, 或在系统设置中关闭本服务.
+- **Compatibility service manager**: see the current state of the compatibility service and the AutoJs6 service under "State", and choose "Follow AutoJs6", "Enabled" or "Disabled" under "Control policy".
+- **Automatic control**: after you grant root access, WRITE_SECURE_SETTINGS or Shizuku, turn on the matching option under "Automatic control" and the plugin enables or disables the service by the selected policy, changing only the list of enabled accessibility services.
+- **Stopped service repair**: when the system settings show the service as on but it no longer runs, the plugin turns it off and on again in the same way; when it cannot, the home page shows "Compatibility service is not running" with a "System settings" button.
+- **Support profiles**: "Currently supported apps" on the home page lists the verified apps, which is only WeChat in this release; a profile applies only to the documented app versions and pages and does not cover every environment.
+- **Privacy**: the service callback does nothing and ignores every accessibility event; the plugin does not read event content, root nodes, screenshots or user content, stores and uploads no data, and has no network access.
+- **Appearance and information**: in "Settings", adjust "Language", "Dark mode", "Theme color" and "Launcher icon", and read "Compatibility mechanism", "Privacy", "Limitations" and "Release history".
 
-Android 不允许普通应用静默启用无障碍服务. 本插件只在你明确授予 root, WRITE_SECURE_SETTINGS 或 Shizuku 后才会自动改变服务状态, 并且只修改已启用无障碍服务列表.
+### Requirements
 
-## 实验性兼容机制
+- Android 7.0 (API 24) or later, and AutoJs6 6.8.0 or later; the AutoJs6 accessibility service reads nodes and performs actions.
+- The accessibility service of this plugin is enabled only as a compatibility identifier; it receives events only from apps in the support profiles and does not process them.
+- Root access, WRITE_SECURE_SETTINGS and Shizuku are optional and used only to enable or disable the service automatically; WRITE_SECURE_SETTINGS is granted through ADB or a root shell.
+- The permission to query Advanced Protection mode checks whether Android 17 "Advanced Protection" restricts this service; the result is shown in "Settings".
 
-部分受影响应用可能根据已启用服务的实现类名决定是否公开正常节点. 本插件包含当前支持配置所需且已公开验证的实验性兼容类名.
+### FAQ
 
-`com.google.android.accessibility.selecttospeak.SelectToSpeakService`
+**Nodes do not change after the service is enabled**
 
-本插件不是 Google 随选朗读服务, 不隶属于 Google, 也不复制 Google 的应用包名, 签名, 名称或图标. 该类名仅作为明确披露的兼容标识使用, 并可能随目标应用更新失效.
+First make sure both the AutoJs6 service and 3-Adapt A11y are on, then fully exit and reopen the target app. The result depends on the app version, page, device and system and is not guaranteed; controls in WebView, Canvas and custom-drawn interfaces may stay unavailable.
 
-## 当前支持配置
+**The service is on in the system settings, but the home page shows "Compatibility service is not running"**
 
-- 微信 (`com.tencent.mm`) 是当前版本唯一通过实机验证的配置.
-- 配置只适用于文档记录的应用版本和页面. 列入清单不代表保证所有环境均有效.
+Android does not bring the service back after its process is killed. With root access, WRITE_SECURE_SETTINGS or Shizuku the plugin repairs it automatically; otherwise tap "System settings" and turn 3-Adapt A11y off and on again.
 
-## 隐私
+**The service class name matches Google Select to Speak**
 
-- 服务回调为空操作并忽略所有无障碍事件.
-- 插件不读取事件来源, 事件文本, 根节点, 屏幕截图或用户内容.
-- 插件不保存, 分享或上传数据, 也不访问网络.
-- 服务只接收已发布支持配置所列包名的事件.
+Some apps decide whether to expose normal nodes from the class name of an enabled service, and the plugin uses that class name only as a disclosed compatibility identifier. This plugin is not Google Select to Speak, is not affiliated with Google, and uses no Google application ID, signature, name or icon.
 
-AutoJs6 会继续通过自己的无障碍服务读取和操作节点. 本插件不代理节点树或执行自动化动作.
-
-## 限制和风险
-
-兼容效果取决于目标应用版本, 页面, 设备和系统实现, 不提供成功保证. 本插件不能补全页面原本未公开的语义节点. WebView, Canvas 和自绘界面的控件仍可能不可用.
-
-目标应用未来可能改变检测方式并使插件失效. 使用自动化也可能受到目标平台规则或账号风控限制. 请在自己的设备和账号上评估风险.
+Support profiles, the compatibility mechanism and validation records are on the [project page](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y).

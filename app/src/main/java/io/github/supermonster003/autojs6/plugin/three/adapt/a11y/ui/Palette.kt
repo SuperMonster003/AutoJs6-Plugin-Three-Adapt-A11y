@@ -24,6 +24,8 @@ internal data class Palette(
     val accent: Int,
     val onAccent: Int,
     val accentSurface: Int,
+    /** Primary container tone of the accent seed; the release history page draws its category labels on it. */
+    val accentContainer: Int,
     val positive: Int,
     val warning: Int,
 ) {
@@ -66,6 +68,7 @@ internal data class Palette(
                 accent = accent,
                 onAccent = accentRoles.onPrimary,
                 accentSurface = ColorPolicy.blend(background, accent, if (isDark) 0.16 else 0.10),
+                accentContainer = accentRoles.container,
                 positive = context.getColor(R.color.state_positive),
                 warning = context.getColor(R.color.state_warning),
             )

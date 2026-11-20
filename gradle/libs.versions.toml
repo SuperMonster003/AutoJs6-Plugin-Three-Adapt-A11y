@@ -9,6 +9,10 @@ androidx-annotation = "1.10.0"
 #noinspection NewerVersionAvailable,GradleDependency
 commons-compress = "1.28.0"
 
+# Compose 1.12 line (compileSdk 37), the version of the release history page (AUTOJS6_PLUGIN_RELEASE_HISTORY_AGENTS.md).
+# The BOM also manages activity-compose, so that artifact carries no version of its own.
+compose-bom = "2026.09.00"
+espresso = "3.7.0"
 foojay-resolver-convention = "1.0.0"
 junit = "4.13.2"
 shizuku = "13.1.5"
@@ -26,9 +30,19 @@ material = { module = "com.google.android.material:material", version.ref = "mat
 
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "androidx-annotation" }
 apache-commons-compress = { module = "org.apache.commons:commons-compress", version.ref = "commons-compress" }
+compose-activity = { module = "androidx.activity:activity-compose" }
+compose-animation = { module = "androidx.compose.animation:animation" }
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
+compose-foundation = { module = "androidx.compose.foundation:foundation" }
+compose-material3 = { module = "androidx.compose.material3:material3" }
+compose-runtime = { module = "androidx.compose.runtime:runtime" }
+compose-ui = { module = "androidx.compose.ui:ui" }
+compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 junit = { module = "junit:junit", version.ref = "junit" }
 shizuku-api = { module = "dev.rikka.shizuku:api", version.ref = "shizuku" }
 shizuku-provider = { module = "dev.rikka.shizuku:provider", version.ref = "shizuku" }
+test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
 test-ext-junit = { module = "androidx.test.ext:junit", version.ref = "test-junit-version" }
 test-runner = { module = "androidx.test:runner", version.ref = "test-runner" }
 tukaani-xz = { module = "org.tukaani:xz", version.ref = "xz" }

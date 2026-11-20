@@ -149,15 +149,17 @@ La nota de investigación cubre AutoJs6 #289, #382, #432, #463, #520 y #521, GKD
 
 ### Historial de versiones
 
-#### v1.4.2 - 2026/11/13
-
-##### Corrección
-
-- Cuando se finaliza el proceso del servicio de compatibilidad, los ajustes del sistema lo siguen mostrando activado pero el sistema ya no lo ejecuta; la sincronización ahora lo desactiva y lo vuelve a activar mediante root, WRITE_SECURE_SETTINGS o Shizuku, y sin ninguno de ellos la página principal explica cómo desactivarlo y volver a activarlo en los ajustes de accesibilidad del sistema y ofrece un botón para abrirlos
+#### v1.4.3 - 2026/11/20
 
 ##### Mejora
 
-- Cuando Shizuku es la única forma de activar el servicio de compatibilidad, una sincronización que se ejecuta antes de que Shizuku esté listo al iniciarse el plugin se repite cuando Shizuku está listo
+- El historial de versiones pasa de una página de texto plano a una página nueva que se expande y contrae por versión: una versión contraída muestra su fecha y el número de entradas por categoría, una expandida nombra cada categoría una sola vez; todas las versiones se pueden expandir o contraer a la vez, la más reciente se abre expandida y el nombre del plugin aparece como subtítulo
+- Las instrucciones del Centro de plugins se reescribieron en cuatro partes: primeros pasos, funciones principales, requisitos y preguntas frecuentes
+
+##### Dependencia
+
+- Añadir Jetpack Compose BOM 2026.09.00 (página Historial de versiones)
+- Actualizar los plugins de compilación compartidos versión 1.9.0 -> 1.9.7
 
 [Leer el historial completo](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-es.md)
 

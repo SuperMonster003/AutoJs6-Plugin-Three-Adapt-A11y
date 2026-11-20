@@ -110,5 +110,45 @@
   "p_generate": "README and changelog files are generated from JSON copy sources. After changing `.readme/lang_*.json`, `.changelog/lang_*.json`, or a template, run:",
   "h3_license": "License",
   "p_license": "Project code is licensed under the [Mozilla Public License 2.0]({{ license_url }}). WeChat, Google, and Select to Speak names belong to their respective owners. This project is not affiliated with or endorsed by those companies.",
-  "h3_links": "Links"
+  "h3_links": "Links",
+  "instruction_p_what": "3-Adapt A11y is an optional compatibility companion for AutoJs6: it enables an accessibility service that handles no events, which helps AutoJs6 retrieve more normal accessibility nodes from apps covered by published support profiles. Automation is still performed by the AutoJs6 accessibility service, and the plugin neither reads screen content nor uses the network.",
+  "instruction_h3_start": "Getting started",
+  "instruction_start_steps": [
+    "Install AutoJs6 and 3-Adapt A11y, open the plugin, and tap the \"Compatibility service\" status card to open \"Compatibility service manager\".",
+    "The default \"Control policy\", \"Follow AutoJs6\", enables the compatibility service whenever the AutoJs6 accessibility service is enabled; choose \"Disabled\" when it is not needed.",
+    "Without root access, WRITE_SECURE_SETTINGS or Shizuku, tap \"System accessibility settings\" in \"Settings\" and enable both the AutoJs6 service and 3-Adapt A11y by hand.",
+    "Fully exit and reopen a target app listed under \"Currently supported apps\", then read the page nodes with AutoJs6."
+  ],
+  "instruction_h3_features": "Main features",
+  "instruction_features": [
+    "**Compatibility service manager**: see the current state of the compatibility service and the AutoJs6 service under \"State\", and choose \"Follow AutoJs6\", \"Enabled\" or \"Disabled\" under \"Control policy\".",
+    "**Automatic control**: after you grant root access, WRITE_SECURE_SETTINGS or Shizuku, turn on the matching option under \"Automatic control\" and the plugin enables or disables the service by the selected policy, changing only the list of enabled accessibility services.",
+    "**Stopped service repair**: when the system settings show the service as on but it no longer runs, the plugin turns it off and on again in the same way; when it cannot, the home page shows \"Compatibility service is not running\" with a \"System settings\" button.",
+    "**Support profiles**: \"Currently supported apps\" on the home page lists the verified apps, which is only WeChat in this release; a profile applies only to the documented app versions and pages and does not cover every environment.",
+    "**Privacy**: the service callback does nothing and ignores every accessibility event; the plugin does not read event content, root nodes, screenshots or user content, stores and uploads no data, and has no network access.",
+    "**Appearance and information**: in \"Settings\", adjust \"Language\", \"Dark mode\", \"Theme color\" and \"Launcher icon\", and read \"Compatibility mechanism\", \"Privacy\", \"Limitations\" and \"Release history\"."
+  ],
+  "instruction_h3_requirements": "Requirements",
+  "instruction_requirements": [
+    "{{ minimum_android }} or later, and AutoJs6 {{ required_host_version_name }} or later; the AutoJs6 accessibility service reads nodes and performs actions.",
+    "The accessibility service of this plugin is enabled only as a compatibility identifier; it receives events only from apps in the support profiles and does not process them.",
+    "Root access, WRITE_SECURE_SETTINGS and Shizuku are optional and used only to enable or disable the service automatically; WRITE_SECURE_SETTINGS is granted through ADB or a root shell.",
+    "The permission to query Advanced Protection mode checks whether Android 17 \"Advanced Protection\" restricts this service; the result is shown in \"Settings\"."
+  ],
+  "instruction_h3_faq": "FAQ",
+  "instruction_faq": [
+    {
+      "q": "Nodes do not change after the service is enabled",
+      "a": "First make sure both the AutoJs6 service and 3-Adapt A11y are on, then fully exit and reopen the target app. The result depends on the app version, page, device and system and is not guaranteed; controls in WebView, Canvas and custom-drawn interfaces may stay unavailable."
+    },
+    {
+      "q": "The service is on in the system settings, but the home page shows \"Compatibility service is not running\"",
+      "a": "Android does not bring the service back after its process is killed. With root access, WRITE_SECURE_SETTINGS or Shizuku the plugin repairs it automatically; otherwise tap \"System settings\" and turn 3-Adapt A11y off and on again."
+    },
+    {
+      "q": "The service class name matches Google Select to Speak",
+      "a": "Some apps decide whether to expose normal nodes from the class name of an enabled service, and the plugin uses that class name only as a disclosed compatibility identifier. This plugin is not Google Select to Speak, is not affiliated with Google, and uses no Google application ID, signature, name or icon."
+    }
+  ],
+  "instruction_p_more": "Support profiles, the compatibility mechanism and validation records are on the [project page]({{ repo_url }})."
 }

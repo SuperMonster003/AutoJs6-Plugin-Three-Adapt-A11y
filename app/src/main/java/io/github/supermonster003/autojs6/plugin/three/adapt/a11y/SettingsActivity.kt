@@ -100,8 +100,8 @@ internal class SettingsActivity : ThemedActivity() {
             addView(documentRow(R.string.limitations_title, R.drawable.ic_block, DocumentActivity.Document.LIMITATIONS))
             addView(divider(64))
             addView(row(getString(R.string.release_history), getString(R.string.settings_release_history_summary), R.drawable.ic_history) {
-                startActivity(DocumentActivity.intent(this@SettingsActivity, DocumentActivity.Document.RELEASE_HISTORY))
-            })
+                openReleaseHistory()
+            }.apply { tag = "settings-history" })
             addView(divider(64))
             addView(row(getString(R.string.settings_about), getString(R.string.settings_about_summary), R.drawable.ic_info) {
                 startActivity(Intent(this@SettingsActivity, AboutActivity::class.java))

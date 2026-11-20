@@ -1,43 +1,40 @@
-# AutoJs6 3-Adapt A11y
+3-Adapt A11y est un compagnon de compatibilité facultatif pour AutoJs6: il active un service d'accessibilité qui ne traite aucun événement, ce qui aide AutoJs6 à obtenir davantage de nœuds d'accessibilité normaux dans les applications couvertes par les profils de prise en charge publiés. L'automatisation reste assurée par le service d'accessibilité d'AutoJs6, et le plugin ne lit pas le contenu de l'écran ni n'utilise le réseau.
 
-## Objectif
+### Prise en main
 
-Ce compagnon expérimental et facultatif peut aider AutoJs6 à obtenir des noeuds d'accessibilité plus normaux depuis les applications couvertes par des profils de support publiés. Le service d'accessibilité de AutoJs6 reste responsable de l'automatisation.
+1. Installez AutoJs6 et 3-Adapt A11y, ouvrez le plugin et touchez la carte d'état "Service de compatibilité" pour ouvrir "Gestionnaire du service de compatibilité".
+2. La "Politique de contrôle" par défaut, "Suivre AutoJs6", active le service de compatibilité dès que le service d'accessibilité d'AutoJs6 est activé; choisissez "Désactivé" lorsqu'il n'est pas utile.
+3. Sans accès root, WRITE_SECURE_SETTINGS ni Shizuku, touchez "Paramètres d'accessibilité du système" dans "Paramètres" et activez à la main le service d'AutoJs6 et 3-Adapt A11y.
+4. Quittez complètement puis rouvrez une application cible répertoriée dans "Applications actuellement compatibles", puis lisez les nœuds de la page avec AutoJs6.
 
-## Activer le service
+### Fonctionnalités principales
 
-1. Installez AutoJs6 et ce compagnon.
-2. Ouvrez le compagnon et touchez la carte d'état pour ouvrir le gestionnaire du service de compatibilité. La politique par défaut, suivre AutoJs6, garde le service de compatibilité activé tant que le service d'accessibilité AutoJs6 est activé.
-3. Sans root, WRITE_SECURE_SETTINGS ni Shizuku, activez manuellement le service AutoJs6 et 3-Adapt A11y dans les paramètres d'accessibilité Android. Dès que l'un d'eux est accordé, le compagnon applique lui-même la politique choisie.
-4. Fermez complètement puis rouvrez une application cible de la liste de support, et inspectez plusieurs fois la même page statique.
-5. Choisissez la politique désactivé dans le gestionnaire, ou désactivez ce service dans les paramètres système, lorsque la compatibilité n'est pas nécessaire.
+- **Gestionnaire du service de compatibilité**: consultez l'état actuel du service de compatibilité et du service d'AutoJs6 dans "État", et choisissez "Suivre AutoJs6", "Activé" ou "Désactivé" dans "Politique de contrôle".
+- **Contrôle automatique**: après avoir accordé l'accès root, WRITE_SECURE_SETTINGS ou Shizuku, activez l'option correspondante dans "Contrôle automatique" et le plugin active ou désactive le service selon la politique choisie, en ne modifiant que la liste des services d'accessibilité activés.
+- **Réparation du service arrêté**: lorsque les paramètres système affichent le service comme activé alors qu'il ne s'exécute plus, le plugin le désactive puis le réactive de la même façon; s'il ne le peut pas, la page d'accueil affiche "Le service de compatibilité ne s'exécute pas" avec un bouton "Paramètres système".
+- **Profils de prise en charge**: "Applications actuellement compatibles" sur la page d'accueil liste les applications vérifiées, uniquement WeChat dans cette version; un profil ne s'applique qu'aux versions et pages documentées et ne couvre pas tous les environnements.
+- **Confidentialité**: le rappel du service ne fait rien et ignore tous les événements d'accessibilité; le plugin ne lit ni le contenu des événements, ni les nœuds racines, ni les captures d'écran, ni le contenu de l'utilisateur, ne stocke et n'envoie aucune donnée et n'a pas accès au réseau.
+- **Apparence et informations**: dans "Paramètres", réglez "Langue", "Mode sombre", "Couleur du thème" et "Icône du lanceur", et consultez "Mécanisme de compatibilité", "Confidentialité", "Limites" et "Historique des versions".
 
-Android ne permet pas à une application ordinaire d'activer silencieusement un service d'accessibilité. Ce compagnon ne change le service automatiquement qu'après que vous avez explicitement accordé root, WRITE_SECURE_SETTINGS ou Shizuku, et il ne modifie que la liste des services d'accessibilité activés.
+### Prérequis
 
-## Mécanisme de compatibilité expérimental
+- Android 7.0 (API 24) ou version ultérieure, et AutoJs6 6.8.0 ou version ultérieure; le service d'accessibilité d'AutoJs6 lit les nœuds et effectue les actions.
+- Le service d'accessibilité de ce plugin n'est activé que comme identifiant de compatibilité; il ne reçoit que les événements des applications des profils de prise en charge et ne les traite pas.
+- L'accès root, WRITE_SECURE_SETTINGS et Shizuku sont facultatifs et ne servent qu'à activer ou désactiver le service automatiquement; WRITE_SECURE_SETTINGS s'accorde par ADB ou un shell root.
+- L'autorisation d'interroger le mode Protection avancée vérifie si la "Protection avancée" d'Android 17 restreint ce service; le résultat s'affiche dans "Paramètres".
 
-Certaines applications affectées peuvent décider de publier les noeuds normaux selon le nom de classe d'implémentation d'un service activé. Ce compagnon contient le nom de classe de compatibilité suivant, vérifié expérimentalement et requis par ses profils actuels.
+### Questions fréquentes
 
-`com.google.android.accessibility.selecttospeak.SelectToSpeakService`
+**Les nœuds ne changent pas une fois le service activé**
 
-Ce compagnon ne correspond pas à Google Select to Speak, ne dépend pas de Google et ne copie aucun identifiant d'application, signature, nom ou icône de Google. Le nom de classe sert uniquement d'identifiant de compatibilité divulgué et peut cesser de fonctionner après une mise à jour de l'application cible.
+Vérifiez d'abord que le service d'AutoJs6 et 3-Adapt A11y sont activés, puis quittez complètement et rouvrez l'application cible. Le résultat dépend de la version de l'application, de la page, de l'appareil et du système et n'est pas garanti; les commandes dans WebView, Canvas et les interfaces dessinées sur mesure peuvent rester inaccessibles.
 
-## Profils actuellement pris en charge
+**Le service est activé dans les paramètres système, mais la page d'accueil affiche "Le service de compatibilité ne s'exécute pas"**
 
-- WeChat (`com.tencent.mm`) est le seul profil vérifié dans cette version.
-- Un profil ne s'applique qu'aux versions et pages documentées. Son inclusion ne garantit pas tous les environnements.
+Android ne relance pas le service après l'arrêt de son processus. Avec l'accès root, WRITE_SECURE_SETTINGS ou Shizuku, le plugin le répare automatiquement; sinon, touchez "Paramètres système" et désactivez puis réactivez 3-Adapt A11y.
 
-## Confidentialité
+**Le nom de classe du service est celui de Google Sélectionner pour prononcer**
 
-- Le rappel du service est sans effet et ignore tous les événements d'accessibilité.
-- Le compagnon ne lit pas les sources ou les textes des événements, les noeuds racines, les captures d'écran ou le contenu utilisateur.
-- Le compagnon ne stocke, ne partage et ne transfère aucune donnée, et ne se connecte pas au réseau.
-- Le service reçoit uniquement les événements des identifiants de paquet figurant dans les profils publiés.
+Certaines applications décident d'exposer ou non des nœuds normaux d'après le nom de classe d'un service activé, et le plugin n'utilise ce nom de classe que comme identifiant de compatibilité déclaré. Ce plugin n'est pas Google Sélectionner pour prononcer, n'est pas affilié à Google et n'utilise aucun identifiant d'application, signature, nom ni icône de Google.
 
-AutoJs6 continue à lire et à manipuler les noeuds avec son propre service d'accessibilité. Ce compagnon ne relaie pas un arbre de noeuds et n'effectue aucune action d'automatisation.
-
-## Limites et risques
-
-La compatibilité dépend de la version et de la page de l'application cible, de l'appareil et de l'implémentation système. Le succès n'est pas garanti. Ce compagnon ne peut pas créer les noeuds sémantiques que la page ne publie pas. Les contrôles de WebView, de Canvas et des interfaces dessinées sur mesure peuvent rester indisponibles.
-
-Une application cible peut modifier sa méthode de détection et rendre ce compagnon inefficace. L'automatisation peut aussi être soumise aux règles de la plateforme cible ou aux contrôles de risque du compte. Évaluez le risque sur votre appareil et votre compte.
+Les profils de prise en charge, le mécanisme de compatibilité et les rapports de validation se trouvent sur la [page du projet](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y).

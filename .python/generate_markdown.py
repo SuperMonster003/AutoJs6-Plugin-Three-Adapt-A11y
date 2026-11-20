@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-"""Generate and verify localized README and changelog Markdown.
+"""Generate and verify localized README, plugin instruction and changelog Markdown.
 
 Sources of truth:
   .readme/common.json
   .readme/lang_<code>.json
   .readme/template_readme.md
+  .readme/template_plugin_instruction.md
   .changelog/lang_<code>.json
   .changelog/template_changelog.md
   version.properties
@@ -12,8 +13,14 @@ Sources of truth:
 Generated artifacts:
   README.md
   .readme/README-<code>.md
+  app/src/main/res/raw*/plugin_instruction.md (raw is the English copy)
   docs/changelog/CHANGELOG.md
   docs/changelog/CHANGELOG-<code>.md
+  app/src/main/assets/doc/CHANGELOG-<code>.md
+
+The changelogs use the standard release history format (`## vX.Y.Z`, `###### yyyy/mm/dd`,
+"* `label` text") that the release history page parses
+(D:/idea-projects/AUTOJS6_PLUGIN_RELEASE_HISTORY_AGENTS.md).
 
 Run without arguments to write artifacts. Run with --check for a read-only CI
 comparison. Generated Markdown files must not be edited by hand.
@@ -55,6 +62,35 @@ README_LIST_KEYS = [
     "ethics_points",
 ]
 README_FAQ_KEY = "faq"
+# Plugin Center instruction copy lives in its own keys and never borrows README fields
+# (D:/idea-projects/AUTOJS6_PLUGIN_INSTRUCTION_AGENTS.md).
+INSTRUCTION_PREFIX = "instruction_"
+INSTRUCTION_LIST_KEYS = ["instruction_start_steps", "instruction_features", "instruction_requirements"]
+INSTRUCTION_FAQ_KEY = "instruction_faq"
+INSTRUCTION_REQUIRED_KEYS = [
+    "instruction_p_what",
+    "instruction_h3_start",
+    "instruction_start_steps",
+    "instruction_h3_features",
+    "instruction_features",
+    "instruction_h3_requirements",
+    "instruction_requirements",
+    "instruction_p_more",
+]
+INSTRUCTION_DIRECTORIES = {
+    "zh-Hans": "raw-zh",
+    "zh-Hant-HK": "raw-zh-rHK",
+    "zh-Hant-TW": "raw-zh-rTW",
+    "en": "raw-en",
+    "fr": "raw-fr",
+    "es": "raw-es",
+    "ja": "raw-ja",
+    "ko": "raw-ko",
+    "ru": "raw-ru",
+    "ar": "raw-ar",
+}
+INSTRUCTION_DEFAULT_LANGUAGE = "en"
+PARAGRAPH = chr(10) * 2
 TEMPLATE_PATTERN = re.compile(r"\{\{\s*([A-Za-z0-9_$.-]+)\s*\}\}")
 VERSION_PATTERN = re.compile(r"^(\d+\.\d+\.\d+)")
 RELEASE_DATE_PATTERN = re.compile(r"^\d{4}/\d{2}/\d{2}$")
@@ -64,7 +100,7 @@ PLACEHOLDER_MARKERS = (
     "MACHINE_TRANSLATION_PLACEHOLDER",
 )
 FORBIDDEN_PUNCTUATION = set("，。；：！？（）［］【】《》“”‘’、…　،؛؟")
-EXPECTED_ARTIFACT_COUNT = 32
+EXPECTED_ARTIFACT_COUNT = 43
 
 
 class MarkdownGenerationError(Exception):
@@ -169,10 +205,39 @@ def validate_readme_sources(items: dict[str, dict[str, Any]]) -> None:
                 isinstance(item, dict) and set(item) == {"q", "a"},
                 f"README {code!r} faq[{index}] must contain exactly q and a",
             )
+        validate_instruction_language(code, content)
     require(
         "简体中文" in str(items[DEFAULT_LANGUAGE].get("language_notice", "")),
         "Default README must explicitly identify itself as Simplified Chinese",
     )
+
+
+def validate_instruction_language(code: str, content: dict[str, Any]) -> None:
+    for key in INSTRUCTION_REQUIRED_KEYS:
+        require(key in content, f"Instruction language {code!r} is missing {key!r}")
+    for key, value in content.items():
+        if not key.startswith(INSTRUCTION_PREFIX):
+            continue
+        if key in INSTRUCTION_LIST_KEYS:
+            require(
+                isinstance(value, list) and value and all(isinstance(item, str) and item for item in value),
+                f"Instruction {code!r} field {key!r} must be a non-empty list of non-empty strings",
+            )
+            texts = value
+        elif key == INSTRUCTION_FAQ_KEY:
+            require(isinstance(value, list) and value, f"Instruction {code!r} field {key!r} must be a non-empty list")
+            for index, item in enumerate(value):
+                require(
+                    isinstance(item, dict) and set(item) == {"q", "a"} and all(isinstance(text, str) and text for text in item.values()),
+                    f"Instruction {code!r} {key}[{index}] must be an object with non-empty 'q' and 'a'",
+                )
+            texts = [text for item in value for text in item.values()]
+        else:
+            require(isinstance(value, str) and value, f"Instruction {code!r} field {key!r} must be non-empty text")
+            texts = [value]
+        # UI names are quoted with ASCII double quotes; an odd count means a quote was swallowed on the way in.
+        for text in texts:
+            require(text.count('"') % 2 == 0, f"Instruction {code!r} field {key!r} has an unpaired double quote: {text[:60]!r}")
 
 
 def validate_changelog_sources(items: dict[str, dict[str, Any]]) -> None:
@@ -290,6 +355,30 @@ def render_release_entries(
     return "\n\n".join(releases)
 
 
+def render_standard_release_history(changelog: dict[str, Any]) -> str:
+    """Every version as `## vX.Y.Z`, `###### yyyy/mm/dd` and one `* `label` text` line per entry."""
+    releases: list[str] = []
+    for version, entry in changelog["$data"].items():
+        lines: list[str] = []
+        for category in CHANGELOG_CATEGORIES:
+            label = changelog[f"changelog_label_{category}"]
+            lines.extend(f"* `{label}` {item}" for item in entry.get(category, []))
+        releases.append(PARAGRAPH.join((f"## {version}", f"###### {entry['released_date']}", chr(10).join(lines))))
+    return PARAGRAPH.join(releases)
+
+
+def build_instruction_values(localized: dict[str, Any]) -> dict[str, Any]:
+    """Only instruction_* keys reach the instruction template; {{ repo_url }} and the like are already filled in."""
+    values = {key: value for key, value in localized.items() if key.startswith(INSTRUCTION_PREFIX)}
+    for key in INSTRUCTION_LIST_KEYS:
+        if key in values:
+            values[f"placeholder_{key}"] = (numbered_list if key == "instruction_start_steps" else bullet_list)(values[key])
+    if INSTRUCTION_FAQ_KEY in values:
+        faq = [f"**{item['q']}**{PARAGRAPH}{item['a']}" for item in values[INSTRUCTION_FAQ_KEY]]
+        values[f"placeholder_{INSTRUCTION_FAQ_KEY}"] = PARAGRAPH.join(faq)
+    return values
+
+
 def language_navigation(common: dict[str, Any], readmes: dict[str, dict[str, Any]]) -> str:
     repo = common["repo_url"]
     values = []
@@ -316,6 +405,7 @@ def read_sources(root: Path) -> tuple[dict[str, Any], dict[str, dict[str, Any]],
 def expected_artifacts(root: Path) -> dict[Path, str]:
     common, readmes, changelogs = read_sources(root)
     readme_template = load_text(root / ".readme" / "template_readme.md")
+    instruction_template = load_text(root / ".readme" / "template_plugin_instruction.md")
     changelog_template = load_text(root / ".changelog" / "template_changelog.md")
     navigation = language_navigation(common, readmes)
     outputs: dict[Path, str] = {}
@@ -346,10 +436,16 @@ def expected_artifacts(root: Path) -> dict[Path, str]:
         rendered_readme = render_template(readme_template, values).rstrip() + "\n"
         outputs[root / ".readme" / f"README-{code}.md"] = rendered_readme
 
+        instruction = render_template(instruction_template, build_instruction_values(localized)).rstrip() + "\n"
+        resource_dir = root / "app" / "src" / "main" / "res"
+        outputs[resource_dir / INSTRUCTION_DIRECTORIES[code] / "plugin_instruction.md"] = instruction
+        if code == INSTRUCTION_DEFAULT_LANGUAGE:
+            outputs[resource_dir / "raw" / "plugin_instruction.md"] = instruction
+
         changelog_values = {
             **common,
             **changelog,
-            "placeholder_release_history": render_release_entries(changelog),
+            "placeholder_release_history": render_standard_release_history(changelog),
         }
         rendered_changelog = render_template(changelog_template, changelog_values).rstrip() + "\n"
         outputs[root / "docs" / "changelog" / f"CHANGELOG-{code}.md"] = rendered_changelog
@@ -369,6 +465,7 @@ def validate_no_orphans(root: Path, expected: dict[Path, str]) -> None:
     if changelog_dir.is_dir():
         actual.update(changelog_dir.glob("CHANGELOG*.md"))
     actual.update((root / "app/src/main/assets/doc").glob("CHANGELOG*.md"))
+    actual.update((root / "app/src/main/res").glob("raw*/plugin_instruction.md"))
     expected_generated = {path for path in expected if path != root / "README.md"}
     orphans = sorted(path.relative_to(root).as_posix() for path in actual - expected_generated)
     require(not orphans, f"Orphan generated Markdown files: {orphans}")

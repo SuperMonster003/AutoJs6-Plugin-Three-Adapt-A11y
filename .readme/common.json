@@ -11,5 +11,6 @@
   "service_component": "io.github.supermonster003.autojs6.plugin.three.adapt.a11y/com.google.android.accessibility.selecttospeak.SelectToSpeakService",
   "supported_packages": "com.tencent.mm",
   "required_host_build": "3923",
+  "required_host_version_name": "6.8.0",
   "minimum_android": "Android 7.0 (API 24)"
 }

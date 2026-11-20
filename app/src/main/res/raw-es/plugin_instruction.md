@@ -1,43 +1,40 @@
-# AutoJs6 3-Adapt A11y
+3-Adapt A11y es un complemento de compatibilidad opcional para AutoJs6: habilita un servicio de accesibilidad que no procesa ningún evento, lo que ayuda a AutoJs6 a obtener más nodos de accesibilidad normales de las aplicaciones cubiertas por los perfiles de compatibilidad publicados. La automatización la sigue realizando el servicio de accesibilidad de AutoJs6, y el plugin no lee el contenido de la pantalla ni usa la red.
 
-## Finalidad
+### Primeros pasos
 
-Este es un complemento experimental y opcional. Puede ayudar a AutoJs6 a obtener nodos de accesibilidad más normales de las aplicaciones cubiertas por perfiles de soporte publicados. La automatización sigue a cargo del servicio de accesibilidad de AutoJs6.
+1. Instala AutoJs6 y 3-Adapt A11y, abre el plugin y toca la tarjeta de estado "Servicio de compatibilidad" para abrir "Gestor del servicio de compatibilidad".
+2. La "Política de control" predeterminada, "Seguir a AutoJs6", habilita el servicio de compatibilidad siempre que el servicio de accesibilidad de AutoJs6 esté habilitado; elige "Deshabilitado" cuando no lo necesites.
+3. Sin acceso root, WRITE_SECURE_SETTINGS ni Shizuku, toca "Ajustes de accesibilidad del sistema" en "Ajustes" y habilita a mano el servicio de AutoJs6 y 3-Adapt A11y.
+4. Cierra por completo y vuelve a abrir una aplicación de destino de "Aplicaciones compatibles actualmente", y después lee los nodos de la página con AutoJs6.
 
-## Habilitar el servicio
+### Funciones principales
 
-1. Instala AutoJs6 y este complemento.
-2. Abre el complemento y toca la tarjeta de estado para abrir el gestor del servicio de compatibilidad. La política predeterminada, seguir a AutoJs6, mantiene el servicio de compatibilidad habilitado mientras el servicio de accesibilidad de AutoJs6 esté habilitado.
-3. Sin root, WRITE_SECURE_SETTINGS ni Shizuku, habilita manualmente el servicio de AutoJs6 y 3-Adapt A11y en los ajustes de accesibilidad de Android. En cuanto concedas uno de ellos, el complemento aplica por sí mismo la política seleccionada.
-4. Cierra por completo y vuelve a abrir una aplicación objetivo de la lista de soporte, y revisa varias veces la misma página estática.
-5. Elige la política deshabilitado en el gestor, o deshabilita este servicio en los ajustes del sistema, cuando no necesites la compatibilidad.
+- **Gestor del servicio de compatibilidad**: consulta el estado actual del servicio de compatibilidad y del servicio de AutoJs6 en "Estado", y elige "Seguir a AutoJs6", "Habilitado" o "Deshabilitado" en "Política de control".
+- **Control automático**: tras conceder acceso root, WRITE_SECURE_SETTINGS o Shizuku, activa la opción correspondiente en "Control automático" y el plugin habilita o deshabilita el servicio según la política elegida, modificando solo la lista de servicios de accesibilidad habilitados.
+- **Reparación del servicio detenido**: cuando los ajustes del sistema muestran el servicio como activado pero ya no se ejecuta, el plugin lo desactiva y lo vuelve a activar del mismo modo; si no puede, la página de inicio muestra "El servicio de compatibilidad no está en ejecución" con un botón "Ajustes del sistema".
+- **Perfiles de compatibilidad**: "Aplicaciones compatibles actualmente" en la página de inicio enumera las aplicaciones verificadas, que en esta versión es solo WeChat; un perfil solo se aplica a las versiones y páginas documentadas y no cubre todos los entornos.
+- **Privacidad**: la devolución de llamada del servicio no hace nada e ignora todos los eventos de accesibilidad; el plugin no lee el contenido de los eventos, los nodos raíz, las capturas de pantalla ni el contenido del usuario, no guarda ni sube datos y no tiene acceso a la red.
+- **Apariencia e información**: en "Ajustes" puedes ajustar "Idioma", "Modo oscuro", "Color del tema" e "Icono del lanzador", y consultar "Mecanismo de compatibilidad", "Privacidad", "Limitaciones" e "Historial de versiones".
 
-Android no permite que una aplicación normal habilite silenciosamente un servicio de accesibilidad. Este complemento solo cambia el servicio automáticamente después de que concedas explícitamente root, WRITE_SECURE_SETTINGS o Shizuku, y solo modifica la lista de servicios de accesibilidad habilitados.
+### Requisitos
 
-## Mecanismo experimental de compatibilidad
+- Android 7.0 (API 24) o posterior, y AutoJs6 6.8.0 o posterior; el servicio de accesibilidad de AutoJs6 lee los nodos y realiza las acciones.
+- El servicio de accesibilidad de este plugin solo se habilita como identificador de compatibilidad; solo recibe eventos de las aplicaciones de los perfiles de compatibilidad y no los procesa.
+- El acceso root, WRITE_SECURE_SETTINGS y Shizuku son opcionales y solo sirven para habilitar o deshabilitar el servicio automáticamente; WRITE_SECURE_SETTINGS se concede mediante ADB o una shell root.
+- El permiso para consultar el modo Protección avanzada comprueba si la "Protección avanzada" de Android 17 restringe este servicio; el resultado se muestra en "Ajustes".
 
-Algunas aplicaciones afectadas pueden decidir si exponen nodos normales según el nombre de la clase de implementación de un servicio habilitado. Este complemento contiene el siguiente nombre de clase de compatibilidad verificado de forma experimental y requerido por sus perfiles actuales.
+### Preguntas frecuentes
 
-`com.google.android.accessibility.selecttospeak.SelectToSpeakService`
+**Los nodos no cambian después de habilitar el servicio**
 
-Este complemento no es Google Select to Speak, no está afiliado con Google y no copia el identificador de aplicación, la firma, el nombre ni el icono de Google. El nombre de clase solo se usa como identificador de compatibilidad divulgado y puede dejar de funcionar tras una actualización de la aplicación objetivo.
+Comprueba primero que el servicio de AutoJs6 y 3-Adapt A11y estén activados, y después cierra por completo y vuelve a abrir la aplicación de destino. El resultado depende de la versión de la aplicación, la página, el dispositivo y el sistema, y no está garantizado; los controles en WebView, Canvas e interfaces dibujadas a medida pueden seguir sin estar disponibles.
 
-## Perfiles de soporte actuales
+**El servicio está activado en los ajustes del sistema, pero la página de inicio muestra "El servicio de compatibilidad no está en ejecución"**
 
-- WeChat (`com.tencent.mm`) es el único perfil verificado en esta versión.
-- Un perfil solo se aplica a las versiones y páginas documentadas. Estar en la lista no garantiza todos los entornos.
+Android no restablece el servicio después de que se cierre su proceso. Con acceso root, WRITE_SECURE_SETTINGS o Shizuku, el plugin lo repara automáticamente; si no, toca "Ajustes del sistema" y desactiva y vuelve a activar 3-Adapt A11y.
 
-## Privacidad
+**El nombre de clase del servicio coincide con el de Seleccionar para pronunciar de Google**
 
-- La llamada del servicio no realiza ninguna operación e ignora todos los eventos de accesibilidad.
-- El complemento no lee fuentes o textos de eventos, nodos raíz, capturas de pantalla ni contenido del usuario.
-- El complemento no guarda, comparte ni sube datos y no accede a la red.
-- El servicio solo recibe eventos de los identificadores de paquete incluidos en los perfiles de soporte publicados.
+Algunas aplicaciones deciden si exponen nodos normales según el nombre de clase de un servicio habilitado, y el plugin usa ese nombre de clase solo como identificador de compatibilidad declarado. Este plugin no es Seleccionar para pronunciar de Google, no está afiliado a Google y no usa ningún ID de aplicación, firma, nombre ni icono de Google.
 
-AutoJs6 sigue leyendo y operando los nodos mediante su propio servicio de accesibilidad. Este complemento no retransmite un árbol de nodos ni realiza acciones de automatización.
-
-## Limitaciones y riesgos
-
-La compatibilidad depende de la versión y la página de la aplicación objetivo, el dispositivo y la implementación del sistema. No se garantiza el éxito. Este complemento no puede crear nodos semánticos que una página no exponga. Es posible que los controles de WebView, Canvas y las interfaces dibujadas de forma personalizada sigan sin estar disponibles.
-
-Una aplicación objetivo puede cambiar su método de detección y hacer que el complemento deje de funcionar. La automatización también puede estar sujeta a las reglas de la plataforma objetivo o a controles de riesgo de la cuenta. Evalúa el riesgo en tu dispositivo y cuenta.
+Los perfiles de compatibilidad, el mecanismo de compatibilidad y los registros de validación están en la [página del proyecto](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y).

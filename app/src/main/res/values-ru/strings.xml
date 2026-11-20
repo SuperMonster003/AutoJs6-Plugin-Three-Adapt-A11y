@@ -70,7 +70,11 @@
     <string name="privacy_body">Обратный вызов службы не выполняет никаких действий. Плагин не читает источники или текст событий, корневые узлы, снимки экрана или пользовательские данные. Он не сохраняет и не передает данные и не использует сеть. Служба получает события только от пакетов из опубликованного списка поддержки. Если вы это разрешили, приложение изменяет только список включенных служб специальных возможностей через root, защищенные настройки или Shizuku и не затрагивает другие настройки.</string>
     <string name="privacy_title">Конфиденциальность</string>
     <string name="release_history">История выпусков</string>
-    <string name="release_history_unavailable">История выпусков недоступна</string>
+    <string name="release_history_collapse_all">Свернуть всё</string>
+    <string name="release_history_collapsed">Свёрнуто</string>
+    <string name="release_history_expand_all">Развернуть всё</string>
+    <string name="release_history_expanded">Развёрнуто</string>
+    <string name="release_history_unavailable">Не удалось загрузить историю выпусков</string>
     <string name="restart_hint_body">В системных настройках она по-прежнему включена, но система перестала её запускать, обычно после принудительной остановки. Выключите и снова включите %1$s в системных настройках специальных возможностей, чтобы перезапустить её.</string>
     <string name="restart_hint_title">Служба совместимости не запущена</string>
     <string name="screen_intro">Необязательный экспериментальный компонент, который может помочь AutoJs6 получать узлы специальных возможностей из поддерживаемых приложений.</string>
@@ -86,7 +90,7 @@
     <string name="settings_follow_system">Как в системе</string>
     <string name="settings_language">Язык</string>
     <string name="settings_light">Светлая</string>
-    <string name="settings_release_history_summary">Заметки о версиях, встроенные в приложение</string>
+    <string name="settings_release_history_summary">Открыть встроенную историю выпусков приложения</string>
     <string name="settings_saved">Настройки сохранены</string>
     <string name="settings_section_appearance">Внешний вид</string>
     <string name="settings_section_information">Информация</string>

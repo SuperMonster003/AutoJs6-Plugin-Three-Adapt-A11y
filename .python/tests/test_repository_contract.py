@@ -41,6 +41,32 @@ class RepositoryContractTest(unittest.TestCase):
                     placeholder = r'%(?:\d+\$)?[sdf]'
                     self.assertEqual(sorted(re.findall(placeholder, reference[key])), sorted(re.findall(placeholder, text)), (qualifier, key))
 
+    def test_plugin_instructions_share_one_shape(self):
+        # Every locale keeps the same structure (AUTOJS6_PLUGIN_INSTRUCTION_AGENTS.md): 4 sections,
+        # 4 numbered steps, 6 bold features + 4 requirements, 3 FAQ statements and the quoted UI names.
+        shapes = {}
+        for path in sorted((ROOT / 'app/src/main/res').glob('raw*/plugin_instruction.md')):
+            text = path.read_text(encoding='utf-8')
+            lines = text.splitlines()
+            shapes[path.parent.name] = (
+                sum(line.startswith('### ') for line in lines),
+                sum(bool(re.match('[0-9]+[.] ', line)) for line in lines),
+                sum(line.startswith('- **') for line in lines),
+                sum(line.startswith('- ') for line in lines),
+                sum(line.startswith('**') and line.endswith('**') for line in lines),
+                text.count('"'),
+            )
+            self.assertFalse(text.startswith('# '), path)
+            self.assertNotIn('{{', text, path)
+            self.assertNotIn('?**', text, path)
+            self.assertIn('https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y', text, path)
+        self.assertEqual(11, len(shapes))
+        self.assertEqual(1, len(set(shapes.values())), shapes)
+        self.assertEqual((4, 4, 6, 10, 3), shapes['raw'][:5])
+        self.assertEqual((ROOT / 'app/src/main/res/raw-en/plugin_instruction.md').read_bytes(),
+                         (ROOT / 'app/src/main/res/raw/plugin_instruction.md').read_bytes())
+        self.assertTrue(1024 <= len((ROOT / 'app/src/main/res/raw-zh/plugin_instruction.md').read_bytes()) <= 4096)
+
     def test_generator_check_never_writes_missing_or_drifted_output(self):
         spec = importlib.util.spec_from_file_location('repository_generator', ROOT / '.python/generate_markdown.py')
         module = importlib.util.module_from_spec(spec)

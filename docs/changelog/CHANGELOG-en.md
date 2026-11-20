@@ -4,127 +4,94 @@
 
 > Page language: English
 
-## v1.4.2 - 2026/11/13
+## v1.4.3
 
-### Fix
+###### 2026/11/20
 
-- When the compatibility service process is killed, system settings still show it as on but the system no longer runs it; sync now turns it off and on again through root, WRITE_SECURE_SETTINGS, or Shizuku, and without any of them the home page explains how to turn it off and on in the system accessibility settings and offers a button to open them
+* `Improvement` The release history moved from a plain text page to a new page that expands and collapses by version: a collapsed version shows its date and the number of entries per category, an expanded one names each category once; all versions can be expanded or collapsed at once, the newest one opens expanded, and the plugin name is shown as the subtitle
+* `Improvement` Rewrote the instructions shown in Plugin Center in four parts: getting started, main features, requirements and FAQ
+* `Dependency` Added Jetpack Compose BOM 2026.09.00 (release history page)
+* `Dependency` Upgraded shared build plugins version 1.9.0 -> 1.9.7
 
-### Improvement
+## v1.4.2
 
-- When Shizuku is the only way to enable the compatibility service, a sync that runs before Shizuku is ready after the plugin starts is repeated once Shizuku is ready
+###### 2026/11/13
 
-## v1.4.1 - 2026/10/17
+* `Fix` When the compatibility service process is killed, system settings still show it as on but the system no longer runs it; sync now turns it off and on again through root, WRITE_SECURE_SETTINGS, or Shizuku, and without any of them the home page explains how to turn it off and on in the system accessibility settings and offers a button to open them
+* `Improvement` When Shizuku is the only way to enable the compatibility service, a sync that runs before Shizuku is ready after the plugin starts is repeated once Shizuku is ready
 
-### Fix
+## v1.4.1
 
-- In the Arabic interface, 3-Adapt A11y no longer appears reversed as Adapt A11y-3
+###### 2026/10/17
 
-### Improvement
+* `Fix` In the Arabic interface, 3-Adapt A11y no longer appears reversed as Adapt A11y-3
+* `Improvement` Plugin Center icons use the sizes, positions, light and dark artwork, and circular backgrounds adjusted in Icon Studio, retaining reproducible sources and parameters
+* `Improvement` Android App info icons share Icon Studio artwork and light/dark backgrounds while preserving transparent Plugin Center artwork and existing launcher choices
 
-- Plugin Center icons use the sizes, positions, light and dark artwork, and circular backgrounds adjusted in Icon Studio, retaining reproducible sources and parameters
-- Android App info icons share Icon Studio artwork and light/dark backgrounds while preserving transparent Plugin Center artwork and existing launcher choices
+## v1.4.0
 
-## v1.4.0 - 2026/10/03
+###### 2026/10/03
 
-### Hint
+* `Hint` 3-Adapt A11y uses the new package io.github.supermonster003.autojs6.plugin.three.adapt.a11y. Android installs it as a separate app. The old Accessibility Compat app and its data can remain installed; settings are not migrated automatically. Enable the new accessibility service when needed
+* `Feature` Unify standalone settings with flat groups, consistent rows and centered rounded dialogs. Language, night mode, theme color and launcher icon changes apply only after OK; Cancel leaves saved values unchanged. Theme color follows AutoJs6 by default, with a shared palette, HEX/RGB input and a local preview. Neutral surfaces keep stable colors and controls follow the selected theme. The launcher default is adaptive automatic, while upgrades preserve explicit saved choices.
+* `Fix` Keep the automatic launcher icon resource dynamic after installation so launchers can load the matching light or dark variant.
+* `Improvement` Rename the plugin from Accessibility Compat to 3-Adapt A11y across the application title, accessibility service label, plugin ID `three-adapt-a11y`, package and component names, release artifacts, documentation, and the GitHub repository
+* `Improvement` Consistent visual sizing for launcher and Plugin Center icons, with transparent backgrounds and neutral black, white or grayscale artwork
+* `Dependency` Material Components 1.13.0 / AppCompat 1.7.1 (Material 3).
 
-- 3-Adapt A11y uses the new package io.github.supermonster003.autojs6.plugin.three.adapt.a11y. Android installs it as a separate app. The old Accessibility Compat app and its data can remain installed; settings are not migrated automatically. Enable the new accessibility service when needed
+## v1.3.1
 
-### Feature
+###### 2026/09/19
 
-- Unify standalone settings with flat groups, consistent rows and centered rounded dialogs. Language, night mode, theme color and launcher icon changes apply only after OK; Cancel leaves saved values unchanged. Theme color follows AutoJs6 by default, with a shared palette, HEX/RGB input and a local preview. Neutral surfaces keep stable colors and controls follow the selected theme. The launcher default is adaptive automatic, while upgrades preserve explicit saved choices.
+* `Fix` SDK XML v4 parsing warnings with AGP 9.1 and APK native alignment checks incorrectly triggered by JVM unit-test assembly tasks, using shared build plugins 1.8.3
+* `Improvement` Explain Advanced Protection in the host and companion, showing the global mode separately from actual service availability and secure settings control
+* `Improvement` Raise targetSdk to 37 (Android 17) after compileSdk; the plugin's behavior does not depend on the new target
 
-### Fix
+## v1.3.0
 
-- Keep the automatic launcher icon resource dynamic after installation so launchers can load the matching light or dark variant.
+###### 2026/09/15
 
-### Improvement
+* `Feature` Add a settings screen with language, dark mode, and theme color options that follow AutoJs6 by default, plus mechanism, privacy, limitations, release history, and about entries
+* `Feature` Add a compatibility service manager with a three-way control policy (Follow AutoJs6, Enabled, Disabled) that can change the service through root, WRITE_SECURE_SETTINGS, or Shizuku, with live state rows and a copyable report
+* `Feature` Follow the AutoJs6 accessibility service automatically through a host state broadcast, a content-triggered job on the enabled services list, and checks when the service connects or the app opens
+* `Feature` Publish the selected service policy through the plugin-info capabilities and the shared accessibility companion contract (contract version 3)
+* `Feature` Add an about screen for the app and developer with the version, package name, open-source license, project page, and feedback links
+* `Fix` Row titles and summaries align to the layout direction instead of the text direction, so the Arabic option in the language dialog stays next to its radio button
+* `Improvement` Redesign the main screen: the status card opens the manager, supported apps carry launch buttons, and the former open, accessibility settings, and refresh buttons move into the settings screen
+* `Improvement` Compile against Android API 37 to match the updated common plugin API
+* `Improvement` Align the policy options of the service manager with its other rows, remove the redundant apply-now row because a policy applies as soon as it is chosen, and rebuild the appearance choice dialogs with matching text sizes, insets, and spacing
+* `Dependency` Add Shizuku API 13.1.5 and AndroidX Annotation 1.10.0
+* `Dependency` Update the bundled common plugin API to include the accessibility companion contract
 
-- Rename the plugin from Accessibility Compat to 3-Adapt A11y across the application title, accessibility service label, plugin ID `three-adapt-a11y`, package and component names, release artifacts, documentation, and the GitHub repository
-- Consistent visual sizing for launcher and Plugin Center icons, with transparent backgrounds and neutral black, white or grayscale artwork
+## v1.2.0
 
-### Dependency
+###### 2026/09/13
 
-- Material Components 1.13.0 / AppCompat 1.7.1 (Material 3).
+* `Feature` Local release history is available from the interface, with localized text and an English fallback
+* `Improvement` Release packages are checked for a complete signing configuration, exact APK contents and reproducible documentation
 
-## v1.3.1 - 2026/09/19
+## v1.1.0
 
-### Fix
+###### 2026/09/12
 
-- SDK XML v4 parsing warnings with AGP 9.1 and APK native alignment checks incorrectly triggered by JVM unit-test assembly tasks, using shared build plugins 1.8.3
+* `Improvement` Generalize the app, accessibility service, plugin metadata, embedded instructions, and README wording around application-neutral support profiles while keeping WeChat (`com.tencent.mm`) as the only currently verified profile
+* `Improvement` Replace the target-specific plugin variant with `service-identity`, publish supported packages as a collection, and list or open installed supported apps through generic UI actions
+* `Improvement` Refresh adaptive launcher icons with light and dark variants and a monochrome layer for themed icons
+* `Improvement` Generalize the A-B-A protocol, research entry point, and privacy-safe metrics tool, including an explicit `targetPackage` input for future support profiles
+* `Improvement` Remove obsolete minimum Android Studio and IntelliJ IDEA version properties now that IDE and toolchain compatibility is selected centrally
+* `Improvement` Build verification rejects accidental native dependencies and produces a JSON report
+* `Dependency` Upgrade `io.github.supermonster003.autojs6-platform-versions` from 1.7.0 to 1.7.3 so JDK 25 and 26 builds automatically align the selected KGP on the root buildscript classpath
 
-### Improvement
+## v1.0.0
 
-- Explain Advanced Protection in the host and companion, showing the global mode separately from actual service availability and secure settings control
-- Raise targetSdk to 37 (Android 17) after compileSdk; the plugin's behavior does not depend on the new target
+###### 2026/09/02
 
-## v1.3.0 - 2026/09/15
-
-### Feature
-
-- Add a settings screen with language, dark mode, and theme color options that follow AutoJs6 by default, plus mechanism, privacy, limitations, release history, and about entries
-- Add a compatibility service manager with a three-way control policy (Follow AutoJs6, Enabled, Disabled) that can change the service through root, WRITE_SECURE_SETTINGS, or Shizuku, with live state rows and a copyable report
-- Follow the AutoJs6 accessibility service automatically through a host state broadcast, a content-triggered job on the enabled services list, and checks when the service connects or the app opens
-- Publish the selected service policy through the plugin-info capabilities and the shared accessibility companion contract (contract version 3)
-- Add an about screen for the app and developer with the version, package name, open-source license, project page, and feedback links
-
-### Fix
-
-- Row titles and summaries align to the layout direction instead of the text direction, so the Arabic option in the language dialog stays next to its radio button
-
-### Improvement
-
-- Redesign the main screen: the status card opens the manager, supported apps carry launch buttons, and the former open, accessibility settings, and refresh buttons move into the settings screen
-- Compile against Android API 37 to match the updated common plugin API
-- Align the policy options of the service manager with its other rows, remove the redundant apply-now row because a policy applies as soon as it is chosen, and rebuild the appearance choice dialogs with matching text sizes, insets, and spacing
-
-### Dependency
-
-- Add Shizuku API 13.1.5 and AndroidX Annotation 1.10.0
-- Update the bundled common plugin API to include the accessibility companion contract
-
-## v1.2.0 - 2026/09/13
-
-### Feature
-
-- Local release history is available from the interface, with localized text and an English fallback
-
-### Improvement
-
-- Release packages are checked for a complete signing configuration, exact APK contents and reproducible documentation
-
-## v1.1.0 - 2026/09/12
-
-### Improvement
-
-- Generalize the app, accessibility service, plugin metadata, embedded instructions, and README wording around application-neutral support profiles while keeping WeChat (`com.tencent.mm`) as the only currently verified profile
-- Replace the target-specific plugin variant with `service-identity`, publish supported packages as a collection, and list or open installed supported apps through generic UI actions
-- Refresh adaptive launcher icons with light and dark variants and a monochrome layer for themed icons
-- Generalize the A-B-A protocol, research entry point, and privacy-safe metrics tool, including an explicit `targetPackage` input for future support profiles
-- Remove obsolete minimum Android Studio and IntelliJ IDEA version properties now that IDE and toolchain compatibility is selected centrally
-- Build verification rejects accidental native dependencies and produces a JSON report
-
-### Dependency
-
-- Upgrade `io.github.supermonster003.autojs6-platform-versions` from 1.7.0 to 1.7.3 so JDK 25 and 26 builds automatically align the selected KGP on the root buildscript classpath
-
-## v1.0.0 - 2026/09/02
-
-### Hint
-
-- This is an experimental compatibility approach. Results depend on the WeChat version, page, and remote configuration, and a release cannot promise success for every device or account
-- The service cannot create semantic nodes that a WeChat Mini Program, XWeb, or Canvas never exposed, and it does not bypass login, risk controls, or platform anti-abuse systems
-
-### Feature
-
-- Provide a standalone no-op accessibility companion APK scoped to `com.tencent.mm`, with a truthful and distinct application ID, icon, labels, description, and signature
-- Register a compatibility service implementation class name supported by public experiments while AutoJs6 continues to read and operate nodes through its own service and the companion callbacks read no user content
-- Report the compatibility mode, target package, service component, and minimum host build through the AutoJs6 plugin-info interface, with a user-controlled screen for enabling and disabling the service
-
-### Improvement
-
-- Document [AutoJs6#289](https://github.com/SuperMonster003/AutoJs6/issues/289), [#382](https://github.com/SuperMonster003/AutoJs6/issues/382), [#432](https://github.com/SuperMonster003/AutoJs6/issues/432), [#463](https://github.com/SuperMonster003/AutoJs6/issues/463), [#520](https://github.com/SuperMonster003/AutoJs6/issues/520), [#521](https://github.com/SuperMonster003/AutoJs6/issues/521), GKD `47267c7`, and sanitized static evidence from WeChat 8.0.72
-- Provide an A-B-A device protocol that stores no private node text or screenshots and uses repeated statistics plus reversibility to distinguish compatibility effects from loading and cache accidents
-- Add README and changelog copy sources in 10 languages, a reproducible Markdown generator, a read-only consistency check, and GitHub Actions gates
-- Record a 7-sample A-B-A run made through AutoJs6 itself on QV710AF65F, where node count rose stably from 1 to 244 and returned to 1 after compatibility was disabled, with exact system accessibility-setting restoration verified
+* `Hint` This is an experimental compatibility approach. Results depend on the WeChat version, page, and remote configuration, and a release cannot promise success for every device or account
+* `Hint` The service cannot create semantic nodes that a WeChat Mini Program, XWeb, or Canvas never exposed, and it does not bypass login, risk controls, or platform anti-abuse systems
+* `Feature` Provide a standalone no-op accessibility companion APK scoped to `com.tencent.mm`, with a truthful and distinct application ID, icon, labels, description, and signature
+* `Feature` Register a compatibility service implementation class name supported by public experiments while AutoJs6 continues to read and operate nodes through its own service and the companion callbacks read no user content
+* `Feature` Report the compatibility mode, target package, service component, and minimum host build through the AutoJs6 plugin-info interface, with a user-controlled screen for enabling and disabling the service
+* `Improvement` Document [AutoJs6#289](https://github.com/SuperMonster003/AutoJs6/issues/289), [#382](https://github.com/SuperMonster003/AutoJs6/issues/382), [#432](https://github.com/SuperMonster003/AutoJs6/issues/432), [#463](https://github.com/SuperMonster003/AutoJs6/issues/463), [#520](https://github.com/SuperMonster003/AutoJs6/issues/520), [#521](https://github.com/SuperMonster003/AutoJs6/issues/521), GKD `47267c7`, and sanitized static evidence from WeChat 8.0.72
+* `Improvement` Provide an A-B-A device protocol that stores no private node text or screenshots and uses repeated statistics plus reversibility to distinguish compatibility effects from loading and cache accidents
+* `Improvement` Add README and changelog copy sources in 10 languages, a reproducible Markdown generator, a read-only consistency check, and GitHub Actions gates
+* `Improvement` Record a 7-sample A-B-A run made through AutoJs6 itself on QV710AF65F, where node count rose stably from 1 to 244 and returned to 1 after compatibility was disabled, with exact system accessibility-setting restoration verified

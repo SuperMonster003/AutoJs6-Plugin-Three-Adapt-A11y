@@ -43,5 +43,24 @@ class GenerateMarkdownTest(unittest.TestCase):
         self.assertLess(rendered.index("### Hint"), rendered.index("### Feature"))
 
 
+    def test_standard_release_history_matches_the_page_format(self) -> None:
+        changelog = {
+            "changelog_label_hint": "Hint",
+            "changelog_label_feature": "Feature",
+            "changelog_label_fix": "Fix",
+            "changelog_label_improvement": "Improvement",
+            "changelog_label_dependency": "Dependency",
+            "$data": {
+                "v1.0.1": {"released_date": "2026/09/03", "dependency": ["d"], "fix": ["f"]},
+                "v1.0.0": {"released_date": "2026/09/02", "feature": ["a", "b"]},
+            },
+        }
+        expected = [
+            "## v1.0.1", "", "###### 2026/09/03", "", "* `Fix` f", "* `Dependency` d", "",
+            "## v1.0.0", "", "###### 2026/09/02", "", "* `Feature` a", "* `Feature` b",
+        ]
+        self.assertEqual(expected, MODULE.render_standard_release_history(changelog).splitlines())
+
+
 if __name__ == "__main__":
     unittest.main()

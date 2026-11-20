@@ -70,7 +70,11 @@
     <string name="privacy_body">رد نداء الخدمة لا ينفذ أي عملية. لا يقرأ المكون الإضافي مصادر الأحداث أو نصوصها أو العقد الجذرية أو لقطات الشاشة أو محتوى المستخدم. لا يخزن البيانات ولا يشاركها ولا يتصل بالشبكة. تستقبل الخدمة الأحداث فقط من الحزم المدرجة في قائمة الدعم المنشورة. عندما تسمح بذلك, لا يغير التطبيق سوى قائمة خدمات إمكانية الوصول المفعلة عبر root أو الإعدادات الآمنة أو Shizuku, ولا يمس أي إعدادات أخرى.</string>
     <string name="privacy_title">الخصوصية</string>
     <string name="release_history">سجل الإصدارات</string>
-    <string name="release_history_unavailable">سجل الإصدارات غير متاح</string>
+    <string name="release_history_collapse_all">طيّ الكل</string>
+    <string name="release_history_collapsed">مطوي</string>
+    <string name="release_history_expand_all">توسيع الكل</string>
+    <string name="release_history_expanded">موسَّع</string>
+    <string name="release_history_unavailable">تعذر تحميل سجل الإصدارات</string>
     <string name="restart_hint_body">لا تزال مفعلة في إعدادات النظام, لكن النظام توقف عن تشغيلها, وغالبا ما يحدث ذلك بعد إيقافها قسرا. أوقف ⁨%1$s⁩ ثم فعله مرة أخرى من إعدادات إمكانية الوصول في النظام لإعادة تشغيلها.</string>
     <string name="restart_hint_title">خدمة التوافق غير قيد التشغيل</string>
     <string name="screen_intro">مكون إضافي تجريبي اختياري قد يساعد AutoJs6 على استرداد عقد إمكانية الوصول من التطبيقات المدعومة.</string>
@@ -86,7 +90,7 @@
     <string name="settings_follow_system">اتباع النظام</string>
     <string name="settings_language">اللغة</string>
     <string name="settings_light">فاتح</string>
-    <string name="settings_release_history_summary">ملاحظات الإصدارات المضمنة في هذا التطبيق</string>
+    <string name="settings_release_history_summary">عرض سجل الإصدارات المضمن في التطبيق</string>
     <string name="settings_saved">تم حفظ الإعدادات</string>
     <string name="settings_section_appearance">المظهر</string>
     <string name="settings_section_information">معلومات</string>

@@ -30,7 +30,7 @@
 
         <meta-data
             android:name="org.autojs.plugin.contract.NATIVE_PAGE_ALIGNMENT"
-            android:value="0" />
+            android:value="16384" />
 
         <meta-data
             android:name="org.autojs.plugin.WAKE_ACTIVITY"
@@ -82,6 +82,11 @@
         <activity
             android:name=".DocumentActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".ReleaseHistoryActivity"
+            android:exported="false"
+            android:label="@string/release_history" />
 
         <activity
             android:name=".AboutActivity"

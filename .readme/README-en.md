@@ -149,15 +149,17 @@ The research note covers AutoJs6 #289, #382, #432, #463, #520, and #521, GKD `47
 
 ### Release History
 
-#### v1.4.2 - 2026/11/13
-
-##### Fix
-
-- When the compatibility service process is killed, system settings still show it as on but the system no longer runs it; sync now turns it off and on again through root, WRITE_SECURE_SETTINGS, or Shizuku, and without any of them the home page explains how to turn it off and on in the system accessibility settings and offers a button to open them
+#### v1.4.3 - 2026/11/20
 
 ##### Improvement
 
-- When Shizuku is the only way to enable the compatibility service, a sync that runs before Shizuku is ready after the plugin starts is repeated once Shizuku is ready
+- The release history moved from a plain text page to a new page that expands and collapses by version: a collapsed version shows its date and the number of entries per category, an expanded one names each category once; all versions can be expanded or collapsed at once, the newest one opens expanded, and the plugin name is shown as the subtitle
+- Rewrote the instructions shown in Plugin Center in four parts: getting started, main features, requirements and FAQ
+
+##### Dependency
+
+- Added Jetpack Compose BOM 2026.09.00 (release history page)
+- Upgraded shared build plugins version 1.9.0 -> 1.9.7
 
 [Read the complete release history](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y/blob/master/docs/changelog/CHANGELOG-en.md)
 

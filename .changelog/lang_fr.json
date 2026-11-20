@@ -1,12 +1,23 @@
 {
   "h1_release_history": "Historique des versions 3-Adapt A11y",
   "language_notice": "Langue de cette page: français",
-  "changelog_label_hint": "Note",
+  "changelog_label_hint": "Astuce",
   "changelog_label_feature": "Fonctionnalité",
-  "changelog_label_fix": "Correctif",
+  "changelog_label_fix": "Correction",
   "changelog_label_improvement": "Amélioration",
   "changelog_label_dependency": "Dépendance",
   "$data": {
+    "v1.4.3": {
+      "released_date": "2026/11/20",
+      "improvement": [
+        "L'historique des versions passe d'une page de texte brut à une nouvelle page qui se développe et se réduit par version: une version réduite affiche sa date et le nombre d'entrées par catégorie, une version développée ne nomme chaque catégorie qu'une fois; toutes les versions peuvent être développées ou réduites d'un coup, la plus récente s'ouvre développée et le nom du plugin sert de sous-titre",
+        "Réécriture des instructions affichées dans le Centre des plugins en quatre parties: prise en main, fonctionnalités principales, prérequis et questions fréquentes"
+      ],
+      "dependency": [
+        "Ajout de Jetpack Compose BOM 2026.09.00 (page Historique des versions)",
+        "Mise à niveau des plugins de compilation partagés version 1.9.0 -> 1.9.7"
+      ]
+    },
     "v1.4.2": {
       "released_date": "2026/11/13",
       "fix": [

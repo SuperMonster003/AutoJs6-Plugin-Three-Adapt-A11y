@@ -7,7 +7,8 @@ import kotlin.math.max
 
 /** Shared Three-player HCT accent policy. Input/preview swatches retain the original opaque seed. */
 internal object ThemeAccentRoles {
-    data class Roles(val primary: Int, val onPrimary: Int)
+    /** [container] is the primary container tone (90 light, 30 dark), used by the release history category labels. */
+    data class Roles(val primary: Int, val onPrimary: Int, val container: Int)
 
     @SuppressLint("RestrictedApi") // The pinned Material dependency embeds Material Color Utilities.
     fun fromSeed(seed: Int, dark: Boolean): Roles {
@@ -17,6 +18,7 @@ internal object ThemeAccentRoles {
         return Roles(
             primary = tones.tone(if (dark) 80 else 40),
             onPrimary = tones.tone(if (dark) 20 else 100),
+            container = tones.tone(if (dark) 30 else 90),
         )
     }
 }

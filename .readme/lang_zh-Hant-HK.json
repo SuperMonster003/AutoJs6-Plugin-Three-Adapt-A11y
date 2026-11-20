@@ -110,5 +110,45 @@
   "p_generate": "README 及 changelog 由 JSON 文案源生成. 修改 `.readme/lang_*.json`, `.changelog/lang_*.json` 或模板後執行:",
   "h3_license": "許可",
   "p_license": "項目代碼使用 [Mozilla Public License 2.0]({{ license_url }}). 微信, WeChat, Google 及 Select to Speak 名稱屬各自權利人所有, 本項目與這些公司沒有隸屬或認可關係.",
-  "h3_links": "相關連結"
+  "h3_links": "相關連結",
+  "instruction_p_what": "3-Adapt A11y 是 AutoJs6 的可選兼容服務: 它啟用一個不處理任何事件的無障礙服務, 幫助 AutoJs6 從已發佈支援配置的應用程式中取得更多正常的無障礙節點. 自動化操作仍由 AutoJs6 自己的無障礙服務完成, 插件不讀取螢幕內容, 也不連網.",
+  "instruction_h3_start": "開始使用",
+  "instruction_start_steps": [
+    "安裝 AutoJs6 與 3-Adapt A11y, 開啟插件, 點按 \"兼容服務\" 狀態卡片進入 \"兼容服務管理器\".",
+    "預設的 \"控制策略\" 是 \"跟隨 AutoJs6\", 會在 AutoJs6 無障礙服務開啟時同時開啟兼容服務; 不需要時可以選擇 \"停用\".",
+    "沒有 root, WRITE_SECURE_SETTINGS 或 Shizuku 時, 在 \"設定\" 中點按 \"系統無障礙設定\", 手動開啟 AutoJs6 與 3-Adapt A11y 兩個服務.",
+    "完全退出並重新開啟 \"目前支援的應用程式\" 中列出的目標應用程式, 再用 AutoJs6 讀取頁面節點."
+  ],
+  "instruction_h3_features": "主要功能",
+  "instruction_features": [
+    "**兼容服務管理器**: 在 \"狀態\" 中查看兼容服務與 AutoJs6 服務的目前狀態, 在 \"控制策略\" 中選擇 \"跟隨 AutoJs6\", \"啟用\" 或 \"停用\".",
+    "**自動控制**: 授予 root, WRITE_SECURE_SETTINGS 或 Shizuku 後, 在 \"自動控制\" 中開啟對應的選項, 插件就會按所選策略自行開啟或關閉服務, 並且只修改已啟用無障礙服務的清單.",
+    "**服務失效修復**: 服務在系統設定中顯示已開啟卻沒有執行時, 插件會透過上述方式把它關閉再開啟; 無法自動處理時首頁顯示 \"兼容服務沒有執行\", 並提供 \"系統設定\" 按鈕.",
+    "**支援配置**: 首頁 \"目前支援的應用程式\" 列出已驗證的應用程式, 本版本只有微信; 配置只適用於記載的應用程式版本與頁面, 不保證所有環境.",
+    "**私隱**: 服務回呼不做任何處理, 忽略全部無障礙事件; 插件不讀取事件內容, 根節點, 截圖或用戶內容, 不儲存, 不上傳資料, 也沒有網絡權限.",
+    "**外觀與資訊**: 在 \"設定\" 中可以調整 \"語言\", \"深色模式\", \"主題色\" 與 \"啓動器圖標\", 並查看 \"兼容機制\", \"私隱\", \"限制\" 與 \"發行歷史\"."
+  ],
+  "instruction_h3_requirements": "運行要求",
+  "instruction_requirements": [
+    "{{ minimum_android }} 或更高版本, 以及 AutoJs6 {{ required_host_version_name }} 或更高版本; AutoJs6 的無障礙服務負責讀取節點與執行操作.",
+    "本插件的無障礙服務只作為兼容標識開啟, 只接收支援配置中應用程式的事件, 並且不處理它們.",
+    "root, WRITE_SECURE_SETTINGS 或 Shizuku 授權是可選的, 只用於自動開啟或關閉服務; WRITE_SECURE_SETTINGS 需要透過 ADB 或 root shell 授予.",
+    "查詢進階保護模式的權限用於偵測 Android 17 的 \"進階保護\" 是否會限制本服務, 結果顯示在 \"設定\" 中."
+  ],
+  "instruction_h3_faq": "常見問題",
+  "instruction_faq": [
+    {
+      "q": "開啟後節點沒有變化的情形",
+      "a": "先確認 AutoJs6 與 3-Adapt A11y 的服務都已開啟, 再完全退出並重新開啟目標應用程式. 效果取決於目標應用程式的版本, 頁面, 裝置與系統, 不保證成功; WebView, Canvas 與自繪介面中的控制項可能仍然無法取得."
+    },
+    {
+      "q": "系統設定中已開啟, 但首頁顯示 \"兼容服務沒有執行\"",
+      "a": "服務程序被結束後系統不會自動恢復它. 授予過 root, WRITE_SECURE_SETTINGS 或 Shizuku 時插件會自動修復; 否則點按 \"系統設定\", 把 3-Adapt A11y 關閉再開啟."
+    },
+    {
+      "q": "服務類名與 Google 隨選朗讀相同的原因",
+      "a": "部分應用程式會根據已啟用服務的類名決定是否提供正常節點, 插件只把該類名作為公開的兼容標識使用. 本插件不是 Google 隨選朗讀, 與 Google 無關, 也沒有使用 Google 的應用程式 ID, 簽名, 名稱或圖標."
+    }
+  ],
+  "instruction_p_more": "支援配置, 兼容機制與驗證記錄見 [項目主頁]({{ repo_url }})."
 }

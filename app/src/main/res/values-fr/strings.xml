@@ -70,7 +70,11 @@
     <string name="privacy_body">Le rappel du service est sans effet. Le plugin ne lit pas les sources ou les textes des événements, les noeuds racines, les captures d\'écran ou le contenu utilisateur. Il ne stocke ni ne partage de données et ne se connecte pas au réseau. Le service reçoit uniquement les événements des paquets figurant dans la liste de support publiée. Lorsque vous l\'autorisez, l\'application ne modifie que la liste des services d\'accessibilité activés via root, les paramètres sécurisés ou Shizuku, et ne touche jamais aux autres paramètres.</string>
     <string name="privacy_title">Confidentialité</string>
     <string name="release_history">Historique des versions</string>
-    <string name="release_history_unavailable">L\'historique des versions est indisponible</string>
+    <string name="release_history_collapse_all">Tout réduire</string>
+    <string name="release_history_collapsed">Réduit</string>
+    <string name="release_history_expand_all">Tout développer</string>
+    <string name="release_history_expanded">Développé</string>
+    <string name="release_history_unavailable">Impossible de charger l\'historique des versions</string>
     <string name="restart_hint_body">Il est toujours activé dans les paramètres du système, mais le système a cessé de l\'exécuter, en général après un arrêt forcé. Désactivez puis réactivez %1$s dans les paramètres d\'accessibilité du système pour le relancer.</string>
     <string name="restart_hint_title">Le service de compatibilité ne s\'exécute pas</string>
     <string name="screen_intro">Un compagnon expérimental et facultatif qui peut aider AutoJs6 à obtenir les noeuds d\'accessibilité des applications compatibles.</string>
@@ -86,7 +90,7 @@
     <string name="settings_follow_system">Suivre le système</string>
     <string name="settings_language">Langue</string>
     <string name="settings_light">Clair</string>
-    <string name="settings_release_history_summary">Notes de version intégrées à cette application</string>
+    <string name="settings_release_history_summary">Consulter l\'historique des versions inclus dans l\'application</string>
     <string name="settings_saved">Paramètres enregistrés</string>
     <string name="settings_section_appearance">Apparence</string>
     <string name="settings_section_information">Informations</string>

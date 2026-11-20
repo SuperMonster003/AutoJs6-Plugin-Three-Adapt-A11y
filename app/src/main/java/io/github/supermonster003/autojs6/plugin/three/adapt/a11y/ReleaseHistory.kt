@@ -1,85 +1,115 @@
 package io.github.supermonster003.autojs6.plugin.three.adapt.a11y
 
+import android.content.Context
+import android.content.Intent
 import java.io.IOException
+import java.util.Locale
 
-internal fun releaseHistoryCandidates(language: String, country: String, script: String): List<String> {
-    val code = when {
-        language == "zh" && country == "HK" -> "zh-Hant-HK"
-        language == "zh" && (country == "TW" || script == "Hant") -> "zh-Hant-TW"
-        language == "zh" -> "zh-Hans"
-        language in setOf("en", "ar", "es", "fr", "ja", "ko", "ru") -> language
-        else -> "en"
+/** Maps the UI locale to the bundled changelog asset shipped for it. */
+internal object ReleaseHistoryAssetPolicy {
+    fun assetFor(locale: Locale): String = when (locale.language.lowercase(Locale.ROOT)) {
+        "zh" -> when {
+            locale.script.equals("Hans", ignoreCase = true) -> "CHANGELOG-zh-Hans.md"
+            locale.country.equals("HK", ignoreCase = true) ||
+                locale.country.equals("MO", ignoreCase = true) -> "CHANGELOG-zh-Hant-HK.md"
+            locale.script.equals("Hant", ignoreCase = true) ||
+                locale.country.equals("TW", ignoreCase = true) -> "CHANGELOG-zh-Hant-TW.md"
+            else -> "CHANGELOG-zh-Hans.md"
+        }
+        "ar" -> "CHANGELOG-ar.md"
+        "es" -> "CHANGELOG-es.md"
+        "fr" -> "CHANGELOG-fr.md"
+        "ja" -> "CHANGELOG-ja.md"
+        "ko" -> "CHANGELOG-ko.md"
+        "ru" -> "CHANGELOG-ru.md"
+        else -> "CHANGELOG-en.md"
     }
-    return listOf("doc/CHANGELOG-$code.md", "doc/CHANGELOG-en.md").distinct()
+
+    /** The asset paths to try in order: the one for [locale], then English. */
+    fun candidatesFor(locale: Locale): List<String> =
+        listOf(assetFor(locale), FALLBACK).distinct().map { "doc/$it" }
+
+    private const val FALLBACK = "CHANGELOG-en.md"
 }
 
-internal fun loadReleaseHistory(candidates: List<String>, loader: (String) -> String): String? {
-    for (path in candidates) {
-        try { loader(path).takeIf { it.isNotBlank() }?.let { return it } } catch (_: IOException) { }
-    }
-    return null
+internal data class ReleaseHistoryItem(val tag: String?, val text: String)
+
+internal data class ReleaseHistoryEntry(
+    val version: String,
+    val date: String?,
+    val items: List<ReleaseHistoryItem>,
+) {
+    /** The items by category, each category once, in the order the categories first appear (untagged: tag null). */
+    val groups: List<ReleaseHistoryGroup>
+        get() = items.groupBy { it.tag }.map { (tag, grouped) -> ReleaseHistoryGroup(tag, grouped.map { it.text }) }
+
+    /** How many items each category has, in the same order; untagged items are not counted. */
+    val categoryCounts: List<Pair<String, Int>>
+        get() = groups.mapNotNull { group -> group.tag?.let { it to group.items.size } }
 }
 
-/** One display block of the bundled changelog Markdown; kept Android-free for unit tests. */
-internal sealed class ReleaseHistoryBlock {
-    data class Title(val text: String) : ReleaseHistoryBlock()
-    data class Version(val text: String) : ReleaseHistoryBlock()
-    data class Category(val text: String) : ReleaseHistoryBlock()
-    data class Bullet(val text: String) : ReleaseHistoryBlock()
-    data class Paragraph(val text: String) : ReleaseHistoryBlock()
+internal data class ReleaseHistoryGroup(val tag: String?, val items: List<String>)
+
+/**
+ * Parses the narrow markdown dialect used by the bundled changelogs: `# vX.Y.Z` or `## vX.Y.Z` version
+ * headings, `###### date` lines, and `` * `tag` text `` bullets. Anything else (the section title, the
+ * separator lines) is ignored.
+ */
+internal object ReleaseHistoryParser {
+    private val BULLET_PATTERN = Regex("^\\*\\s+(?:`([^`]+)`\\s*)?(.*)$")
+    private val VERSION_PATTERN = Regex("^#{1,2}\\s+(v\\S+)\\s*$")
+
+    fun parse(markdown: String): List<ReleaseHistoryEntry> {
+        val entries = mutableListOf<ReleaseHistoryEntry>()
+        var version: String? = null
+        var date: String? = null
+        var items = mutableListOf<ReleaseHistoryItem>()
+
+        fun flush() {
+            val flushedVersion = version ?: return
+            entries.add(ReleaseHistoryEntry(flushedVersion, date, items.toList()))
+        }
+
+        for (rawLine in markdown.lineSequence()) {
+            val line = rawLine.trim()
+            val versionMatch = VERSION_PATTERN.matchEntire(line)
+            when {
+                versionMatch != null -> {
+                    flush()
+                    version = versionMatch.groupValues[1]
+                    date = null
+                    items = mutableListOf()
+                }
+                line.startsWith("###### ") -> date = line.removePrefix("###### ").trim()
+                line.startsWith("* ") && version != null -> {
+                    val match = BULLET_PATTERN.matchEntire(line) ?: continue
+                    val tag = match.groupValues[1].takeIf { it.isNotEmpty() }
+                    val text = match.groupValues[2].trim()
+                    if (tag != null || text.isNotEmpty()) {
+                        items.add(ReleaseHistoryItem(tag, text))
+                    }
+                }
+            }
+        }
+        flush()
+        return entries
+    }
 }
 
 /**
- * Minimal reader for the generated changelog files: headings, bullets and paragraphs. Inline code
- * markers and Markdown links are reduced to their visible text; comments and rules are dropped.
+ * Returns the releases of the first candidate asset that holds at least one, so a missing, blank or unparsable
+ * localized changelog falls back to the English one; empty when none of them does (the page shows its empty state).
  */
-internal object ReleaseHistoryFormatter {
-    private val link = Regex("""\[([^\]]+)]\(([^)]+)\)""")
-    private val htmlComment = Regex("""<!--.*?-->""", RegexOption.DOT_MATCHES_ALL)
-
-    fun parse(markdown: String): List<ReleaseHistoryBlock> {
-        val blocks = mutableListOf<ReleaseHistoryBlock>()
-        val paragraph = StringBuilder()
-        fun flushParagraph() {
-            if (paragraph.isNotEmpty()) {
-                blocks += ReleaseHistoryBlock.Paragraph(paragraph.toString())
-                paragraph.setLength(0)
-            }
-        }
-        htmlComment.replace(markdown, "").lines().forEach { rawLine ->
-            val line = rawLine.trimEnd()
-            val trimmed = line.trim()
-            when {
-                trimmed.isEmpty() || trimmed.all { it == '-' || it == '*' || it == '_' } && trimmed.length >= 3 -> flushParagraph()
-                trimmed.startsWith("#") -> {
-                    flushParagraph()
-                    val level = trimmed.takeWhile { it == '#' }.length
-                    val text = inline(trimmed.drop(level).trim())
-                    blocks += when {
-                        level <= 1 -> ReleaseHistoryBlock.Title(text)
-                        level == 2 -> ReleaseHistoryBlock.Version(text)
-                        else -> ReleaseHistoryBlock.Category(text)
-                    }
-                }
-                trimmed.startsWith("- ") || trimmed.startsWith("* ") -> {
-                    flushParagraph()
-                    blocks += ReleaseHistoryBlock.Bullet(inline(trimmed.drop(2).trim()))
-                }
-                trimmed.startsWith(">") -> {
-                    flushParagraph()
-                    blocks += ReleaseHistoryBlock.Paragraph(inline(trimmed.drop(1).trim()))
-                }
-                else -> {
-                    if (paragraph.isNotEmpty()) paragraph.append(' ')
-                    paragraph.append(inline(trimmed))
-                }
-            }
-        }
-        flushParagraph()
-        return blocks
+internal fun loadReleaseHistory(candidates: List<String>, loader: (String) -> String): List<ReleaseHistoryEntry> {
+    for (path in candidates) {
+        val markdown = try { loader(path) } catch (_: IOException) { continue }
+        val entries = ReleaseHistoryParser.parse(markdown)
+        if (entries.isNotEmpty()) return entries
     }
+    return emptyList()
+}
 
-    fun inline(text: String): String = link.replace(text) { it.groupValues[1] }
-        .replace("`", "")
-        .replace("**", "")
+/** Opens the release history page from the settings row. */
+internal fun Context.openReleaseHistory() {
+    startActivity(Intent(this, ReleaseHistoryActivity::class.java))
 }

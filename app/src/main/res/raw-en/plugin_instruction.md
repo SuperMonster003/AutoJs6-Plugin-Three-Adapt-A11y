@@ -1,43 +1,40 @@
-# AutoJs6 3-Adapt A11y
+3-Adapt A11y is an optional compatibility companion for AutoJs6: it enables an accessibility service that handles no events, which helps AutoJs6 retrieve more normal accessibility nodes from apps covered by published support profiles. Automation is still performed by the AutoJs6 accessibility service, and the plugin neither reads screen content nor uses the network.
 
-## Purpose
+### Getting started
 
-This is an optional experimental companion. It may help AutoJs6 retrieve more normal accessibility nodes from apps covered by published support profiles. Automation is still performed by the AutoJs6 accessibility service.
+1. Install AutoJs6 and 3-Adapt A11y, open the plugin, and tap the "Compatibility service" status card to open "Compatibility service manager".
+2. The default "Control policy", "Follow AutoJs6", enables the compatibility service whenever the AutoJs6 accessibility service is enabled; choose "Disabled" when it is not needed.
+3. Without root access, WRITE_SECURE_SETTINGS or Shizuku, tap "System accessibility settings" in "Settings" and enable both the AutoJs6 service and 3-Adapt A11y by hand.
+4. Fully exit and reopen a target app listed under "Currently supported apps", then read the page nodes with AutoJs6.
 
-## Enable the service
+### Main features
 
-1. Install AutoJs6 and this companion.
-2. Open the companion and tap the status card to open the compatibility service manager. The default policy, Follow AutoJs6, keeps the compatibility service enabled whenever the AutoJs6 accessibility service is enabled.
-3. Without root access, WRITE_SECURE_SETTINGS, or Shizuku, manually enable both the AutoJs6 service and 3-Adapt A11y in Android accessibility settings. Once one of them is granted, the companion applies the selected policy itself.
-4. Fully exit and reopen a target app from the support list, then inspect the same static page several times.
-5. Select the Disabled policy in the manager, or disable this service in system settings, when compatibility is not needed.
+- **Compatibility service manager**: see the current state of the compatibility service and the AutoJs6 service under "State", and choose "Follow AutoJs6", "Enabled" or "Disabled" under "Control policy".
+- **Automatic control**: after you grant root access, WRITE_SECURE_SETTINGS or Shizuku, turn on the matching option under "Automatic control" and the plugin enables or disables the service by the selected policy, changing only the list of enabled accessibility services.
+- **Stopped service repair**: when the system settings show the service as on but it no longer runs, the plugin turns it off and on again in the same way; when it cannot, the home page shows "Compatibility service is not running" with a "System settings" button.
+- **Support profiles**: "Currently supported apps" on the home page lists the verified apps, which is only WeChat in this release; a profile applies only to the documented app versions and pages and does not cover every environment.
+- **Privacy**: the service callback does nothing and ignores every accessibility event; the plugin does not read event content, root nodes, screenshots or user content, stores and uploads no data, and has no network access.
+- **Appearance and information**: in "Settings", adjust "Language", "Dark mode", "Theme color" and "Launcher icon", and read "Compatibility mechanism", "Privacy", "Limitations" and "Release history".
 
-Android does not let an ordinary app silently enable an accessibility service. This companion changes the service automatically only after you explicitly grant root access, WRITE_SECURE_SETTINGS, or Shizuku, and it modifies only the list of enabled accessibility services.
+### Requirements
 
-## Experimental compatibility mechanism
+- Android 7.0 (API 24) or later, and AutoJs6 6.8.0 or later; the AutoJs6 accessibility service reads nodes and performs actions.
+- The accessibility service of this plugin is enabled only as a compatibility identifier; it receives events only from apps in the support profiles and does not process them.
+- Root access, WRITE_SECURE_SETTINGS and Shizuku are optional and used only to enable or disable the service automatically; WRITE_SECURE_SETTINGS is granted through ADB or a root shell.
+- The permission to query Advanced Protection mode checks whether Android 17 "Advanced Protection" restricts this service; the result is shown in "Settings".
 
-Some affected apps may decide whether to expose normal nodes based on the implementation class name of an enabled service. This companion contains the following experimentally verified compatibility class name required by its current support profiles.
+### FAQ
 
-`com.google.android.accessibility.selecttospeak.SelectToSpeakService`
+**Nodes do not change after the service is enabled**
 
-This companion is not Google Select to Speak, is not affiliated with Google, and does not copy a Google application ID, signature, name, or icon. The class name is used only as a disclosed compatibility identifier and may stop working after a target app update.
+First make sure both the AutoJs6 service and 3-Adapt A11y are on, then fully exit and reopen the target app. The result depends on the app version, page, device and system and is not guaranteed; controls in WebView, Canvas and custom-drawn interfaces may stay unavailable.
 
-## Current support profiles
+**The service is on in the system settings, but the home page shows "Compatibility service is not running"**
 
-- WeChat (`com.tencent.mm`) is the only profile verified in this release.
-- A profile applies only to documented app versions and pages. Inclusion does not guarantee every environment.
+Android does not bring the service back after its process is killed. With root access, WRITE_SECURE_SETTINGS or Shizuku the plugin repairs it automatically; otherwise tap "System settings" and turn 3-Adapt A11y off and on again.
 
-## Privacy
+**The service class name matches Google Select to Speak**
 
-- The service callback is a no-op and ignores every accessibility event.
-- The companion does not read event sources, event text, root nodes, screenshots, or user content.
-- The companion does not store, share, or upload data and has no network access.
-- The service receives events only from package IDs in the published support profiles.
+Some apps decide whether to expose normal nodes from the class name of an enabled service, and the plugin uses that class name only as a disclosed compatibility identifier. This plugin is not Google Select to Speak, is not affiliated with Google, and uses no Google application ID, signature, name or icon.
 
-AutoJs6 continues to read and act on nodes through its own accessibility service. This companion does not proxy a node tree or perform automation actions.
-
-## Limitations and risks
-
-Compatibility depends on the target app version, page, device, and system implementation. Success is not guaranteed. This companion cannot create semantic nodes that a page does not expose. Controls in WebView, Canvas, and custom-drawn interfaces may remain unavailable.
-
-A target app may change its detection behavior and make this companion ineffective. Automation may also be subject to the target platform rules or account risk controls. Evaluate the risk on your own device and account.
+Support profiles, the compatibility mechanism and validation records are on the [project page](https://github.com/SuperMonster003/AutoJs6-Plugin-Three-Adapt-A11y).

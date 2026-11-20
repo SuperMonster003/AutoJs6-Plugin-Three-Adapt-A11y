@@ -1,5 +1,7 @@
 import java.util.Properties
 import java.util.zip.CRC32
+import java.util.zip.ZipEntry
+import java.util.zip.ZipFile
 
 plugins {
     id("io.github.supermonster003.autojs6-native-alignment")
@@ -8,6 +10,7 @@ plugins {
     id("org.autojs.build.signs")
     id("org.autojs.build.jvm-convention")
     id("com.android.application")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 val globalApplicationId = "io.github.supermonster003.autojs6.plugin.three.adapt.a11y"
@@ -73,6 +76,7 @@ android {
 
     buildFeatures {
         aidl = true
+        compose = true
         resValues = true
     }
 }
@@ -88,9 +92,24 @@ dependencies {
     implementation(libs.shizuku.api)
     implementation(libs.shizuku.provider)
 
+    // Jetpack Compose, only for the release history page (AUTOJS6_PLUGIN_RELEASE_HISTORY_AGENTS.md); the BOM is the
+    // single version source and also manages activity-compose.
+    implementation(platform(libs.compose.bom))
+    implementation(libs.compose.runtime)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.foundation)
+    implementation(libs.compose.material3)
+    implementation(libs.compose.animation)
+    implementation(libs.compose.activity)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.test.ext.junit)
     androidTestImplementation(libs.test.runner)
+    // ui-test brings espresso-core 3.5.0, which fails to reflect InputManager.getInstance on API 36; pin 3.7.0.
+    androidTestImplementation(libs.test.espresso.core)
+    androidTestImplementation(platform(libs.compose.bom))
+    androidTestImplementation(libs.compose.ui.test.junit4)
+    debugImplementation(libs.compose.ui.test.manifest)
 }
 
 tasks.withType<JavaCompile>().configureEach {
@@ -100,7 +119,7 @@ tasks.withType<JavaCompile>().configureEach {
 tasks.register("appendDigestToReleasedFiles") {
     group = "build"
     description = "Builds the signed release APK and copies it with a CRC32 suffix."
-    dependsOn("assembleRelease")
+    dependsOn("assembleRelease", "verifyReleaseNativeLibraries")
 
     doLast {
         require(isSignsValid) { "Release signing configuration is missing or incomplete." }
@@ -128,8 +147,32 @@ private fun CRC32.outputStream() = object : java.io.OutputStream() {
     override fun write(bytes: ByteArray, offset: Int, length: Int) = update(bytes, offset, length)
 }
 
-// Reject accidental native dependencies on every ABI.
-nativeAlignment { expectNoNativeLibraries.set(true) }
+// Native code inventory: the plugin has no native code of its own, but Compose ui-graphics depends on
+// androidx.graphics:graphics-path, whose libandroidx.graphics.path.so is packaged for four ABIs. The APK stays one
+// universal package without ABI splits; the shared gate keeps the 16 KB alignment checks and writes the supported ABIs
+// to the Manifest, and verifyReleaseNativeLibraries below asserts that exactly these libraries are present and stored
+// uncompressed. getInfo() still reports supportedAbis = emptyArray().
+val nativeLibraryAbis = listOf("arm64-v8a", "armeabi-v7a", "x86_64", "x86")
+val allowedNativeLibraries = nativeLibraryAbis.map { "lib/$it/libandroidx.graphics.path.so" }
+nativeAlignment { expectNoNativeLibraries.set(false) }
+
+tasks.register("verifyReleaseNativeLibraries") {
+    group = "verification"
+    description = "Checks that the release APK carries exactly the Compose graphics-path libraries, stored uncompressed"
+    dependsOn("assembleRelease")
+    val apkDir = layout.buildDirectory.dir("outputs/apk/release")
+    doLast {
+        val apks = apkDir.get().asFile.listFiles { file -> file.extension == "apk" }.orEmpty().toList()
+        check(apks.size == 1) { "Expected one release APK, found ${apks.map { it.name }}" }
+        ZipFile(apks.single()).use { zip ->
+            val natives = zip.entries().asSequence().filter { it.name.startsWith("lib/") }.toList()
+            check(natives.map { it.name }.sorted() == allowedNativeLibraries.sorted()) {
+                "Unexpected native library set: ${natives.map { it.name }.sorted()}"
+            }
+            check(natives.all { it.method == ZipEntry.STORED }) { "Native libraries must be stored uncompressed" }
+        }
+    }
+}
 
 
 // Fail before collection when credentials, keystore or the actual APK set are incomplete.
