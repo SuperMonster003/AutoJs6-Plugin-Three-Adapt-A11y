@@ -17,7 +17,7 @@ The AAR hashes above were verified against the exact Gradle cache artifacts used
 
 - Jetpack Compose BOM 2026.09.00, `androidx.compose:compose-bom` with `androidx.compose.runtime:runtime`, `androidx.compose.ui:ui`, `androidx.compose.foundation:foundation`, `androidx.compose.material3:material3`, `androidx.compose.animation:animation` and `androidx.activity:activity-compose`, Apache License 2.0. Source: https://github.com/androidx/androidx
 - `ui-graphics` brings `androidx.graphics:graphics-path`, whose `libandroidx.graphics.path.so` (arm64-v8a, armeabi-v7a, x86_64, x86) is the only native library in the APK; it is stored uncompressed and 16 KB aligned.
-- Test-only dependencies (JUnit 4, AndroidX Test, Espresso core, Compose UI test with `ui-test-manifest` in debug builds only, Apache License 2.0 or EPL 1.0) are not shipped in the release APK.
+- Test-only dependencies (JUnit 4, AndroidX Test, Espresso core, Compose UI test, Apache License 2.0 or EPL 1.0) are not shipped in the release APK.
 
 ## Existing optional Shizuku service control
 
